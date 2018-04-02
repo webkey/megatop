@@ -160,30 +160,124 @@
 /* === CONTENT end ===
 
 /* === HEADER ===
+/* HEADER
+// header layout
+.header
+	background-color: $bg-color
+	box-shadow: inset 0 -1px 0 $border-color
+
+	.btn-menu
+		position: absolute
+		left: 0
+		top: 0
+		display: none
+		background: none
+		z-index: 5
+
+		+media('<desk-md')
+			display: block
+
+.header > .layout
+	height: 100%
+
 .header__holder
-	position: relative
-	padding: 10px 0
-	z-index: 5
+	height: 100%
 	+clear
+	text-align: center
 
-	background-color: lightgreen
+	+media('<desk-sm')
+		position: absolute
+		right: 0
+		top: 0
 
-/* logo
-.logo
-	position: relative
-	float: left
-	background: url(../../img/logo.png) no-repeat
-	width: 220px
-	height: 85px
-	text-indent: -9999px
-	overflow: hidden
-	margin: 0 2rem 0 0
-	z-index: 5
+.header__col
+	+display-inline-block-top
+	text-align: left
+	height: 100%
+	white-space: nowrap
+	+clear-spacing
 
-	a, & > span
+	&:first-child
 		display: block
+		float: left
+
+	&:last-child
+		display: block
+		float: right
+
+	&::before
+		+pseudo-content()
+		+display-inline-block-middle
 		height: 100%
 
+.header__cell
+	+display-inline-block-middle
+	+font($font-size, $line-height)
+	white-space: normal
+	letter-spacing: normal
+
+// header layout end
+
+/* menu
+.header__col--menu
+	&.header__col
+		height: 100%
+
+		+media('<desk-sm')
+			display: none
+
+		.header__cell, .menu-list, .menu-list > li, .menu-list > li > a
+			height: 100%
+
+.menu-list
+	$ml-space: 54px
+	$ml-space--lg: 40px
+
+	&
+		list-style: none
+		padding: 0
+		margin: 0 -#{round($ml-space/2)}
+		+clear-spacing
+
+		+media('<desk-lg')
+			+margin-horizontal(-#{round($ml-space--lg/2)})
+
+	li
+		+display-inline-block-middle
+		+font-d
+
+	a
+		display: table
+		width: 100%
+		text-decoration: none
+		color: $text-color
+
+		span
+			display: table-cell
+			vertical-align: middle
+			+padding-horizontal(round($ml-space/2))
+			border: solid transparent
+			border-width: 3px 0
+
+			+media('<desk-lg')
+				+padding-horizontal(round($ml-space--lg/2))
+
+	// hover
+	a
+		&:hover
+			color: $link-color
+
+	// current
+	li
+		&.current
+			a
+				color: $link-color
+
+				span
+					border-bottom-color: $base-color
+
+/* menu end
+/* HEADER end
 /* logo end
 /* === HEADER end ===
 
