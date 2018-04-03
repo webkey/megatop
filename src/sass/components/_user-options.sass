@@ -3,164 +3,129 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user options
-$uo-size: 50px
+$uo-size: 'auto' $header-height
 $uo-size--mob: 40px
-$uo-space: 34px
+$uo-space: 30px
 $uo-icon-size: 18px
 
 .user-options
 	position: relative
 	list-style: none
 	padding: 0
-	margin: 0 -#{round($uo-space/2)}
+	//margin: 0 -#{round($uo-space/2)}
+	margin: 0 #{round($uo-space/2)}
 	+clear-spacing
 	line-height: 1
 
 .user-options__item
 	position: relative
 	+display-inline-block-middle
-	//+padding-horizontal(round($uo-space/2))
-	//padding: round($uo-space/2)
-	+font($font-size, 1)
-	letter-spacing: normal
+	+font-bold()
 
-	& > a
+	& > a, & > div
 		position: relative
 		display: block
-		+size($uo-size)
-		color: $text-color
+		height: nth($uo-size, 2)
+		padding: 0 round($uo-space/2)
+		color: white
 		line-height: 1
-		// для svg
-		fill: $text-color
 		text-decoration: none
-		text-align: center
-
-		//+media('<mob-md')
-			+size($uo-size--mob)
 
 		&::before
 			content: ""
 			+display-inline-block-middle
 			height: 100%
 
-		//@if $animation-use
-			transition:
-				property: color
-				duration: $animation-speed
-
 		svg
-			//+display-inline-block-middle
+			+display-inline-block-middle
 			+size($uo-icon-size)
-			position: absolute
-			left: 50%
-			top: 50%
-			margin: -#{round($uo-icon-size/2)} 0 0 -#{round($uo-icon-size/2)}
-			will-change: opacity
-			transition:
-				property: transform, opacity
-				duration: $animation-speed
-
-			&.for-close
-				+size(12px)
-				margin: -6px 0 0 -6px
-				z-index: auto
-				opacity: 0
-				//visibility: hidden
-
-			&.for-open
-				z-index: 1
 
 			& ~ span
-				padding-left: 10px
+				padding-left: 12px
 
 			& ~ span.hide-text
 				padding-left: 0
 
 		path
-			fill: inherit
-
-			@if $animation-use
-				transition:
-					property: fill
-					duration: $animation-speed
+			fill: currentColor
 
 		& > span
 			+display-inline-block-middle
+			+font(1.6rem, 1)
+			letter-spacing: normal
 
-		// hover
+	// hover
+	& > a
+		&::after
+			content: ""
+			display: block
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			border-top: 3px solid white
+			will-change: opacity
+			opacity: 0
+			transition:
+				property: opacity
+				duration: $animation-speed
+
 		&:hover
-			color: $link-color
-			fill: $link-color
-
-		&.active
-			.for-close
+			&::after
 				opacity: 1
-				//visibility: visible
-				z-index: 1
-
-			.for-open
-				opacity: 0
-				//visibility: hidden
-				z-index: auto
 
 // message
 //.user-options--message
 
 // login
 .user-options--login
-	+media('<mob-md')
-		display: none
-
-// basket
-.user-options-counter
-	$size: 18px
-	$border: 2px
-	position: absolute
-	left: 50%
-	top: 50%
-	margin: -18px 0 0 0
-	padding: 0 3px
-	height: $size+$border*2
-	min-width: $size+$border*2
-	border-radius: round(($size+$border*2)/2)
-	background-color: $base-color
-	border: $border solid $bg-color-base
-	+font(11px, $size)
-	color: $bg-color-base
-	text-align: center
-	z-index: 5
-	transform: rotateY(0turn)
-	will-change: transform, opacity
-	opacity: 1
-	transition:
-		property: transform, opacity
-		duration: $animation-speed
-
-	.user-options__item a.active &
-		opacity: 0.5
-		transform: rotateY(0.25turn)
-
-	//+media('<mob-md')
-		margin: -18px 0 0 18px
-
-// search
-.user-options--search
-	& > a
-		&.active
-			svg
-				&.for-close
-					+media('<tab-sm')
-						opacity: 0
-
-				&.for-open
-					+media('<tab-sm')
-						opacity: 1
 
 // lang
-.user-options--lang
-	display: none
+.lang-select__drop
+	position: absolute
+	left: 0
+	top: 100%
+	width: 100%
+	list-style: none
+	margin: 0
+	padding: 0
+	font-size: 1.6rem
+	line-height: 1
+	letter-spacing: normal
+	background-color: $header-bg
 
-	+media('<desk-sm')
-		display: inline-block
+	.active-item
+		display: none
+
+	a
+		display: block
+		padding: 10px round($uo-space/2)
+		color: white
+		text-decoration: none
+		white-space: nowrap
+
+	// hover
+	a
+		&:hover
+			background-color: $base-color
+
+.lang-select__opener
+	width: 85px
+	padding: 10px round($uo-space/2)
+
+	.user-options &
+		padding: 0 5px 0 round($uo-space/2)
+
+.lang-select__opener, .lang-select__drop a
+	span
+		& > i
+			display: inline-block
+			vertical-align: top
+			width: 16px
+			height: 12px
+			margin: 2px 12px 0 0
+			background-size: contain
+			background-repeat: no-repeat
+			background-position: center
 
 /* user options

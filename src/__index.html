@@ -15,37 +15,20 @@
 <!--MAIN-->
 <div class="main">
 	<div class="max-wrap layout">
-		<div class="main__holder">
-			<!--CONTENT-->
-			<div class="content-wrap">
-				<div class="content user-content">
-					<!--breadcrumbs-->
-					@@include('_tpl_breadcrumbs.html', {
-						"items": ["Главная"],
-						"last": "Главная"
-					})
-					<!--breadcrumbs end-->
-					<section class="section">
-						<div class="section__title"><h2>Заголовок секции</h2></div>
-						<div class="section__holder">
-							Контент секции
-						</div>
-					</section>
+		<section class="main-section main-section--promo">
+			<div class="promo-slider promo-slider-js">
+				<div class="promo-slider__list">
+					@@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_images-slider.json")
 				</div>
 			</div>
-			<!--CONTENT end-->
-
-			<!--SIDEBAR-->
-			@@include('_tpl_layout_sidebar.html')
-			<!--SIDEBAR-->
-
-			<!--ASIDE-->
-			@@include('_tpl_layout_aside.html')
-			<!--ASIDE end-->
-		</div>
+		</section>
 	</div>
 </div>
 <!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
 
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 

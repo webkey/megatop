@@ -119,11 +119,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	border: #{$form-border-width} solid #{$form-border-color}
 	cursor: pointer
 
-	@if $animation-use
-		transition:
-			property: border-color, background-color, box-shadow
-			duration: $animation-speed
-
 	@at-root .select2, .#{$user-content} select, .select, &
 		margin: 0 0 $form-bottom-space
 
@@ -209,11 +204,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		backface-visibility: hidden
 		background-color: $this-icon-lines-color
 
-		@if $animation-use
-			transition:
-				property: background-color
-				duration: $animation-speed
-
 	&::before
 		+size(round($this-icon-lines-width*0.75), $this-icon-lines-height)
 		right: 50%
@@ -253,11 +243,6 @@ input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radi
 	user-select: none
 	white-space: normal !important
 	text-overflow: clip !important
-
-	@if $animation-use
-		transition:
-			property: color
-			duration: $animation-speed
 
 	// hover
 	.no-touchevents &:hover
@@ -316,11 +301,6 @@ input[type="checkbox"]
 			margin-top: -11px
 			border-radius: 0
 
-			@if $animation-use
-				transition:
-					property: background-color, border-color
-					duration: $animation-speed
-
 		&::before
 			border: 2px solid $checkbox-color
 			background-color: transparent
@@ -339,12 +319,6 @@ input[type="checkbox"]
 			top: 50%
 			border-radius: 0
 			background: white
-
-			@if $animation-use
-				transition:
-					property: opacity
-					duration: $animation-speed
-					timing-function: linear
 
 		&::before
 			transform: rotate(45deg)
@@ -371,21 +345,10 @@ input[type="checkbox"]
 				margin: -5px 0 0 0
 				backface-visibility: hidden
 
-				@if $animation-use
-					transition:
-						property: width
-						duration: 0.1s
-
 			&::after
 				width: 11px
 				margin: 0 0 0 -7px
 				backface-visibility: hidden
-
-				@if $animation-use
-					transition:
-						property: width
-						duration: 0.1s
-						delay: 0.1s
 
 	// checkbox disabled
 	&:disabled
@@ -423,18 +386,8 @@ input[type="radio"]
 		&::before
 			border: 2px solid $checkbox-color
 
-			@if $animation-use
-				transition:
-					property: background-color, border-color
-					duration: $animation-speed
-
 		&::after
 			background: none
-
-			@if $animation-use
-				transition:
-					property: opacity
-					duration: 0.2s
 
 	& ~ label > span,
 	& ~ i
@@ -566,11 +519,6 @@ input[type="radio"]
 	background: $form-bg-color
 	box-shadow: none
 	outline: none
-
-	@if $animation-use
-		transition:
-			property: background, border, color, box-shadow
-			duration: $animation-speed
 
 //.#{$user-content} select,
 //.select select,

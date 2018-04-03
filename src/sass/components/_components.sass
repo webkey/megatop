@@ -367,12 +367,6 @@
 	padding: 20px
 	background: $bg-color-alt
 	border: 1px dashed $border-color
-	@if $animation-use
-		transition:
-			property: background-color, border-color, transform
-			duration: $animation-speed
-	@else
-		transition: none
 
 	.no-touchevents &:hover
 		border-color: $form-border-focus-color
@@ -479,13 +473,6 @@
 		background: white
 		margin: -1px 0 0 -8px
 
-		@if $animation-use
-			transition:
-				property: background-color
-				duration: $animation-speed
-		@else
-			transition: none
-
 	&::before
 		transform: rotate(-45deg)
 
@@ -550,18 +537,8 @@
 		text-decoration: none
 		cursor: pointer
 
-		@if $animation-use
-			transition:
-				property: color
-				duration: $animation-speed
-
 		span
 			border-bottom: 1px solid rgba(white, 0.3)
-
-			@if $animation-use
-				transition:
-					property: border-color
-					duration: $animation-speed
 
 		.no-touchevents &:hover
 			color: $base-color
@@ -581,32 +558,17 @@
 	color: $text-color
 	text-decoration: none
 
-	@if $animation-use
-		transition:
-			property: background-color
-			duration: $animation-speed
-
 	+clear
 
 	svg
 		float: left
 		+size($file-icon-size)
 
-	@if $animation-use
-		path
-			transition:
-				property: fill
-				duration: $animation-speed
 
 	& > span, & > em
 		display: block
 		margin-left: #{$file-icon-size}
 		padding-left: 1em
-
-		@if $animation-use
-			transition:
-				property: color
-				duration: $animation-speed
 
 	& > em
 		display: block
@@ -667,3 +629,14 @@
 			margin-bottom: 0
 
 /* feature list end
+
+/* ms-drop
+.ms-drop__drop-js
+	opacity: 0
+	visibility: hidden
+
+	.is-open &
+		opacity: 1
+		visibility: visible
+
+/* ms-drop end

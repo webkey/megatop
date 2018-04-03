@@ -11,7 +11,7 @@ html
 
 body
 	position: relative
-	+font-normal
+	+font-light
 	+font($font-size, $line-height)
 	color: $text-color
 	height: 100%
@@ -112,7 +112,7 @@ b, strong, th
 	+font-bold
 
 i, em
-	+font-italic
+	+font-light
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
@@ -375,12 +375,11 @@ table
 		margin-bottom: 0
 
 	.tbl
-		border: none
 
 		td, th
 			color: $text-color
 			background-color: $bg-color-base
-			border: 0 solid $base-color
+			border: 1px solid $border-color
 			+font(1.4rem, 1.5)
 
 			&:first-child, &:first-child
@@ -389,19 +388,9 @@ table
 			&:last-child, &:last-child
 				border-right-width: 1px
 
-		tr:last-child
-			td
-				border-bottom-width: 0
-
-		td
-			border-top-width: 1px
-
-		tbody tr:first-child td
-			border-top-width: 0
-
 		tbody tr:nth-child(even) td
-			background: $base-color
-			color: $bg-color-base
+			background: $bg-color-alt
+			color: $text-color
 
 		th, thead td
 			+font-bold
@@ -409,10 +398,8 @@ table
 			text-align: left
 
 		th, thead td, tfoot td
-			background: $base-color
-			color: $bg-color-base
-			border-color: $base-color
-			border-top-width: 0
+			background: $bg-color-alt
+			color: $text-color
 
 /* table end
 
@@ -489,11 +476,6 @@ table
 	color: black
 	text-decoration: none
 
-	@if $animation-use
-		transition:
-			property: background-color
-			duration: $animation-speed
-
 	+media('<desk-lg')
 		margin-bottom: $bottom-space--ml
 
@@ -512,12 +494,6 @@ table
 		width: 20px
 		height: 20px
 		margin-right: 5px
-
-	@if $animation-use
-		path
-			transition:
-				property: fill
-				duration: $animation-speed
 
 	span
 		display: inline-block

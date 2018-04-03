@@ -106,6 +106,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
+		, 'src/js/temp/jquery.ms-drop.min.js' // drop menu (example, for lang)
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

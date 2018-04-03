@@ -1,31 +1,14 @@
 <header class="header">
 	<div class="max-wrap layout">
-		<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
-			<span>Меню</span>
-			<i>&nbsp;</i>
-		</a>
-
-
-
 		<div class="header__holder">
-			<div class="header__col header__col--slogan">
-				<div class="header__cell">
-					<!--logo-->
-					<strong class="logo">
-						@@if(!context.logoNoLink){<a href="index.html">}
-						@@if(context.logoNoLink){<span>}
-						<em>Свитанак. Белорусский трикотаж из Жодино</em>
-						@@if(context.logoNoLink){</span>}
-						@@if(!context.logoNoLink){</a>}
-						<img style="display: none;" class="logo-print" src="img/logo-print.png" alt="Мегатоп. Обувь и аксессуары">
-					</strong>
-					<!--logo end-->
-				</div>
-			</div>
 			<div class="header__col header__col--menu">
+				<a href="#" class="btn-menu btn-nav-js" title="Главное меню">
+					<span>Главное меню</span>
+					<i>&nbsp;</i>
+				</a>
 				<div class="header__cell">
 					<ul class="menu-list">
-						<li @@if(context.currentItem === "Мужчины"){class="current"}><a href="#"><span>Мужчины</span></a></li>
+						<li @@if(context.currentItem === "Мужчины"){class="current"}><a href="typography.html"><span>Мужчины</span></a></li>
 						<li @@if(context.currentItem === "Женщины"){class="current"}><a href="#"><span>Женщины</span></a></li>
 						<li @@if(context.currentItem === "Дети"){class="current"}><a href="#"><span>Дети</span></a></li>
 						<li @@if(context.currentItem === "Аксессуары"){class="current"}><a href="#"><span>Аксессуары</span></a></li>
@@ -33,11 +16,33 @@
 					</ul>
 				</div>
 			</div>
+			<div class="header__col header__col--logo">
+				<div class="header__cell">
+					<strong class="logo">
+						@@if(!context.logoNoLink){<a href="index.html">}
+						@@if(context.logoNoLink){<span>}
+						<em>Мегатоп. Обувь и аксессуары</em>
+						@@if(context.logoNoLink){</span>}
+						@@if(!context.logoNoLink){</a>}
+						<img style="display: none;" class="logo-print" src="img/logo.png" alt="Мегатоп. Обувь и аксессуары">
+					</strong>
+				</div>
+			</div>
 			<div class="header__col header__col--options">
 				<div class="header__cell">
-					<!--user options-->
+					<div class="search-form">
+						<form action="#" method="post">
+							<div class="search-form__field input-wrap">
+								<input type="search" placeholder="Найти" class="search-form__input field-effects-js"/>
+								<div class="search-form__btn">
+									@@include("includes/svg/icon-search.svg")
+									<span>Найти</span>
+									<input type="submit" value="">
+								</div>
+							</div>
+						</form>
+					</div>
 					@@include('_tpl_user-options.html')
-					<!--user options end-->
 				</div>
 			</div>
 		</div>

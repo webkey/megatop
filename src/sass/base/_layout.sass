@@ -4,15 +4,13 @@
 
 /* === LAYOUT ===
 .max-wrap
-	max-width: $page-layout-width + $page-layout-space*2
+	max-width: $page-layout-width + nth($page-layout-space, 2)*2
 
 .layout
-	+padding-horizontal($page-layout-space)
-	+push-auto
+	@if nth($page-layout-space, 2) != 0
+		+padding-horizontal(nth($page-layout-space, 2))
 
-	+media('<tab-lg')
-		.main &
-			+padding-horizontal(0)
+	+push-auto
 
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
@@ -121,18 +119,19 @@
 
 // лэяут страницы
 .wrapper
-	margin: 0 auto
-	//min-height: 100%
-	//height: auto !important
-	//height: 100%
-	min-height: 100vh
+	display: flex
+	flex-direction: column
+	justify-content: space-between
 	overflow: hidden
 	position: relative
+	margin: 0 auto
+	min-height: 100vh
 
 /* === LAYOUT end ===
 
 /* === CONTENT ===
 .main
+	flex: 1
 	position: relative
 	clear: both
 	z-index: 4
@@ -163,35 +162,32 @@
 /* HEADER
 // header layout
 .header
-	background-color: $bg-color
-	box-shadow: inset 0 -1px 0 $border-color
+	background-color: #1a1a1a
+	//background-color: #fffacd
+	color: white
+	height: $header-height
+	position: relative
+	z-index: 10
 
 	.btn-menu
+		+size($header-height)
 		position: absolute
 		left: 0
 		top: 0
-		display: none
-		background: none
 		z-index: 5
-
-		+media('<desk-md')
-			display: block
 
 .header > .layout
 	height: 100%
 
 .header__holder
 	height: 100%
-	+clear
 	text-align: center
-
-	+media('<desk-sm')
-		position: absolute
-		right: 0
-		top: 0
+	+clear-spacing
+	+clear
 
 .header__col
 	+display-inline-block-top
+	position: relative
 	text-align: left
 	height: 100%
 	white-space: nowrap
@@ -200,6 +196,7 @@
 	&:first-child
 		display: block
 		float: left
+		padding-left: $header-height
 
 	&:last-child
 		display: block
@@ -221,8 +218,6 @@
 /* menu
 .header__col--menu
 	&.header__col
-		height: 100%
-
 		+media('<desk-sm')
 			display: none
 
@@ -230,12 +225,12 @@
 			height: 100%
 
 .menu-list
-	$ml-space: 54px
-	$ml-space--lg: 40px
+	$ml-space: 30px
+	$ml-space--lg: 10px
 
 	&
 		list-style: none
-		padding: 0
+		padding: 0 0 0 $ml-space
 		margin: 0 -#{round($ml-space/2)}
 		+clear-spacing
 
@@ -244,41 +239,172 @@
 
 	li
 		+display-inline-block-middle
-		+font-d
+		+font-bold
+		+font(1.4rem, round-float(18/14, 2))
+		letter-spacing: 0.1em
+		text-transform: uppercase
 
 	a
 		display: table
 		width: 100%
 		text-decoration: none
-		color: $text-color
+		color: white
 
 		span
 			display: table-cell
 			vertical-align: middle
+			position: relative
 			+padding-horizontal(round($ml-space/2))
-			border: solid transparent
-			border-width: 3px 0
 
 			+media('<desk-lg')
 				+padding-horizontal(round($ml-space--lg/2))
 
+			&::after
+				content: ""
+				display: block
+				position: absolute
+				bottom: 0
+				left: 0
+				width: 100%
+				border-top: 3px solid white
+				will-change: opacity
+				opacity: 0
+				transition:
+					property: opacity
+					duration: $animation-speed
+
+	// text-mark
+	.text-mark
+		a
+			color: $base-color
+
 	// hover
 	a
 		&:hover
-			color: $link-color
-
-	// current
-	li
-		&.current
-			a
-				color: $link-color
-
-				span
-					border-bottom-color: $base-color
+			span::after
+				opacity: 1
 
 /* menu end
-/* HEADER end
+
+/* logo
+.logo
+	display: block
+	position: relative
+	width: nth($logo-size, 1)
+
+	&::before
+		content: ""
+		display: block
+		+ratio(nth($logo-size, 1), nth($logo-size, 2))
+		background-repeat: no-repeat
+		background-position: left
+		background-color: $header-bg
+		background-image: url(../../img/logo.png)
+		background-size: contain
+
+	a, & > span
+		position: absolute
+		display: block
+		left: 0
+		top: 0
+		+size(100%)
+		z-index: 5
+
+		& > em
+			+hide-text
+
 /* logo end
+
+.header__col--options
+	.header__cell
+		padding-left: nth($search-form--size, 1)
+		position: relative
+
+/* search-form
+.search-form
+	position: relative
+	margin: 0
+	width: nth($search-form--size, 1)
+	border: solid #666
+	border-width: 0 1px
+
+	.header__col &
+		position: absolute
+		top: 50%
+		right: 100%
+		margin: -#{round($header-height/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
+
+	.search-form__field
+		margin: 0
+
+	.search-form__input
+		padding: 0 10px 0 nth($search-form--btn-size, 1)
+		height: $header-height
+		width: 100%
+		border: none
+		background: $header-bg
+		+font-bold
+		+font(1.6rem, $header-height)
+		letter-spacing: normal
+
+		+placeholder
+			color: white
+
+		+placeholder-focus
+			color: $text-color
+			opacity: 1
+
+		&, &:hover, &:focus, &.error, &.input--has-value
+			box-shadow: none
+
+		&:focus, &.input--has-value
+			background-color: white
+			color: $text-color
+
+.search-form__btn
+	position: absolute
+	left: 0
+	top: 50%
+	+size(nth($search-form--btn-size, 1), nth($search-form--btn-size, 2))
+	margin-top: -#{round(nth($search-form--btn-size, 2)*0.5)}
+	+font-normal
+	text-align: center
+	z-index: 5
+	color: white
+	pointer-events: none
+
+	.input--has-value &, .search-form__input:focus ~ &
+		color: $text-color
+
+	.input--has-value &
+		pointer-events: auto
+
+	.no-touchevents &:hover
+		color: $base-color
+
+	input
+		+cover-abs()
+		padding: 0
+		border: 0
+		opacity: 0
+		z-index: 99
+
+	svg
+		display: inline-block
+		position: absolute
+		+position(50%)
+		+size(nth($search-form-btn-icon-size, 1))
+		margin: -#{round(nth($search-form-btn-icon-size, 1)*0.5)} 0 0 -#{round(nth($search-form-btn-icon-size, 1)*0.5)}
+
+	path
+		fill: currentColor
+		transition: inherit
+
+	span
+		+hide-text
+
+/* search-form end
+/* HEADER end
 /* === HEADER end ===
 
 /* === NAVIGATION ===
@@ -376,7 +502,7 @@
 
 /* === FOOTER ===
 .footer
-	margin: 0 auto
+	//margin: 0 auto
 	position: relative
 	clear: both
 	z-index: 5
@@ -450,11 +576,6 @@
 		+pseudo()
 		+position(0, 0)
 		+size(149px, 16px)
-
-		@if $animation-use
-			transition:
-				property: opacity, transform, filter
-				duration: 0.2s
 
 	&::before
 		+pseudo()
