@@ -324,6 +324,64 @@ function slidersInit() {
 
 		});
 	}
+
+	//promo slider
+	var $promoSlider = $('.promo-slider-js');
+
+	if($promoSlider.length){
+		$promoSlider.each(function () {
+			var $curSlider = $(this);
+			var dur = 200;
+
+			$curSlider.slick({
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				lazyLoad: 'ondemand',
+				infinite: true,
+				dots: true,
+				arrows: true
+			});
+
+		});
+	}
+
+	//partners slider
+	var $partnersSlider = $('.partners-slider-js');
+
+	if($partnersSlider.length){
+		$partnersSlider.each(function () {
+			var $curSlider = $(this);
+			var dur = 200;
+
+			$curSlider.slick({
+				speed: dur,
+				slidesToShow: 6,
+				slidesToScroll: 2,
+				lazyLoad: 'ondemand',
+				infinite: true,
+				dots: false,
+				arrows: true,
+				responsive: [
+					{
+						breakpoint: 1600,
+						settings: {
+							slidesToShow: 5,
+							slidesToScroll: 2,
+						}
+					},
+					{
+						breakpoint: 1440,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 2,
+						}
+					}
+				]
+			});
+
+		});
+	}
 }
 
 /**
@@ -334,10 +392,182 @@ function selectLang() {
 }
 
 /**
+ * !multi accordion jquery plugin
+ * */
+(function ($) {
+	var MultiAccordion = function (settings) {
+		var options = $.extend({
+			collapsibleAll: false, // если установить значение true, сворачиваются идентичные панели НА СТРАНИЦЕ, кроме текущего
+			resizeCollapsible: false, // если установить значение true, при ресайзе будут соворачиваться все элементы
+			container: null, // общий контейнер
+			item: null, // непосредственный родитель открывающегося элемента
+			handler: null, // открывающий элемента
+			handlerWrap: null, // если открывающий элемент не является непосредственным соседом открывающегося элемента, нужно указать элемент, короный является оберткой открывающего элемета и лежит непосредственно перед открывающимся элементом (условно, является табом)
+			panel: null, // открывающийся элемент
+			openClass: 'active', // класс, который добавляется при открытии
+			currentClass: 'current', // класс текущего элемента
+			animateSpeed: 300, // скорость анимации
+			collapsible: false // сворачивать соседние панели
+		}, settings || {});
+
+		this.options = options;
+		var container = $(options.container);
+		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$handlerWrap = $(options.handlerWrap, container);
+		this._animateSpeed = options.animateSpeed;
+		this.$totalCollapsible = $(options.totalCollapsible);
+		this._resizeCollapsible = options.resizeCollapsible;
+
+		this.modifiers = {
+			active: options.openClass,
+			current: options.currentClass
+		};
+
+		this.bindEvents();
+		this.totalCollapsible();
+		this.totalCollapsibleOnResize();
+
+	};
+
+	MultiAccordion.prototype.totalCollapsible = function () {
+		var self = this;
+		self.$totalCollapsible.on('click', function () {
+			self.$panel.slideUp(self._animateSpeed, function () {
+				self.$container.trigger('accordionChange');
+			});
+			self.$item.removeClass(self.modifiers.active);
+		})
+	};
+
+	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
+		var self = this;
+		$(window).on('resize', function () {
+			if (self._resizeCollapsible) {
+				self.$panel.slideUp(self._animateSpeed, function () {
+					self.$container.trigger('accordionChange');
+				});
+				self.$item.removeClass(self.modifiers.active);
+			}
+		});
+	};
+
+	MultiAccordion.prototype.bindEvents = function () {
+		var self = this;
+		var $container = this.$container;
+		var $item = this.$item;
+		var panel = this.options.panel;
+
+		$container.on('click', self.options.handler, function (e) {
+			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
+			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
+			// console.log("$currentHandler: ", $currentHandler);
+			var $currentItem = $currentHandler.closest($item);
+
+			if ($currentItem.has($(panel)).length) {
+				e.preventDefault();
+
+				if ($currentHandler.next(panel).is(':visible')) {
+					self.closePanel($currentItem);
+
+					return;
+				}
+
+				if (self.options.collapsibleAll) {
+					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
+				}
+
+				if (self.options.collapsible) {
+					self.closePanel($currentItem.siblings());
+				}
+
+				self.openPanel($currentItem, $currentHandler);
+			}
+		})
+	};
+
+	MultiAccordion.prototype.closePanel = function ($currentItem) {
+		var self = this;
+		var panel = self.options.panel;
+		var openClass = self.modifiers.active;
+
+		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
+			// console.log('mAccordionAfterClose');
+			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+		});
+
+		$currentItem
+			.find(self.$item)
+			.removeClass(openClass);
+	};
+
+	MultiAccordion.prototype.openPanel = function ($currentItem, $currentHandler) {
+		var self = this;
+		var panel = self.options.panel;
+
+		$currentItem.addClass(self.modifiers.active);
+
+		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+			// console.log('mAccordionAfterOpened');
+			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
+		});
+	};
+
+	window.MultiAccordion = MultiAccordion;
+}(jQuery));
+
+/**
+ * !multi accordion initial
+ * */
+function multiAccordionInit() {
+
+	var navMenu = '.nav-js';
+
+	if ($(navMenu).length) {
+		new MultiAccordion({
+			container: navMenu,
+			item: 'li',
+			handler: '.nav-handler-js',
+			handlerWrap: '.nav__tab-js',
+			panel: '.nav-drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200,
+			collapsible: true
+		});
+	}
+}
+
+/**
+ * !Toggle nav
+ * */
+function toggleNav() {
+	var $nav = $('.shutter--nav-js');
+	$('.btn-nav-js').on('click', function () {
+		$(this).toggleClass('active');
+		$nav.toggleClass('active');
+	});
+}
+
+/**
+ * !Equal height of blocks by maximum height of them
+ */
+function equalHeight() {
+	// example
+	var $equalHeight = $('.equal-height-js');
+
+	if($equalHeight.length) {
+		$equalHeight.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+}
+
+/**
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
-	var $form = $('.user-form form');
+	var $form = $('.user-form form, .subscribe-from form');
 
 	if ( $form.length ) {
 
@@ -409,6 +639,9 @@ $(document).ready(function () {
 	fileInput();
 	slidersInit();
 	selectLang();
+	multiAccordionInit();
+	toggleNav();
+	equalHeight();
 	objectFitImages(); // object-fit-images initial
 
 	formSuccessExample();

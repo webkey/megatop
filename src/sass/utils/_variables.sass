@@ -72,7 +72,7 @@ $bg-color: white !default
 // цвет фона элементов выделяющихся на страницы
 $bg-color-alt: #f3f3f3 !default
 // цвет основного текста
-$text-color: #262626 !default
+$text-color: #000 !default
 // цвет основных заголовков
 $title-color: black !default
 // цвет текста светлее основного
@@ -126,6 +126,17 @@ $footer-grid-space: 30px !default
 // logo
 $logo-size: 309px 42px !default
 
+// nav
+$nav-width: 280px !default
+$nav-space: 20px 30px !default // vertical horizontal
+$nav-arrow-size: 50px !default
+$nav-text-color: $text-color !default
+$nav-bg-color: #333 !default
+$nav-bg-color-s: #333 !default
+$nav-bg-color-ss: #333 !default
+$nav-bg-color-sss: #333 !default
+$nav-bg-color-ssss: #333 !default
+
 // =======Form========
 $form-text-color: $text-color !default
 $form-placeholder-color: lightgray !default
@@ -160,6 +171,13 @@ $multiple-item-space: 3px
 $search-form--size: 164px $header-height
 $search-form--btn-size: 50px $header-height
 $search-form-btn-icon-size: 18px 18px
+
+// main-banners
+$main-banners-ratio: 45.25% 54.75%
+
+// new
+$new-ratio: 37% 63% 54% 46%
+$new-space: 10px
 
 // =========Buttons=========
 $btn-bg-color: $base-color !default
@@ -240,12 +258,12 @@ $font-alt-medium: 'futura-medium', sans-serif !default
 		family: $font-alt-bold
 	+font-reset
 
-=font-alt-italic()
+=font-alt-book()
 	font:
 		family: $font-alt-book
 	+font-reset
 
-=font-alt-bold-italic()
+=font-alt-medium()
 	font:
 		family: $font-alt-medium
 	+font-reset

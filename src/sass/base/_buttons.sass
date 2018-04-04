@@ -192,6 +192,9 @@
 	text-decoration: none
 	color: $text-color
 	background-color: $btn-menu-bg
+	transition:
+		property: background-color
+		duration: $animation-speed
 
 	& > span
 		+hide-text
@@ -266,6 +269,7 @@
 
 	// hover
 	.no-touchevents &:hover
+		background-color: #f3f3f3
 
 		&::before, &::after
 			background-color: $base-color
@@ -278,7 +282,6 @@
 
 	// active
 	&.active
-
 		&::before, &::after
 			transition-delay: $btn-menu-animation-delay
 

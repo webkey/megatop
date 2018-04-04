@@ -1,0 +1,70 @@
+<div class="partners-slider__item">
+	<a href="#@@title" class="partners-slider__inner">
+		<img data-lazy="img/@@src" src="img/empty.png" alt="@@title">
+		<noscript class="noscript"><img src="img/@@src" alt="@@title"></noscript>
+	</a>
+</div>
+
+@@if (context.inCart) {
+	@@if (context.src) {
+	<div class="similar-slider__item in-cart">
+	}
+	@@if (!context.src) {
+	<div class="similar-slider__item in-cart no-image">
+	}
+}
+@@if (!context.inCart) {
+	@@if (context.src) {
+	<div class="similar-slider__item">
+	}
+	@@if (!context.src) {
+	<div class="similar-slider__item no-image">
+	}
+}
+	<div class="products__inner">
+
+		<a href="#">
+			<div class="products__visual">
+				<div class="products__figure">
+					<div class="products__img">
+						@@if (context.src) {
+						<img src="img/@@src" alt="@@title" />
+						}
+					</div>
+				</div>
+			</div>
+			<!--<div class="products__title"><span>@@title</span></div>-->
+			<div class="products__footer">
+				@@if (context.price) {
+				<div class="products__price">
+					<div class="cur">
+						<strong class="val">@@price</strong>
+						<span class="unit">@@priceUnit</span>
+					</div>
+				</div>
+				}
+				@@if (!context.price) {
+				<div class="products__price">
+					<div class="no">цену уточняйте</div>
+				</div>
+				}
+			</div>
+		</a>
+
+		<div class="products__brand">
+			@@if (context.ch.brand) {
+			<div class="products__brand">@@ch.brand</div>
+			}
+			@@if (context.ch.model) {
+			<div class="products__model">@@ch.model</div>
+			}
+		</div>
+
+		<div class="products__likes">
+			<a href="ajax-order.html" class="btn-to-basket btn-order-js" title="Добавить в корзину">
+				@@include("includes/svg/icon-like.svg")
+				<span>Like</span>
+			</a>
+		</div>
+	</div>
+</div>

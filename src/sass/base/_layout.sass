@@ -156,6 +156,28 @@
 	+media('<tab-lg')
 		margin-left: 0
 
+.main-section
+	position: relative
+	margin-bottom: 1rem
+
+.main-section__title
+	text-align: center
+	margin-bottom: 3rem
+
+	h1, h2, h3
+		+font-alt-medium
+		+font(3.0rem, round-float(36/30, 2))
+		letter-spacing: 0.1em
+		text-align: center
+		text-transform: uppercase
+		margin-bottom: 0
+
+// main-section--promo
+//.main-section--promo
+
+// main-section--banners
+//.main-section--banners
+
 /* === CONTENT end ===
 
 /* === HEADER ===
@@ -230,7 +252,7 @@
 
 	&
 		list-style: none
-		padding: 0 0 0 $ml-space
+		padding: 0 0 0 round($ml-space/2)
 		margin: 0 -#{round($ml-space/2)}
 		+clear-spacing
 
@@ -277,6 +299,9 @@
 	.text-mark
 		a
 			color: $base-color
+
+			span::after
+				border-color: $base-color
 
 	// hover
 	a
@@ -408,68 +433,217 @@
 /* === HEADER end ===
 
 /* === NAVIGATION ===
-.nav
+.nav-wrap
+	position: fixed
+	left: 0
+	height: calc(100% - #{$header-height})
+	top: $header-height
+	width: $nav-width
+	z-index: 25
+	transition:
+		property: transform
+		duration: $animation-speed
+
+	will-change: transform
+	transform: translate(-100%, 0)
+	transform: translateX(-100%)
+	background-color: rgba(255, 255, 255, 0.56)
+	outline: 1px solid #ccc
+
+	&.active
+		transform: translate(0, 0)
+		transform: translateX(0)
+
+/* nav list
+// общие стили для главного списка навигации
+.nav__list
 	position: relative
 
+	+media('<tab-lg')
+		width: auto
+
+// общие стили для подменю навигации
+.nav__drop
+	position: relative
+	//background-color: $nav-bg-color
+	display: none
+
+	.no-js &
+		display: block
+
+// общие стили для пунктов навигации
 .nav__list
-	+clear
+	padding: nth($nav-space, 1) 0
 
 	li
 		position: relative
+		overflow: hidden
 
-		&.has-drop
-			padding-right: 2rem
-
-			.nav__angle
-				position: absolute
-				right: 0
-				top: 50%
-				transform: translate(0, -50%)
-				line-height: 0
-				pointer-events: none
+	.nav__tab
+		position: relative
 
 	a
 		display: block
+		position: relative
+		padding: 0 nth($nav-space, 2)
+		+font-light
+		color: #999
+		text-decoration: none
+		transition-property: color, background-color
+		transition-duration: $animation-speed
+		+clear-spacing
 
-	& > li
-		float: left
-		margin-right: 2rem
+		&::before
+			+pseudo-inline-block-relative()
+			vertical-align: middle
+			min-height: 36px
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(bottom, tomato, 5px, 2)
+		span
+			+display-inline-block-middle
+			max-width: calc(100% - 5px)
+			+font(1.6rem, round-float(20/16, 2))
+			letter-spacing: normal
+			padding: 8px 0
 
-.nav__drop
+		.no-touchevents &:hover
+			color: $base-color
+
+// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
+.nav__list li.has-drop > .nav__tab > a
+	padding-right: (round($nav-arrow-size+10))
+
+// стили для пункта навигации ТЕКУЩЕЙ страницы
+.nav__list li.current > .nav__tab
+
+	&, .no-touchevents &
+
+		a, a:hover
+			color: $base-color
+
+// стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
+.nav__list li
+	&.is-open
+		& > .nav__tab a
+			&::before
+				opacity: 1
+				transform: translate(0, 0)
+
+//& > .nav__drop
+	display: block
+
+// нужно добавлять на nav__drop style="display: block"
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.nav__list > li
+
+	& > .nav__tab a
+		min-height: 0
+		+font-alt-bold
+		text-transform: uppercase
+		color: $text-color
+
+		span
+			letter-spacing: 0.1em
+			+font(1.6rem, round-float(20/16, 2))
+
+// СТРЕЛКИ навигации
+.nav__angle
 	position: absolute
-	left: 0
-	top: 100%
-	background-color: white
-	border: 1px solid $border-color
-	padding: 2rem
-	width: 320px
-	opacity: 0
-	visibility: hidden
-	z-index: 10
+	right: 0
+	top: 0
+	width: $nav-arrow-size
+	height: 100%
+	//border: solid #666
+	//border-width: 0 0 0 1px
+	transition-property: transform, color, background-color
+	transition-duration: $animation-speed
+	z-index: 2
+	cursor: pointer
+	display: none
 
-	li:hover > &
-		opacity: 1
-		visibility: visible
+	li.has-drop > .nav__tab > &
+		display: block
 
-	li
-		margin-bottom: 1rem
-		font-size: 1.4rem
-		line-height: 1.5
+	i
+		position: absolute
+		+position(50%, 50%)
+		+size(16px)
+		margin: -8px 0 0 -8px
+		pointer-events: none
+		transition-property: transform
+		transition-duration: $animation-speed
+		+font(0, 0)
 
-		&.has-drop > .nav__tab .nav__angle i
-			display: inline-block
-			vertical-align: top
-			+triangle(right, tomato, 5px, 2)
+		&::before, &::after
+			+pseudo()
+			+position(50%, 0)
+			height: 2px
+			width: 16px
+			backface-visibility: hidden
+			background-color: $nav-text-color
+			transition-property: background-color, transform
+			transition-duration: $animation-speed
 
+		&::after
+			transform: rotate(0.25turn)
+
+// стили стрелок навигации для разных состояний
+.nav__angle
+
+	// активное (подменю открыто)
+	li.is-open > .nav__tab & i
+		//transform: rotate(0)
+
+		&::before, &::after
+			transform: rotate(0)
+
+	// ховер
+	.no-touchevents li > .nav__tab &:hover i
+		&::before, &::after
+			background-color: $base-color
+
+// особые стили для пунктов ПОДМЕНЮ
+.nav__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	//ul, a, .nav__angle
+		background-color: $nav-bg-color-s
+
+	a
+		padding-left: round(nth($nav-space, 2) + nth($nav-space, 2)/2)
+		color: $text-color
+		text-transform: uppercase
+
+		span
+			letter-spacing: 0.05em
+			+font(1.6rem, round-float(20/16, 2))
 
 	.nav__drop
-		top: 0
-		left: 100%
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		//ul, a, .nav__angle
+			background-color: $nav-bg-color-ss
+
+		a
+			color: #999
+			text-transform: none
+
+			span
+				+font(1.6rem, round-float(20/16, 2))
+
+		.nav__drop
+			// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+			//ul, a, .nav__angle
+				background-color: $nav-bg-color-sss
+
+			a
+				padding-left: round(nth($nav-space, 2)*2)
+				color: #999
+				text-transform: none
+
+				span
+					+font(1.4rem, round-float(18/14, 2))
+
+/* nav list
 
 /* === NAVIGATION end ===
 

@@ -16,9 +16,91 @@
 <div class="main">
 	<div class="max-wrap layout">
 		<section class="main-section main-section--promo">
-			<div class="promo-slider promo-slider-js">
-				<div class="promo-slider__list">
-					@@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_images-slider.json")
+			<div class="promo-slider">
+				<div class="promo-slider__list promo-slider-js">
+					@@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_promo-slider.json")
+				</div>
+			</div>
+		</section>
+		<section class="main-section main-section--banners">
+			<div class="main-banners">
+				<div class="main-banners__list">
+					<div class="main-banners__list__holder">
+						<div class="main-banners__item">
+							<a href="#" class="main-banners__inner"> <img src="img/img-banner-01.jpg" alt="image description" /> </a>
+						</div>
+						<div class="main-banners__item">
+							<a href="#" class="main-banners__inner"> <img src="img/img-banner-02.jpg" alt="image description" /> </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main-section main-section--partners">
+			<div class="partners-slider">
+				<div class="partners-slider__list partners-slider-js">
+					@@loop("_tpl_sliders_partners-slider--items.html", "includes/json/sliders_partners-slider.json")
+				</div>
+			</div>
+		</section>
+		<section class="main-section main-section--new">
+			<div class="main-section__title">
+				<h2>Узнай новое</h2>
+			</div>
+			<div class="new">
+				<div class="new__list">
+					<div class="new__list__holder">
+						<div class="new__item">
+							<a href="#" class="new__inner">
+								<img src="img/img-new-01.jpg" alt="Мужская обувь" />
+							</a>
+						</div>
+						<div class="new__item">
+							<a href="#" class="new__inner">
+								<img src="img/img-new-02.jpg" alt="Спортивная Коллекция" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="new__list">
+					<div class="new__list__holder">
+						<div class="new__item">
+							<div style="background-image: url(img/bg-email.jpg);" class="new__inner subscribe-from-wrap">
+								<div class="subscribe-from">
+									<form action="#" method="post">
+										<div class="input-wrap">
+											<div class="label-holder hide">
+												<label for="subscribe-from__email-fields">Введите ваш email</label>
+											</div>
+											<div class="input-holder">
+												@@include("includes/svg/icon-email.svg")
+												<input type="email" placeholder="Введите ваш email" id="subscribe-from__email-fields">
+												@@include('_tpl_forms_form-validation.html')
+											</div>
+										</div>
+										<div class="form-footer">
+											<button class="btn-submit"><span>Подписаться</span></button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="new__item">
+							<a href="#" class="new__inner">
+								<img src="img/img-new-03.jpg" alt="Axis" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="main-section main-section--similar">
+			<div class="main-section__title">
+				<h2>Популярные товары</h2>
+			</div>
+			<div class="partners-slider">
+				<div class="partners-slider__list similar-slider-js">
+					@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
 				</div>
 			</div>
 		</section>
@@ -31,5 +113,14 @@
 <!--footer end-->
 
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+<div class="nav-wrap shutter--nav-js">
+	<nav class="nav">
+		@@include('_tpl_nav-constructor.html', {
+			"currentItem": "@@currentItem",
+			"bsKey": "nav"
+		})
+	</nav>
+</div>
 
 @@include('_tpl_layout_foot.html')

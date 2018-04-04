@@ -110,13 +110,14 @@
 /* slick sliders
 // slider
 .slick-slide
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important
-	-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important
-	outline: none !important
+	&, & a
+		-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important
+		-webkit-focus-ring-color: rgba(255, 255, 255, 0) !important
+		outline: none !important
 
 // arrows
 .slick-arrow
-	+size(40px)
+	+size(60px, 100%)
 	display: block
 	position: absolute
 	border: none
@@ -126,12 +127,13 @@
 	box-shadow: none
 	opacity: 1
 	z-index: 6
-	transition-property: background, opacity, visibility
-	transition-duration: 0.2s
+	transition:
+		property: background, opacity, visibility
+		duration: 0.2s
 
 	.no-touchevents &:hover
 		opacity: 1
-		background: #e6e6e6
+		background: rgba(195, 195, 195, 0.2)
 
 	&.slick-disabled, .no-touchevents &.slick-disabled
 		opacity: 0.25
@@ -151,30 +153,31 @@
 		position: absolute
 		opacity: 1
 		pointer-events: none
-		+size(12px)
+		+size(30px)
 		transform: rotate(45deg)
-		border: 0 solid #000
+		border: 0 solid #999
 
 .slick-prev
 	left: 0
 
 	&::after
 		left: 50%
-		border-width: 0 0 2px 2px
-		margin: -6px 0 0 -4px
+		border-width: 0 0 3px 3px
+		margin: -15px -10px
 
 .slick-next
 	right: 0
 
 	&::after
 		right: 50%
-		border-width: 2px 2px 0 0
-		margin: -6px -4px 0 0
+		border-width: 3px 3px 0 0
+		margin: -15px -10px
 
 // dots
 .slick-dots
 	margin: 0
 	line-height: 0
+	visibility: hidden
 
 	.#{$user-content} &
 		margin: 0
@@ -187,7 +190,7 @@
 		margin: 0
 
 		&, .#{$user-content} &
-			padding: 4px 10px
+			padding: 5px 15px
 			margin: 0
 
 			&::before
@@ -197,25 +200,28 @@
 			width: 12px
 			height: 12px
 			padding: 0
-			border-radius: 50%
+			border-radius: 0
 			background: $base-color
 			position: relative
-			transition-property: background, border, box-shadow, transform
-			transition-duration: 0.6s
+			transition:
+				property: background, border, box-shadow, transform
+				duration: 0.6s
+			visibility: visible
 
 			&::before
 				content: ''
 				position: absolute
-				left: 2px
-				top: 2px
-				height: 8px
-				width: 8px
+				left: 0
+				top: 0
+				height: 100%
+				width: 100%
 				background: #fff
-				border-radius: 50%
+				border-radius: 0
 				opacity: 1
 				box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
-				transition-property: transform, opacity
-				transition-duration: $animation-speed
+				transition:
+					property: transform, opacity
+					duration: $animation-speed
 
 		&.slick-active button::before
 			opacity: 0
@@ -326,8 +332,9 @@
 				border-radius: 50%
 				background-color: white
 				opacity: 0.5
-				transition-property: opacity, transform
-				transition-duration: $animation-speed
+				transition:
+					property: opacity, transform
+					duration: $animation-speed
 
 				&::before
 					content: none
@@ -353,6 +360,109 @@
 		margin-bottom: 0
 
 /* flashes end
+
+/* promo slider
+// slider
+.promo-slider__list
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+// slide
+.promo-slider__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	img
+		display: block
+		margin: 0 auto
+
+.promo-slider__list
+
+	// dots
+	.slick-dots
+		bottom: 20px
+
+/* promo slider end
+
+/* partners slider
+// slider
+.partners-slider__list
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+// slide
+.partners-slider__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.partners-slider__inner
+	text-decoration: none
+	color: inherit
+	height: 150px
+	display: flex
+	align-items: center
+	+padding-horizontal(1rem)
+
+	img
+		display: block
+		margin: 0 auto
+		filter: grayscale(1)
+		transition:
+			property: filter
+			duration: $animation-speed
+
+	// hover
+	&:hover
+		img
+			filter: grayscale(0)
+
+.partners-slider__list
+
+	// dots
+	.slick-dots
+		bottom: 20px
+
+/* partners slider end
 
 /* jFiler
 .upload-file
@@ -385,8 +495,9 @@
 			background: url(../../img/attach.png) no-repeat
 			background-size: contain
 			+size(60px, 44px)
-			transition-property: background-color, border-color, transform
-			transition-duration: $animation-speed
+			transition:
+				property: background-color, border-color, transform
+				duration: $animation-speed
 
 	.jFiler-input-text strong
 		display: block
@@ -640,3 +751,270 @@
 		visibility: visible
 
 /* ms-drop end
+
+/* main-banners
+.main-banners
+	max-width: 1600px
+	margin: 0 auto
+
+.main-banners__list
+	position: relative
+
+	&::before
+		content: ""
+		display: block
+
+.main-banners__list__holder
+	position: absolute
+	left: 0
+	top: 0
+	height: 100%
+	width: 100%
+	+clear-spacing
+
+.main-banners__item
+	display: inline-block
+	vertical-align: top
+	height: 100%
+	font-size: $font-size
+	letter-spacing: normal
+
+.main-banners__inner
+	display: block
+	position: relative
+	height: 100%
+	color: inherit
+	text-decoration: none
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	background-color: #000
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+		will-change: opacity
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+	// hover
+	&:hover
+		img
+			opacity: 0.85
+
+.main-banners__list
+	&:nth-child(1)
+		&::before
+			+ratio(1600, 616)
+
+		.main-banners__item
+			&:nth-child(1)
+				width: round-float(nth($main-banners-ratio, 1), 2)
+
+			&:nth-child(2)
+				width: round-float(nth($main-banners-ratio, 2), 2)
+
+/* main-banners end
+
+/* new
+.new
+	position: relative
+	max-width: 1600px
+	margin: 0 auto
+
+.new__list
+	position: relative
+
+	&::before
+		content: ""
+		display: block
+
+.new__list__holder
+	position: absolute
+	left: 0
+	top: 0
+	height: 100%
+	width: calc(100% + #{$new-space})
+	margin: 0 -#{round($new-space/2)}
+	+clear-spacing
+
+.new__item
+	display: inline-block
+	vertical-align: top
+	height: 100%
+	padding: 0 #{round($new-space/2)} $new-space
+	font-size: $font-size
+	letter-spacing: normal
+
+.new__inner
+	display: block
+	position: relative
+	height: 100%
+	color: inherit
+	text-decoration: none
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	background-color: #000
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
+		will-change: opacity
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+	// hover
+	&:hover
+		img
+			opacity: 0.85
+
+.new__list
+	&:nth-child(1)
+		&::before
+			+ratio(1600, 616)
+
+		.new__item
+			&:nth-child(1)
+				width: round-float(nth($new-ratio, 1), 2)
+
+			&:nth-child(2)
+				width: round-float(nth($new-ratio, 2), 2)
+
+	&:nth-child(2)
+		&::before
+			+ratio(1600, 496)
+
+		.new__item
+			&:nth-child(1)
+				width: round-float(nth($new-ratio, 3), 2)
+
+			&:nth-child(2)
+				width: round-float(nth($new-ratio, 4), 2)
+
+/* new end
+
+/* subscribe-from
+.subscribe-from-wrap
+	display: flex
+	align-items: center
+
+.subscribe-from
+	width: 456 + $grid-space*2
+	max-width: 100%
+	padding: $grid-space
+	margin: auto
+
+	.input-wrap
+		margin-bottom: 1rem
+
+	input[type="text"], input[type="email"]
+		border: none
+		background-color: white
+		+font-bold
+		font-size: 14px
+		line-height: 20px
+		letter-spacing: 0.1em
+		text-transform: uppercase
+		color: $text-color
+		height: 50px
+		padding: 15px 20px 15px 60px
+		box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25)
+
+		+placeholder
+			color: #999
+
+	.input-holder
+		svg
+			display: block
+			position: absolute
+			+size(20px)
+			left: 20px
+			top: 50%
+			margin-top: -10px
+			pointer-events: none
+
+			path
+				fill: #999
+
+	.form-footer
+		.btn-submit
+			display: block
+			width: 100%
+			+font-bold
+			+font(1.4rem, round-float(20/14, 2))
+			padding: 1.5rem 1rem
+			letter-spacing: 0.1em
+			text-transform: uppercase
+			color: white
+			text-align: center
+			border: none
+			box-shadow: 0 3px 7px rgba(0, 0, 0, 0.25)
+			background-color: $base-color
+
+			& > span
+				display: inline-block
+				position: relative
+
+			&::before
+				content: ""
+				display: block
+				position: absolute
+				+size(100%)
+				left: 0
+				top: 0
+				background-color: #1a1a1a
+				opacity: 0
+				will-change: opacity
+				transition:
+					property: opacity
+					duration: $animation-speed
+
+			// hover
+			&:hover
+				&::before
+					opacity: 1
+
+/* subscribe-from end
+
+/* products preview
+.products__inner
+	position: relative
+
+.products__visual
+	position: relative
+
+.products__figure
+	display: block
+	position: relative
+	max-width: 240px // ограничиваем ширину изображения продукта
+	+push-auto
+	text-decoration: none
+	color: inherit
+
+	&:before
+		+pseudo-block-relative()
+		+ratio(338, 389)
+
+.products__img
+	+cover-abs()
+
+	.no-image &
+		background: url(../../img/empty.png) no-repeat center
+
+	img
+		display: block
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(scale-down)
+
+/* products preview end
