@@ -98,8 +98,9 @@
 			<div class="main-section__title">
 				<h2>Популярные товары</h2>
 			</div>
-			<div class="partners-slider">
-				<div class="partners-slider__list similar-slider-js">
+			<div class="similar-slider">
+				<div class="similar-slider__list similar-slider-js">
+					@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
 					@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
 				</div>
 			</div>

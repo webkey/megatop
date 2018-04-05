@@ -382,6 +382,46 @@ function slidersInit() {
 
 		});
 	}
+
+	//similar slider
+	var $similarSlider = $('.similar-slider-js');
+
+	if($similarSlider.length){
+		$similarSlider.each(function () {
+			var $curSlider = $(this);
+			var dur = 200;
+
+			$curSlider.on('init', function (event, slick) {
+				$(slick.$slides).matchHeight({
+					byRow: true, property: 'height', target: null, remove: false
+				});
+			}).slick({
+				speed: dur,
+				slidesToShow: 5,
+				slidesToScroll: 2,
+				infinite: false,
+				dots: false,
+				arrows: true,
+				responsive: [
+					{
+						breakpoint: 1600,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 2,
+						}
+					},
+					{
+						breakpoint: 1440,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 2,
+						}
+					}
+				]
+			});
+
+		});
+	}
 }
 
 /**
@@ -564,6 +604,26 @@ function equalHeight() {
 }
 
 /**
+ * !Product liked
+ * */
+function productLiked() {
+	$('.products-likes-js').on('click', function (e) {
+		let $curLikeBtn = $(this),
+		classActive = 'active';
+
+		$curLikeBtn.toggleClass(classActive);
+
+		if($curLikeBtn.hasClass(classActive)) {
+			$curLikeBtn.attr('title', $curLikeBtn.data('unliked-text'));
+		} else {
+			$curLikeBtn.attr('title', $curLikeBtn.data('liked-text'));
+		}
+
+		e.preventDefault();
+	})
+}
+
+/**
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
@@ -642,6 +702,7 @@ $(document).ready(function () {
 	multiAccordionInit();
 	toggleNav();
 	equalHeight();
+	productLiked();
 	objectFitImages(); // object-fit-images initial
 
 	formSuccessExample();

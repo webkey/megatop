@@ -1,24 +1,122 @@
 [
   {
 	"src": "img-products-01.jpg",
-	"title": "Название товара",
+	"title": "Товар первый",
 	"stock": "",
 	"price": "45.95",
 	"priceUnit": "руб.",
-	"old": "45.95",
+	"old": "47.55",
 	"oldUnit": "руб.",
 	"sale": "10%",
 	"inCart": "",
-	"liked": "",
+	"liked": "liked",
 	"ch": {
+	  "material": "Кожа",
+	  "materialImgSts": "ico-leather.png"
+	},
+	"info": {
 	  "brand": "Enjoin",
-	  "model": "Casual",
-	  "material": "Кожа"
+	  "model": "Casual"
 	},
 	"labels": {
 	  "hit": "Хит!",
 	  "sale": "Скидка"
+	}
+  },
+  {
+	"src": "img-products-02.jpg",
+	"title": "Товар второй",
+	"stock": "",
+	"price": "73.99",
+	"priceUnit": "руб.",
+	"old": "91.99",
+	"oldUnit": "руб.",
+	"sale": "5%",
+	"inCart": "",
+	"liked": "",
+	"ch": {
+	  "material": "Кожа",
+	  "materialImgSts": "ico-leather.png"
 	},
-	"colors": ["#a9e2f5", "#f2d7fa"]
+	"info": {
+	  "brand": "Happy Family",
+	  "model": "Slim"
+	},
+	"labels": {
+	  "hit": "Хит!",
+	  "sale": ""
+	}
+  },
+  {
+	"src": "img-products-03.jpg",
+	"title": "Товар третий",
+	"stock": "",
+	"price": "315.05",
+	"priceUnit": "$",
+	"old": "",
+	"oldUnit": "",
+	"sale": "",
+	"inCart": "",
+	"liked": "",
+	"ch": {
+	  "material": "Заменитель кожи",
+	  "materialImgSts": "ico-leather.png"
+	},
+	"info": {
+	  "brand": "Adidas",
+	  "model": "Medium"
+	},
+	"labels": {
+	  "hit": "",
+	  "sale": "Скидка"
+	}
+  },
+  {
+	"src": "img-products-04.jpg",
+	"title": "Товар четвертый",
+	"stock": "",
+	"price": "45.15",
+	"priceUnit": "руб.",
+	"old": "158.00",
+	"oldUnit": "руб.",
+	"sale": "350%",
+	"inCart": "",
+	"liked": "",
+	"ch": {
+	  "material": "Искусственный материал",
+	  "materialImgSts": "ico-leather.png"
+	},
+	"info": {
+	  "brand": "Nike",
+	  "model": "Slim"
+	},
+	"labels": {
+	  "hit": "",
+	  "sale": ""
+	}
+  },
+  {
+	"src": "img-products-05.jpg",
+	"title": "Товар пятый",
+	"stock": "",
+	"price": "8.99",
+	"priceUnit": "руб.",
+	"old": "",
+	"oldUnit": "",
+	"sale": "",
+	"inCart": "",
+	"liked": "",
+	"ch": {
+	  "material": "Ткань",
+	  "materialImgSts": "ico-leather.png"
+	},
+	"info": {
+	  "brand": "Puma",
+	  "model": "Full cover"
+	},
+	"labels": {
+	  "hit": "Хит!",
+	  "sale": "Скидка"
+	}
   }
 ]

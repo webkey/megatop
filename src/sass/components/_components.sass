@@ -501,7 +501,7 @@
 
 	.jFiler-input-text strong
 		display: block
-		+font-normal
+		+font-regular
 		+font($font-size--less, $line-height--less)
 		color: $text-color
 		text-align: center
@@ -988,24 +988,88 @@
 /* products preview
 .products__inner
 	position: relative
+	z-index: 1
+
+.products__animation-wrap
+	position: relative
+	+ratio(338, 389)
+	will-change: margin, transform
+	transition:
+		property: transform, margin
+		duration: $animation-speed
+
+.products__align
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	box-shadow: inset 0 0 0 nth($products-inner-space, 2) #fff, inset 0 -60px 0 #fff, inset 0 60px 0 #fff
+
+.product__shadow
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: -1
+	box-shadow: 0 0 #{$products-shade-size} rgba(0, 0, 0, 0.2)
+	will-change: opacity
+	opacity: 0
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+.products__inset
+	display: block
+	position: relative
+	text-decoration: none
+	color: inherit
+
+.products__spacer
+	position: relative
+	+ratio(338, 389)
+
+	// Если блок не нужно масштабировать пропорционально
+	//min-height: 389px
+	//height: 100%
+
+// фото продукта выносим за пределы блока,
+// который увеличивается на ховер,
+// потому что, если изображение находится внутри,
+// то при увеличении оно дергается
+.products__visual-wrap
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
 
 .products__visual
-	position: relative
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	padding: nth($products-inner-space, 1)+40 nth($products-inner-space, 2)
 
 .products__figure
 	display: block
 	position: relative
-	max-width: 240px // ограничиваем ширину изображения продукта
+	max-width: 290px // ограничиваем ширину изображения продукта
+	height: 100%
 	+push-auto
 	text-decoration: none
 	color: inherit
 
-	&:before
+	//&::before
 		+pseudo-block-relative()
 		+ratio(338, 389)
 
 .products__img
 	+cover-abs()
+	transition:
+		property: width, height, top, left
+		duration: $animation-speed
+		timing-function: ease-in-out
 
 	.no-image &
 		background: url(../../img/empty.png) no-repeat center
@@ -1017,4 +1081,242 @@
 		max-width: none
 		+object-fit(scale-down)
 
+// info
+.products__info
+	position: absolute
+	left: nth($products-inner-space, 2)
+	bottom: nth($products-inner-space, 1)
+	min-height: 30px
+	line-height: 1
+
+.products__info__brand
+	+font-bold
+	+font(1.3rem, round-float(16/13, 2))
+
+.products__info__model
+	+font-regular
+	+font(1.2rem, round-float(14/12, 2))
+	text-transform: uppercase
+
+// price
+.products__price
+	position: absolute
+	right: nth($products-inner-space, 2)
+	bottom: nth($products-inner-space, 1)
+	margin-bottom: -8px
+	min-height: 38px
+	text-align: right
+	line-height: 1
+
+.products__price__share
+	white-space: nowrap
+
+.products__price__old
+	+display-inline-block-top
+	+font(1.3rem, round-float(16/13, 2))
+	color: #666
+	text-decoration: line-through
+	margin-right: 5px
+
+.products__price__old__val
+	+font-bold
+
+.products__price__old__unit
+	+font-bold
+
+.products__price__sale
+	+display-inline-block-top
+	position: relative
+	padding: 0 0.5rem 0 1.1rem
+	min-width: 34px
+	+font-bold
+	+font(1.0rem, round-float(16/10, 2))
+	color: white
+	background: #fff url(../../img/bg-sale.png) no-repeat
+	background-size: 100% 100%
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 0.4rem
+		top: 50%
+		margin-top: -1px
+		+size(2px)
+		background-color: currentColor
+
+.products__price__cur
+	+font-bold
+	+font(18px, 22px)
+
+.products__price__cur__unit
+	font-size: 14px
+
+// likes
+.products__likes
+	display: inline-block
+	position: absolute
+	right: nth($products-inner-space, 2)
+	top: nth($products-inner-space, 1)
+	overflow: hidden
+	width: 25px
+	height: 23px
+	background: url(../../img/like.png) no-repeat
+	text-indent: -9999px
+
+	&:hover
+		background-position: 0 -43px
+
+	&.active
+		background-position: 0 -86px
+
+// labels
+.products__labels
+	position: absolute
+	left: -14px
+	top: nth($products-inner-space, 1)
+	will-change: opacity, transfrom
+	//opacity: 0
+	transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
+	transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
+	transition:
+		property: opacity, transfrom
+		duration: 0.5s
+
+	.slick-active &
+		transform: translate(0, 0)
+		transform: translate3d(0, 0, 0)
+		//opacity: 1
+
+.products__label
+	position: relative
+	margin-bottom: 16px
+	height: 25px
+	min-width: 82px
+	+padding-horizontal(10px)
+	+font-bold
+	+font(14px, 25px)
+	text-align: center
+	text-transform: uppercase
+	color: #fff
+	background-color: #f70106
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 0
+		top: 100%
+		+size(0)
+		border: solid transparent
+		border-width: 10px 0 0 14px
+		border-top-color: #880002
+
+.products__label--sale
+	background-color: #f70106
+
+.products__label--hit
+	background-color: #ffa200
+
+	&::before
+		border-top-color: #ff7903
+
+// tags
+.products__tags
+	position: absolute
+	right: 60px
+	top: nth($products-inner-space, 1)
+	+font(1.4rem)
+	color: #666
+	opacity: 0
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+.products__tag
+	white-space: nowrap
+
+	i, span
+		+display-inline-block-middle
+
+	i
+		padding-right: 5px
+
+	span
+		+truncate(140px)
+
+// hover
+.products__inner:hover
+	z-index: 50
+
+	.products__animation-wrap
+		transform: translate(0, -$products-rang)
+		transform: translate3d(0, -$products-rang, 0)
+		margin-left: -$products-rang
+		margin-right: -$products-rang
+
+	.product__shadow
+		opacity: 1
+
+	.products__tags
+		opacity: 1
+
+	.products__img
+		width: calc(100% + #{$products-rang*2})
+		height: calc(100% + #{$products-rang*2})
+		left: -#{$products-rang}
+		top: -#{$products-rang}
+
 /* products preview end
+
+/* similar slider
+// slider
+.similar-slider
+	+padding-horizontal(40px)
+
+.similar-slider__list
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+	.slick-track
+		margin: 0
+
+	.slick-list
+		//+padding-vertical(40px)
+		padding: $products-rang+$products-shade-size
+
+	.slick-prev
+		left: -20px
+
+	.slick-next
+		right: -20px
+
+// slide
+.similar-slider__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	+padding-horizontal(10px)
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+// products__material
+
+/* similar slider end
