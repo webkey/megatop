@@ -4078,6 +4078,17 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 }
 
 /* similar slider end */
+/* club */
+.club {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+	margin: 0 auto;
+	width: 1386px;
+	max-width: 100%;
+}
+
+/* club end */
 /* user options */
 .user-options {
 	position: relative;
@@ -4462,6 +4473,10 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	text-align: center;
 	text-transform: uppercase;
 	margin-bottom: 0;
+}
+
+.main-section--club {
+	margin-bottom: 3rem;
 }
 
 /* === CONTENT end === */
