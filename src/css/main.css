@@ -555,7 +555,7 @@ hr {
 }
 
 a {
-	color: blue;
+	color: #f70106;
 	text-decoration: underline;
 	cursor: default;
 }
@@ -3097,6 +3097,62 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 }
 
 /* partners slider end */
+/* btn-to-top */
+.btn-to-top {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	width: 50px;
+	height: 50px;
+	color: #000;
+	border: 2px solid currentColor;
+	background: rgba(255, 255, 255, 0.46);
+	z-index: 9999;
+	text-indent: -9999px;
+	overflow: hidden;
+	opacity: 0;
+	-ms-transform: scale(0, 0);
+	    transform: scale(0, 0);
+	transform: scale3d(0, 0, 0);
+	will-change: transform, opacity;
+	transition-property: transform, opacity;
+	transition-duration: 0.2s;
+}
+
+.btn-to-top.btn-to-top--show {
+	opacity: 1;
+	-ms-transform: scale(1, 1);
+	    transform: scale(1, 1);
+	transform: scale3d(1, 1, 1);
+}
+
+.btn-to-top::before, .btn-to-top::after {
+	content: '';
+	position: absolute;
+	top: 21px;
+	display: block;
+	height: 2px;
+	width: 14px;
+	background: currentColor;
+}
+
+.btn-to-top::before {
+	-ms-transform: rotate(-45deg);
+	    transform: rotate(-45deg);
+	left: 12px;
+}
+
+.btn-to-top::after {
+	-ms-transform: rotate(45deg);
+	    transform: rotate(45deg);
+	left: 21px;
+}
+
+.no-touchevents .btn-to-top:hover {
+	color: #f70106;
+}
+
+/* btn-to-top end */
 .main-section {
 	position: relative;
 	margin-bottom: 1rem;
@@ -4421,10 +4477,16 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	position: relative;
 	list-style: none;
 	padding: 0;
-	margin: 0 15px;
+	margin: 0 0 0 15px;
 	font-size: 0;
 	letter-spacing: -4px;
 	line-height: 1;
+}
+
+@media (max-width: 1365px) {
+	.user-options {
+		margin: 0 0 0 10px;
+	}
 }
 
 .user-options__item {
@@ -4444,6 +4506,12 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	color: white;
 	line-height: 1;
 	text-decoration: none;
+}
+
+@media (max-width: 1365px) {
+	.user-options__item > a, .user-options__item > div {
+		padding: 0 10px;
+	}
 }
 
 .user-options__item > a::before, .user-options__item > div::before {
@@ -4524,6 +4592,12 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	white-space: nowrap;
 }
 
+@media (max-width: 1365px) {
+	.lang-select__drop a {
+		padding: 10px 10px;
+	}
+}
+
 .lang-select__drop a:hover {
 	background-color: #f70106;
 }
@@ -4533,8 +4607,20 @@ label.input--focus, input[type="text"].input--focus, input[type="password"].inpu
 	padding: 10px 15px;
 }
 
+@media (max-width: 1365px) {
+	.lang-select__opener {
+		padding: 10px 10px;
+	}
+}
+
 .user-options .lang-select__opener {
 	padding: 0 5px 0 15px;
+}
+
+@media (max-width: 1365px) {
+	.user-options .lang-select__opener {
+		padding: 0 5px 0 10px;
+	}
 }
 
 .lang-select__opener span > i, .lang-select__drop a span > i {
@@ -4933,8 +5019,8 @@ html.css-scroll-fixed {
 
 @media (max-width: 1599px) {
 	.menu-list {
-		margin-right: -5px;
-		margin-left: -5px;
+		margin-right: -10px;
+		margin-left: -10px;
 	}
 }
 
@@ -4948,6 +5034,13 @@ html.css-scroll-fixed {
 	line-height: 1.29;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
+}
+
+@media (max-width: 1365px) {
+	.menu-list li {
+		font-size: 1.3rem;
+		letter-spacing: 0.05em;
+	}
 }
 
 .menu-list a {
@@ -4967,8 +5060,8 @@ html.css-scroll-fixed {
 
 @media (max-width: 1599px) {
 	.menu-list a span {
-		padding-right: 5px;
-		padding-left: 5px;
+		padding-right: 10px;
+		padding-left: 10px;
 	}
 }
 
@@ -5004,6 +5097,12 @@ html.css-scroll-fixed {
 	display: block;
 	position: relative;
 	width: 309px;
+}
+
+@media (max-width: 1599px) {
+	.logo {
+		width: 200px;
+	}
 }
 
 .logo::before {
@@ -5613,6 +5712,41 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 }
 
 /* footer common end */
+/* navigator */
+.navigator {
+	position: relative;
+}
+
+.btn-navigator {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	z-index: 25;
+	padding: 13px;
+	width: 280px;
+	max-width: calc(100% - 40px);
+	font-family: "proximanova-bold", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+	color: black;
+	background: #f3f3f3;
+	border: 2px solid #ccc;
+}
+
+.btn-navigator > span {
+	font-size: 1.4rem;
+	line-height: 1.43;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.no-touchevents .btn-navigator:hover {
+	color: #f70106;
+	border-color: #f70106;
+}
+
+/* navigator end */
 /* footer bottom */
 .footer-bottom {
 	padding: 50px 30px 40px;
@@ -5638,14 +5772,21 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 .footer-bottom__col {
 	display: inline-block;
 	vertical-align: top;
+	padding-right: 20px;
+	padding-left: 20px;
 	font-size: 16px;
 	line-height: 1.5;
 	letter-spacing: normal;
 	width: 30%;
 }
 
+.footer-bottom__col:first-child {
+	padding-left: 0;
+}
+
 .footer-bottom__col:last-child {
 	max-width: 380px;
+	padding-right: 0;
 }
 
 .footer-bottom__col a {
@@ -5731,11 +5872,15 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 	content: "";
 	display: block;
 	position: absolute;
-	background: #ccc url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=") no-repeat center center;
+	-webkit-filter: invert(1);
+	        filter: invert(1);
+	background: #404040 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=") no-repeat center center;
 	background-size: auto 16px;
 }
 
 .no-touchevents a:hover .developer__logo::after {
+	-webkit-filter: invert(0);
+	        filter: invert(0);
 	background-color: #00ef85;
 }
 

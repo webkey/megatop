@@ -336,7 +336,7 @@ function slidersInit() {
 						}
 					},
 					{
-						breakpoint: 1440,
+						breakpoint: 1280,
 						settings: {
 							slidesToShow: 3,
 							slidesToScroll: 2,
@@ -360,34 +360,20 @@ function slidersInit() {
 				slidesPerView: 5,
 				slidesPerGroup: 1,
 				initialSlide: 2,
-				// autoHeight: true,
-				// Optional parameters
 				centeredSlides: true,
 				spaceBetween: 10,
 				loop: true,
-				// Keyboard
 				keyboardControl: true,
-				// Ratio to trigger swipe to next/previous slide during long swipes
 				longSwipesRatio: 0.1,
 				longSwipesMs: 200,
-
-				// Navigation arrows
 				nextButton: $thisBtnNext,
 				prevButton: $thisBtnPrev,
-
-				// Responsive breakpoints
 				breakpoints: {
 					1199: {
 						slidesPerView: 3,
 						slidesPerGroup: 1
 					}
 				}
-				// events
-				// , onInit: function (swiper) {
-				// 	$(swiper.slides).matchHeight({
-				// 		byRow: true, property: 'height', target: null, remove: false
-				// 	});
-				// }
 			});
 		});
 	}
@@ -594,6 +580,32 @@ function productLiked() {
 		e.preventDefault();
 	})
 }
+
+/**
+ * !scroll to top
+ * */
+$(function () {
+	let $btnToTop = $('.btn-to-top-js');
+
+	if ($btnToTop.length) {
+		let $page = $('html, body'),
+			minScrollTop = 300;
+
+		$(window).on('load scroll resizeByWidth', function () {
+			let currentScrollTop = $(window).scrollTop();
+
+			$btnToTop.toggleClass('btn-to-top--show', (currentScrollTop >= minScrollTop));
+		});
+
+		$btnToTop.on('click', function (e) {
+			e.preventDefault();
+
+			if (!$page.is(':animated')) {
+				$page.stop().animate({scrollTop: 0}, 300);
+			}
+		})
+	}
+});
 
 /**
  * !Testing form validation (for example). Do not use on release!
