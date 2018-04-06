@@ -26,7 +26,8 @@
     "matchHeight": "matchheight#^0.7.0",
     "normalize-css": "normalize.css#^5.0.0",
     "include-media": "^1.4.9",
-    "select2": "^4.0.3"
+    "select2": "^4.0.3",
+    "swiper": "^3.4.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

@@ -1,0 +1,26 @@
+[
+  {
+	"src": "img-products-01.jpg",
+	"title": "Товар первый",
+	"stock": "",
+	"price": "45.95",
+	"priceUnit": "руб.",
+	"old": "47.55",
+	"oldUnit": "руб.",
+	"sale": "10%",
+	"inCart": "",
+	"liked": "liked",
+	"ch": {
+	  "material": "Кожа",
+	  "materialImgSts": "ico-leather.png"
+	},
+	"info": {
+	  "brand": "Enjoin",
+	  "model": "Casual"
+	},
+	"labels": {
+	  "hit": "Хит!",
+	  "sale": "Скидка"
+	}
+  }
+]

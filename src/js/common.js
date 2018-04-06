@@ -130,53 +130,40 @@ function inputHasValueClass() {
 	}
 }
 
-function inputFilledClass() {
-	// use if the "focus" state and the "has-value" state are the same
-	var $fieldWrap = $('.field-effects-js');
+/**
+ * !Add class on scroll page
+ * */
+$(function () {
+	// external js:
+	// 1) resizeByWidth (resize only width);
 
-	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find('input[type="email"], input[type="search"], :text, textarea, select');
-		var _classFilled = 'input--filled';
+	var $page = $('html'),
+		minScrollTop = 2,
+		minShowTop = 100,
+		scrollClass = "page-is-scrolled",
+		headerShowClass = 'header-show',
+		headerHideClass = 'header-hide';
 
-		$inputsAll.focus(function () {
-			var $thisField = $(this);
+	var previousScrollTop = $(window).scrollTop();
 
-			$thisField
-				.closest($fieldWrap)
-				.addClass(_classFilled);
+	addClass();
 
-		}).blur(function () {
-			var $thisField = $(this);
+	$(window).on('scroll resizeByWidth', function () {
+		addClass();
+	});
 
-			if ($thisField.val() === '') {
-				$thisField
-					.closest($fieldWrap)
-					.removeClass(_classFilled);
-			}
-		});
+	function addClass() {
+		var currentScrollTop = $(window).scrollTop();
 
-		function switchHasValue() {
-			var $currentField = $(this);
-			var $currentFieldWrap = $currentField.closest($fieldWrap);
+		$page.toggleClass(scrollClass, (currentScrollTop >= minScrollTop));
 
-			$currentFieldWrap.removeClass(_classFilled);
+		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minShowTop;
+		$page.toggleClass(headerShowClass, showHeaderPanel);
+		$page.toggleClass(headerHideClass, !showHeaderPanel);
 
-			//first element of the select must have a value empty ("")
-			if ($currentField.val() !== '') {
-				$currentFieldWrap.addClass(_classFilled);
-			}
-		}
-
-		$.each($inputsAll, function () {
-			switchHasValue.call(this);
-		});
-
-		$inputsAll.on('change', function () {
-			switchHasValue.call(this);
-		});
+		previousScrollTop = currentScrollTop;
 	}
-}
-/*toggle class for input on focus end*/
+});
 
 /**
  * !Initial custom select for cross-browser styling
@@ -193,68 +180,6 @@ function customSelect(select) {
 			// , placeholder: placeholder
 		});
 	})
-}
-
-/**
- * !Initial custom file input
- * */
-function fileInput() {
-	$('.upload-file').each(function () {
-		$(this).filer({
-			// limit: 3,
-			changeInput: '' +
-			'<div class="jFiler-input-dragDrop">' +
-			'<div class="jFiler-input-inner">' +
-			'<div class="jFiler-input-icon">' +
-			'<i class="icon-jfi-cloud-up-o"></i>' +
-			'</div>' +
-			'<div class="jFiler-input-text">' +
-			'<strong>Чтобы добавить файл, перетащите его сюда</strong>' +
-			'</div>' +
-			'</div>' +
-			'</div>',
-			showThumbs: true,
-			theme: "dragdropbox",
-			captions: {
-				button: "Выберите файлы",
-				feedback: "Выберите файлы для загрузки",
-				feedback2: "Файлы выбраны",
-				drop: "Чтобы добавить файл, перетащите его сюда",
-				removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
-				errors: {
-					filesLimit: "Максиальное количество файлов: {{fi-limit}}",
-					filesType: "Загружать можно только изображения!",
-					filesSize: "{{fi-name}} слишком велик! Пожалуйста, загрузите файл до {{fi-maxSize}} MB.",
-					filesSizeAll: "Файлы, которые Вы выбрали слишком велики! Пожалуйста, загружайте файлы до {{fi-maxSize}} MB."
-				}
-			},
-			templates: {
-				box: '<ul class="jFiler-items-list jFiler-items-default list-reset"></ul>'
-			},
-			// captions: {
-			// 	button: "Choose Files",
-			// 	feedback: "Choose files To Upload",
-			// 	feedback2: "files were chosen",
-			// 	drop: "Drop file here to Upload",
-			// 	removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
-			// 	errors: {
-			// 		filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-			// 		filesType: "Only Images are allowed to be uploaded.",
-			// 		filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
-			// 		filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
-			// 	}
-			// },
-			addMore: true,
-			allowDuplicates: false,
-			clipBoardPaste: true,
-			dragDrop: {
-				dragEnter: null,
-				dragLeave: null,
-				drop: null,
-				dragContainer: null
-			}
-		});
-	});
 }
 
 /**
@@ -384,7 +309,7 @@ function slidersInit() {
 	}
 
 	//similar slider
-	var $similarSlider = $('.similar-slider-js');
+	let $similarSlider = $('.similar-slider-js');
 
 	if($similarSlider.length){
 		$similarSlider.each(function () {
@@ -420,6 +345,50 @@ function slidersInit() {
 				]
 			});
 
+		});
+	}
+
+	//events slider
+	let $eventsSlider = $('.events-slider-js');
+	if ($eventsSlider.length) {
+		$eventsSlider.each(function () {
+			let $thisSlider = $(this);
+			let $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			let $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+
+			new Swiper($thisSlider, {
+				slidesPerView: 5,
+				slidesPerGroup: 1,
+				initialSlide: 2,
+				// autoHeight: true,
+				// Optional parameters
+				centeredSlides: true,
+				spaceBetween: 10,
+				loop: true,
+				// Keyboard
+				keyboardControl: true,
+				// Ratio to trigger swipe to next/previous slide during long swipes
+				longSwipesRatio: 0.1,
+				longSwipesMs: 200,
+
+				// Navigation arrows
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev,
+
+				// Responsive breakpoints
+				breakpoints: {
+					1199: {
+						slidesPerView: 3,
+						slidesPerGroup: 1
+					}
+				}
+				// events
+				// , onInit: function (swiper) {
+				// 	$(swiper.slides).matchHeight({
+				// 		byRow: true, property: 'height', target: null, remove: false
+				// 	});
+				// }
+			});
 		});
 	}
 }
@@ -582,10 +551,13 @@ function multiAccordionInit() {
  * !Toggle nav
  * */
 function toggleNav() {
-	var $nav = $('.shutter--nav-js');
-	$('.btn-nav-js').on('click', function () {
+	let $nav = $('.shutter--nav-js');
+	let $html = $('html');
+	$('.btn-nav-js').on('click', function (e) {
 		$(this).toggleClass('active');
 		$nav.toggleClass('active');
+		$html.toggleClass('shutter-after-open css-scroll-fixed').addClass('header-show').removeClass('header-hide');
+		e.preventDefault();
 	});
 }
 
@@ -694,9 +666,7 @@ $(document).ready(function () {
 	printShow();
 	inputToggleFocusClass();
 	inputHasValueClass();
-	// inputFilledClass();
 	customSelect($('select.cselect'));
-	fileInput();
 	slidersInit();
 	selectLang();
 	multiAccordionInit();

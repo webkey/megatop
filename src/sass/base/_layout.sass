@@ -2,6 +2,10 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+html
+	&.css-scroll-fixed
+		+scroll-blocked() // блокировка скролла
+
 /* === LAYOUT ===
 .max-wrap
 	max-width: $page-layout-width + nth($page-layout-space, 2)*2
@@ -135,6 +139,10 @@
 	position: relative
 	clear: both
 	z-index: 4
+	padding-top: $header-height
+
+	.no-js &
+		padding-top: 0
 
 .main__holder
 	width: 100%
@@ -156,31 +164,6 @@
 	+media('<tab-lg')
 		margin-left: 0
 
-.main-section
-	position: relative
-	margin-bottom: 1rem
-
-.main-section__title
-	text-align: center
-	margin-bottom: 3rem
-
-	h1, h2, h3
-		+font-alt-medium
-		+font(3.0rem, round-float(36/30, 2))
-		letter-spacing: 0.1em
-		text-align: center
-		text-transform: uppercase
-		margin-bottom: 0
-
-// main-section--promo
-//.main-section--promo
-
-// main-section--banners
-//.main-section--banners
-
-// main-section--club
-.main-section--club
-	margin-bottom: 3rem
 
 /* === CONTENT end ===
 
@@ -188,12 +171,52 @@
 /* HEADER
 // header layout
 .header
+	position: fixed
 	background-color: #1a1a1a
-	//background-color: #fffacd
 	color: white
+	width: 100%
+	min-width: 320px
 	height: $header-height
-	position: relative
 	z-index: 10
+	// ===================
+	opacity: 0
+	visibility: hidden
+	transform: translate(0, -80%)
+	transform: translate3d(0, -80%, 0)
+	$props: opacity, transform, visibility
+	will-change: $props
+	transition:
+		property: $props
+		duration: $animation-speed
+
+	.header-show &, .shutter-after-open &
+		// ===================
+		opacity: 1
+		visibility: visible
+		transform: translate(0, 0)
+		transform: translate3d(0, 0, 0)
+
+	.no-js &
+		position: relative
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: -20px
+		top: 0
+		height: 100%
+		width: calc(100% + 40px)
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.25)
+		pointer-events: none
+		opacity: 0
+		will-change: opacity
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+		.page-is-scrolled &
+			opacity: 1
 
 	.btn-menu
 		+size($header-height)
@@ -452,7 +475,6 @@
 	transform: translate(-100%, 0)
 	transform: translateX(-100%)
 	background-color: rgba(255, 255, 255, 0.56)
-	outline: 1px solid #ccc
 
 	&.active
 		transform: translate(0, 0)
@@ -684,20 +706,102 @@
 	position: relative
 	clear: both
 	z-index: 5
-	+font(16px, round-float(24/16, 3))
-	color: $text-color
-	border-top: 1px solid $border-color
-
-	background-color: lightgreen
+	+font(16px, round-float(26/16, 3))
 
 .footer__holder
 	overflow: hidden
 	cursor: default
-	padding: $footer-grid-space 0
+
+/* footer common
+.footer-common
+	position: relative
+	background: #eceff1
+
+	padding: round($text-layout-space*2) $text-layout-space 40px
+
+.footer-common__group
+	margin: 0 -#{round($footer-grid-space/2)} 4rem
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.footer-common__box
+	+padding-horizontal(round($footer-grid-space/2))
+	width: 50%
+	max-width: 680px
+
+	&:first-child
+		float: left
+
+	&:last-child
+		float: right
+
+.footer-nav
+	+grid-parent($footer-grid-space)
+	+clear-spacing
+
+.footer-nav__box
+	+grid-item(4, $footer-grid-space)
+	+font(1.6rem, 26px)
+	letter-spacing: normal
+
+	& > *:last-child
+		margin-bottom: 0
+
+	.footer-common__box--navigator &
+		width: 100%
+
+.footer-nav__title, .footer-nav__list
+	position: relative
+	display: block
+	+font-alt-bold
+	font-size: 1.7rem
+	margin-bottom: 0.8em
+
+.footer-nav__title
+	a
+		color: black
+		text-decoration: none
+
+		&:hover
+			color: $base-color
+
+.footer-nav__links
+	list-style: none
+	margin: 0 0 0.8em
+
+.footer-nav__list
+	list-style: none
+	+font-alt-bold
+	font-size: 18px
+	color: black
+
+.footer-nav__links, .footer-nav__list
+
+	li
+		margin-bottom: 0.8em
+
+		&:last-child
+			margin-bottom: 0
+
+	a
+		padding-top: 0.5em
+		color: #666
+		text-decoration: none
+
+		&:hover
+			color: $base-color
+
+.footer-nav__list
+	a
+		color: inherit
+
+/* footer common end
 
 /* footer bottom
 .footer-bottom
-	color: $text-color
+	padding: 50px $text-layout-space 40px
 
 .footer-bottom__holder
 	position: relative
@@ -718,9 +822,10 @@
 	+display-inline-block-top
 	+font(16px, round-float(24/16, 3))
 	letter-spacing: normal
+	width: 30%
 
 	&:last-child
-		text-align: right
+		max-width: 380px
 
 	a
 		color: $text-color
@@ -728,6 +833,25 @@
 
 		.no-touchevents &:hover
 			text-decoration: underline
+
+.address
+	margin-bottom: 3rem
+
+	&:last-child
+		margin-bottom: 0
+
+	.dl
+		.dt
+			display: inline
+
+		.dd
+			display: inline
+
+	a
+		text-decoration: underline
+
+		.no-touchevents &:hover
+			text-decoration: none
 
 /* footer bottom end
 
@@ -768,11 +892,12 @@
 
 	&::after
 		+pseudo()
-		background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+		background: #ccc url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
 		background-size: auto 16px
 
 		.no-touchevents a:hover &
-			transform: translate(0, -1px)
+			background-color: #00ef85
+			//transform: translate(0, -1px)
 
 /* developer end
 /* === FOOTER end ===

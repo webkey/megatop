@@ -1,13 +1,101 @@
 <footer class="footer">
 	<div class="max-wrap layout">
 		<div class="footer__holder">
+			<!--footer common-->
+			<div class="footer-common">
+				<div class="footer-common__group">
+					<div class="footer-common__box">
+						<!--footer nav-->
+						<div class="footer-nav">
+							<div class="footer-nav__box">
+								<strong class="footer-nav__title"><a href="#"><span>Каталог</span></a></strong>
+								<ul class="footer-nav__links">
+									<li><a href="#"><span>Мужчины</span></a></li>
+									<li><a href="#"><span>Женщины</span></a></li>
+									<li><a href="#"><span>Дети</span></a></li>
+									<li><a href="#"><span>Аксессуары</span></a></li>
+								</ul>
+							</div>
+							<div class="footer-nav__box">
+								<strong class="footer-nav__title"><span>Покупателям</span></strong>
+								<ul class="footer-nav__links">
+									<li><a href="#"><span>Бренды</span></a></li>
+									<li><a href="#"><span>Полезная информация</span></a></li>
+									<li><a href="#"><span>О компании</span></a></li>
+									<li><a href="#"><span>Производство</span></a></li>
+									<li><a href="#"><span>Скачать</span></a></li>
+								</ul>
+							</div>
+							<div class="footer-nav__box">
+								<strong class="footer-nav__title"><span>Акции</span></strong>
+								<ul class="footer-nav__links">
+									<li><a href="#"><span>Распродажа</span></a></li>
+								</ul>
+							</div>
+							<div class="footer-nav__box">
+								<ul class="footer-nav__list">
+									<li><a href="#"><span>Новости</span></a></li>
+									<li><a href="#"><span>Клуб друзей</span></a></li>
+									<li><a href="#"><span>Сертификаты</span></a></li>
+									<li><a href="#"><span>Магазины</span></a></li>
+									<li><a href="#"><span>Карьера</span></a></li>
+									<li><a href="#"><span>Контакты</span></a></li>
+								</ul>
+							</div>
+						</div>
+						<!--footer nav end-->
+					</div>
+					<div class="footer-common__box footer-common__box--navigator">
+						<!--footer nav-->
+						<div class="footer-nav">
+							<div class="footer-nav__box">
+								<strong class="footer-nav__title"><span>Навигатор по магазинам</span></strong>
+								<div class="navigator">
+									<img src="img/img-location.jpg" alt="Навигатор по магазинам" />
+								</div>
+							</div>
+						</div>
+						<!--footer nav end-->
+					</div>
+				</div>
+				<!--social networks-->
+				<div class="social-networks">
+					<div class="social-networks__list">
+						@@loop('_tpl_social-items.html', 'includes/json/social-items.json')
+					</div>
+				</div>
+				<!--social networks end-->
+			</div>
+			<!--footer common end-->
+
 			<!--footer bottom-->
 			<div class="footer-bottom">
 				<div class="footer-bottom__holder">
 					<div class="footer-bottom__col">
-						<span class="copyright">&copy; <a href="index.html">Project</a> 2017</span>
+						<span class="copyright">&copy; <a href="index.html">megatop</a>. Все права защищены. 2018</span>
 					</div>
 					<div class="footer-bottom__col">
+						<a href="index.html">
+							<img src="img/logo-alt.png" alt="Megatop. Обувь и аксессуры" />
+						</a>
+					</div>
+					<div class="footer-bottom__col">
+						<div class="address">
+							<ul class="dl">
+								<li>
+									<div class="dt hide">Адрес:</div>
+									<div class="dd">220004, г. Минск, ул. Тимирязева, д. 9, здание многофункциональное, комн. 224</div>
+								</li>
+								<li>
+									<div class="dt">Тел:</div>
+									<div class="dd"><a href="tel:+375 17 203-20-60">+375 17 203-20-60</a></div>
+								</li>
+								<li>
+									<div class="dt">Эл. почта:</div>
+									<div class="dd"><a href="mailto:office@megatop.by">office@megatop.by</a></div>
+								</li>
+							</ul>
+						</div>
 						<!--developer-->
 						<div class="developer">
 							<a href="http://astronim.by/" target="_blank">

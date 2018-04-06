@@ -78,6 +78,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
 		, 'src/libs/select2/dist/css/select2.min.css'
+		, 'src/libs/swiper/dist/css/swiper.min.css' // стили для swiper slider
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -105,6 +106,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
 		, 'src/js/temp/filer.min.js' // инпут файл
 		, 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+		, 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
 		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
 		, 'src/js/temp/jquery.ms-drop.min.js' // drop menu (example, for lang)
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
@@ -135,7 +137,7 @@ gulp.task('browserSync', function (done) { // Таск browserSync
 });
 
 gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
-	gulp.watch(['src/_tpl_*.html', 'src/__*.html', 'src/includes/**/*.json', 'src/includes/**/*.svg'], ['htmlCompilation']); // Наблюдение за tpl
+	gulp.watch(['src/_tpl_*.html', 'src/__*.html', 'src/includes/json/*.json', 'src/includes/svg/*.svg'], ['htmlCompilation']); // Наблюдение за tpl
 	// файлами в папке include
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']); // Наблюдение за sass файлами в папке sass
 });

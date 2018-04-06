@@ -1,6 +1,6 @@
 @@include('_tpl_layout_head.html', {
 	"title": "Главная",
-	"pageClass": ""
+	"pageClass": "home-page"
 })
 
 @@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
@@ -114,11 +114,14 @@
 			<div class="main-section__title">
 				<h2>Новости и события</h2>
 			</div>
-			<div class="similar-slider">
-				<div class="similar-slider__list similar-slider-js">
-					@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
-					@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+
+			<div class="swiper-container events-slider events-slider-js">
+				<div class="swiper-wrapper">
+					@@loop("_tpl_sliders_events-slider--items.html", "includes/json/sliders_events-slider.json")
 				</div>
+				<!-- navigation buttons -->
+				<div class="tape-slider-prev swiper-button-prev">Предыдущий</div>
+				<div class="tape-slider-next swiper-button-next">Слудующий</div>
 			</div>
 		</section>
 	</div>

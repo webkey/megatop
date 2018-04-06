@@ -96,8 +96,9 @@ $page-layout-space: 0 0 !default
 // максимальная ширина сайта
 $page-layout-width: 1920px !default
 // минимальные отступы слева и справа у текствого блока
-$text-layout-space: 60px !default
-$text-layout-space--md: 30px !default
+$text-layout-space: 30px !default
+$text-layout-space--lg: 25px !default
+$text-layout-space--md: 20px !default
 $text-layout-space--sm: 15px !default
 // максимальная ширина текстового блока
 $text-layout-width: 800px !default
@@ -122,6 +123,9 @@ $aside-width: 160px !default
 
 // footer
 $footer-grid-space: 30px !default
+$footer-nav-space: 40px !default
+$footer-nav-space--lg: 30px !default
+$footer-nav-space--sm: 20px !default
 
 // logo
 $logo-size: 309px 42px !default
@@ -165,25 +169,41 @@ $select-space-v: 12px !default
 $select-space-h: $form-input-space-h !default
 $select-arrow-width: 40px !default
 $select-arrow-height: 100% !default
-$multiple-item-space: 3px
+$multiple-item-space: 3px !default
 
 // search form
-$search-form--size: 164px $header-height
-$search-form--btn-size: 50px $header-height
-$search-form-btn-icon-size: 18px 18px
+$search-form--size: 164px $header-height !default
+$search-form--btn-size: 50px $header-height !default
+$search-form-btn-icon-size: 18px 18px !default
 
 // main-banners
-$main-banners-ratio: 45.25% 54.75%
+$main-banners-ratio: 45.25% 54.75% !default
 
 // new
-$new-ratio: 37% 63% 54% 46%
-$new-space: 10px
+$new-ratio: 37% 63% 54% 46% !default
+$new-space: 10px !default
 
 // products previews
-$products-outer-space: 0 20px // vertical horizontal
-$products-inner-space: 20px 20px // vertical horizontal
-$products-rang: 12px
-$products-shade-size: 18px
+$products-outer-space: 0 20px !default // vertical horizontal
+$products-inner-space: 20px 20px !default // vertical horizontal
+$products-rang: 12px !default
+$products-shade-size: 18px !default
+
+// events slider
+$events-size: 373 278 !default // horizontal vertical, без единиц измерения
+$events-inner-space: 6px !default // vertical horizontal
+$events-rang: 0.1 !default // относитлеьно размера элемента
+$events-rang-size: round(nth($events-size, 2)*$events-rang*1px) round(nth($events-size, 1)*$events-rang*1px) !default // vertical horizontal
+$events-shade-size: 18px !default
+
+// social color
+$facebook-color: #3a589e !default
+$vkontakte-color: #4b73a4 !default
+$twitter-color: #1da0f2 !default
+$odnoklassniki-color: #f2822e !default
+$youtube-color: #e62117 !default
+$instagram-color-start: #de4f5a !default
+$instagram-color-end: #a43b97 !default
 
 // =========Buttons=========
 $btn-bg-color: $base-color !default
