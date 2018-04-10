@@ -42,6 +42,11 @@ $uo-icon-size--sm: 16px
 		text-decoration: none
 		text-align: center
 
+		// убрать подсветку при клике на тачскринах
+		.touchevents &
+			user-select: none
+			-webkit-tap-highlight-color: transparent
+
 		+media('<desk-md')
 			padding: 0 round($uo-space--sm/2)
 			height: nth($uo-item-size--sm, 2)

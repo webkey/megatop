@@ -196,6 +196,11 @@
 		property: background-color
 		duration: $animation-speed
 
+	.touchevents &
+		// убрать подсветку при клике на тачскринах
+		user-select: none
+		-webkit-tap-highlight-color: transparent
+
 	& > span
 		+hide-text
 		white-space: normal

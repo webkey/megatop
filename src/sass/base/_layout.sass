@@ -22,10 +22,10 @@ html
 	padding: round($text-layout-space) #{$text-layout-space} round($text-layout-space*1.5)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space--md*1.5) #{$text-layout-space--md} round($text-layout-space--md*2)
+		padding: round($text-layout-space--sm*1.5) #{$text-layout-space--sm} round($text-layout-space--sm*2)
 
 	+media('<tab-sm')
-		padding: round($text-layout-space--sm*1.5) #{$text-layout-space--sm} round($text-layout-space--sm*2)
+		padding: round($text-layout-space--mob*1.5) #{$text-layout-space--mob} round($text-layout-space--mob*2)
 
 	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption
 		max-width: $text-layout-width
@@ -44,20 +44,20 @@ html
 		+margin-horizontal(-#{$text-layout-space})
 
 		+media('<tab-lg')
-			+margin-horizontal(-#{$text-layout-space--md})
+			+margin-horizontal(-#{$text-layout-space--sm})
 
 		+media('<tab-sm')
-			+margin-horizontal(-#{$text-layout-space--sm})
+			+margin-horizontal(-#{$text-layout-space--mob})
 
 // максимальная ширина текстовых элементов на внутренней (текстовой) странице
 .max-wrap-text
 	max-width: #{$text-layout-width + $text-layout-space*2}
 
 	+media('<tab-lg')
-		max-width: #{$text-layout-width + $text-layout-space--md*2}
+		max-width: #{$text-layout-width + $text-layout-space--sm*2}
 
 	+media('<tab-sm')
-		max-width: #{$text-layout-width + $text-layout-space--sm*2}
+		max-width: #{$text-layout-width + $text-layout-space--mob*2}
 
 // выравнивание текстовых элементов на внутренней (текстовой) странице
 // и их максимальная ширина
@@ -67,22 +67,22 @@ html
 	+push-auto
 
 	+media('<tab-lg')
-		max-width: #{$text-layout-width + $text-layout-space--md*2}
-		+padding-horizontal($text-layout-space--md)
-
-	+media('<tab-sm')
 		max-width: #{$text-layout-width + $text-layout-space--sm*2}
 		+padding-horizontal($text-layout-space--sm)
+
+	+media('<tab-sm')
+		max-width: #{$text-layout-width + $text-layout-space--mob*2}
+		+padding-horizontal($text-layout-space--mob)
 
 // максимальная ширина альтернативных элементов на внутренней (текстовой) странице
 .max-wrap-flood
 	max-width: #{$flood-layout-width + $text-layout-space*2}
 
 	+media('<tab-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--md*2}
+		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
 
 	+media('<tab-sm')
-		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
+		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
 
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
@@ -92,12 +92,12 @@ html
 	+push-auto
 
 	+media('<tab-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--md*2}
-		+padding-horizontal($text-layout-space--md)
-
-	+media('<tab-sm')
 		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
 		+padding-horizontal($text-layout-space--sm)
+
+	+media('<tab-sm')
+		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
+		+padding-horizontal($text-layout-space--mob)
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
@@ -107,10 +107,10 @@ html
 	+padding-horizontal($text-layout-space)
 
 	+media('<tab-lg')
-		+padding-horizontal($text-layout-space--md)
+		+padding-horizontal($text-layout-space--sm)
 
 	+media('<tab-sm')
-		+padding-horizontal($text-layout-space--sm)
+		+padding-horizontal($text-layout-space--mob)
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
@@ -311,6 +311,11 @@ html
 		width: 100%
 		text-decoration: none
 		color: white
+
+		// убрать подсветку при клике на тачскринах
+		.touchevents &
+			user-select: none
+			-webkit-tap-highlight-color: transparent
 
 		span
 			display: table-cell
@@ -865,6 +870,11 @@ html
 		transition-duration: $animation-speed
 		+clear-spacing
 
+		// убрать подсветку при клике на тачскринах
+		.touchevents &
+			user-select: none
+			-webkit-tap-highlight-color: transparent
+
 		&::before
 			+pseudo-inline-block-relative()
 			vertical-align: middle
@@ -932,6 +942,11 @@ html
 	z-index: 2
 	cursor: pointer
 	display: none
+
+	// убрать подсветку при клике на тачскринах
+	.touchevents &
+		user-select: none
+		-webkit-tap-highlight-color: transparent
 
 	li.has-drop > .nav__tab > &
 		display: block
@@ -1027,7 +1042,7 @@ html
 	height: calc(100% - #{$header-height})
 	left: 0
 	top: $header-height
-	z-index: 25
+	z-index: 10000
 	// ==========================
 	//opacity: 0
 	//visibility: hidden

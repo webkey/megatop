@@ -22,10 +22,10 @@
 		margin-bottom: 0
 
 	+media('<tab-lg')
-		+padding-vertical($text-layout-space--md)
+		+padding-vertical($text-layout-space--sm)
 
 	+media('<mob-lg')
-		+padding-vertical($text-layout-space--sm)
+		+padding-vertical($text-layout-space--mob)
 
 	form
 		display: block
@@ -117,7 +117,7 @@
 
 // arrows
 .slick-arrow
-	+size(60px, 100%)
+	+size(nth($slider-btn-size, 1), nth($slider-btn-size, 2))
 	display: block
 	position: absolute
 	border: none
@@ -132,7 +132,7 @@
 		duration: 0.2s
 
 	+media('<mob-lg')
-		width: 34px
+		+size(nth($slider-btn-size--sm, 1), nth($slider-btn-size--sm, 2))
 		background-color: red
 
 	.no-touchevents &:hover
@@ -488,6 +488,10 @@
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
+	+padding-horizontal(nth($slider-btn-size, 1))
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($slider-btn-size--sm, 1))
 
 	&, &.slick-dotted
 		margin: 0
@@ -518,7 +522,11 @@
 	height: 150px
 	display: flex
 	align-items: center
-	+padding-horizontal(1rem)
+	+padding-horizontal(2rem)
+
+	+media('<mob-lg')
+		+padding-horizontal(1rem)
+		height: 100px
 
 	img
 		display: block
@@ -564,6 +572,11 @@
 		property: $prop
 		duration: $animation-speed
 
+	// убрать подсветку при клике на тачскринах
+	.touchevents &
+		user-select: none
+		-webkit-tap-highlight-color: transparent
+
 	&.btn-to-top--show
 		opacity: 1
 		//transform: translate(0, 0)
@@ -605,14 +618,24 @@
 .main-section__title
 	text-align: center
 	margin-bottom: 3rem
+	+font(3.0rem, round-float(36/30, 2))
+
+	+media('<mob-lg')
+		margin-bottom: 2.4rem
+		font-size: 2.4rem
 
 	h1, h2, h3
 		+font-alt-medium
-		+font(3.0rem, round-float(36/30, 2))
 		letter-spacing: 0.1em
+		font-size: inherit
+		line-height: inherit
 		text-align: center
 		text-transform: uppercase
 		margin-bottom: 0
+
+// main-section--banners
+.main-section--banners
+	margin-bottom: 0
 
 // main-section--partners
 .main-section--partners
@@ -622,6 +645,9 @@
 .main-section--new
 	margin-bottom: 6rem
 
+	+media('<mob-lg')
+		margin-bottom: 3rem
+
 // main-section--similar
 .main-section--similar
 	margin-bottom: 2rem
@@ -629,6 +655,11 @@
 // main-section--club
 .main-section--club
 	margin-bottom: 6rem
+	+padding-horizontal($text-layout-space)
+
+	+media('<mob-lg')
+		+padding-horizontal($text-layout-space--mob)
+		margin-bottom: 3rem
 
 /* jFiler
 .upload-file
@@ -992,7 +1023,7 @@
 		content: ""
 		display: block
 
-		+media('<mob-md')
+		+media('<mob-lg')
 			display: none
 
 .main-banners__list__holder
@@ -1003,7 +1034,7 @@
 	width: 100%
 	+clear-spacing
 
-	+media('<mob-md')
+	+media('<mob-lg')
 		position: relative
 		left: auto
 		top: auto
@@ -1014,6 +1045,7 @@
 	height: 100%
 	font-size: $font-size
 	letter-spacing: normal
+	padding-bottom: 1rem
 
 .main-banners__inner
 	display: block
@@ -1024,7 +1056,9 @@
 	background-size: cover
 	background-repeat: no-repeat
 	background-position: center
-	background-color: #000
+
+	.no-touchevents &
+		background-color: #000
 
 	img
 		display: block
@@ -1037,14 +1071,14 @@
 			property: opacity
 			duration: $animation-speed
 
-		+media('<mob-md')
+		+media('<mob-lg')
 			width: auto
 			height: auto
 			max-width: 100%
 			+object-fit(auto)
 
 	// hover
-	&:hover
+	.no-touchevents &:hover
 		img
 			opacity: 0.85
 
@@ -1057,13 +1091,13 @@
 			&:nth-child(1)
 				width: round-float(nth($main-banners-ratio, 1), 2)
 
-				+media('<mob-md')
+				+media('<mob-lg')
 					width: 100%
 
 			&:nth-child(2)
 				width: round-float(nth($main-banners-ratio, 2), 2)
 
-				+media('<mob-md')
+				+media('<mob-lg')
 					width: 100%
 
 /* main-banners end
@@ -1081,6 +1115,9 @@
 		content: ""
 		display: block
 
+		+media('<mob-lg')
+			content: none
+
 .new__list__holder
 	position: absolute
 	left: 0
@@ -1090,6 +1127,14 @@
 	margin: 0 -#{round($new-space/2)}
 	+clear-spacing
 
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		height: auto
+		width: 100%
+		+margin-horizontal(0)
+
 .new__item
 	display: inline-block
 	vertical-align: top
@@ -1097,6 +1142,9 @@
 	padding: 0 #{round($new-space/2)} $new-space
 	font-size: $font-size
 	letter-spacing: normal
+
+	+media('<mob-lg')
+		+padding-horizontal(0)
 
 .new__inner
 	display: block
@@ -1120,8 +1168,11 @@
 			property: opacity
 			duration: $animation-speed
 
-		+media('<mob-md')
-			+object-fit(none)
+		+media('<mob-lg')
+			+object-fit(auto)
+			width: auto
+			height: auto
+			max-width: 100%
 
 	// hover
 	&:hover
@@ -1137,8 +1188,14 @@
 			&:nth-child(1)
 				width: round-float(nth($new-ratio, 1), 2)
 
+				+media('<mob-lg')
+					width: 100%
+
 			&:nth-child(2)
 				width: round-float(nth($new-ratio, 2), 2)
+
+				+media('<mob-lg')
+					width: 100%
 
 	&:nth-child(2)
 		&::before
@@ -1148,8 +1205,14 @@
 			&:nth-child(1)
 				width: round-float(nth($new-ratio, 3), 2)
 
+				+media('<mob-lg')
+					width: 100%
+
 			&:nth-child(2)
 				width: round-float(nth($new-ratio, 4), 2)
+
+				+media('<mob-lg')
+					width: 100%
 
 /* new end
 
@@ -1240,6 +1303,9 @@
 .products__inner
 	position: relative
 	z-index: 1
+
+	.touchevents &
+		border: 1px solid #ccc
 
 .products__animation-wrap
 	position: relative
@@ -1339,6 +1405,7 @@
 	left: nth($products-inner-space, 2)
 	bottom: nth($products-inner-space, 1)
 	min-height: 30px
+	max-width: calc(50% - #{nth($products-inner-space, 2)})
 	line-height: 1
 
 .products__info__brand
@@ -1357,6 +1424,7 @@
 	bottom: nth($products-inner-space, 1)
 	margin-bottom: -8px
 	min-height: 38px
+	max-width: calc(50% - #{nth($products-inner-space, 2)})
 	text-align: right
 	line-height: 1
 
@@ -1485,6 +1553,9 @@
 		property: opacity
 		duration: $animation-speed
 
+	.touchevents &
+		opacity: 1
+
 .products__tag
 	white-space: nowrap
 
@@ -1498,7 +1569,7 @@
 		+truncate(140px)
 
 // hover
-.products__inner:hover
+.no-touchevents .products__inner:hover
 	z-index: 50
 
 	.products__animation-wrap
@@ -1523,14 +1594,21 @@
 
 /* similar slider
 // slider
-.similar-slider
-	+padding-horizontal(40px)
-
 .similar-slider__list
 	// before slide load
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
+	+padding-horizontal(nth($slider-btn-size, 1))
+
+	+media('<mob-lg')
+		+padding-horizontal(nth($slider-btn-size--sm, 1))
+
+	.no-touchevents &
+		+padding-horizontal(nth($slider-btn-size, 1)-($products-rang+$products-shade-size))
+
+		+media('<mob-lg')
+			+padding-horizontal(nth($slider-btn-size--sm, 1)-($products-rang+$products-shade-size))
 
 	&, &.slick-dotted
 		margin: 0
@@ -1544,15 +1622,14 @@
 	.slick-track
 		margin: 0
 
-	.slick-list
-		//+padding-vertical(40px)
+	.no-touchevents .slick-list
 		padding: $products-rang+$products-shade-size
 
 	.slick-prev
-		left: -20px
+		left: 0
 
 	.slick-next
-		right: -20px
+		right: 0
 
 // slide
 .similar-slider__item
