@@ -605,7 +605,7 @@ html
 .footer-common
 	position: relative
 	background: #eceff1
-	padding: round($text-layout-space*2) $text-layout-space 40px
+	padding: round($text-layout-space*2) $text-layout-space round($text-layout-space*1.5)
 
 	+media('<tab-lg')
 		padding: round($text-layout-space--sm*2) $text-layout-space--sm
@@ -614,16 +614,26 @@ html
 		padding: round($text-layout-space--mob*2) $text-layout-space--mob
 
 .footer-common__group
-	margin: 0 -#{round($footer-grid-space/2)} 4rem
+	margin: 0 -#{round($text-layout-space/2)} round($text-layout-space*1.5)
 	+clear
+
+	+media('<tab-lg')
+		margin: 0 -#{round($text-layout-space--sm/2)} round($text-layout-space--sm*2)
+
+	+media('<mob-lg')
+		margin: 0 -#{round($text-layout-space--mob/2)} round($text-layout-space--mob*2)
 
 	&:last-child
 		margin-bottom: 0
 
 .footer-common__box
-	+padding-horizontal(round($footer-grid-space/2))
+	+padding-horizontal(round($text-layout-space/2))
 	width: 50%
 	max-width: 680px
+
+	+media('<tab-lg')
+		max-width: none
+		margin-top: $text-layout-space--sm
 
 	&:first-child
 		float: left
@@ -631,20 +641,38 @@ html
 		+media('<desk-sm')
 			width: 65%
 
+		+media('<tab-lg')
+			float: none
+			width: auto
+			margin-top: 0
+
 	&:last-child
 		float: right
 
 		+media('<desk-sm')
 			width: 35%
 
+		+media('<tab-lg')
+			float: none
+			width: auto
+
 .footer-nav
-	+grid-parent($footer-grid-space)
+	+grid-parent($text-layout-space)
 	+clear-spacing
 
+	+media('<tab-lg')
+		+grid-parent($text-layout-space--sm)
+
 .footer-nav__box
-	+grid-item(4, $footer-grid-space)
+	+grid-item(4, $text-layout-space)
 	+font(1.6rem, 26px)
 	letter-spacing: normal
+
+	+media('<tab-lg')
+		+grid-item-responsive(4, $text-layout-space--sm)
+
+	+media('<mob-lg')
+		+grid-item-responsive(2, $text-layout-space--sm)
 
 	& > *:last-child
 		margin-bottom: 0
@@ -652,12 +680,18 @@ html
 	.footer-common__box--navigator &
 		width: 100%
 
+		+media('<tab-lg')
+			text-align: center
+
 .footer-nav__title, .footer-nav__list
 	position: relative
 	display: block
 	+font-alt-bold
-	font-size: 1.7rem
+	font-size: 1.8rem
 	margin-bottom: 0.8em
+
+	+media('<mob-lg')
+		margin-bottom: 0.5em
 
 .footer-nav__title
 	a
@@ -682,6 +716,9 @@ html
 	li
 		margin-bottom: 0.8em
 
+		+media('<mob-lg')
+			margin-bottom: 0.5em
+
 		&:last-child
 			margin-bottom: 0
 
@@ -702,6 +739,10 @@ html
 /* navigator
 .navigator
 	position: relative
+
+	+media('<tab-lg')
+		margin: 0 auto
+		max-width: 600px
 
 .btn-navigator
 	$space: 20px
@@ -761,7 +802,7 @@ html
 
 .footer-bottom__col
 	+display-inline-block-top
-	+padding-horizontal(round($footer-nav-space/2))
+	+padding-horizontal(round($text-layout-space/2))
 	+font(16px, round-float(24/16, 3))
 	letter-spacing: normal
 	width: 33%
@@ -816,6 +857,13 @@ html
 
 		.no-touchevents &:hover
 			text-decoration: none
+
+.footer-logo
+	display: block
+	margin: 0 auto
+
+	+media('<tab-lg')
+		max-width: 320px
 
 /* footer bottom end
 
@@ -1106,8 +1154,8 @@ html
 	overflow-y: auto
 	height: 100%
 
-	+media('<mob-lg')
-		width: 100% // возвращаем скролл на мобиле
+	.touchevents &
+		width: 100% // возвращаем скролл на тачскрине
 
 .shutter, .shutter__content__holder
 	// ширину устанавливаем на основной

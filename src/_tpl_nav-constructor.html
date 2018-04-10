@@ -1,9 +1,23 @@
 <!--(1) START @@bsKey FIRST level-->
 <ul class="@@bsKey__list @@bsKey-js">
 	<!--@@bsKey item start-->
+	<li class="has-drop@@if(currentItem === 'Каталог'){current}">
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Каталог", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Мужчины", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Женщины", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Дети", "href": "#", "key": "@@bsKey" })</li>
+	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Аксессуары", "href": "#", "key": "@@bsKey" })</li>
+
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+
+	</li>
+	<!--@@bsKey item end-->
+
+	<!--@@bsKey item start-->
 	<li class="has-drop @@if(currentItem === 'Пункт 1 (Типографика)'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1 (Типографика)", "href": "typography.html", "key": "@@bsKey" })
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Типографика", "href": "typography.html", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.1", "href": "#", "key": "@@bsKey" })</li>
 	<li class="has-drop">
 		@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2 (есть подпункты)", "href": "#", "key": "@@bsKey" })
@@ -16,36 +30,36 @@
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2.2.2", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2.2.3", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2.2.3", "href": "#", "key": "@@bsKey" })</li>
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========4==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========4==========)", "pos": "end", "key": "@@bsKey"})
 
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2.3", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.2.4", "href": "#", "key": "@@bsKey" })</li>
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
 
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.4", "href": "#", "key": "@@bsKey" })</li>
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 1.5", "href": "#", "key": "@@bsKey" })</li>
 
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
 
 	</li>
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
 	<li class="@@if(currentItem === 'Пункт 2'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 2", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 2", "href": "#", "key": "@@bsKey" })
 	</li>
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
 	<li class="@@if(currentItem === 'Пункт 3'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 3", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-LINK--full.html', { "txt": "Пункт 3", "href": "#", "key": "@@bsKey" })
 	</li>
 	<!--@@bsKey item end-->
 
 	<!--@@bsKey item start-->
 	<li class="has-drop@@if(currentItem === 'tt1tt'){current}">
-	@@include('_tpl_nav-LINK--full.html', { "txt": "tt1tt", "href": "#", "key": "@@bsKey" })
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
+		@@include('_tpl_nav-LINK--full.html', { "txt": "tt1tt", "href": "#", "key": "@@bsKey" })
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "start", "key": "@@bsKey"})
 
 
 
@@ -56,7 +70,7 @@
 	<li class="has-drop">@@include('_tpl_nav-LINK--full.html', { "txt": "tt2tt", "href": "#", "key": "@@bsKey" })
 		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "start", "key": "@@bsKey"})
 	<li>@@include('_tpl_nav-LINK--full.html', { "txt": "tt3tt", "href": "#", "key": "@@bsKey" })</li>
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========3==========)", "pos": "end", "key": "@@bsKey"})
 
 	<!--пробел ставим ТОЛЬКО после элемента с правилом "pos": "end"-->
 	<!--пример конец-->
@@ -64,7 +78,7 @@
 	<!--=========================== ПРИМЕР конец =========================-->
 	<!--==================================================================-->
 
-	@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
+		@@include('_tpl_nav-DROP-WRAP.html', { "dropLevel": "(==========2==========)", "pos": "end", "key": "@@bsKey"})
 
 	</li>
 	<!--@@bsKey item end-->
