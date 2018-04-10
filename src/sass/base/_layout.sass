@@ -141,6 +141,9 @@ html
 	z-index: 4
 	padding-top: $header-height
 
+	+media('<desk-md')
+		padding-top: $header-height--sm
+
 	.no-js &
 		padding-top: 0
 
@@ -196,6 +199,9 @@ html
 		transform: translate(0, 0)
 		transform: translate3d(0, 0, 0)
 
+	+media('<desk-md')
+		height: $header-height--sm
+
 	.no-js &
 		position: relative
 
@@ -225,6 +231,9 @@ html
 		top: 0
 		z-index: 5
 
+		+media('<desk-md')
+			+size($header-height--sm)
+
 .header > .layout
 	height: 100%
 
@@ -247,6 +256,9 @@ html
 		float: left
 		padding-left: $header-height
 
+		+media('<desk-md')
+			padding-left: $header-height--sm
+
 	&:last-child
 		display: block
 		float: right
@@ -266,25 +278,22 @@ html
 
 /* menu
 .header__col--menu
-	&.header__col
-		+media('<desk-sm')
-			display: none
-
-		.header__cell, .menu-list, .menu-list > li, .menu-list > li > a
-			height: 100%
+	.header__cell, .menu-list, .menu-list > li, .menu-list > li > a
+		height: 100%
 
 .menu-list
 	$ml-space: 30px
 	$ml-space--md: 20px
+	$ml-space--sm: 10px
+	// ==================
+	list-style: none
+	+clear-spacing
 
-	&
-		list-style: none
-		padding: 0 0 0 round($ml-space/2)
-		margin: 0 -#{round($ml-space/2)}
-		+clear-spacing
+	+media('<desk-lg')
+		padding-left: 0
 
-		+media('<desk-lg')
-			+margin-horizontal(-#{round($ml-space--md/2)})
+	+media('<desk-sm')
+		display: none
 
 	li
 		+display-inline-block-middle
@@ -311,6 +320,9 @@ html
 
 			+media('<desk-lg')
 				+padding-horizontal(round($ml-space--md/2))
+
+			+media('<desk-md')
+				+padding-horizontal(round($ml-space--sm/2))
 
 			&::after
 				content: ""
@@ -340,6 +352,44 @@ html
 			span::after
 				opacity: 1
 
+	// in shutter, for mobile
+	.shutter &
+		display: none
+		border-bottom: 1px solid $border-color
+		padding: nth($shutter-space, 1) 0
+		background-color: $header-bg
+
+		+media('<desk-sm')
+			display: block
+
+		li
+			display: block
+			+font(1.4rem, round-float(20/16, 2))
+
+		a
+			padding: 0 nth($shutter-space, 2)
+			color: inherit
+			color: white
+
+			span
+				padding: 8px 0
+
+				&::after
+					content: none
+
+		// text-mark
+		.text-mark
+			a
+				color: $base-color
+
+				span::after
+					border-color: $base-color
+
+		// hover
+		a
+			&:hover
+				color: $base-color
+
 /* menu end
 
 /* logo
@@ -350,6 +400,9 @@ html
 
 	+media('<desk-lg')
 		width: 200px
+
+	+media('<desk-md')
+		width: 160px
 
 	&::before
 		content: ""
@@ -387,11 +440,29 @@ html
 	border: solid #666
 	border-width: 0 1px
 
-	.header__col &
+	.header &
 		position: absolute
 		top: 50%
 		right: 100%
 		margin: -#{round($header-height/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
+
+		+media('<desk-md')
+			margin: -#{round($header-height--sm/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
+
+		+media('<tab-sm')
+			display: none
+
+	.shutter--nav &
+		display: none
+		position: absolute
+		left: 0
+		top: -1px // если есть бордер на мобильном меню сверху
+		border-width: 1px 0
+		width: 100%
+		z-index: 100
+
+		+media('<tab-sm')
+			display: block
 
 	.search-form__field
 		margin: 0
@@ -413,6 +484,10 @@ html
 			color: $text-color
 			opacity: 1
 
+		+media('<desk-md')
+			height: $header-height--sm
+			line-height: $header-height--sm
+
 		&, &:hover, &:focus, &.error, &.input--has-value
 			box-shadow: none
 
@@ -424,13 +499,17 @@ html
 	position: absolute
 	left: 0
 	top: 50%
-	+size(nth($search-form--btn-size, 1), nth($search-form--btn-size, 2))
-	margin-top: -#{round(nth($search-form--btn-size, 2)*0.5)}
+	+size(nth($search-form--btn-size, 1), $header-height)
+	margin-top: -#{round($header-height*0.5)}
 	+font-regular
 	text-align: center
 	z-index: 5
 	color: white
 	pointer-events: none
+
+	+media('<desk-md')
+		height: $header-height--sm
+		margin-top: -#{round($header-height--sm*0.5)}
 
 	.input--has-value &, .search-form__input:focus ~ &
 		color: $text-color
@@ -452,8 +531,8 @@ html
 		display: inline-block
 		position: absolute
 		+position(50%)
-		+size(nth($search-form-btn-icon-size, 1))
-		margin: -#{round(nth($search-form-btn-icon-size, 1)*0.5)} 0 0 -#{round(nth($search-form-btn-icon-size, 1)*0.5)}
+		+size(nth($search-form--btn-icon-size, 1))
+		margin: -#{round(nth($search-form--btn-icon-size, 1)*0.5)} 0 0 -#{round(nth($search-form--btn-icon-size, 1)*0.5)}
 
 	path
 		fill: currentColor
@@ -465,220 +544,6 @@ html
 /* search-form end
 /* HEADER end
 /* === HEADER end ===
-
-/* === NAVIGATION ===
-.nav-wrap
-	position: fixed
-	left: 0
-	height: calc(100% - #{$header-height})
-	top: $header-height
-	width: $nav-width
-	z-index: 25
-	transition:
-		property: transform
-		duration: $animation-speed
-
-	will-change: transform
-	transform: translate(-100%, 0)
-	transform: translateX(-100%)
-	background-color: rgba(255, 255, 255, 0.56)
-
-	&.active
-		transform: translate(0, 0)
-		transform: translateX(0)
-
-/* nav list
-// общие стили для главного списка навигации
-.nav__list
-	position: relative
-
-	+media('<tab-lg')
-		width: auto
-
-// общие стили для подменю навигации
-.nav__drop
-	position: relative
-	//background-color: $nav-bg-color
-	display: none
-
-	.no-js &
-		display: block
-
-// общие стили для пунктов навигации
-.nav__list
-	padding: nth($nav-space, 1) 0
-
-	li
-		position: relative
-		overflow: hidden
-
-	.nav__tab
-		position: relative
-
-	a
-		display: block
-		position: relative
-		padding: 0 nth($nav-space, 2)
-		+font-light
-		color: #999
-		text-decoration: none
-		transition-property: color, background-color
-		transition-duration: $animation-speed
-		+clear-spacing
-
-		&::before
-			+pseudo-inline-block-relative()
-			vertical-align: middle
-			min-height: 36px
-
-		span
-			+display-inline-block-middle
-			max-width: calc(100% - 5px)
-			+font(1.6rem, round-float(20/16, 2))
-			letter-spacing: normal
-			padding: 8px 0
-
-		.no-touchevents &:hover
-			color: $base-color
-
-// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
-.nav__list li.has-drop > .nav__tab > a
-	padding-right: (round($nav-arrow-size+10))
-
-// стили для пункта навигации ТЕКУЩЕЙ страницы
-.nav__list li.current > .nav__tab
-
-	&, .no-touchevents &
-
-		a, a:hover
-			color: $base-color
-
-// стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
-.nav__list li
-	&.is-open
-		& > .nav__tab a
-			&::before
-				opacity: 1
-				transform: translate(0, 0)
-
-//& > .nav__drop
-	display: block
-
-// нужно добавлять на nav__drop style="display: block"
-
-// особые стили для пунктов навигации ПЕРВОГО урованя
-.nav__list > li
-
-	& > .nav__tab a
-		min-height: 0
-		+font-alt-bold
-		text-transform: uppercase
-		color: $text-color
-
-		span
-			letter-spacing: 0.1em
-			+font(1.6rem, round-float(20/16, 2))
-
-// СТРЕЛКИ навигации
-.nav__angle
-	position: absolute
-	right: 0
-	top: 0
-	width: $nav-arrow-size
-	height: 100%
-	//border: solid #666
-	//border-width: 0 0 0 1px
-	transition-property: transform, color, background-color
-	transition-duration: $animation-speed
-	z-index: 2
-	cursor: pointer
-	display: none
-
-	li.has-drop > .nav__tab > &
-		display: block
-
-	i
-		position: absolute
-		+position(50%, 50%)
-		+size(16px)
-		margin: -8px 0 0 -8px
-		pointer-events: none
-		transition-property: transform
-		transition-duration: $animation-speed
-		+font(0, 0)
-
-		&::before, &::after
-			+pseudo()
-			+position(50%, 0)
-			height: 2px
-			width: 16px
-			backface-visibility: hidden
-			background-color: $nav-text-color
-			transition-property: background-color, transform
-			transition-duration: $animation-speed
-
-		&::after
-			transform: rotate(0.25turn)
-
-// стили стрелок навигации для разных состояний
-.nav__angle
-
-	// активное (подменю открыто)
-	li.is-open > .nav__tab & i
-		//transform: rotate(0)
-
-		&::before, &::after
-			transform: rotate(0)
-
-	// ховер
-	.no-touchevents li > .nav__tab &:hover i
-		&::before, &::after
-			background-color: $base-color
-
-// особые стили для пунктов ПОДМЕНЮ
-.nav__drop
-
-	// особые стили для пунктов навигации ВТОРОГО урованя
-	//ul, a, .nav__angle
-		background-color: $nav-bg-color-s
-
-	a
-		padding-left: round(nth($nav-space, 2) + nth($nav-space, 2)/2)
-		color: $text-color
-		text-transform: uppercase
-
-		span
-			letter-spacing: 0.05em
-			+font(1.6rem, round-float(20/16, 2))
-
-	.nav__drop
-		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
-		//ul, a, .nav__angle
-			background-color: $nav-bg-color-ss
-
-		a
-			color: #999
-			text-transform: none
-
-			span
-				+font(1.6rem, round-float(20/16, 2))
-
-		.nav__drop
-			// особые стили для пунктов навигации ТРЕТЬЕГО урованя
-			//ul, a, .nav__angle
-				background-color: $nav-bg-color-sss
-
-			a
-				padding-left: round(nth($nav-space, 2)*2)
-				color: #999
-				text-transform: none
-
-				span
-					+font(1.4rem, round-float(18/14, 2))
-
-/* nav list
-
-/* === NAVIGATION end ===
 
 /* === SIDEBAR ===
 .sidebar
@@ -947,3 +812,421 @@ html
 
 /* developer end
 /* === FOOTER end ===
+
+/* === NAVIGATION ===
+/* nav list
+// общие стили для главного списка навигации
+.nav__list
+	position: relative
+
+	+media('<tab-lg')
+		width: auto
+
+// общие стили для подменю навигации
+.nav__drop
+	position: relative
+	//background-color: $nav-bg-color
+	display: none
+
+	.no-js &
+		display: block
+
+// общие стили для пунктов навигации
+.nav__list
+	padding: nth($shutter-space, 1) 0
+
+	li
+		position: relative
+		overflow: hidden
+
+	.nav__tab
+		position: relative
+
+	a
+		display: block
+		position: relative
+		padding: 0 nth($shutter-space, 2)
+		+font-light
+		color: #999
+		text-decoration: none
+		transition-property: color, background-color
+		transition-duration: $animation-speed
+		+clear-spacing
+
+		&::before
+			+pseudo-inline-block-relative()
+			vertical-align: middle
+			min-height: 36px
+
+		span
+			+display-inline-block-middle
+			max-width: calc(100% - 5px)
+			+font(1.6rem, round-float(20/16, 2))
+			letter-spacing: normal
+			padding: 8px 0
+
+		.no-touchevents &:hover
+			color: $base-color
+
+// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
+.nav__list li.has-drop > .nav__tab > a
+	padding-right: (round($nav-arrow-size+10))
+
+// стили для пункта навигации ТЕКУЩЕЙ страницы
+.nav__list li.current > .nav__tab
+
+	&, .no-touchevents &
+
+		a, a:hover
+			color: $base-color
+
+// стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
+.nav__list li
+	&.is-open
+		& > .nav__tab a
+			&::before
+				opacity: 1
+				transform: translate(0, 0)
+
+//& > .nav__drop
+	display: block
+
+// нужно добавлять на nav__drop style="display: block"
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.nav__list > li
+
+	& > .nav__tab a
+		min-height: 0
+		+font-alt-bold
+		text-transform: uppercase
+		color: $text-color
+
+		span
+			letter-spacing: 0.1em
+			+font(1.6rem, round-float(20/16, 2))
+
+// СТРЕЛКИ навигации
+.nav__angle
+	position: absolute
+	right: 0
+	top: 0
+	width: $nav-arrow-size
+	height: 100%
+	//border: solid #666
+	//border-width: 0 0 0 1px
+	transition-property: transform, color, background-color
+	transition-duration: $animation-speed
+	z-index: 2
+	cursor: pointer
+	display: none
+
+	li.has-drop > .nav__tab > &
+		display: block
+
+	i
+		position: absolute
+		+position(50%, 50%)
+		+size(16px)
+		margin: -8px 0 0 -8px
+		pointer-events: none
+		transition-property: transform
+		transition-duration: $animation-speed
+		+font(0, 0)
+
+		&::before, &::after
+			+pseudo()
+			+position(50%, 0)
+			height: 2px
+			width: 16px
+			backface-visibility: hidden
+			background-color: $nav-text-color
+			transition-property: background-color, transform
+			transition-duration: $animation-speed
+
+		&::after
+			transform: rotate(0.25turn)
+
+// стили стрелок навигации для разных состояний
+.nav__angle
+
+	// активное (подменю открыто)
+	li.is-open > .nav__tab & i
+		//transform: rotate(0)
+
+		&::before, &::after
+			transform: rotate(0)
+
+	// ховер
+	.no-touchevents li > .nav__tab &:hover i
+		&::before, &::after
+			background-color: $base-color
+
+// особые стили для пунктов ПОДМЕНЮ
+.nav__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	//ul, a, .nav__angle
+		background-color: $nav-bg-color-s
+
+	a
+		padding-left: round(nth($shutter-space, 2) + nth($shutter-space, 2)/2)
+		color: $text-color
+		text-transform: uppercase
+
+		span
+			letter-spacing: 0.05em
+			+font(1.6rem, round-float(20/16, 2))
+
+	.nav__drop
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		//ul, a, .nav__angle
+			background-color: $nav-bg-color-ss
+
+		a
+			color: #999
+			text-transform: none
+
+			span
+				+font(1.6rem, round-float(20/16, 2))
+
+		.nav__drop
+			// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+			//ul, a, .nav__angle
+				background-color: $nav-bg-color-sss
+
+			a
+				padding-left: round(nth($shutter-space, 2)*2)
+				color: #999
+				text-transform: none
+
+				span
+					+font(1.4rem, round-float(18/14, 2))
+
+/* nav list
+
+/* === NAVIGATION end ===
+
+/* === SHUTTERS ===
+/* shutter layout
+.shutter
+	overflow: hidden // необходим для скрытия скролла
+	position: fixed
+	height: calc(100% - #{$header-height})
+	width: $shutter-width
+	left: 0
+	top: $header-height
+	z-index: 25
+	// ==========================
+	//opacity: 0
+	//visibility: hidden
+	will-change: transform
+	transform: translate(-100%, 0)
+	transform: translateX(-100%)
+	background-color: white
+	transition:
+		property: transform
+		duration: $animation-speed
+
+	+media('<desk-md')
+		height: calc(100% - #{$header-height--sm})
+		top: $header-height--sm
+
+	&.active
+		transform: translate(0, 0)
+		transform: translateX(0)
+
+.shutter__content
+	width: calc(100% + 100px)
+	overflow-x: hidden
+	overflow-y: auto
+	height: 100%
+
+.shutter__content__holder
+	width: $shutter-width
+
+/* shutter layout end
+
+/* shutter mask
+.shutter__mask
+	$shutter-mask-size: 40px
+	$shutter-mask-color: white
+	//======================
+	position: absolute
+	//left: -#{round($shutter-mask-size/2)}
+	//width: calc(100% + #{$shutter-mask-size})
+	//height: $shutter-mask-size
+	//box-shadow: 0 0 nth($nav-space, 2) white
+	left: -#{round(nth($nav-space, 2)/2)}
+	width: calc(100% + #{nth($nav-space, 2)})
+	height: nth($nav-space, 2)
+	pointer-events: none
+	z-index: 25
+
+	&.shutter__mask--start
+		top: 0
+		+linear-gradient(to bottom, #{$shutter-mask-color} 0%, #{$shutter-mask-color} 25%, rgba($shutter-mask-color, 0) 100%)
+
+	&.shutter__mask--end
+		bottom: 0
+		+linear-gradient(to top, #{$shutter-mask-color} 0%, #{$shutter-mask-color} 25%, rgba($shutter-mask-color, 0) 100%)
+
+/* shutter mask end
+
+/* shutter options
+.shutter__options
+	display: none
+	position: relative
+	height: $header-height--sm
+	box-shadow: inset 0 1px 0 $border-color, 0 0 30px 10px white
+	z-index: 10
+
+/* shutter options end
+
+/* shutter footer
+.shutter__footer
+	border-top: 1px solid $border-color
+
+/* shutter footer end
+
+/* shutter panel
+.shutter__panel
+	display: none
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	background-color: white
+	z-index: 10
+	box-shadow: 0 0 40px 20px white
+
+	+media('<mob-md')
+		display: block
+
+	.user-options
+		display: table
+		table-layout: fixed
+		width: 100%
+		height: $header-height
+		margin: 0
+		border: solid $border-color
+		border-width: 1px 0 0
+
+		+media('<desk-md')
+			height: $header-height--sm
+
+	.user-options__item
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+		border: solid $border-color
+		border-width: 0 1px
+		padding: 0
+
+		& > a
+			display: block
+			width: auto
+			height: $header-height
+
+			+media('<desk-md')
+				height: $header-height--sm
+
+/* shutter panel end
+
+/* button shutter close
+.btn-shutter-close
+	//<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
+	$btn-shutter-close--bg: $btn-bg-color
+	$btn-shutter-close--color: $text-color
+	$btn-shutter-close--size: $header-height--sm
+	$btn-shutter-close--space: 12px
+	$btn-shutter-close--lines-width: 22px
+	$btn-shutter-close--lines-height: 2px
+	$btn-shutter-close--lines-space: 5px
+	$btn-shutter-close--lines-radius: 0
+	$btn-shutter-close--lines-color: white
+
+	display: block
+	+size($btn-shutter-close--size)
+	background: $btn-shutter-close--bg
+	color: white
+	text-decoration: none
+	+clear-spacing
+	white-space: nowrap
+	transition-property: background-color, opacity, visibility
+	transition-duration: $animation-speed
+
+	&::before
+		content: ''
+		display: inline-block
+		height: $btn-shutter-close--size
+		min-height: 100%
+		vertical-align: middle
+
+	.shutter__options &
+		position: absolute
+		left: 0
+		top: 0
+		border: solid $border-color
+		border-width: 0 1px 0 0
+
+	> span
+		+hide-text
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		//backface-visibility: hidden
+		background-color: transparent
+		+size($btn-shutter-close--lines-width, $btn-shutter-close--lines-height)
+		border-radius: $btn-shutter-close--lines-radius
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			//backface-visibility: hidden
+			+size($btn-shutter-close--lines-width, $btn-shutter-close--lines-height)
+			border-radius: $btn-shutter-close--lines-radius
+			background: $btn-shutter-close--lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			top: 0
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			top: 0
+			transform: rotate(45deg)
+
+/* button shutter close end
+
+/* shutter--nav
+.shutter--nav
+	//position: fixed
+	//left: 0
+	//height: calc(100% - #{$header-height})
+	//top: $header-height
+	width: $nav-width
+	
+	+media('<desk-sm')
+		border-top: 1px solid #666
+		// отступ сверху для поля поиска
+		padding-top: $header-height--sm
+
+	.shutter__mask--start
+		// отступ сверху для поля поиска
+		top: $header-height--sm
+
+		+media('<desk-sm')
+			+linear-gradient(to bottom, $header-bg 0%, $header-bg 25%, rgba($header-bg, 0) 100%)
+
+	.shutter__options
+		+media('<tab-sm')
+			display: block
+
+/* shutter--nav end
+/* === SHUTTERS end ===

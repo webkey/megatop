@@ -80,7 +80,7 @@ $text-color-light: gray !default
 // цвет ссылки
 $link-color: blue !default
 // цвет линий и границ
-$border-color: lightgray !default
+$border-color: #666 !default
 // цвет специальных элементов
 $mark-color: tomato !default
 
@@ -113,6 +113,7 @@ $list-space: 30px
 
 // header
 $header-height: 70px !default
+$header-height--sm: 50px !default
 $header-bg: #1a1a1a !default
 
 // sidebar
@@ -130,9 +131,13 @@ $footer-nav-space--sm: 20px !default
 // logo
 $logo-size: 309px 42px !default
 
+// shutter
+$shutter-width: 280px !default
+$shutter-space: 20px 30px !default
+
 // nav
 $nav-width: 280px !default
-$nav-space: 20px 30px !default // vertical horizontal
+$nav-space: 20px 30px !default
 $nav-arrow-size: 50px !default
 $nav-text-color: $text-color !default
 $nav-bg-color: #333 !default
@@ -172,9 +177,9 @@ $select-arrow-height: 100% !default
 $multiple-item-space: 3px !default
 
 // search form
-$search-form--size: 164px $header-height !default
-$search-form--btn-size: 50px $header-height !default
-$search-form-btn-icon-size: 18px 18px !default
+$search-form--size: 164px auto !default // width, height
+$search-form--btn-size: 50px auto !default // width, height
+$search-form--btn-icon-size: 18px 18px !default
 
 // main-banners
 $main-banners-ratio: 45.25% 54.75% !default

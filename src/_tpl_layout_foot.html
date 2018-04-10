@@ -1,4 +1,56 @@
 <!-- >>> foot.tpl <<< -->
+<!--shutters and popups-->
+<div class="shutter shutter--nav shutter-js shutter--nav-js">
+	<!--copy element for small devices-->
+	<div class="search-form">
+		<form action="#" method="post">
+			<div class="search-form__field input-wrap">
+				<input type="search" placeholder="Найти" class="search-form__input field-effects-js"/>
+				<div class="search-form__btn">
+					@@include("includes/svg/icon-search.svg")
+					<span>Найти</span>
+					<input type="submit" value="">
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="shutter__content">
+		<div class="shutter__content__holder">
+
+			<!--copy element for small devices-->
+			<ul class="menu-list">
+				<li @@if(context.currentItem === "Мужчины"){class="current"}><a href="typography.html"><span>Мужчины</span></a></li>
+				<li @@if(context.currentItem === "Женщины"){class="current"}><a href="#"><span>Женщины</span></a></li>
+				<li @@if(context.currentItem === "Дети"){class="current"}><a href="#"><span>Дети</span></a></li>
+				<li @@if(context.currentItem === "Аксессуары"){class="current"}><a href="#"><span>Аксессуары</span></a></li>
+				<li class="text-mark@@if(context.currentItem === "Акции"){ current}"><a href="#"><span>Акции</span></a></li>
+			</ul>
+
+			<!--navigation-->
+			<nav class="nav">
+				@@include('_tpl_nav-constructor.html', {
+					"currentItem": "@@currentItem",
+					"bsKey": "nav"
+				})
+			</nav>
+			<!--navigation end-->
+
+		</div>
+	</div>
+	<div class="shutter__panel">
+		<!--user options-->
+		<!--copy element for small devices-->
+		@@include('_tpl_user-options.html', {
+			"forDevices": "true"
+		})
+		<!--user options end-->
+	</div>
+	<div class="shutter__mask shutter__mask--start">&nbsp;</div>
+	<div class="shutter__mask shutter__mask--end">&nbsp;</div>
+</div>
+<!--shutters and popups end-->
+
 <script src="js/jquery.min.js"></script>
 <script src="js/libs.min.js"></script>
 <script src="js/common.js"></script>

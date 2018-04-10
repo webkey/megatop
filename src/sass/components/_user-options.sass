@@ -3,22 +3,20 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user options
-$uo-size: 'auto' $header-height
-$uo-size--mob: 40px
+$uo-size: 60px $header-height
+$uo-size--sm: 60px $header-height--sm
 $uo-space: 30px
 $uo-space--sm: 20px
 $uo-icon-size: 18px
 
 .user-options
 	position: relative
-	list-style: none
-	padding: 0
-	margin: 0 0 0 #{round($uo-space/2)}
+	padding-left: #{round($uo-space/2)}
 	+clear-spacing
 	line-height: 1
 
 	+media('<desk-md')
-		margin: 0 0 0 #{round($uo-space--sm/2)}
+		padding-left: #{round($uo-space--sm/2)}
 
 .user-options__item
 	position: relative
@@ -29,13 +27,16 @@ $uo-icon-size: 18px
 		position: relative
 		display: block
 		height: nth($uo-size, 2)
+		min-width: nth($uo-size, 1)
 		padding: 0 round($uo-space/2)
 		color: white
 		line-height: 1
 		text-decoration: none
+		text-align: center
 
 		+media('<desk-md')
 			padding: 0 round($uo-space--sm/2)
+			height: nth($uo-size--sm, 2)
 
 		&::before
 			content: ""
@@ -59,6 +60,7 @@ $uo-icon-size: 18px
 			+display-inline-block-middle
 			+font(1.6rem, 1)
 			letter-spacing: normal
+			text-align: left
 
 	// hover
 	& > a
@@ -81,6 +83,16 @@ $uo-icon-size: 18px
 				opacity: 1
 
 // lang
+
+.lang-select__opener
+	width: 85px
+	+padding-horizontal(round($uo-space/2))
+
+.user-options--lang
+	a
+		text-align: left
+		+padding-horizontal(round($uo-space--sm/2))
+
 .lang-select__drop
 	position: absolute
 	left: 0
@@ -105,25 +117,12 @@ $uo-icon-size: 18px
 		white-space: nowrap
 
 		+media('<desk-md')
-			padding: 10px round($uo-space--sm/2)
+			+padding-horizontal(round($uo-space--sm/2))
 
 	// hover
 	a
 		&:hover
 			background-color: $base-color
-
-.lang-select__opener
-	width: 85px
-	padding: 10px round($uo-space/2)
-
-	+media('<desk-md')
-		padding: 10px round($uo-space--sm/2)
-
-	.user-options &
-		padding: 0 5px 0 round($uo-space/2)
-
-		+media('<desk-md')
-			padding: 0 5px 0 round($uo-space--sm/2)
 
 .lang-select__opener, .lang-select__drop a
 	span

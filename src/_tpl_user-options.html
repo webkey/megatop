@@ -1,5 +1,5 @@
-<ul class="user-options">
-	<li class="user-options__item lang-select user-options--lang ms-drop__container-js">
+<div class="user-options">
+	<div class="user-options__item lang-select user-options--lang ms-drop__container-js @@if(!context.forDevices){hide--mob-md}">
 		<a href="#" class="lang-select__opener ms-drop__opener-js" title="Выбрать язык">
 			<span><i style="background-image: url(img/flag-russia.png);"></i>Ru</span>
 		</a>
@@ -8,23 +8,23 @@
 			<li><a href="#eng"><span><i style="background-image: url(img/flag-britain.png);"></i>En</span></a></li>
 			<li><a href="#bel"><span><i style="background-image: url(img/flag-belarus.png);"></i>By</span></a></li>
 		</ul>
-	</li>
-	<li class="user-options__item user-options--login">
+	</div>
+	<div class="user-options__item user-options--login">
 		<a href="#" title="Вход">
 			@@include("includes/svg/icon-login.svg")
 			<span>Вход</span>
 		</a>
-	</li>
-	<li class="user-options__item user-options--likes">
-		<div title="like">
+	</div>
+	<div class="user-options__item user-options--likes">
+		<div>
 			@@include("includes/svg/icon-like.svg")
 			<span>12</span>
 		</div>
-	</li>
-	<li class="user-options__item user-options--callback">
+	</div>
+	<div class="user-options__item user-options--callback">
 		<a href="#" title="Обратная связь">
 			@@include("includes/svg/icon-callback.svg")
 			<span class="hide-text">Обратная связь</span>
 		</a>
-	</li>
-</ul>
+	</div>
+</div>
