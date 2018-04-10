@@ -397,9 +397,14 @@ function slidersInit() {
 				nextButton: $thisBtnNext,
 				prevButton: $thisBtnPrev,
 				breakpoints: {
-					1199: {
-						slidesPerView: 3,
-						slidesPerGroup: 1
+					1399: {
+						slidesPerView: 4
+					},
+					1023: {
+						slidesPerView: 3
+					},
+					767: {
+						slidesPerView: 2
 					}
 				}
 			});
