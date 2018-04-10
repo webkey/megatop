@@ -404,6 +404,12 @@ html
 	+media('<desk-md')
 		width: 160px
 
+	+media('<mob-lg')
+		width: 120px
+
+	+media('<mob-sm')
+		width: 100px
+
 	&::before
 		content: ""
 		display: block
@@ -413,6 +419,9 @@ html
 		background-color: $header-bg
 		background-image: url(../../img/logo.png)
 		background-size: contain
+
+		+media('<mob-lg')
+			background-image: url(../../img/logo-mob.png)
 
 	a, & > span
 		position: absolute
@@ -432,6 +441,9 @@ html
 		padding-left: nth($search-form--size, 1)
 		position: relative
 
+		+media('<tab-lg')
+			padding-left: 0
+
 /* search-form
 .search-form
 	position: relative
@@ -449,7 +461,7 @@ html
 		+media('<desk-md')
 			margin: -#{round($header-height--sm/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
 
-		+media('<tab-sm')
+		+media('<tab-lg')
 			display: none
 
 	.shutter--nav &
@@ -461,7 +473,7 @@ html
 		width: 100%
 		z-index: 100
 
-		+media('<tab-sm')
+		+media('<tab-lg')
 			display: block
 
 	.search-form__field
@@ -1013,7 +1025,6 @@ html
 	overflow: hidden // необходим для скрытия скролла
 	position: fixed
 	height: calc(100% - #{$header-height})
-	width: $shutter-width
 	left: 0
 	top: $header-height
 	z-index: 25
@@ -1037,13 +1048,22 @@ html
 		transform: translateX(0)
 
 .shutter__content
-	width: calc(100% + 100px)
+	width: calc(100% + 100px) // скрываем скролл на десктопе
 	overflow-x: hidden
 	overflow-y: auto
 	height: 100%
 
-.shutter__content__holder
+	+media('<mob-lg')
+		width: 100% // возвращаем скролл на мобиле
+
+.shutter, .shutter__content__holder
+	// ширину устанавливаем на основной
+	// и вложенный контейнер,
+	// чтобы корректно обрезать скролл
 	width: $shutter-width
+
+	+media('<mob-lg')
+		width: 100%
 
 /* shutter layout end
 
@@ -1082,56 +1102,6 @@ html
 	z-index: 10
 
 /* shutter options end
-
-/* shutter footer
-.shutter__footer
-	border-top: 1px solid $border-color
-
-/* shutter footer end
-
-/* shutter panel
-.shutter__panel
-	display: none
-	position: absolute
-	left: 0
-	bottom: 0
-	width: 100%
-	background-color: white
-	z-index: 10
-	box-shadow: 0 0 40px 20px white
-
-	+media('<mob-md')
-		display: block
-
-	.user-options
-		display: table
-		table-layout: fixed
-		width: 100%
-		height: $header-height
-		margin: 0
-		border: solid $border-color
-		border-width: 1px 0 0
-
-		+media('<desk-md')
-			height: $header-height--sm
-
-	.user-options__item
-		display: table-cell
-		vertical-align: middle
-		text-align: center
-		border: solid $border-color
-		border-width: 0 1px
-		padding: 0
-
-		& > a
-			display: block
-			width: auto
-			height: $header-height
-
-			+media('<desk-md')
-				height: $header-height--sm
-
-/* shutter panel end
 
 /* button shutter close
 .btn-shutter-close
@@ -1210,12 +1180,17 @@ html
 	//left: 0
 	//height: calc(100% - #{$header-height})
 	//top: $header-height
-	width: $nav-width
+	//&, .shutter__content__holder
+		width: $nav-width
 	
 	+media('<desk-sm')
 		border-top: 1px solid #666
 		// отступ сверху для поля поиска
 		padding-top: $header-height--sm
+
+	+media('<mob-lg')
+		// для мобил на всю ширину экрана
+		width: 100%
 
 	.shutter__mask--start
 		// отступ сверху для поля поиска

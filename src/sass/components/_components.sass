@@ -131,6 +131,10 @@
 		property: background, opacity, visibility
 		duration: 0.2s
 
+	+media('<mob-lg')
+		width: 34px
+		background-color: red
+
 	.no-touchevents &:hover
 		opacity: 1
 		background: rgba(195, 195, 195, 0.2)
@@ -156,6 +160,11 @@
 		+size(30px)
 		transform: rotate(45deg)
 		border: 0 solid #999
+		margin: -15px -10px
+
+		+media('<mob-lg')
+			+size(13px)
+			margin: -6px -4px
 
 .slick-prev
 	left: 0
@@ -163,7 +172,6 @@
 	&::after
 		left: 50%
 		border-width: 0 0 3px 3px
-		margin: -15px -10px
 
 .slick-next
 	right: 0
@@ -171,7 +179,6 @@
 	&::after
 		right: 50%
 		border-width: 3px 3px 0 0
-		margin: -15px -10px
 
 // dots
 .slick-dots
@@ -193,12 +200,14 @@
 			padding: 5px 15px
 			margin: 0
 
+			+media('<mob-lg')
+				+padding-horizontal(12px)
+
 			&::before
 				content: none
 
 		button
-			width: 12px
-			height: 12px
+			+size(12px)
 			padding: 0
 			border-radius: 0
 			background: $base-color
@@ -207,6 +216,9 @@
 				property: background, border, box-shadow, transform
 				duration: 0.6s
 			visibility: visible
+
+			+media('<mob-lg')
+				+size(10px)
 
 			&::before
 				content: ''
@@ -464,6 +476,9 @@
 	.slick-dots
 		bottom: 20px
 
+		+media('<mob-lg')
+			bottom: 10px
+
 /* promo slider end
 
 /* partners slider
@@ -519,7 +534,6 @@
 			filter: grayscale(0)
 
 .partners-slider__list
-
 	// dots
 	.slick-dots
 		bottom: 20px
@@ -978,6 +992,9 @@
 		content: ""
 		display: block
 
+		+media('<mob-md')
+			display: none
+
 .main-banners__list__holder
 	position: absolute
 	left: 0
@@ -985,6 +1002,11 @@
 	height: 100%
 	width: 100%
 	+clear-spacing
+
+	+media('<mob-md')
+		position: relative
+		left: auto
+		top: auto
 
 .main-banners__item
 	display: inline-block
@@ -1015,6 +1037,12 @@
 			property: opacity
 			duration: $animation-speed
 
+		+media('<mob-md')
+			width: auto
+			height: auto
+			max-width: 100%
+			+object-fit(auto)
+
 	// hover
 	&:hover
 		img
@@ -1029,8 +1057,14 @@
 			&:nth-child(1)
 				width: round-float(nth($main-banners-ratio, 1), 2)
 
+				+media('<mob-md')
+					width: 100%
+
 			&:nth-child(2)
 				width: round-float(nth($main-banners-ratio, 2), 2)
+
+				+media('<mob-md')
+					width: 100%
 
 /* main-banners end
 
@@ -1085,6 +1119,9 @@
 		transition:
 			property: opacity
 			duration: $animation-speed
+
+		+media('<mob-md')
+			+object-fit(none)
 
 	// hover
 	&:hover

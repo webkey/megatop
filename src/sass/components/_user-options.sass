@@ -3,11 +3,13 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user options
-$uo-size: 60px $header-height
-$uo-size--sm: 60px $header-height--sm
+$uo-item-size: 60px $header-height
+$uo-item-size--sm: 60px $header-height--sm
 $uo-space: 30px
 $uo-space--sm: 20px
+$uo-space--mob: 6px
 $uo-icon-size: 18px
+$uo-icon-size--sm: 16px
 
 .user-options
 	position: relative
@@ -18,16 +20,22 @@ $uo-icon-size: 18px
 	+media('<desk-md')
 		padding-left: #{round($uo-space--sm/2)}
 
+	+media('<tab-lg')
+		padding-left: 0
+
 .user-options__item
 	position: relative
 	+display-inline-block-middle
 	+font-bold()
+	min-width: nth($uo-item-size, 1)
+
+	+media('<mob-lg')
+		min-width: 34px
 
 	& > a, & > div
 		position: relative
 		display: block
-		height: nth($uo-size, 2)
-		min-width: nth($uo-size, 1)
+		height: nth($uo-item-size, 2)
 		padding: 0 round($uo-space/2)
 		color: white
 		line-height: 1
@@ -36,7 +44,10 @@ $uo-icon-size: 18px
 
 		+media('<desk-md')
 			padding: 0 round($uo-space--sm/2)
-			height: nth($uo-size--sm, 2)
+			height: nth($uo-item-size--sm, 2)
+
+		+media('<mob-lg')
+			+padding-horizontal(round($uo-space--mob/2))
 
 		&::before
 			content: ""
@@ -44,11 +55,20 @@ $uo-icon-size: 18px
 			height: 100%
 
 		svg
-			+display-inline-block-middle
+			display: inline-block
+			vertical-align: middle
 			+size($uo-icon-size)
+
+			// уменьшить размер для мобил
+			+media('<mob-lg')
+				+size($uo-icon-size--sm)
 
 			& ~ span
 				padding-left: 12px
+
+				// скрыть текст для мобил
+				+media('<mob-lg')
+					display: none
 
 			& ~ span.hide-text
 				padding-left: 0
@@ -61,6 +81,9 @@ $uo-icon-size: 18px
 			+font(1.6rem, 1)
 			letter-spacing: normal
 			text-align: left
+
+	& > div
+		cursor: default
 
 	// hover
 	& > a
@@ -78,26 +101,33 @@ $uo-icon-size: 18px
 				property: opacity
 				duration: $animation-speed
 
-		&:hover
+		.no-touchevents &:hover
 			&::after
 				opacity: 1
 
+// user-options--likes
+//.user-options--likes
+
 // lang
-
-.lang-select__opener
-	width: 85px
-	+padding-horizontal(round($uo-space/2))
-
 .user-options--lang
 	a
 		text-align: left
 		+padding-horizontal(round($uo-space--sm/2))
+
+	.lang-select__opener
+		width: 85px
+
+		+media('<mob-lg')
+			width: 40px
+			text-align: center
+			+padding-horizontal(round($uo-space--mob/2))
 
 .lang-select__drop
 	position: absolute
 	left: 0
 	top: 100%
 	width: 100%
+	min-width: 100px
 	list-style: none
 	margin: 0
 	padding: 0
@@ -116,9 +146,6 @@ $uo-icon-size: 18px
 		text-decoration: none
 		white-space: nowrap
 
-		+media('<desk-md')
-			+padding-horizontal(round($uo-space--sm/2))
-
 	// hover
 	a
 		&:hover
@@ -135,5 +162,12 @@ $uo-icon-size: 18px
 			background-size: contain
 			background-repeat: no-repeat
 			background-position: center
+
+.lang-select__opener
+	span
+		& > i
+			// скрыть для мобил
+			+media('<mob-lg')
+				display: none
 
 /* user options
