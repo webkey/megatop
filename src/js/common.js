@@ -571,14 +571,78 @@ function multiAccordionInit() {
  * !Toggle nav
  * */
 function toggleNav() {
-	var $nav = $('.shutter--nav-js');
-	var $html = $('html');
-	$('.btn-nav-js').on('click', function (e) {
-		$(this).toggleClass('active');
-		$nav.toggleClass('active');
-		$html.toggleClass('shutter-after-open css-scroll-fixed').addClass('header-show').removeClass('header-hide');
+	var $overlay = $('.shutter-overlay-js'),
+		$html = $('html'),
+		activeClass = 'active';
+
+	var $nav = $('.shutter--nav-js'),
+		$login = $('.shutter--login-js'),
+		$reg = $('.shutter--reg-js');
+
+	var $btnNav = $('.btn-nav-js'),
+		$btnLogin = $('.btn-login-js'),
+		$btnReg = $('.btn-reg-js');
+
+	$btnNav.on('click', function (e) {
+		var $curOpener = $(this);
+		$curOpener.toggleClass(activeClass);
+		$btnLogin.removeClass(activeClass);
+		$btnReg.removeClass(activeClass);
+
+		$nav.toggleClass(activeClass);
+		$login.removeClass(activeClass);
+		$reg.removeClass(activeClass);
+
+		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
+		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
 		e.preventDefault();
 	});
+
+	$btnLogin.on('click', function (e) {
+		var $curOpener = $(this);
+		$curOpener.toggleClass(activeClass);
+		$btnNav.removeClass(activeClass);
+		$btnReg.removeClass(activeClass);
+
+		$login.toggleClass(activeClass);
+		$nav.removeClass(activeClass);
+		$reg.removeClass(activeClass);
+
+		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
+		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+		e.preventDefault();
+	});
+
+	$btnReg.on('click', function (e) {
+		var $curOpener = $(this);
+		$curOpener.toggleClass(activeClass);
+		$btnNav.removeClass(activeClass);
+		$btnLogin.removeClass(activeClass);
+
+		$reg.toggleClass(activeClass);
+		$nav.removeClass(activeClass);
+		$login.removeClass(activeClass);
+
+		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
+		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+		e.preventDefault();
+	});
+
+	// close
+	$('.js-btn-shutter-close, .shutter-overlay-js').on('click', function (e) {
+		$btnNav.removeClass(activeClass);
+		$btnLogin.removeClass(activeClass);
+		$btnReg.removeClass(activeClass);
+
+		$nav.removeClass(activeClass);
+		$login.removeClass(activeClass);
+		$reg.removeClass(activeClass);
+
+		$overlay.removeClass(activeClass);
+		$html.removeClass('shutter-after-open css-scroll-fixed');
+
+		e.preventDefault();
+	})
 }
 
 /**
@@ -642,6 +706,36 @@ $(function () {
 });
 
 /**
+ * !Form mask
+ * */
+function formMaskInit() {
+	// var cleaveCard = new Cleave('.input-mask-card-js', {
+	// 	creditCard: true,
+	// 	blocks: [4, 4, 4, 4]
+	// });
+	var cleaveTel = new Cleave('.input-mask-tel-js', {
+		numericOnly: true,
+		blocks: [3, 2, 3, 2, 2],
+		delimiters: [' ', ' ', '–', '–'],
+		prefix: '375'
+	});
+}
+
+/**
+ * !Testing form validation (for example). Do not use on release!
+ * */
+function formAccept() {
+	let $checkboxAccept = $('.form-accept-js');
+	if($checkboxAccept.length) {
+		$checkboxAccept.change(function () {
+			var accept = $(this).prop('checked');
+			$(this).closest('form').find('.form-accept-submit-js').prop('disabled', !accept);
+		});
+		$checkboxAccept.trigger('change');
+	}
+}
+
+/**
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
@@ -671,7 +765,7 @@ function formSuccessExample() {
 	function testValidateForm(form) {
 		var $thisFormWrap = form.parent();
 
-		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
+		var $inputs = $(':text, input[type="email"], input[type="tel"], input[type="password"], textarea, select', form);
 
 		var inputsLength = $inputs.length;
 		var inputsHasValueLength = $inputs.filter(function () {
@@ -719,6 +813,8 @@ $(document).ready(function () {
 	toggleNav();
 	equalHeight();
 	productLiked();
+	formMaskInit();
+	formAccept();
 	objectFitImages(); // object-fit-images initial
 
 	formSuccessExample();

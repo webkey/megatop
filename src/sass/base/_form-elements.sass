@@ -3,6 +3,12 @@
 @import ../../libs/include-media/dist/include-media
 
 /* form layout
+.form-divider
+	border-top: 1px solid $form-border-color
+	line-height: 0
+	font-size: 0
+	margin: 2.8rem 0
+
 .form-row, .input-wrap
 	position: relative // Важно! Для позицирования отметки подтверждения полей формы
 	margin-bottom: $form-bottom-space
@@ -12,10 +18,11 @@
 	margin-bottom: 0
 
 .input-holder
+	line-height: 1 // Для обнуления внутренних отступов, если содержит инлайновые элементы
 	position: relative // Важно! Для позицирования отметки подтверждения полей формы
 	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
 
-.label-holder, label
+.label-holder, label, .label
 	+font-alt-bold
 	+font(17px, round-float(21/17, 2))
 	color: $text-color
@@ -34,7 +41,7 @@ label, .label
 	position: relative
 	margin-left: -15px
 	left: 15px
-	color: $mark-color
+	color: $text-color
 
 	.form-note &
 		margin-left: 0
@@ -89,25 +96,91 @@ label, .label
 	+font(18px, round-float(32/18, 2))
 	margin-bottom: $bottom-space
 
+.form-note
+	+font(14px, 21px)
+	color: #666
+
+.form-notice
+	+font(14px, 22px)
+
+	.check-label ~ &,
+	.radio-label ~ &
+		padding-left: 30px
+		margin-top: 1rem
+
+	input ~ &
+		margin-top: 1rem
+
+	.check-label ~ & + &,
+	.radio-label ~ & + &,
+	input ~ & + &
+		margin-top: 0
+
+.captcha
+	//+display-inline-block-top
+	+clear-spacing
+	position: relative // Важно! Для позицирования отметки подтверждения полей формы
+	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
+
+	+clear
+
+	input
+		text-align: center
+
+	img
+		$margin-right: 20px
+		display: inline-block
+		vertical-align: middle
+		max-width: 50%
+		margin-right: $margin-right
+		+font(12px, round-float(16/12, 2))
+		letter-spacing: normal
+
+		& + input
+			display: inline-block
+			vertical-align: middle
+			width: calc(50% - 20px)
+
+	+media('<tab-lg')
+		img
+			display: block
+			max-width: none
+			margin-bottom: $bottom-space--sm
+
+			& + input
+				display: block
+				max-width: none
+				width: 100%
+
+.captcha-refresh
+	+font(14px, round-float(18/14, 2))
+	letter-spacing: normal
+	margin-bottom: 0.5em
+
+	a
+		color: $text-color
+		text-decoration: none
+
+		span
+			border-bottom: 1px dotted $text-color
+
+		&:hover
+			color: $link-color
+
+			span
+				border-color: $link-color
+
 /* form layout end
 
 /* form footer
 .form-footer
-	+clear
-
-	.form-buttons
-		float: left
-
 	.form-note
 		display: block
-		overflow: hidden
-		+font(14px, 22px)
-		min-height: 50px
 
 /* form footer end
 
 /* form common
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], textarea
 	display: block
 	padding: #{$form-input-space-vt} #{$form-input-space-h} #{$form-input-space-vb}
 	+size(100%, $form-input-height)
@@ -121,10 +194,19 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	@at-root .select2, .#{$user-content} select, .select, &
 		margin: 0 0 $form-bottom-space
 
-	@at-root .select2-container--default .select2-selection .select2-selection__rendered, .#{$user-content} select, .select, &
+	@at-root .select2-container--default .select2-selection .select2-selection__rendered, .#{$user-content} select, .shutter select, .select, &
 		+font-bold
 		//text-transform: uppercase
 		+font($form-font-size, $form-line-height)
+		color: $form-text-color
+
+.selects-birth
+	.#{$user-content} & select, .shutter & select
+		text-transform: uppercase
+		color: $form-placeholder-color
+
+	.#{$user-content} & select.input--has-value, .shutter & select.input--has-value
+		text-transform: none
 		color: $form-text-color
 
 textarea
@@ -133,7 +215,7 @@ textarea
 	height: 114px
 	resize: vertical
 
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea, select, .select, .select2
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], textarea, select, .select, .select2
 
 	.input-wrap &, &:last-child
 		margin-bottom: 0
@@ -141,8 +223,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 .error-note
 	float: left
 	position: relative
-	+size(100%, 22px)
-	+font(12px, 22px)
+	+size(100%, 18px)
+	+font(12px, 18px)
 	letter-spacing: normal // Важно!
 	+truncate(none)
 	color: $form-error-color
@@ -157,7 +239,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 	// нужно выбрать только ближайший элемент ошибки формы (нельзя использовать ~)
 	form .error + &,
-	form .error + .select2 + &
+	form .error + .select2 + &,
+	.input-holder.error &
 		display: block
 
 .success-note
@@ -238,20 +321,32 @@ input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radi
 	letter-spacing: normal
 	color: $text-color
 	text-transform: none
-	cursor: pointer
+	//cursor: pointer
 	position: relative
 	user-select: none
 	white-space: normal !important
 	text-overflow: clip !important
-	margin: 0
+	margin: 0 0 1rem
+
+	// обнуляем нижний отступ внутри конкретных элементов
+	li > &, .input-holder > &
+		margin: 0
 
 	// hover
-	.no-touchevents &:hover
+	//.no-touchevents &:hover
 		color: $base-color
 
 		//input[type="checkbox"]:not(:disabled) ~ i
 			&::before
 				border-color: $checkbox-color
+
+.form-labels-list
+	+clear-spacing
+
+	.check-label, .radio-label
+		display: inline-block
+		vertical-align: top
+		padding: 3px 30px 3px 0
 
 input[type="checkbox"],
 input[type="radio"]
@@ -529,6 +624,13 @@ input[type="radio"]
 	text-transform: none
 	color: $form-text-color
 
+.selects-group
+	display: flex
+	+margin-horizontal(-10px)
+
+	.select
+		+margin-horizontal(10px)
+
 .select
 	select, .select2
 		margin-bottom: 0
@@ -554,10 +656,15 @@ input[type="radio"]
 
 	&::before
 		transform: rotate(45deg)
+		content: none
 
 	&::after
-		transform: rotate(-45deg)
+		//transform: rotate(-45deg)
+		+triangle(bottom, #333, 4px)
+		background: none
+		transform: none
 		right: 17px
+		margin-top: -3px
 
 .select2-container--default
 	.select2-selection--single
@@ -706,16 +813,16 @@ input[type="radio"]
 =form-has-value()
 	//color: blueviolet
 	//border-color: blueviolet
-	color: $form-border-focus-color
-	border-color: $form-border-focus-color
+	color: $form-text-color
+	border-color: $form-border-color
 
 =form-on-focus()
 	//color: blue
 	//border-color: blue
-	color: $form-border-focus-color
-	border-color: $form-border-focus-color
+	color: $form-text-color
+	border-color: $form-border-color
 
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea, .#{$user-content} select, .select
+input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], textarea, .#{$user-content} select, .shutter select, .select
 
 	//form hover
 	&:hover

@@ -1,6 +1,8 @@
 <!-- >>> foot.tpl <<< -->
 <!--shutters and popups-->
+<!--shutter nav-->
 <div class="shutter shutter--nav shutter-js shutter--nav-js">
+
 	<!--copy element for small devices-->
 	<div class="search-form">
 		<form action="#" method="post">
@@ -37,9 +39,304 @@
 			<!--navigation end-->
 		</div>
 	</div>
+
 	<div class="shutter__mask shutter__mask--start">&nbsp;</div>
 	<div class="shutter__mask shutter__mask--end">&nbsp;</div>
+
 </div>
+<!--shutter nav end-->
+
+<!--shutter login-->
+<div class="shutter shutter--login shutter-js shutter--login-js">
+
+	<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
+
+	<div class="shutter__content">
+		<div class="shutter__content__holder">
+
+			<div class="user-form login-form">
+				<div class="layout-text">
+					<div class="form-caption">
+						<div class="form-title">Мой личный кабинет</div>
+					</div>
+					<form action="#" method="post">
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="login-form__card-number-field">Номер карты<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input class="input-mask-card-js" type="tel" placeholder="ВВЕДИТЕ ВАШ НОМЕР КАРТЫ" id="login-form__card-number-field">
+								<div class="form-notice">Формат номера карты - XXXXXX ( 6 или 7 цифр )</div>
+								<div class="form-notice">Пример: 999999(9)</div>
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="login-form__tel-field">Мобильный телефон<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input class="input-mask-tel-js" type="text" id="login-form__tel-field">
+								<div class="form-notice">Формат телефона 375ZZYYYYYYY, где ZZ - код оператора, YYYYYYY - номер телефона</div>
+								<div class="form-notice">Пример: 375290000000</div>
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="form-divider">&nbsp;</div>
+
+						<div class="input-wrap">
+							<div class="input-holder">
+								<label class="check-label">
+									<input type="checkbox" name="login-form__remember" />
+									<i>&nbsp;</i>
+									<span>Запомнить меня</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="form-footer">
+							<div class="form-buttons">
+								<button class="btn-default-alt btn-submit">Войти</button>
+							</div>
+							<div class="form-note">
+								<div class="form-note__item"><a href="#">Забыли пароль?</a></div>
+							</div>
+						</div>
+
+						<div class="form-heading">Впервые здесь?!</div>
+						<p>Тогда скорее регистрируйтесь</p>
+
+						<div class="form-footer">
+							<div class="form-buttons">
+								<a href="#" class="btn-default-alt btn-reg-js">Создать кабинет</a>
+							</div>
+							<div class="form-note">
+								<div class="form-note__item">Поля, помеченные <span class="form-mark">*</span> обязательные для заполнения</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="shutter__mask shutter__mask--start">&nbsp;</div>
+	<div class="shutter__mask shutter__mask--end">&nbsp;</div>
+
+</div>
+<!--shutter login end-->
+
+<!--shutter reg-->
+<div class="shutter shutter--login shutter-js shutter--reg-js">
+
+	<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
+
+	<div class="shutter__content">
+		<div class="shutter__content__holder">
+
+			<div class="user-form reg-form">
+				<div class="layout-text">
+					<div class="form-caption">
+						<div class="form-title">Мы рады вас видеть!</div>
+						<div class="form-subtitle">Чтобы стать участником «Клюба друзей», просто заполните все поля</div>
+					</div>
+					<form action="#" method="post">
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__card-number-field">Номер карты<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input class="input-mask-card-js" type="tel" placeholder="ВВЕДИТЕ ВАШ НОМЕР КАРТЫ" id="reg-form__card-number-field">
+								<div class="form-notice">Формат номера карты - XXXXXX ( 6 или 7 цифр )</div>
+								<div class="form-notice">Пример: 999999(9)</div>
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__fname-field">Имя<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input type="text" id="reg-form__fname-field">
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__sname-field">Фамилия<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input type="text" id="reg-form__sname-field">
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__city-field">Город</label>
+							</div>
+							<div class="input-holder">
+								<input type="text" id="reg-form__city-field">
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<span class="label">Пол</span>
+							</div>
+							<div class="input-holder error">
+								<div class="form-labels-list">
+									<label class="radio-label">
+										<input type="radio" name="reg-form__gender" checked />
+										<i>&nbsp;</i>
+										<span>Мужской</span>
+									</label>
+									<label class="radio-label">
+										<input type="radio" name="reg-form__gender" />
+										<i>&nbsp;</i>
+										<span>Женский</span>
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__tel-field">Мобильный телефон<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input class="input-mask-tel-js" type="text" id="reg-form__tel-field">
+								<div class="form-notice">Формат телефона 375ZZYYYYYYY, где ZZ - код оператора, YYYYYYY - номер телефона</div>
+								<div class="form-notice">Пример: 375290000000</div>
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__email-field">Адрес эл. почты<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<input type="email" id="reg-form__email-field">
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__birth-field">Дата рождения<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<div class="selects-group selects-birth">
+									<div class="select">
+										<select class="field-effects-js" name="reg-form__birth__day" id="reg-form__birth-field">
+											<option value="">День</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+										</select>
+									</div>
+									<div class="select">
+										<select class="field-effects-js" name="reg-form__birth__month">
+											<option value="">Месяц</option>
+											<option value="1">Январь</option>
+											<option value="2">Февраль</option>
+											<option value="3">Март</option>
+											<option value="4">Апрель</option>
+											<option value="5">Май</option>
+											<option value="6">Июнь</option>
+											<option value="7">Июль</option>
+											<option value="8">Август</option>
+										</select>
+									</div>
+									<div class="select">
+										<select class="field-effects-js" name="reg-form__birth__year">
+											<option value="">Год</option>
+											<option value="1">1995</option>
+											<option value="2">1996</option>
+											<option value="3">1997</option>
+											<option value="4">1998</option>
+											<option value="5">1999</option>
+											<option value="6">2000</option>
+											<option value="7">2001</option>
+											<option value="8">2002</option>
+										</select>
+									</div>
+								</div>
+								@@include('_tpl_forms_form-validation.html')
+							</div>
+						</div>
+
+						<div class="form-divider">&nbsp;</div>
+
+						<div class="input-wrap">
+							<div class="input-holder">
+								<label class="check-label">
+									<input type="checkbox" name="reg-form__agreement" />
+									<i>&nbsp;</i>
+									<span>Согласен на получение информации об акциях</span>
+								</label>
+								<div class="form-notice">Для того чтобы быть участником данной программы и получить скидку в 3% Вы должны дать согласие на получение информации об акциях и прочих предложений сети магазинов «Мегатоп».</div>
+							</div>
+						</div>
+
+						<div class="input-wrap">
+							<div class="label-holder">
+								<label for="reg-form__captcha-field">Защита от спама:<span class="form-mark">*</span></label>
+							</div>
+							<div class="input-holder">
+								<div class="captcha">
+									<div class="captcha-refresh"><a href="#"><span>Другое изображение</span></a></div>
+									<img src="img/captcha.jpg" alt="captcha" />
+									<input type="text" id="reg-form__captcha-field">
+									@@include('_tpl_forms_form-validation.html', {"errorNote": "Введите текст на картинке для защиты от спама"})
+								</div>
+							</div>
+						</div>
+
+						<div class="form-divider">&nbsp;</div>
+
+						<div class="input-wrap">
+							<div class="input-holder">
+								<label class="check-label">
+									<input type="checkbox" name="reg-form__rules" class="form-accept-js" />
+									<i>&nbsp;</i>
+									<span>Ознакомлен с <a href="#">правилами участия</a>*</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="form-footer">
+							<div class="form-buttons">
+								<button class="btn-default btn-submit form-accept-submit-js" disabled>Активировать карту</button>
+							</div>
+							<div class="form-note">
+								<div class="form-note__item">Поля, помеченные <span class="form-mark">*</span> обязательные для заполнения</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="shutter__mask shutter__mask--start">&nbsp;</div>
+	<div class="shutter__mask shutter__mask--end">&nbsp;</div>
+
+</div>
+<!--shutter reg end-->
+
+<!--shutter overlay-->
+<div class="shutter-overlay shutter-overlay-js">&nbsp;</div>
 <!--shutters and popups end-->
 
 <script src="js/jquery.min.js"></script>

@@ -3,23 +3,12 @@
 @import ../../libs/include-media/dist/include-media
 
 /* user form
-.form-title
-	display: block
-	+font-alt-bold
-	+font($font-size-h2, $line-height-h2)
-	color: $title-color
-	text-align: center
-	margin-bottom: $bottom-space--md
-
 .user-form
-	background: $bg-color-alt
+	//background: $bg-color-alt
 	+padding-vertical($text-layout-space)
-	margin-bottom: $bottom-space
-	border: solid $border-color
-	border-width: 1px 0
-
-	&:last-child
-		margin-bottom: 0
+	margin: 0 auto $bottom-space
+	//border: solid $border-color
+	//border-width: 1px 0
 
 	+media('<tab-lg')
 		+padding-vertical($text-layout-space--sm)
@@ -27,10 +16,24 @@
 	+media('<mob-lg')
 		+padding-vertical($text-layout-space--mob)
 
+	// только в попапе
+	.shutter &
+		+padding-vertical(0)
+		max-width: 464+$text-layout-space*2
+
+		+media('<tab-lg')
+			max-width: 464+$text-layout-space--sm*2
+
+		+media('<mob-lg')
+			max-width: 464+$text-layout-space--mob*2
+
+	&:last-child
+		margin-bottom: 0
+
 	form
 		display: block
 
-	.input-wrap
+	//.input-wrap
 		margin-bottom: 50px
 
 	textarea
@@ -38,65 +41,26 @@
 		max-height: 130px
 		resize: none
 
-	.captcha
-		+display-inline-block-top
-		+clear-spacing
-		position: relative // Важно! Для позицирования отметки подтверждения полей формы
-		z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
-
-		+clear
-
-		img
-			$margin-right: 20px
-			display: inline-block
-			vertical-align: middle
-			max-width: calc(50%)
-			margin-right: $margin-right
-
-			& + input
-				display: inline-block
-				vertical-align: middle
-				width: 200px
-
-		+media('<tab-lg')
-			img
-				display: block
-				max-width: none
-				margin-bottom: $bottom-space--sm
-
-				& + input
-					display: block
-					max-width: none
-					width: 100%
-
 	.form-footer
-		+clear
+		text-align: right
+		margin-top: 4rem
 
 		+media('<mob-lg')
-			padding-top: $bottom-space--sm
+			margin-top: 2rem
+			text-align: left
 
 	.form-buttons
-		float: left
-		margin-right: 30px
+		margin-bottom: 2rem
 
 		+media('<mob-lg')
-			float: none
 			margin: 0
 
 		.btn-submit
-			width: 200px
+			min-width: 176px
 
 	.form-note
 		overflow: hidden
-		min-height: 50px
 		+clear-spacing
-		line-height: 25px
-
-		&::before
-			content: ''
-			display: inline-block
-			vertical-align: middle
-			min-height: inherit
 
 	.form-note__item
 		display: inline-block
@@ -104,6 +68,37 @@
 		width: calc(100% - 6px)
 		+font($font-size--sm, $line-height--sm)
 		letter-spacing: normal
+
+.form-caption
+	margin-bottom: 4rem
+
+	+media('<tab-lg')
+		margin-bottom: 2rem
+
+	.form-title
+		+font-alt-medium
+		+font($font-size-h2, $line-height-h2)
+		text-transform: uppercase
+		text-align: center
+		margin-bottom: 0.5em
+
+		&:last-child
+			margin-bottom: 0
+
+	.form-subtitle
+		display: block
+		+font-light
+		+font(1.7rem, round-float(26/17, 2))
+		text-align: center
+		margin-bottom: 0.5em
+
+		&:last-child
+			margin-bottom: 0
+
+.form-heading
+	+font-alt-bold
+	+font(2.1rem, round-float(27/21, 2))
+	margin-bottom: 0.5em
 
 /* user form end
 
@@ -475,6 +470,11 @@
 	img
 		display: block
 		margin: 0 auto
+		max-width: none
+		width: 100%
+
+		&[data-lazy]
+			width: auto
 
 .promo-slider__list
 
@@ -1028,7 +1028,7 @@
 
 /* main-banners
 .main-banners
-	max-width: 1600px
+	//max-width: 1600px
 	margin: 0 auto
 
 .main-banners__list
@@ -1120,7 +1120,7 @@
 /* new
 .new
 	position: relative
-	max-width: 1600px
+	//max-width: 1600px
 	margin: 0 auto
 
 .new__list

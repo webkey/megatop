@@ -70,7 +70,7 @@ html
 		max-width: #{$text-layout-width + $text-layout-space--sm*2}
 		+padding-horizontal($text-layout-space--sm)
 
-	+media('<tab-sm')
+	+media('<mob-lg')
 		max-width: #{$text-layout-width + $text-layout-space--mob*2}
 		+padding-horizontal($text-layout-space--mob)
 
@@ -81,7 +81,7 @@ html
 	+media('<tab-lg')
 		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
 
-	+media('<tab-sm')
+	+media('<mob-lg')
 		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
 
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
@@ -95,7 +95,7 @@ html
 		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
 		+padding-horizontal($text-layout-space--sm)
 
-	+media('<tab-sm')
+	+media('<mob-lg')
 		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
 		+padding-horizontal($text-layout-space--mob)
 
@@ -109,7 +109,7 @@ html
 	+media('<tab-lg')
 		+padding-horizontal($text-layout-space--sm)
 
-	+media('<tab-sm')
+	+media('<mob-lg')
 		+padding-horizontal($text-layout-space--mob)
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
@@ -1226,14 +1226,16 @@ html
 	$btn-shutter-close--lines-color: white
 
 	display: block
+	position: absolute
+	right: 0
+	top: 0
 	+size($btn-shutter-close--size)
-	background: $btn-shutter-close--bg
 	color: white
 	text-decoration: none
 	+clear-spacing
 	white-space: nowrap
-	transition-property: background-color, opacity, visibility
-	transition-duration: $animation-speed
+	background: $btn-shutter-close--bg
+	z-index: 30
 
 	&::before
 		content: ''
@@ -1241,13 +1243,6 @@ html
 		height: $btn-shutter-close--size
 		min-height: 100%
 		vertical-align: middle
-
-	.shutter__options &
-		position: absolute
-		left: 0
-		top: 0
-		border: solid $border-color
-		border-width: 0 1px 0 0
 
 	> span
 		+hide-text
@@ -1268,8 +1263,6 @@ html
 			+size($btn-shutter-close--lines-width, $btn-shutter-close--lines-height)
 			border-radius: $btn-shutter-close--lines-radius
 			background: $btn-shutter-close--lines-color
-			transition-property: background-color
-			transition-duration: $animation-speed
 
 		//first line menu
 		&::before
@@ -1281,7 +1274,37 @@ html
 			top: 0
 			transform: rotate(45deg)
 
+	// hover
+	.no-touchevents &:hover
+		background-color: $btn-bg-hover-color
+
 /* button shutter close end
+
+/* shutter overlay
+.shutter-overlay
+	position: fixed
+	left: 0
+	bottom: 0
+	width: 100%
+	height: 100%
+	max-height: calc(100% - #{$header-height})
+	background-color: black
+	visibility: hidden
+	opacity: 0
+	z-index: 9999
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
+		timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+	+media('<desk-md')
+		max-height: calc(100% - #{$header-height--sm})
+
+	&.active
+		visibility: visible
+		opacity: 0.35
+
+/* shutter overlay end
 
 /* shutter--nav
 .shutter--nav
@@ -1313,4 +1336,38 @@ html
 			display: block
 
 /* shutter--nav end
+
+/* shutter--login
+.shutter--login
+	background-color: #f6f6f6
+	//transform: translate(0, 0)
+	//transform: translateX(0)
+
+	.shutter__content
+		width: 100%
+
+	&, .shutter__content__holder
+		width: 100%
+
+	.shutter__content__holder
+		+padding-vertical(6rem)
+
+		+media('<tab-lg')
+			+padding-vertical(4rem)
+
+		+media('<mob-lg')
+			+padding-vertical(2rem)
+
+	.shutter__mask
+		$shutter-mask-color: #f6f6f6
+		// ===================
+		&.shutter__mask--start
+			top: 0
+			+linear-gradient(to bottom, #{$shutter-mask-color} 0%, #{$shutter-mask-color} 25%, rgba($shutter-mask-color, 0) 100%)
+
+		&.shutter__mask--end
+			bottom: 0
+			+linear-gradient(to top, #{$shutter-mask-color} 0%, #{$shutter-mask-color} 25%, rgba($shutter-mask-color, 0) 100%)
+
+/* shutter--login end
 /* === SHUTTERS end ===
