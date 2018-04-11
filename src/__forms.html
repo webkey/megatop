@@ -3,83 +3,92 @@
 	"pageClass": ""
 })
 
-<div class="wrapper">
-	<!--HEADER-->
-	@@include('_tpl_layout_header.html', {
-		"currentItem": ""
-	})
-	<!--HEADER end-->
-	<!--MAIN-->
-	<div class="main">
-		<div class="max-wrap layout">
-			<div class="main__holder">
-				<!--CONTENT-->
-				<div class="content-wrap">
-					<div class="content user-content">
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
 
-						<div class="layout-article">
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {
+	"currentItem": "Тестирование элементов форм",
+	"logoNoLink": ""
+})
+<!--HEADER end-->
 
-							<h1>Тестирование элементов форм</h1>
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<div class="main__holder">
+			<!--CONTENT-->
+			<div class="content-wrap">
+				<div class="content user-content">
 
-							<!--===============form clear===============-->
-							@@include('_tpl_title-anchor.html', {
-								"taId": "formElementClearExample",
-								"taText": "Поля форм без оберток. Элементы идут один за другим. (рекомендуем)"
-							})
-							@@include('_tpl_forms_form-clear.html')
-							<!--===============form clear end===============-->
+					<div class="layout-article">
 
-							<div class="user-spacer"></div>
+						<h1>Тестирование элементов форм</h1>
 
-							<!--===============form default===============-->
-							@@include('_tpl_title-anchor.html', {
-								"taId": "formElementExample",
-								"taText": "Поля форм c обертками. (если необходимо)"
-							})
-							@@include('_tpl_forms_form-default.html')
-							<!--===============form default end===============-->
+						<!--===============form clear===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formElementClearExample",
+							"taText": "Поля форм без оберток. Элементы идут один за другим. (рекомендуем)"
+						})
+						@@include('_tpl_forms_form-clear.html')
+						<!--===============form clear end===============-->
 
-							<div class="user-spacer"></div>
+						<div class="user-spacer"></div>
 
-							<!--===============checkbox and radio===============-->
-							@@include('_tpl_title-anchor.html', {
-								"taId": "formCheckboxExample",
-								"taText": "Чекбоксы и Радиобаттоны"
-							})
-							<div class="layout-text">
-								@@include('_tpl_forms_checkbox-and-radio.html')
-							</div>
-							<!--===============checkbox and radio end===============-->
+						<!--===============form default===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formElementExample",
+							"taText": "Поля форм c обертками. (если необходимо)"
+						})
+						@@include('_tpl_forms_form-default.html')
+						<!--===============form default end===============-->
 
-							<div class="user-spacer"></div>
+						<div class="user-spacer"></div>
 
-							<!--===============user form===============-->
-							@@include('_tpl_title-anchor.html', {
-								"taId": "userFormExample",
-								"taText": "Форма обратной связи"
-							})
-							@@include('_tpl_forms_user-form.html', {
-								"title": "Задать вопрос"
-							})
-							<!--===============user form end===============-->
+						<!--===============checkbox and radio===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "formCheckboxExample",
+							"taText": "Чекбоксы и Радиобаттоны"
+						})
+						<div class="layout-text">
+							@@include('_tpl_forms_checkbox-and-radio.html')
 						</div>
+						<!--===============checkbox and radio end===============-->
 
-						@@include('_tpl_typography_nav.html')
+						<div class="user-spacer"></div>
+
+						<!--===============user form===============-->
+						@@include('_tpl_title-anchor.html', {
+							"taId": "userFormExample",
+							"taText": "Форма обратной связи"
+						})
+						@@include('_tpl_forms_user-form.html', {
+							"title": "Задать вопрос"
+						})
+						<!--===============user form end===============-->
 					</div>
+
+					@@include('_tpl_typography_nav.html')
 				</div>
-				<!--CONTENT end-->
-
-				<!--SIDEBAR-->
-				@@include('_tpl_layout_sidebar.html')
-				<!--SIDEBAR-->
-
-				<!--ASIDE-->
-				@@include('_tpl_layout_aside.html')
-				<!--ASIDE end-->
 			</div>
+			<!--CONTENT end-->
+
+			<!--SIDEBAR-->
+			@@include('_tpl_layout_sidebar.html')
+			<!--SIDEBAR-->
+
+			<!--ASIDE-->
+			@@include('_tpl_layout_aside.html')
+			<!--ASIDE end-->
 		</div>
 	</div>
-	<!--MAIN end-->
 </div>
+<!--MAIN end-->
+</div>
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
 @@include('_tpl_layout_foot.html')

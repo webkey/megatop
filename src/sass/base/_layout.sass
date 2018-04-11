@@ -123,6 +123,7 @@ html
 
 // лэяут страницы
 .wrapper
+	display: block
 	display: flex
 	flex-direction: column
 	justify-content: space-between
@@ -130,6 +131,13 @@ html
 	position: relative
 	margin: 0 auto
 	min-height: 100vh
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+	///* Костыль */
+	///* IE10 IE11 не тянет .wrapper с display: flax */
+	/* IE10 IE11 */
+	.wrapper
+		display: block
 
 /* === LAYOUT end ===
 

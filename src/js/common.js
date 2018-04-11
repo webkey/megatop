@@ -85,12 +85,12 @@ function inputToggleFocusClass() {
 
 function inputHasValueClass() {
 	// use for the "has-value" state
-	var $inputs = $('.field-effects-js');
+	var $inputs = $('.field-effects-js'),
+		$fieldWrap = $('.input-wrap'),
+		$selectWrap = $('.select'),
+		classHasValue = 'input--has-value';
 
 	if ($inputs.length) {
-		var $fieldWrap = $('.input-wrap');
-		var $selectWrap = $('.select');
-		var classHasValue = 'input--has-value';
 
 		$.each($inputs, function () {
 			switchHasValue.call(this);
@@ -100,32 +100,33 @@ function inputHasValueClass() {
 			switchHasValue.call(this);
 		});
 
-		function switchHasValue() {
-			var $currentField = $(this);
-			var $currentFieldWrap = $currentField.closest($fieldWrap);
+	}
 
-			//first element of the select must have a value empty ("")
-			if ($currentField.val().length === 0) {
-				// remove class on input
-				$currentField.removeClass(classHasValue);
-				// remove class on label
-				$currentField.prev('label').removeClass(classHasValue);
-				$currentField.closest($selectWrap).prev('label').removeClass(classHasValue);
-				// remove class on wrapper
-				$currentFieldWrap.removeClass(classHasValue);
-				// remove class on label in wrapper
-				$currentFieldWrap.find('label').removeClass(classHasValue);
-			} else if (!$currentField.hasClass(classHasValue)) {
-				// add class on input
-				$currentField.addClass(classHasValue);
-				// add class on label
-				$currentField.prev('label').addClass(classHasValue);
-				$currentField.closest($selectWrap).prev('label').addClass(classHasValue);
-				// add class on wrapper
-				$currentFieldWrap.addClass(classHasValue);
-				// add class on label in wrapper
-				$currentFieldWrap.find('label').addClass(classHasValue);
-			}
+	function switchHasValue() {
+		var $currentField = $(this);
+		var $currentFieldWrap = $currentField.closest($fieldWrap);
+
+		//first element of the select must have a value empty ("")
+		if ($currentField.val().length === 0) {
+			// remove class on input
+			$currentField.removeClass(classHasValue);
+			// remove class on label
+			$currentField.prev('label').removeClass(classHasValue);
+			$currentField.closest($selectWrap).prev('label').removeClass(classHasValue);
+			// remove class on wrapper
+			$currentFieldWrap.removeClass(classHasValue);
+			// remove class on label in wrapper
+			$currentFieldWrap.find('label').removeClass(classHasValue);
+		} else if (!$currentField.hasClass(classHasValue)) {
+			// add class on input
+			$currentField.addClass(classHasValue);
+			// add class on label
+			$currentField.prev('label').addClass(classHasValue);
+			$currentField.closest($selectWrap).prev('label').addClass(classHasValue);
+			// add class on wrapper
+			$currentFieldWrap.addClass(classHasValue);
+			// add class on label in wrapper
+			$currentFieldWrap.find('label').addClass(classHasValue);
 		}
 	}
 }
@@ -323,7 +324,7 @@ function slidersInit() {
 	}
 
 	//similar slider
-	let $similarSlider = $('.similar-slider-js');
+	var $similarSlider = $('.similar-slider-js');
 
 	if($similarSlider.length){
 		$similarSlider.each(function () {
@@ -377,12 +378,12 @@ function slidersInit() {
 	}
 
 	//events slider
-	let $eventsSlider = $('.events-slider-js');
+	var $eventsSlider = $('.events-slider-js');
 	if ($eventsSlider.length) {
 		$eventsSlider.each(function () {
-			let $thisSlider = $(this);
-			let $thisBtnNext = $('.swiper-button-next', $thisSlider);
-			let $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+			var $thisSlider = $(this);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
 
 			new Swiper($thisSlider, {
 				slidesPerView: 5,
@@ -570,8 +571,8 @@ function multiAccordionInit() {
  * !Toggle nav
  * */
 function toggleNav() {
-	let $nav = $('.shutter--nav-js');
-	let $html = $('html');
+	var $nav = $('.shutter--nav-js');
+	var $html = $('html');
 	$('.btn-nav-js').on('click', function (e) {
 		$(this).toggleClass('active');
 		$nav.toggleClass('active');
@@ -599,7 +600,7 @@ function equalHeight() {
  * */
 function productLiked() {
 	$('.products-likes-js').on('click', function (e) {
-		let $curLikeBtn = $(this),
+		var $curLikeBtn = $(this),
 		classActive = 'active';
 
 		$curLikeBtn.toggleClass(classActive);
@@ -618,14 +619,14 @@ function productLiked() {
  * !scroll to top
  * */
 $(function () {
-	let $btnToTop = $('.btn-to-top-js');
+	var $btnToTop = $('.btn-to-top-js');
 
 	if ($btnToTop.length) {
-		let $page = $('html, body'),
+		var $page = $('html, body'),
 			minScrollTop = 300;
 
 		$(window).on('load scroll resizeByWidth', function () {
-			let currentScrollTop = $(window).scrollTop();
+			var currentScrollTop = $(window).scrollTop();
 
 			$btnToTop.toggleClass('btn-to-top--show', (currentScrollTop >= minScrollTop));
 		});

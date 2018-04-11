@@ -16,9 +16,9 @@
 	z-index: 1 // Важно! Отметка подтверждения полей формы имеет z-index: -1
 
 .label-holder, label
-	+font-regular
-	+font($font-size, $line-height)
-	color: $text-color-light
+	+font-alt-bold
+	+font(17px, round-float(21/17, 2))
+	color: $text-color
 	margin-bottom: 7px
 
 label, .label
@@ -109,7 +109,6 @@ label, .label
 /* form common
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
 	display: block
-	//+display-inline-block-top
 	padding: #{$form-input-space-vt} #{$form-input-space-h} #{$form-input-space-vb}
 	+size(100%, $form-input-height)
 	@if $form-letter-spacing
@@ -123,7 +122,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		margin: 0 0 $form-bottom-space
 
 	@at-root .select2-container--default .select2-selection .select2-selection__rendered, .#{$user-content} select, .select, &
-		+font-alt
+		+font-bold
+		//text-transform: uppercase
 		+font($form-font-size, $form-line-height)
 		color: $form-text-color
 
@@ -234,8 +234,8 @@ input, textarea
 input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radio-label
 	+display-inline-block-top
 	+font-regular
-	+font(16px, 22px)
-	letter-spacing: 0.025em
+	+font(17px, 22px)
+	letter-spacing: normal
 	color: $text-color
 	text-transform: none
 	cursor: pointer
@@ -243,12 +243,13 @@ input[type="checkbox"] ~ label, input[type="radio"] ~ label, .check-label, .radi
 	user-select: none
 	white-space: normal !important
 	text-overflow: clip !important
+	margin: 0
 
 	// hover
 	.no-touchevents &:hover
-		color: $checkbox-color
+		color: $base-color
 
-		input[type="checkbox"]:not(:disabled) ~ i
+		//input[type="checkbox"]:not(:disabled) ~ i
 			&::before
 				border-color: $checkbox-color
 
@@ -265,7 +266,7 @@ input[type="radio"]
 		display: inline-block
 		vertical-align: top
 		position: relative
-		padding: 0 0 0 34px
+		padding: 0 0 0 30px
 		z-index: 2
 
 	& ~ i
@@ -278,13 +279,13 @@ input[type="radio"]
 
 	input[type="checkbox"]:not(:disabled) ~ i
 		&::before
-			border-color: $checkbox-color
+			//border-color: $checkbox-color
 
 .no-touchevents .radio-label:hover
 
 	input[type="radio"]:not(:disabled) ~ span
 		&::before
-			border-color: $checkbox-color
+			//border-color: $checkbox-color
 
 //checkbox
 input[type="checkbox"]
@@ -294,15 +295,15 @@ input[type="checkbox"]
 		&::before,
 		&::after
 			content: ''
-			+size(22px)
+			+size(16px)
 			position: absolute
 			left: 0
 			top: 50%
-			margin-top: -11px
+			margin-top: -8px
 			border-radius: 0
 
 		&::before
-			border: 2px solid $checkbox-color
+			border: 1px solid $checkbox-color
 			background-color: transparent
 
 		&::after
@@ -314,7 +315,7 @@ input[type="checkbox"]
 		&::after
 			content: ''
 			position: absolute
-			+size(0, 4px)
+			+size(0, 2px)
 			left: 0
 			top: 50%
 			border-radius: 0
@@ -328,7 +329,7 @@ input[type="checkbox"]
 		&::after
 			transform: rotate(-50deg)
 			transform-origin: 0 10px
-			left: 22px
+			//left: 21px
 
 	// checkbox checked
 	&:checked
@@ -341,13 +342,13 @@ input[type="checkbox"]
 		& ~ label > span,
 		& ~ span
 			&::before
-				width: 7px
-				margin: -5px 0 0 0
+				width: 6px
+				margin: -5px 0 0 -2px
 				backface-visibility: hidden
 
 			&::after
-				width: 11px
-				margin: 0 0 0 -7px
+				width: 9px
+				margin: -1px 0 0 14px
 				backface-visibility: hidden
 
 	// checkbox disabled
@@ -376,15 +377,15 @@ input[type="radio"]
 	& ~ span
 		&::before, &::after
 			content: ''
-			+size(22px)
+			+size(16px)
 			position: absolute
 			left: 0
 			top: 50%
-			margin-top: -11px
+			margin-top: -8px
 			border-radius: 50px
 
 		&::before
-			border: 2px solid $checkbox-color
+			border: 1px solid $checkbox-color
 
 		&::after
 			background: none
@@ -393,17 +394,17 @@ input[type="radio"]
 	& ~ i
 		&::after
 			content: ''
-			+size(12px)
+			+size(10px)
 			position: absolute
 			top: 50%
-			left: 5px
-			margin-top: -6px
+			left: 3px
+			margin-top: -5px
 			border-radius: 50%
 			overflow: hidden
 			background: $checkbox-color
-			animation: bounceout 0s
-			animation-iteration-count: 1
-			animation-fill-mode: forwards
+			//animation: bounceout 0s
+			//animation-iteration-count: 1
+			//animation-fill-mode: forwards
 			opacity: 0
 
 	& ~ i
@@ -419,12 +420,12 @@ input[type="radio"]
 		& ~ label > span,
 		& ~ i
 			&::after
-				animation: bounce 0.3s
-				animation-iteration-count: 1
+				//animation: bounce 0.3s
+				//animation-iteration-count: 1
 				opacity: 1
 				background-color: $checkbox-color
 
-	@keyframes bounce
+	//@keyframes bounce
 		0%
 			transform: scale(0.8)
 			opacity: 0.4
@@ -437,7 +438,7 @@ input[type="radio"]
 			transform: scale(1)
 			opacity: 1
 
-	@keyframes bounceout
+	//@keyframes bounceout
 		0%
 			transform: scale(0)
 			opacity: 1
@@ -703,12 +704,16 @@ input[type="radio"]
 	border-color: $form-error-color
 
 =form-has-value()
-	color: blueviolet
-	border-color: blueviolet
+	//color: blueviolet
+	//border-color: blueviolet
+	color: $form-border-focus-color
+	border-color: $form-border-focus-color
 
 =form-on-focus()
-	color: blue
-	border-color: blue
+	//color: blue
+	//border-color: blue
+	color: $form-border-focus-color
+	border-color: $form-border-focus-color
 
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea, .#{$user-content} select, .select
 
@@ -722,7 +727,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		cursor: text
 
 	// has value (js)
-	@at-root label, &
+	//@at-root label, &
+	&
 		&.input--has-value
 			+form-has-value
 
@@ -747,7 +753,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 			color: $form-error-color
 
 	// on focus (js)
-	@at-root label, &
+	//@at-root label, &
+	&
 		&.input--focus
 			+form-on-focus
 
