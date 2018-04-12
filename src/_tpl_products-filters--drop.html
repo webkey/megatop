@@ -1,0 +1,31 @@
+<div class="p-filters-drop p-filters-drop-js">
+	<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="@@group">
+		@@if (context.checkboxesExpanded) {
+			@@for (var key in checkboxesExpanded) {
+				<li>
+					<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+					<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+					<label class="check-label p-filters-label-js" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].short+`">
+						<input type="checkbox" name="`+key+`" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">`+checkboxesExpanded[key].full+`</span>
+					</label>
+				</li>
+			}
+		}
+		@@if (context.checkboxes) {
+			@@for (var key in checkboxes) {
+				<li>
+					<label class="check-label p-filters-label-js" data-filter-name="`+key+`">
+						<input type="checkbox" name="`+key+`" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">`+checkboxes[key]+`</span>
+					</label>
+				</li>
+			}
+		}
+	</ul>
+	<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+</div>

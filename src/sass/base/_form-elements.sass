@@ -205,6 +205,14 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 		text-transform: uppercase
 		color: $form-placeholder-color
 
+		+media('<mob-lg')
+			padding-left: 8px
+			padding-right: 20px
+
+	.select
+		&::after
+			right: 8px
+
 	.#{$user-content} & select.input--has-value, .shutter & select.input--has-value
 		text-transform: none
 		color: $form-text-color
@@ -438,12 +446,12 @@ input[type="checkbox"]
 		& ~ span
 			&::before
 				width: 6px
-				margin: -5px 0 0 -2px
+				margin: -5px 0 0 -3px
 				backface-visibility: hidden
 
 			&::after
 				width: 9px
-				margin: -1px 0 0 14px
+				margin: -1px 0 0 13px
 				backface-visibility: hidden
 
 	// checkbox disabled
@@ -820,7 +828,7 @@ input[type="radio"]
 	//color: blue
 	//border-color: blue
 	color: $form-text-color
-	border-color: $form-border-color
+	border-color: $form-border-focus-color
 
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], input[type="tel"], textarea, .#{$user-content} select, .shutter select, .select
 

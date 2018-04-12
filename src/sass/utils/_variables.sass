@@ -14,6 +14,8 @@ $line-height--sm: round-float(2.4rem/$font-size--sm, 2) !default
 // ===============
 $font-size--less: 1.2rem !default
 $line-height--less: round-float(2.0rem/$font-size--less, 2) !default
+// ===============
+$letter-spacing: normal !default
 
 // =======h1========
 $font-size-h1: 4.8rem !default
@@ -99,15 +101,15 @@ $page-layout-width: 1920px !default
 $text-layout-space: 30px !default
 //$text-layout-space--md: 25px !default
 $text-layout-space--sm: 20px !default
-$text-layout-space--mob: 10px !default
+$text-layout-space--mob: 15px !default
 // максимальная ширина текстового блока
 $text-layout-width: 800px !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 1000px !default
 // отступы внутри блочных элементов
 $grid-space: 30px !default
-$grid-space--lg: 20px !default
-$grid-space--sm: 10px !default
+$grid-space--sm: 20px !default
+$grid-space--mob: 10px !default
 // отступы в дефолтных списках
 $list-space: 30px
 
@@ -120,7 +122,7 @@ $header-bg: #1a1a1a !default
 $sidebar-width: 260px !default
 
 // aside
-$aside-width: 160px !default
+$aside-width: 280px !default
 
 // logo
 $logo-size: 309px 42px !default
@@ -145,7 +147,8 @@ $form-text-color: $text-color !default
 $form-placeholder-color: #999 !default
 $form-bg-color: white !default
 $form-border-color: #ccc !default
-$form-border-focus-color: darken($form-border-color, 20%) !default
+//$form-border-focus-color: darken($form-border-color, 20%) !default
+$form-border-focus-color: #333 !default
 $form-error-color: red !default
 $form-success-color: green !default
 $form-bottom-space: 1.6rem !default
@@ -170,6 +173,9 @@ $select-arrow-width: 40px !default
 $select-arrow-height: 100% !default
 $multiple-item-space: 3px !default
 
+// m-container
+$m-content-space: 30px 40px !default // vertical horizontal
+
 // slider
 $slider-btn-size: 60px 100% !default // width, height
 $slider-btn-size--sm: 40px 100% !default // width, height
@@ -191,8 +197,12 @@ $new-space: 10px !default
 // products previews
 $products-outer-space: 0 20px !default // vertical horizontal
 $products-inner-space: 20px 20px !default // vertical horizontal
-$products-rang: 12px !default
+$products-rang: 25px !default
 $products-shade-size: 18px !default
+
+/* products filters
+$p-filters-angle-lines-size: 10px 2px // width height
+$p-filters-angle-lines-color: $text-color
 
 // events slider
 $events-size: 373 278 !default // horizontal vertical, без единиц измерения

@@ -1,0 +1,89 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Каталог",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+
+			@@include('_tpl_breadcrumbs.html', {
+				"items": ["Главная", "Каталог"],
+				"last": "Женская обувь"
+			})
+
+			<div class="heading">
+				<h1>Наша продукция</h1>
+			</div>
+
+			<div class="m-container p-filters-js m-container-sticky-js">
+				<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
+					<div class="m-aside-sticky__layout-js">
+						<form name="_form" action="#?" method="get" class="js-filter-form">
+							<div class="m-aside__align">
+								<div class="m-aside__holder">
+									<!--filters-->
+									@@include('_tpl_products-filters.html')
+									<!--filters end-->
+								</div>
+							</div>
+							<div class="m-aside-footer">
+								<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" disabled>
+									@@include("includes/svg/icon-close.svg")
+									<span class="for-desk">Сбросить фильтры</span>
+									<span class="for-mob">Сбросить</span>
+								</button>
+								<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
+								<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="m-content">
+					<div class="m-content__holder m-content-sticky-js">
+						<div class="m-content-sticky__layout-js">
+							@@include('_tpl_products-options.html')
+
+							<div class="p-filters-tags">
+								<div class="p-filters-tags__holder">
+									<div class="p-filters-tags__frame p-filters-tags-js">
+										<!--filters tags-->
+									</div>
+								</div>
+							</div>
+
+							<div class="products">
+								<section class="products__list">
+									@@loop("_tpl_products--items.html", "includes/json/products.json")
+								</section>
+							</div>
+
+							@@include('_tpl_pagination.html')
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Текстовая"
+})

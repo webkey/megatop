@@ -43,17 +43,19 @@
 
 	.form-footer
 		text-align: right
-		margin-top: 4rem
+		margin: 4rem 0
 
 		+media('<mob-lg')
-			margin-top: 2rem
-			text-align: left
+			margin: 2rem 0
+
+		&:last-child
+			margin-bottom: 0
 
 	.form-buttons
 		margin-bottom: 2rem
 
 		+media('<mob-lg')
-			margin: 0
+			margin-bottom: 1rem
 
 		.btn-submit
 			min-width: 176px
@@ -81,6 +83,9 @@
 		text-transform: uppercase
 		text-align: center
 		margin-bottom: 0.5em
+
+		+media('<mob-lg')
+			+font($font-size-h2--sm, $line-height-h2--sm)
 
 		&:last-child
 			margin-bottom: 0
@@ -811,10 +816,7 @@
 /* breadcrumbs
 .breadcrumbs
 	color: $text-color-light
-	margin-bottom: $bottom-space--lg
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
+	margin-bottom: $bottom-space
 
 	&:last-child
 		margin-bottom: 0
@@ -1326,6 +1328,7 @@
 /* products preview
 .products__inner
 	position: relative
+	letter-spacing: $letter-spacing
 	z-index: 1
 
 	.touchevents &
@@ -1616,8 +1619,49 @@
 
 /* products preview end
 
+/* products list
+.products
+	//overflow: hidden // обрезает превью продуктов при увиличении на ховер
+	margin-bottom: $bottom-space--lg
+
+	&:last-child
+		margin-bottom: 0
+
+.products__list
+	+grid-parent(nth($products-inner-space, 2))
+	+clear-spacing
+
+.products__list
+	+grid-parent(nth($products-inner-space, 2))
+	+clear-spacing
+
+.products__item
+	+grid-item(4, nth($products-inner-space, 2))
+
+/* products list end
+
 /* similar slider
 // slider
+.similar-slider
+	position: relative
+
+	.no-touchevents &
+		&::before, &::after
+			content: ""
+			display: block
+			position: absolute
+			top: 0
+			height: 100%
+			width: round($products-rang*1.2)
+			background-color: white
+			z-index: 1
+
+		&::before
+			left: 0
+
+		&::after
+			right: 0
+
 .similar-slider__list
 	// before slide load
 	white-space: nowrap
@@ -1647,7 +1691,7 @@
 		margin: 0
 
 	.no-touchevents & .slick-list
-		padding: $products-rang+$products-shade-size
+		padding: $products-rang+$products-shade-size $products-rang+$products-shade-size
 
 	.slick-prev
 		left: 0
@@ -1662,7 +1706,7 @@
 	display: inline-block
 	vertical-align: top
 	// before slide load end
-	+padding-horizontal(10px)
+	+padding-horizontal(round(nth($products-inner-space, 2)/2))
 
 	.no-js &
 		width: 320px
@@ -1783,3 +1827,438 @@
 		opacity: 1
 
 /* events-slider
+
+/* m-container
+.m-container
+	+clear
+
+.m-aside
+	float: left
+	width: $aside-width
+
+	+media('>=tab-lg')
+		&
+			transform: none !important
+
+		@at-root .shutter-overlay--m-aside
+			display: none
+
+	+media('<tab-lg')
+		opacity: 0
+		visibility: hidden
+		position: fixed
+		overflow: hidden
+		right: 0
+		width: $aside-width
+		background-color: white
+		z-index: 9999
+
+		top: $header-height--sm
+		height: calc(100vh - #{$header-height--sm})
+
+	+media('<mob-md')
+		width: 100%
+
+	form
+		height: 100%
+
+.m-aside__align
+	+media('<tab-lg')
+		overflow-x: hidden
+		overflow-y: auto
+		//height: 100%
+		height: calc(100% - #{$header-height--sm}) // если есть кнопка закрытия
+
+.m-aside__holder
+
+	+media('<tab-lg')
+		padding: $text-layout-space--sm
+
+	+media('<mob-lg')
+		padding: $text-layout-space--mob $text-layout-space--mob round($text-layout-space--mob*1.5)
+
+.m-aside-footer
+	padding-top: 4rem
+	position: relative
+	line-height: 1
+
+	+media('<tab-lg')
+		display: flex
+		padding: 0
+		height: $header-height--sm
+		box-shadow: 0 0 30px 10px #fff, inset 0 1px 0 $border-color
+		overflow-y: hidden
+		z-index: 20
+
+	.btn-filters-apply, .btn-clear-filters
+		+media('<tab-lg')
+			display: block
+			width: calc(50% - #{$header-height--sm})
+			flex: 1 calc(50% - #{$header-height--sm})
+			height: $header-height--sm
+			padding: 21px 5px
+
+	.btn-filters-apply
+		display: none
+		background-color: $btn-bg-hover-color
+		border: none
+
+		+media('<tab-lg')
+			display: block
+
+	.btn-clear-filters
+		+media('<tab-lg')
+			border: none
+			background-color: $btn-bg-color
+			color: #fff
+
+		// disabled
+		&:disabled, &.disabled, &[data-disabled]
+			+media('<tab-lg')
+				cursor: default
+				background-color: #eaeaea !important
+
+				&::before, &::after
+					display: none
+
+		svg
+			width: 18px
+			height: 18px
+
+		.for-mob
+			display: none
+
+			+media('<tab-lg')
+				display: inline-block
+				padding-left: 0
+
+		.for-desk
+			+media('<tab-lg')
+				display: none
+
+		svg
+			+media('<tab-lg')
+				display: none
+
+	.btn-shutter-close
+		display: none
+
+		+media('<tab-lg')
+			z-index: 20
+			display: block
+			flex: 0 0 #{$header-height--sm}
+
+.m-content
+	margin-left: $aside-width
+	padding: nth($m-content-space, 1) nth($m-content-space, 2)
+	+clear
+
+	+media('<tab-lg')
+		margin-left: 0
+
+.m-content__holder
+	float: left
+	width: 100%
+
+
+/* sticky-sidebar
+.m-aside-sticky-js,
+.m-content-sticky-js
+	// for sticky-sidebar js
+	will-change: min-height, trasform
+
+.m-aside-sticky__layout-js,
+.m-content-sticky__layout-js
+	// for sticky-sidebar js
+	transform: translate(0, 0) /* For browsers don't support translate3d. */
+	transform: translate3d(0, 0, 0)
+	will-change: position, transform
+
+.m-aside-sticky__layout-js
+	height: 100%
+
+/* sticky-sidebar end
+/* m-container end
+
+/* options panel
+.p-options
+	position: relative
+	margin-bottom: 2rem
+
+.p-options__list
+	position: relative
+	//display: flex
+	//justify-content: flex-end
+	//align-items: center
+	//flex-wrap: nowrap
+
+.p-options__item
+	//&:first-child
+		text-align: left
+		flex: 1 1
+
+	&.p-options__item--filters-toggle
+		+size(60px)
+		border: 1px solid $border-color
+		display: none
+
+		+media('<tab-lg')
+			display: block
+
+.btn-filters-show
+	position: relative
+	+display-inline-block-top
+	color: $text-color
+	user-select: none
+
+	+media('<tab-lg')
+		display: block
+		height: 100%
+
+	& > span
+		+hide-text
+
+	.p-filters-activated-js
+		position: absolute
+		left: 5px
+		top: 5px
+		font-size: 10px
+		line-height: 1
+		letter-spacing: normal
+		color: $base-color
+		z-index: 2
+
+		&.hide
+			display: none
+
+	svg
+		+display-inline-block-top
+		+size(24px)
+
+		.p-options__item &
+			+media('<tab-lg')
+				position: absolute
+				left: 50%
+				top: 50%
+				margin: -12px 0 0 -12px
+
+	path
+		fill: currentColor
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+.p-sorting
+	position: relative
+	width: 220px
+
+/* options panel end
+
+/* products filters
+.p-filters-list
+	+clear-spacing
+	padding-bottom: 1px
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-item
+	position: relative
+	+font($font-size, $line-height)
+	letter-spacing: $letter-spacing
+	border-bottom: 1px solid $text-color
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-inner
+	text-decoration: none
+	color: inherit
+
+.p-filters-select
+	position: relative
+.p-filters-select-head
+	padding: 5px 20px 5px 0
+	cursor: pointer
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+// angle
+.p-filters-angle
+	position: absolute
+	right: 0
+	top: 50%
+	+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+	margin-top: -#{round(nth($p-filters-angle-lines-size, 2)*0.5)}
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	transition:
+		property: transform
+		duration: $animation-speed
+
+	&::before, &::after
+		+pseudo()
+		left: 0
+		+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
+		background-color: $p-filters-angle-lines-color
+		transition:
+			property: transform
+			duration: $animation-speed
+
+	&::before
+		top: 0
+
+	&::after
+		top: 0
+		transform: rotate(90deg) translateZ(0)
+
+		.ie9 &
+			transform: rotate(90deg)
+
+.p-filters__title
+	+font-alt-bold
+	color: inherit
+
+.p-filters-drop
+	position: relative
+	display: none
+
+.p-filters-drop-list
+
+	&, .#{$user-content} &
+		margin: 0
+		padding: #{round($grid-space*0.8)} 0 $grid-space
+
+		li
+			padding-left: 0
+			margin: 0 0 15px
+
+			&::before
+				content: none
+
+			&:last-child
+				margin-bottom: 0
+
+	label
+		display: block
+		font-size: 14px
+		letter-spacing: 0.05em
+		//text-transform: uppercase
+
+		//.no-touchevents &:hover
+			color: $link-color
+
+		[type="checkbox"]:checked
+			& ~ span
+				+font-bold
+
+// hover, active, has checked filters
+.no-touchevents .p-filters-select:hover,
+.p-filters-item.p-filters-on
+	color: $base-color
+
+	.p-filters-angle
+		&::before, &::after
+			background-color: $base-color
+
+// drop open
+.p-filters-item.p-filters-is-open
+	.p-filters-angle
+		transform: rotate(0.5turn) translateZ(0)
+
+		&::after
+			transform: rotate(0) translateZ(0)
+
+		.ie9 &
+			transform: rotate(0.5turn)
+
+			&::after
+				transform: rotate(0)
+
+	.p-filters-drop
+		display: block
+
+/* filters tags
+.p-filters-tags
+	position: relative
+	margin-bottom: $bottom-space
+	min-height: 30px
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
+
+	+media('<tab-lg')
+		display: none
+		min-height: 0
+
+	&:last-child
+		margin-bottom: 0
+
+.p-filters-tags__frame
+	cursor: default
+	background-color: rgba($bg-color-base, 0.8)
+	line-height: 1
+
+.p-filters-tags__item
+	+display-inline-block-top
+	position: relative
+	margin: 6px 25px 6px 0
+	cursor: pointer
+	color: inherit
+	padding: 0 0 0 20px
+	+font(12px, 18px)
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+	+media('<mob-lg')
+		font-size: 10px
+		margin: 4px 15px 4px 0
+
+	& > span
+		+display-inline-block-top
+		+truncate(120px)
+
+	&:last-child::after
+		content: none
+
+	& > i
+		$this-icon-lines-width: 10px
+		$this-icon-lines-height: 2px
+		$this-icon-lines-color: $text-color
+
+		position: absolute
+		left: 0
+		top: 50%
+		+size(#{round($this-icon-lines-width*1.5)})
+		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
+		border-radius: 0
+		background-color: transparent
+		+font(0, 0)
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			margin: -#{round($this-icon-lines-height*0.5)} 0 0 -#{round($this-icon-lines-width*0.5)}
+			background-color: $this-icon-lines-color
+
+		&::before
+			transform: rotate(-45deg)
+
+		&::after
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		color: $base-color
+
+		& > i
+			&::before, &::after
+				background-color: $base-color
+
+/* filters tags end
+/* products filters end

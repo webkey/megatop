@@ -53,19 +53,20 @@
 
 /* btn-default-alt
 .btn-default-alt
-	color: $btn-bg-color
-	border: 2px solid $btn-bg-color
-	background: $btn-text-color
+	color: $btn-text-color
+	border: 2px solid $btn-bg-hover-color
+	background: $btn-bg-hover-color
 
 	.no-touchevents &:hover
 		background: $btn-bg-color
-		color: $btn-text-color
+		border-color: $btn-bg-color
+		//color: $btn-text-color
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
-		background-color: white !important
+		background-color: $btn-disabled-color !important
 		border-color: $btn-disabled-color !important
-		color: $btn-disabled-color !important
+		color: white !important
 
 		&::before, &::after
 			display: none

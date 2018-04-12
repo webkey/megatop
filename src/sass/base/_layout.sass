@@ -155,26 +155,8 @@ html
 	.no-js &
 		padding-top: 0
 
-.main__holder
-	width: 100%
-	+clear
-
-.content-wrap
-	float: left
-	width: 100%
-
 .content
-	margin: 0 200px 0 300px
-	min-height: 50px
-
-	background-color: whitesmoke
-
-	+media('<desk-lg')
-		margin-right: 0
-
-	+media('<tab-lg')
-		margin-left: 0
-
+	background-color: lightskyblue
 
 /* === CONTENT end ===
 
@@ -570,33 +552,6 @@ html
 /* HEADER end
 /* === HEADER end ===
 
-/* === SIDEBAR ===
-.sidebar
-	display: inline
-	float: left
-	margin: 0 0 0 -100%
-	width: $sidebar-width
-
-	background-color: sandybrown
-
-	+media('<tab-lg')
-		display: none
-
-/* === SIDEBAR end ===
-
-/* === ASIDE ===
-.aside
-	display: inline
-	float: right
-	margin: 0 0 0 -#{$aside-width}
-	width: $aside-width
-	background-color: sandybrown
-
-	+media('<desk-lg')
-		display: none
-
-/* === ASIDE end ===
-
 /* === FOOTER ===
 .footer
 	//margin: 0 auto
@@ -626,10 +581,10 @@ html
 	+clear
 
 	+media('<tab-lg')
-		margin: 0 -#{round($text-layout-space--sm/2)} round($text-layout-space--sm*2)
+		margin: 0 -#{round($text-layout-space/2)} round($text-layout-space--sm*2)
 
 	+media('<mob-lg')
-		margin: 0 -#{round($text-layout-space--mob/2)} round($text-layout-space--mob*2)
+		margin: 0 -#{round($text-layout-space/2)} round($text-layout-space--mob*2)
 
 	&:last-child
 		margin-bottom: 0
@@ -1057,7 +1012,7 @@ html
 
 		&::before, &::after
 			+pseudo()
-			+position(50%, 0)
+			+position(50%, -10px)
 			height: 2px
 			width: 16px
 			backface-visibility: hidden
@@ -1157,10 +1112,19 @@ html
 		transform: translateX(0)
 
 .shutter__content
-	width: calc(100% + 100px) // скрываем скролл на десктопе
+	//width: calc(100% + 100px) // скрываем скролл на десктопе
+	//overflow-y: auto
 	overflow-x: hidden
-	overflow-y: auto
 	height: 100%
+
+	.no-touchevents &
+		overflow-y: hidden
+
+	.no-touchevents &:hover
+		overflow-y: auto
+
+	+media('<mob-lg')
+		width: 100%
 
 	.touchevents &
 		width: 100% // возвращаем скролл на тачскрине
@@ -1186,11 +1150,19 @@ html
 	//width: calc(100% + #{$shutter-mask-size})
 	//height: $shutter-mask-size
 	//box-shadow: 0 0 nth($nav-space, 2) white
-	left: -#{round(nth($nav-space, 2)/2)}
-	width: calc(100% + #{nth($nav-space, 2)})
+	//left: -#{round(nth($nav-space, 2)/2)}
+	left: 0
+	//width: calc(100% + #{nth($nav-space, 2)})
+	width: 100%
 	height: nth($nav-space, 2)
 	pointer-events: none
 	z-index: 25
+
+	// пока скрыть
+	display: none
+
+	.no-touchevents &
+		width: calc(100% - 20px)
 
 	&.shutter__mask--start
 		top: 0
@@ -1317,6 +1289,8 @@ html
 	
 	+media('<desk-sm')
 		border-top: 1px solid #666
+
+	+media('<tab-lg')
 		// отступ сверху для поля поиска
 		padding-top: $header-height--sm
 
@@ -1325,8 +1299,9 @@ html
 		width: 100%
 
 	.shutter__mask--start
-		// отступ сверху для поля поиска
-		top: $header-height--sm
+		+media('<tab-lg')
+			// отступ сверху для поля поиска
+			top: $header-height--sm
 
 		+media('<desk-sm')
 			+linear-gradient(to bottom, $header-bg 0%, $header-bg 25%, rgba($header-bg, 0) 100%)
@@ -1350,13 +1325,16 @@ html
 		width: 100%
 
 	.shutter__content__holder
-		+padding-vertical(6rem)
+		+padding-vertical($header-height, 6rem)
+
+		+media('<desk-md')
+			padding-top: $header-height--sm
 
 		+media('<tab-lg')
-			+padding-vertical(4rem)
+			padding-bottom: 4rem
 
 		+media('<mob-lg')
-			+padding-vertical(2rem)
+			padding-bottom: 2rem
 
 	.shutter__mask
 		$shutter-mask-color: #f6f6f6

@@ -111,6 +111,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/js/temp/jquery.ms-drop.min.js' // drop menu (example, for lang)
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/cleave.js/dist/cleave.min.js' // form mask
+
+		, 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"
+		, 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"
+		, 'src/libs/sticky-sidebar/dist/sticky-sidebar.min.js' // sticky element on scroll
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))
