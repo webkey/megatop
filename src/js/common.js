@@ -141,30 +141,62 @@ $(function () {
 	// 1) resizeByWidth (resize only width);
 
 	var $page = $('html'),
+		$mContainer = $('.m-container'),
+		mContainerOffset = 0,
 		minScrollTop = 2,
 		minShowTop = 100,
+		currentScrollTop,
 		scrollClass = "page-is-scrolled",
 		headerShowClass = 'header-show',
-		headerHideClass = 'header-hide';
+		headerHideClass = 'header-hide',
+		filterInfoFixed = 'filters-result-fixed';
 
 	var previousScrollTop = $(window).scrollTop();
 
-	addClass();
+	addClassScrollPosition();
+	addClassUnfixed();
 
 	$(window).on('scroll resizeByWidth', function () {
-		addClass();
+		addClassScrollPosition();
+		addClassUnfixed();
 	});
 
-	function addClass() {
-		var currentScrollTop = $(window).scrollTop();
+	var timeout;
+
+	function addClassScrollPosition() {
+		currentScrollTop = $(window).scrollTop();
 
 		$page.toggleClass(scrollClass, (currentScrollTop >= minScrollTop));
 
-		var showHeaderPanel = currentScrollTop < previousScrollTop || currentScrollTop <= minShowTop;
-		$page.toggleClass(headerShowClass, showHeaderPanel);
-		$page.toggleClass(headerHideClass, !showHeaderPanel);
+		var showHeaderPanel = currentScrollTop < previousScrollTop;
 
-		previousScrollTop = currentScrollTop;
+		if(currentScrollTop <= minShowTop) {
+			$page.addClass(headerShowClass);
+			$page.removeClass(headerHideClass);
+
+			return false;
+		}
+
+		clearTimeout(timeout);
+
+		timeout = setTimeout(function () {
+			$page.toggleClass(headerShowClass, showHeaderPanel);
+			$page.toggleClass(headerHideClass, !showHeaderPanel);
+
+			previousScrollTop = currentScrollTop;
+		}, 100);
+	}
+
+	function addClassUnfixed() {
+		mContainerOffset = $mContainer.offset().top + $mContainer.outerHeight();
+		currentScrollTop = $(window).scrollTop() + window.innerHeight;
+
+		console.log("mContainerOffset: ", mContainerOffset);
+		console.log("currentScrollTop: ", currentScrollTop);
+		var cond = mContainerOffset < currentScrollTop;
+		console.log("mContainerOffset < currentScrollTop: ", cond);
+
+		$page.toggleClass(filterInfoFixed, !cond);
 	}
 });
 
@@ -727,7 +759,7 @@ function formMaskInit() {
  * !Testing form validation (for example). Do not use on release!
  * */
 function formAccept() {
-	let $checkboxAccept = $('.form-accept-js');
+	var $checkboxAccept = $('.form-accept-js');
 	if($checkboxAccept.length) {
 		$checkboxAccept.change(function () {
 			var accept = $(this).prop('checked');
@@ -745,40 +777,32 @@ function stickyInit() {
 	$mContent = $('.m-content-sticky-js');
 	if ($mAside.length) {
 
-		// var mAsideSticky = $mAside.stickySidebar({
-		// 	containerSelector: '.m-container-sticky-js',
-		// 	innerWrapperSelector: '.m-aside-sticky__layout-js',
+		// var mAsideSticky = new StickySidebar('.m-aside-sticky-js', {
+		// 	containerSelector: '.m-container',
+		// 	innerWrapperSelector: '.m-aside-layout',
 		// 	topSpacing: $('.header').outerHeight() + 20,
 		// 	resizeSensor: false, // recalculation sticky on change size of elements
 		// 	minWidth: prodCardMediaWidth - 1
 		// });
-		// $mContent.stickySidebar({
+
+		// var mContentSticky = new StickySidebar('.m-content-sticky-js', {
 		// 	containerSelector: '.m-container-sticky-js',
 		// 	innerWrapperSelector: '.m-content-sticky__layout-js',
 		// 	topSpacing: $('.header').outerHeight() + 20,
 		// 	resizeSensor: false, // recalculation sticky on change size of elements
 		// 	minWidth: prodCardMediaWidth - 1
 		// });
-		var mAsideSticky = new StickySidebar('.m-aside-sticky-js', {
-			containerSelector: '.m-container',
-			innerWrapperSelector: '.m-aside-layout',
-			topSpacing: $('.header').outerHeight() + 20,
-			resizeSensor: false, // recalculation sticky on change size of elements
-			minWidth: prodCardMediaWidth - 1
-		});
-		var mContentSticky = new StickySidebar('.m-content-sticky-js', {
-			containerSelector: '.m-container-sticky-js',
-			innerWrapperSelector: '.m-content-sticky__layout-js',
-			topSpacing: $('.header').outerHeight() + 20,
-			resizeSensor: false, // recalculation sticky on change size of elements
-			minWidth: prodCardMediaWidth - 1
-		});
 
 		$('.p-filters-js').on('dropChange.multiFilters', function () {
 			if(window.innerWidth >= prodCardMediaWidth) {
-				mAsideSticky.updateSticky();
-				mContentSticky.updateSticky();
+				// mAsideSticky.updateSticky();
+				// mContentSticky.updateSticky();
 			}
+		});
+
+		stickybits('.m-aside', {
+			useStickyClasses: true,
+			stickyBitStickyOffset: 70
 		});
 	}
 }
@@ -993,11 +1017,14 @@ function stickyInit() {
 	};
 
 	MultiFilters.prototype.getLengthCheckedCheckboxes = function ($wrap) {
+
 		var $checkboxes = $wrap.find(':checkbox');
 
 		var totalCheckedInput = 0;
 
 		$.each($checkboxes, function () {
+
+
 
 			if ($(this).prop('checked')) {
 

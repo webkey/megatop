@@ -318,8 +318,7 @@
 		margin-bottom: $bottom-space--lg
 
 .images-slider__list, .slick-dotted.images-slider__list
-	padding-bottom: $bottom-space
-	margin-bottom: 0
+	margin-bottom: $bottom-space
 	position: relative
 	z-index: 2
 
@@ -380,20 +379,12 @@
 
 .images-slider
 
-	.slick-arrow
-		right: 0
-		left: auto
-		top: 100%
-		transform: translate(0, 0)
-
-	.slick-prev
-		right: 40px
-
 	// slider counter
 	.slider-counter
 		position: absolute
 		left: 0
 		top: 100%
+		margin-top: $bottom-space
 		color: $text-color-light
 
 		.slide-curr
@@ -816,7 +807,9 @@
 /* breadcrumbs
 .breadcrumbs
 	color: $text-color-light
-	margin-bottom: $bottom-space
+	padding: 20px $text-layout-space
+	border-bottom: 1px solid $border-color
+	margin-bottom: -1px
 
 	&:last-child
 		margin-bottom: 0
@@ -836,7 +829,7 @@
 
 	cursor: default
 	overflow: hidden
-	+font($font-size--sm, $line-height--sm)
+	+font(1.6rem, round-float(20/16, 2))
 
 	.layout-article &
 		max-width: none
@@ -848,9 +841,9 @@
 		&::after
 			display: inline-block
 			vertical-align: baseline
-			content: '•'
+			content: '>'
 			border: none
-			color: $base-color
+			color: #666
 			padding-left: 10px
 
 		&:last-child::after
@@ -858,7 +851,7 @@
 
 	a
 		padding-top: 0.5em
-		color: $text-color
+		color: #666
 		text-decoration: none
 		cursor: pointer
 
@@ -955,7 +948,216 @@
 
 /* feature list end
 
-/*social networks
+// pagination
+$pagination-hspace: round($grid-space/2)
+$pagination-vspace: 4px
+$pagination-font-size: 14px
+$pagination-height: 30px
+$pagination-width: $pagination-height
+$pagination-border-width: 0
+
+/* pagination
+.pagination
+	+font-bold
+	+clear-spacing
+	color: inherit
+	text-align: center
+	cursor: default
+	margin-bottom: $bottom-space--lg
+	+push-auto
+	+clear
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space--ml
+
+	+media('<mob-lg')
+		position: relative
+		padding-bottom: $pagination-height + $pagination-vspace*2
+
+	&:last-child
+		margin-bottom: 0
+
+.pg-left
+	float: left
+
+	+media('<mob-lg')
+		float: none
+		position: absolute
+		bottom: 0
+		right: 50%
+
+.pg-right
+	float: right
+
+	+media('<mob-lg')
+		float: none
+		position: absolute
+		bottom: 0
+		left: 50%
+
+	&::before
+		+pseudo()
+		width: 0
+		height: 20px
+		margin-top: -10px
+		top: 50%
+		left: -1px
+		border-left: 2px solid
+		display: none
+
+		+media('<mob-lg')
+			display: block
+
+.pg-first-arr, .pg-last-arr, .pg-prev-arr, .pg-next-arr
+	position: absolute
+	+position(50%, 0)
+	+size(12px, 2px)
+	margin-top: -1px
+	letter-spacing: 0
+	border-top: 2px solid $text-color
+
+	&::before, &::after
+		+pseudo()
+		top: 0
+		+size(8px)
+		margin-top: -1px
+		border: 0 solid $text-color
+		backface-visibility: hidden
+
+.pg-first-arr, .pg-prev-arr
+	&::before, &::after
+		transform: rotate(-45deg)
+		transform-origin: left top
+		left: 0
+		margin-left: -1px
+		border-width: 2px 0 0 2px
+
+.pg-last-arr, .pg-next-arr
+	left: auto
+	right: 0
+
+	&::before, &::after
+		right: 0
+		margin-right: -1px
+		transform-origin: top right
+		transform: rotate(45deg)
+		border-width: 2px 2px 0 0
+
+.pg-first-arr
+
+	&::after
+		margin-left: 6px
+
+.pg-last-arr
+
+	&::after
+		margin-right: 6px
+
+.pg-prev-arr, .pg-next-arr
+
+	&::after
+		display: none
+
+.pg-first, .pg-last, .pg-prev, .pg-next
+	+display-inline-block-middle
+	position: relative
+	//width: 27px
+	@if $pagination-border-width != 0
+		margin: 0 0 0 -#{$pagination-border-width}
+	@else
+		margin: #{$pagination-vspace} #{$pagination-hspace}
+	color: inherit
+	text-decoration: none
+
+	span
+		+padding-horizontal(20px)
+
+	&.disabled
+		opacity: 0.5
+		cursor: default
+
+	.no-touchevents &:not(.disabled):hover
+		color: $base-color
+
+		[class*="-arr"]
+			&, &::before, &::after
+				border-color: $base-color
+
+.pg-first, .pg-prev
+	span
+		padding-right: 0
+
+.pg-last, .pg-next
+	span
+		padding-left: 0
+
+.pg-first, .pg-last
+	display: none
+
+	+media('<mob-lg')
+		display: none
+
+.pg-list
+	+display-inline-block-middle
+
+	&, .#{$user-content} &
+		margin: 0
+
+		li
+			margin: #{$pagination-vspace} 4px
+			padding: 0
+
+			+media('<mob-md')
+				+margin-horizontal(0)
+
+			&:before
+				content: none
+
+	li
+		+display-inline-block-top
+		text-align: center
+
+		a, & > span
+			+display-inline-block-top
+			color: inherit
+			background: transparent
+			min-width: $pagination-width
+			padding: 0 2px
+			border-radius: 50%
+
+		a
+			text-decoration: none
+			cursor: pointer
+
+			.no-touchevents &:hover
+				color: $base-color
+
+		&.active a, .no-touchevents &.active a:hover
+			color: white
+			background-color: $base-color
+			@if $pagination-border-width != 0
+				border:
+					top-color: $base-color
+					bottom-color: $base-color
+
+// шрифт для элементов пагинации
+.pg-first, .pg-last, .pg-prev, .pg-next, .pg-list a, .pg-list li > span
+	height: $pagination-height
+	+font($pagination-font-size, #{$pagination-height - $pagination-border-width*2})
+	letter-spacing: 0.2em
+	text-transform: uppercase
+	@if $pagination-border-width != 0
+		border: #{$pagination-border-width} solid #{$border-color}
+
+	+media('<mob-md')
+		font-size: 14px
+
+.pg-list a, .pg-list li > span
+	letter-spacing: normal
+
+/* pagination end
+
+/* social networks
 .social-networks
 	margin-bottom: $bottom-space
 	+clear
@@ -1015,7 +1217,7 @@
 				//+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
 				background-color: $instagram-color-end
 
-/*social networks end
+/* social networks end
 
 /* ms-drop
 .ms-drop__drop-js
@@ -1522,18 +1724,20 @@
 	position: absolute
 	left: -14px
 	top: nth($products-inner-space, 1)
-	will-change: opacity, transfrom
-	//opacity: 0
-	transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
-	transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
-	transition:
-		property: opacity, transfrom
-		duration: 0.5s
 
-	.slick-active &
-		transform: translate(0, 0)
-		transform: translate3d(0, 0, 0)
-		//opacity: 1
+	.slick-slide
+		will-change: opacity, transfrom
+		//opacity: 0
+		transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
+		transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
+		transition:
+			property: opacity, transfrom
+			duration: 0.5s
+
+		.slick-active &
+			transform: translate(0, 0)
+			transform: translate3d(0, 0, 0)
+			//opacity: 1
 
 .products__label
 	position: relative
@@ -1830,46 +2034,55 @@
 
 /* m-container
 .m-container
-	+clear
+	position: relative
+	display: flex
+
+	//+clear
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: $p-filters-width
+		top: 0
+		height: 100%
+		border-right: 1px solid $border-color
 
 .m-aside
-	float: left
-	width: $aside-width
+	width: $p-filters-width
+	position: sticky
+	align-self: flex-start
+	padding-bottom: 50px
 
-	+media('>=tab-lg')
-		&
-			transform: none !important
+	//float: left
 
-		@at-root .shutter-overlay--m-aside
-			display: none
-
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		opacity: 0
 		visibility: hidden
 		position: fixed
 		overflow: hidden
 		right: 0
-		width: $aside-width
+		width: $p-filters-width
 		background-color: white
 		z-index: 9999
 
 		top: $header-height--sm
 		height: calc(100vh - #{$header-height--sm})
 
-	+media('<mob-md')
+	//+media('<mob-md')
 		width: 100%
 
 	form
 		height: 100%
 
-.m-aside__align
+//.m-aside__align
 	+media('<tab-lg')
 		overflow-x: hidden
 		overflow-y: auto
 		//height: 100%
 		height: calc(100% - #{$header-height--sm}) // если есть кнопка закрытия
 
-.m-aside__holder
+//.m-aside__holder
 
 	+media('<tab-lg')
 		padding: $text-layout-space--sm
@@ -1877,12 +2090,10 @@
 	+media('<mob-lg')
 		padding: $text-layout-space--mob $text-layout-space--mob round($text-layout-space--mob*1.5)
 
-.m-aside-footer
-	padding-top: 4rem
-	position: relative
+.m-aside__footer
 	line-height: 1
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		display: flex
 		padding: 0
 		height: $header-height--sm
@@ -1947,19 +2158,61 @@
 			z-index: 20
 			display: block
 			flex: 0 0 #{$header-height--sm}
+			
+.p-filters-results
+	position: absolute
+	left: 0
+	bottom: 0
+	height: 50px
+	background-color: #eee
+	width: $p-filters-width
+	display: flex
+	justify-content: space-between
+
+	.filters-result-fixed &
+		position: fixed
+		left: 0
+		bottom: 0
+
+	.btn-clear-filters
+		+size(50px)
+		padding: 0
+		color: black
+		background-color: #eee
+
+		svg
+			+size(18px)
+
+		path
+			fill: currentColor
+
+		.no-touchevents &:hover
+			background-color: $base-color
+			color: white
 
 .m-content
-	margin-left: $aside-width
-	padding: nth($m-content-space, 1) nth($m-content-space, 2)
-	+clear
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	width: calc(100% - #{$p-filters-width})
+	//padding: nth($m-content-space, 1) nth($m-content-space, 2)
+
+	//float: right
 
 	+media('<tab-lg')
 		margin-left: 0
 
-.m-content__holder
-	float: left
-	width: 100%
+.m-content__body
+	position: relative
 
+.m-content__body__options
+	padding: nth($m-content-space, 1) nth($m-content-space, 2) 10px
+
+.m-content__body__layout
+	padding: 0 nth($m-content-space, 2)
+
+.m-content__footer
+	position: relative
 
 /* sticky-sidebar
 .m-aside-sticky-js,
@@ -1983,7 +2236,7 @@
 /* options panel
 .p-options
 	position: relative
-	margin-bottom: 2rem
+	margin-bottom: 20px
 
 .p-options__list
 	position: relative
@@ -2051,25 +2304,33 @@
 
 .p-sorting
 	position: relative
-	width: 220px
+	width: 300px
+
+	select
+		height: 50px
+		padding: 11px 40px 11px 18px
+		border-width: 1px
+		+font-light
+		font-size: 13px
+		letter-spacing: 0.05em
+		color: #333
+		text-transform: uppercase
 
 /* options panel end
 
 /* products filters
 .p-filters-list
-	+clear-spacing
 	padding-bottom: 1px
-	margin-bottom: $bottom-space--md
+	margin-bottom: $bottom-space
 
 	&:last-child
 		margin-bottom: 0
 
 .p-filters-item
 	position: relative
-	+font($font-size, $line-height)
-	letter-spacing: $letter-spacing
-	border-bottom: 1px solid $text-color
-	margin-bottom: $bottom-space
+	border: solid $border-color
+	border-width: 1px 0
+	margin-bottom: -1px
 
 	&:last-child
 		margin-bottom: 0
@@ -2080,16 +2341,15 @@
 
 .p-filters-select
 	position: relative
-.p-filters-select-head
-	padding: 5px 20px 5px 0
 	cursor: pointer
+	padding: nth($filters-space, 1) nth($filters-space, 2)+20 nth($filters-space, 1) nth($filters-space, 2)
 	user-select: none
 	-webkit-tap-highlight-color: transparent
 
 // angle
 .p-filters-angle
 	position: absolute
-	right: 0
+	right: nth($filters-space, 2)
 	top: 50%
 	+size(nth($p-filters-angle-lines-size, 1), nth($p-filters-angle-lines-size, 2))
 	margin-top: -#{round(nth($p-filters-angle-lines-size, 2)*0.5)}
@@ -2130,11 +2390,11 @@
 
 	&, .#{$user-content} &
 		margin: 0
-		padding: #{round($grid-space*0.8)} 0 $grid-space
+		padding: 0 nth($filters-space, 2) nth($filters-space, 1)
 
 		li
 			padding-left: 0
-			margin: 0 0 15px
+			margin: 0 0 10px
 
 			&::before
 				content: none
@@ -2144,12 +2404,7 @@
 
 	label
 		display: block
-		font-size: 14px
-		letter-spacing: 0.05em
-		//text-transform: uppercase
-
-		//.no-touchevents &:hover
-			color: $link-color
+		font-size: 16px
 
 		[type="checkbox"]:checked
 			& ~ span
@@ -2184,38 +2439,29 @@
 /* filters tags
 .p-filters-tags
 	position: relative
+	overflow: hidden
 	margin-bottom: $bottom-space
-	min-height: 30px
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space
-
-	+media('<tab-lg')
-		display: none
-		min-height: 0
+	user-select: none
 
 	&:last-child
 		margin-bottom: 0
 
 .p-filters-tags__frame
 	cursor: default
-	background-color: rgba($bg-color-base, 0.8)
 	line-height: 1
+	margin-bottom: -10px
 
 .p-filters-tags__item
 	+display-inline-block-top
 	position: relative
-	margin: 6px 25px 6px 0
+	margin: 0 10px 10px 0
 	cursor: pointer
-	color: inherit
-	padding: 0 0 0 20px
-	+font(12px, 18px)
-	letter-spacing: 0.05em
+	padding: 5px 20px 5px 40px
+	+font(13px, 20px)
+	color: #333
+	letter-spacing: normal
 	text-transform: uppercase
-
-	+media('<mob-lg')
-		font-size: 10px
-		margin: 4px 15px 4px 0
+	background-color: #ddd
 
 	& > span
 		+display-inline-block-top
@@ -2225,15 +2471,14 @@
 		content: none
 
 	& > i
-		$this-icon-lines-width: 10px
+		$this-icon-lines-width: 18px
 		$this-icon-lines-height: 2px
-		$this-icon-lines-color: $text-color
 
 		position: absolute
-		left: 0
+		left: 10px
 		top: 50%
-		+size(#{round($this-icon-lines-width*1.5)})
-		margin-top: -#{round($this-icon-lines-width*1.5*0.5)}
+		+size(#{round($this-icon-lines-width)})
+		margin-top: -#{round($this-icon-lines-width*0.5)}
 		border-radius: 0
 		background-color: transparent
 		+font(0, 0)
@@ -2245,7 +2490,7 @@
 			backface-visibility: hidden
 			+size($this-icon-lines-width, $this-icon-lines-height)
 			margin: -#{round($this-icon-lines-height*0.5)} 0 0 -#{round($this-icon-lines-width*0.5)}
-			background-color: $this-icon-lines-color
+			background-color: currentColor
 
 		&::before
 			transform: rotate(-45deg)
@@ -2254,11 +2499,8 @@
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		color: $base-color
-
-		& > i
-			&::before, &::after
-				background-color: $base-color
+		background-color: $base-color
+		color: white
 
 /* filters tags end
 /* products filters end

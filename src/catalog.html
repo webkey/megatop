@@ -129,15 +129,15 @@
 			<div class="max-wrap layout">
 				<!--CONTENT-->
 				<div class="content user-content">
+					<div class="heading">
+						<h1>женская обувь</h1>
+					</div>
 					<div class="breadcrumbs">
 						<ul class="breadcrumbs__list">
 							<li><a href="#"><span title="Главная">Главная</span></a></li>
 							<li><a href="#"><span title="Каталог">Каталог</span></a></li>
 							<li><span title="Женская обувь">Женская обувь</span></li>
 						</ul>
-					</div>
-					<div class="heading">
-						<h1>Наша продукция</h1>
 					</div>
 					<div class="m-container p-filters-js m-container-sticky-js">
 						<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
@@ -147,7 +147,7 @@
 										<div class="m-aside__holder">
 											<!--filters-->
 											<div class="p-filters-list">
-												<div class="p-filters-item p-filters-item-js">
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -618,23 +618,23 @@
 											<!--filters end-->
 										</div>
 									</div>
-									<div class="m-aside-footer">
-										<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" disabled>
+									<div class="m-aside__footer">
+										<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
 									<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
 									<span class="for-desk">Сбросить фильтры</span>
 									<span class="for-mob">Сбросить</span>
 								</button>
-										<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>Показать</span></a>
-										<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+										<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
+										<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
 									</div>
 								</form>
 							</div>
 						</div>
 						<div class="m-content">
-							<div class="m-content__holder m-content-sticky-js">
-								<div class="m-content-sticky__layout-js">
+							<div class="m-content__body">
+								<div class="m-content__body__options">
 									<div class="p-options">
 										<div class="p-options__list">
 											<div class="p-options__item">
@@ -666,12 +666,12 @@
 										</div>
 									</div>
 									<div class="p-filters-tags">
-										<div class="p-filters-tags__holder">
-											<div class="p-filters-tags__frame p-filters-tags-js">
-												<!--filters tags-->
-											</div>
+										<div class="p-filters-tags__frame p-filters-tags-js">
+											<!--filters tags-->
 										</div>
 									</div>
+								</div>
+								<div class="m-content__body__layout">
 									<div class="products">
 										<section class="products__list">
 											<div class="products__item">
@@ -933,39 +933,59 @@
 											</div>
 										</section>
 									</div>
-									<div class="pagination max-wrap-text">
-										<div class="pg-left">
-											<a class="pg-first disabled" href="#">
+								</div>
+							</div>
+							<div class="m-content__footer">
+								<a href="#" class="btn-more btn-with-icon">
+							<span>Показать еще 50</span>
+							<svg class="svg-ico-ico"  width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42.8"><path d="M20.6 0C14.2 0 8.4 2.9 4.4 7.4L0 3 0 15l12.1 0L6.8 9.7c3.3-3.9 8.3-6.4 13.8-6.4 10 0 18.1 8.1 18.1 18.1s-8.1 18.1-18.1 18.1c-5.8 0-11-2.7-14.3-7l-2.9 1.7c3.9 5.3 10.2 8.7 17.2 8.7 11.8 0 21.4-9.6 21.4-21.4S32.4 0 20.6 0z"></path></svg>
+						</a>
+								<div class="pagination max-wrap-text">
+									<div class="pg-left">
+										<a class="pg-first disabled" href="#">
 			<span>В начало</span>
 			<i class="pg-first-arr">&nbsp;</i>
 		</a>
-											<a class="pg-prev disabled" href="#">
+										<a class="pg-prev disabled" href="#">
 			<span>Назад</span>
 			<i class="pg-prev-arr">&nbsp;</i>
 		</a>
-										</div>
-										<ul class="pg-list">
-											<li><a href="#">1</a></li>
-											<li><span class="dots">...</span></li>
-											<li><a href="#">8</a></li>
-											<li class="active"><a href="">9</a></li>
-											<li><a href="#">10</a></li>
-											<li><span class="dots">...</span></li>
-											<li><a href="#">127</a></li>
-										</ul>
-										<div class="pg-right">
-											<a class="pg-next" href="#">
+									</div>
+									<ul class="pg-list">
+										<li><a href="#">1</a></li>
+										<li><span class="dots">...</span></li>
+										<li><a href="#">8</a></li>
+										<li class="active"><a href="">9</a></li>
+										<li><a href="#">10</a></li>
+										<li><span class="dots">...</span></li>
+										<li><a href="#">127</a></li>
+									</ul>
+									<div class="pg-right">
+										<a class="pg-next" href="#">
 			<span>Вперед</span>
 			<i class="pg-next-arr">&nbsp;</i>
 		</a>
-											<a class="pg-last" href="#">
+										<a class="pg-last" href="#">
 			<span>В конец</span>
 			<i class="pg-last-arr">&nbsp;</i>
 		</a>
-										</div>
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="p-filters-results">
+							<div class="selected">
+								<div class="selected-label">Выбрано</div>
+								<div class="selected-count">474 из 1202</div>
+							</div>
+							<a href="#" class="btn-filters-apply"><span>подобрать</span></a>
+							<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
+						<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
+	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
+</svg>
+					</button>
+							<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
+							<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
 						</div>
 					</div>
 				</div>
@@ -1026,13 +1046,13 @@
 								<div class="footer-nav">
 									<div class="footer-nav__box">
 										<strong class="footer-nav__title"><span>Навигатор по магазинам</span></strong>
-										<div class="navigator">
-											<a href="#" class="btn-navigator btn-with-icon">
+										<a href="#" class="navigator">
+									<span class="btn-navigator btn-with-icon">
 										<svg class="svg-ico-local" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512"><path d="M256 0C153.8 0 70.6 83.2 70.6 185.4c0 126.9 165.9 313.2 173 321 6.6 7.4 18.2 7.4 24.8 0 7.1-7.9 173-194.1 173-321C441.4 83.2 358.2 0 256 0zm0 278.7c-51.4 0-93.3-41.9-93.3-93.3s41.9-93.3 93.3-93.3 93.3 41.9 93.3 93.3-41.9 93.3-93.3 93.3z"></path></svg>
 										<span>Найти магазин</span>
-									</a>
-											<img src="img/img-location.jpg" alt="Навигатор по магазинам" />
-										</div>
+									</span>
+									<img src="img/img-location.jpg" alt="Навигатор по магазинам" />
+								</a>
 									</div>
 								</div>
 								<!--footer nav end-->

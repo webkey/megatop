@@ -117,6 +117,17 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
+.heading
+	padding: 20px $text-layout-space
+	border-bottom: 1px solid $border-color
+	margin-bottom: -1px
+
+	h1
+		+font-alt-medium
+		+font(3rem, round-float(34/30, 2))
+		letter-spacing: 0.1em
+		text-transform: uppercase
+
 .entry-text
 	+font-bold
 	font-size: 1.2em

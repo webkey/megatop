@@ -95,6 +95,8 @@
 	span
 		text-align: left
 		white-space: normal
+		letter-spacing: normal
+		font-size: $font-size
 		padding-right: $btni-space
 
 	svg + span
@@ -319,3 +321,21 @@
 					transform: translate(0, -#{$btn-menu-lines-height--lg + $btn-menu-lines-space--lg}) translateZ(0)
 
 /* button toggle menu end
+
+/* btn-more-items
+.btn-more
+	$btn-more--size: 100% 50px // w h
+	$btn-more--font: 14px 20px // fz lh
+	// ===================
+	width: nth($btn-more--size, 1)
+	background-color: #ddd
+	color: black
+	text-transform: uppercase
+	padding: round((nth($btn-more--size, 2) - nth($btn-more--font, 2))/2) 10px
+
+	& > span
+		+font(nth($btn-more--font, 1), nth($btn-more--font, 1))
+		letter-spacing: 0.1em
+
+
+/* btn-more-items end

@@ -127,7 +127,7 @@ html
 	display: flex
 	flex-direction: column
 	justify-content: space-between
-	overflow: hidden
+	//overflow: hidden // c overflow: hidden не работает position: sticky на фиксящихся элементах
 	position: relative
 	margin: 0 auto
 	min-height: 100vh
@@ -156,7 +156,7 @@ html
 		padding-top: 0
 
 .content
-	background-color: lightskyblue
+	background-color: #fbfbfb
 
 /* === CONTENT end ===
 
@@ -172,22 +172,26 @@ html
 	height: $header-height
 	z-index: 10
 	// ===================
-	opacity: 0
-	visibility: hidden
-	transform: translate(0, -80%)
-	transform: translate3d(0, -80%, 0)
-	$props: opacity, transform, visibility
-	will-change: $props
-	transition:
-		property: $props
-		duration: $animation-speed
 
-	.header-show &, .shutter-after-open &
-		// ===================
-		opacity: 1
-		visibility: visible
-		transform: translate(0, 0)
-		transform: translate3d(0, 0, 0)
+	+media('<tab-lg')
+		opacity: 0
+		overflow: hidden
+		//visibility: hidden
+		transform: translate(0, -100%)
+		transform: translate3d(0, -100%, 0)
+		$props: opacity, transform
+		will-change: $props
+		transition:
+			property: $props
+			duration: $animation-speed
+
+		.header-show &, .shutter-after-open &
+			// ===================
+			opacity: 1
+			overflow: visible
+			//visibility: visible
+			transform: translate(0, 0)
+			transform: translate3d(0, 0, 0)
 
 	+media('<desk-md')
 		height: $header-height--sm
@@ -701,6 +705,9 @@ html
 
 /* navigator
 .navigator
+	display: block
+	text-decoration: none
+	color: inherit
 	position: relative
 
 	+media('<tab-lg')
