@@ -31,7 +31,8 @@
     "resize-sensor": "^0.0.7",
     "swiper": "^3.4.2",
     "cleave.js": "cleave-js#^1.3.2",
-    "stickybits": "^3.2.3"
+    "stickybits": "^3.2.3",
+    "ion.rangeSlider": "ionrangeslider#^2.2.0"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

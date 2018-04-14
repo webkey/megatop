@@ -624,6 +624,18 @@ input[type="radio"]
 	box-shadow: none
 	outline: none
 
+.select-minimal
+	select
+		height: 40px
+		padding: 9px 40px 9px 9px
+		border-width: 1px
+		+font-light
+		font-size: 13px
+		line-height: 20px
+		letter-spacing: 0.05em
+		color: #333
+		text-transform: uppercase
+
 //.#{$user-content} select,
 //.select select,
 //.select2-container--default .select2-selection .select2-selection__rendered
@@ -872,6 +884,10 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	&
 		&.input--focus
 			+form-on-focus
+
+.#{$user-content} select, .shutter select, .select
+	&:focus
+		cursor: default
 
 .select2
 	.select2-selection, .select2-selection__rendered, .select2-selection__placeholder

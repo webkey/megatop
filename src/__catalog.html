@@ -24,6 +24,7 @@
 				"last": "Женская обувь"
 			})
 
+			<!--Во время подбора результатов добавляем класс js-loading на контейнер с классом p-filters-js-->
 			<div class="m-container p-filters-js m-container-sticky-js">
 				<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
 					<div class="m-aside-sticky__layout-js">
@@ -35,16 +36,15 @@
 									<!--filters end-->
 								</div>
 							</div>
-							<div class="m-aside__footer">
+							<!--<div class="m-aside__footer">
 								<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
 									@@include("includes/svg/icon-close.svg")
 									<span class="for-desk">Сбросить фильтры</span>
 									<span class="for-mob">Сбросить</span>
 								</button>
-								<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
-								<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
-							</div>
-
+								<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>
+								<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+							</div>-->
 						</form>
 					</div>
 				</div>
@@ -77,18 +77,21 @@
 					</div>
 				</div>
 
-				<div class="p-filters-results">
+				<div class="p-filters-results p-filters-results-js">
 					<div class="selected">
-						<div class="selected-label">Выбрано</div>
-						<div class="selected-count">474 из 1202</div>
+						<div class="selected-align">
+							<div class="selected-label">Выбрано</div>
+							<div class="selected-count">1202 из 1202</div>
+						</div>
 					</div>
 					<a href="#" class="btn-filters-apply"><span>подобрать</span></a>
-					<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
+					<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
 						@@include("includes/svg/icon-close.svg")
 					</button>
-					<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
-					<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
+					<div class="results-loading">Подбор результатов...</div>
 				</div>
+
+				<div class="loader-cover">&nbsp;</div>
 			</div>
 
 		</div>

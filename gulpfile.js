@@ -79,6 +79,8 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		'src/css/temp/*.css' // see gulpfile-special.js
 		, 'src/libs/select2/dist/css/select2.min.css'
 		, 'src/libs/swiper/dist/css/swiper.min.css' // стили для swiper slider
+		, 'src/libs/ion.rangeSlider/css/ion.rangeSlider.css' // стили для range slider
+		, 'src/libs/ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css' // стили для range slider
 		// , 'src/lib/plugin/file.css'
 	]) // Выбираем файлы для конкатенации
 		.pipe(concatCss("src/css/libs.css", {
@@ -117,6 +119,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		// , 'src/libs/sticky-sidebar/dist/sticky-sidebar.min.js' // sticky element on scroll
 
 		, 'src/libs/stickybits/dist/stickybits.min.js' // sticky element on scroll
+		, 'src/libs/ion.rangeSlider/js/ion.rangeSlider.min.js' // range slider
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		.pipe(gulp.dest('src/js'))

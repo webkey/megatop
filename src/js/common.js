@@ -141,24 +141,19 @@ $(function () {
 	// 1) resizeByWidth (resize only width);
 
 	var $page = $('html'),
-		$mContainer = $('.m-container'),
-		mContainerOffset = 0,
 		minScrollTop = 2,
 		minShowTop = 100,
 		currentScrollTop,
 		scrollClass = "page-is-scrolled",
 		headerShowClass = 'header-show',
-		headerHideClass = 'header-hide',
-		filterInfoFixed = 'filters-result-fixed';
+		headerHideClass = 'header-hide';
 
 	var previousScrollTop = $(window).scrollTop();
 
 	addClassScrollPosition();
-	addClassUnfixed();
 
 	$(window).on('scroll resizeByWidth', function () {
 		addClassScrollPosition();
-		addClassUnfixed();
 	});
 
 	var timeout;
@@ -185,18 +180,6 @@ $(function () {
 
 			previousScrollTop = currentScrollTop;
 		}, 100);
-	}
-
-	function addClassUnfixed() {
-		mContainerOffset = $mContainer.offset().top + $mContainer.outerHeight();
-		currentScrollTop = $(window).scrollTop() + window.innerHeight;
-
-		console.log("mContainerOffset: ", mContainerOffset);
-		console.log("currentScrollTop: ", currentScrollTop);
-		var cond = mContainerOffset < currentScrollTop;
-		console.log("mContainerOffset < currentScrollTop: ", cond);
-
-		$page.toggleClass(filterInfoFixed, !cond);
 	}
 });
 
@@ -825,6 +808,7 @@ function stickyInit() {
 			btnReset: null,
 			btnResetAll: null,
 			tagsContainer: null,
+			resultsPanel: null,
 			activatedFilters: '.p-filters-activated-js',
 			tagsItem: ".tags-item-js",
 			tagsItemTpl: null,
@@ -832,6 +816,7 @@ function stickyInit() {
 
 			dropOpenClass: 'is-open',
 			filtersOnClass: 'filters-on',
+			showResultsPanelClass: 'filters-results-show',
 
 			dataGroup: 'group',
 			dataTag: 'tag',
@@ -855,6 +840,7 @@ function stickyInit() {
 		this.$btnReset = $(options.btnReset, container);
 		this.$btnResetAll = $(options.btnResetAll, container);
 		this.$tagsContainer = $(options.tagsContainer, container);
+		this.$resultsPanel = $(options.resultsPanel, container);
 		this.$activatedFilters = $(options.activatedFilters, container);
 		this.tagsItem = options.tagsItem; // не jq-объект, чтобы можна было искать в DOM после добавления
 		this.tagTextContainer = options.tagTextContainer; // не jq-объект, чтобы можна было искать в DOM после добавления
@@ -864,7 +850,8 @@ function stickyInit() {
 
 		this.modifiers = {
 			dropIsOpened: options.dropOpenClass,
-			filtersOn: options.filtersOnClass
+			filtersOn: options.filtersOnClass,
+			showResultsPanel: options.showResultsPanelClass
 		};
 
 		this.attributes = {
@@ -894,7 +881,6 @@ function stickyInit() {
 		var $checkbox = self.$checkbox;
 		var $btnReset = self.$btnReset;
 		var $activatedFilters = self.$activatedFilters;
-		var filtersOnClass = self.modifiers.filtersOn;
 		var attributes = self.attributes;
 
 		$checkbox.on('change', function () {
@@ -919,7 +905,7 @@ function stickyInit() {
 			// отключить кнопку очистки чекбоксов в ГРУППЕ
 			self.disabledButton($currentBtnReset);
 			// удалить класс наличия отмеченных чекбоксов с фильтров в ГРУППЕ
-			self.removeClassCustom($currentItem, filtersOnClass);
+			self.removeClassCustom($currentItem, self.modifiers.filtersOn);
 
 			// console.log("currentAttrGroup: ", currentAttrGroup);
 			// console.log("currentAttrName: ", currentAttrName);
@@ -933,6 +919,10 @@ function stickyInit() {
 
 			// отключить кнопку очистки ВСЕХ чекбоксов
 			self.disabledButton($currentBtnResetAll);
+
+			// добавить класс отображения панели результатов фильтрации
+			$container.removeClass(self.modifiers.showResultsPanel);
+
 			// удалить класс наличия отмеченных чекбоксов со ВСЕХ фильтров
 			// self.removeClassCustom($item, filtersOnClass);
 
@@ -940,7 +930,9 @@ function stickyInit() {
 				// включить кнопку очистки чекбоксов в ГРУППЕ
 				self.enabledButton($currentBtnReset);
 				// добавить класс наличия отмеченных чекбоксов на фильтры в ГРУППЕ
-				self.addClassCustom($currentItem, filtersOnClass);
+				self.addClassCustom($currentItem, self.modifiers.filtersOn);
+				// удалить класс отображения панели результатов фильтрации
+				$container.addClass(self.modifiers.showResultsPanel);
 			}
 
 			// добавить количество активных фильтров
@@ -1241,8 +1233,8 @@ function multiFiltersInit() {
 			tagsContainer: '.p-filters-tags-js',
 			tagsItem: '.p-filters-tags-item-js',
 			tagTextContainer: '.p-filters-tag-text-js',
+			resultsPanel: '.p-filters-results-js',
 			tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><i>Удалить</i><span class="p-filters-tag-text-js"></span></div>',
-
 
 			dropOpenClass: 'p-filters-is-open',
 			filtersOnClass: 'p-filters-on',
@@ -1252,9 +1244,64 @@ function multiFiltersInit() {
 			dataName: 'filter-name',
 			dataPrefix: 'value-prefix',
 			dataPostfix: 'value-postfix'
-		})
+		});
+
+		// range slider for price
+		var $priceSlider = $("#price-slider-js"),
+			$priceSliderValue = $('.price-slider-value-js'),
+			min = $priceSlider.data('min'),
+			max = $priceSlider.data('max');
+
+		var blah = $priceSlider.ionRangeSlider({
+			type: "double",
+			min: min || 0,
+			max: max || 10000,
+			from: min || 0,
+			to: max || 10000,
+			onStart: function (data) {
+				getValue(data);
+			},
+			onChange: function (data) {
+				getValue(data);
+			}
+		});
+	}
+
+	function getValue(data) {
+		var from = data.from, to = data.to;
+
+		$priceSliderValue.html(from + " - " + to)
 	}
 }
+
+/**
+ * !Fixed filters result
+ * */
+
+$(function () {
+	// fixed filters result
+
+	var $mContainer = $('.m-container');
+
+	if ($mContainer.length) {
+		$(window).on('load scroll resize', function () {
+			addClassFixed();
+		});
+	}
+
+	var mContainerOffset = 0,
+		currentScrollTop,
+		filterResultFixedClass = 'filters-result-fixed';
+
+	function addClassFixed() {
+		mContainerOffset = $mContainer.offset().top + $mContainer.outerHeight();
+		currentScrollTop = $(window).scrollTop() + window.innerHeight;
+
+		var cond = mContainerOffset < currentScrollTop;
+
+		$('html').toggleClass(filterResultFixedClass, !cond);
+	}
+});
 
 /**
  * !Testing form validation (for example). Do not use on release!

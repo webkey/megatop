@@ -139,6 +139,7 @@
 							<li><span title="Женская обувь">Женская обувь</span></li>
 						</ul>
 					</div>
+					<!--Во время подбора результатов добавляем класс js-loading на контейнер с классом p-filters-js-->
 					<div class="m-container p-filters-js m-container-sticky-js">
 						<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
 							<div class="m-aside-sticky__layout-js">
@@ -151,15 +152,88 @@
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
+																<div class="p-filters__title">Наличие в Магазине</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="stock">
+																<li>
+																	<div class="select select-minimal">
+																		<select class="field-effects-js" name="filter-by-city">
+						<option value="">Выберите город:</option>
+						<option value="minsk" class="p-filters-label-js" data-filter-name="minsk" data-filter-tag="Минск">Минск</option>
+						<option value="bobruysk" class="p-filters-label-js" data-filter-name="bobruysk" data-filter-tag="Бобруйск">Бобруйск</option>
+					</select>
+																	</div>
+																</li>
+																<li>
+																	<div class="select select-minimal">
+																		<select class="field-effects-js" name="filter-by-shop">
+						<option value="">Выберите магазин:</option>
+						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
+						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
+					</select>
+																	</div>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Цена</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="stock">
+																<li>
+																	<input type="text" id="price-slider-js" name="price-range" value="" data-min="50" data-max="2000" />
+																	<div><span class="price-slider-value-js"></span> б.р.</div>
+																</li>
+																<li>
+																	<div class="select select-minimal">
+																		<select class="field-effects-js" name="filter-by-shop">
+						<option value="">Выберите магазин:</option>
+						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
+						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
+					</select>
+																	</div>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
 																<div class="p-filters__title">Сезон</div>
 															</div>
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="seasons">
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="winter" data-filter-tag="Сезон - Зима">
 						<input type="checkbox" name="winter" />
 						<i>&nbsp;</i>
@@ -167,8 +241,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="spring" data-filter-tag="Сезон - Весна">
 						<input type="checkbox" name="spring" />
 						<i>&nbsp;</i>
@@ -176,8 +248,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="summer" data-filter-tag="Сезон - Лето">
 						<input type="checkbox" name="summer" />
 						<i>&nbsp;</i>
@@ -185,8 +255,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="autumn" data-filter-tag="Сезон - Осень">
 						<input type="checkbox" name="autumn" />
 						<i>&nbsp;</i>
@@ -200,6 +268,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -209,10 +279,10 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="brands">
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="svitanak" data-filter-tag="Свiтанак">
 						<input type="checkbox" name="svitanak" />
 						<i>&nbsp;</i>
@@ -220,8 +290,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="ego" data-filter-tag="Эго">
 						<input type="checkbox" name="ego" />
 						<i>&nbsp;</i>
@@ -229,8 +297,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="fishka" data-filter-tag="Fishka">
 						<input type="checkbox" name="fishka" />
 						<i>&nbsp;</i>
@@ -238,8 +304,6 @@
 					</label>
 																</li>
 																<li>
-																	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-																	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 																	<label class="check-label p-filters-label-js" data-filter-name="kuka-vaka" data-filter-tag="Кука-Вака">
 						<input type="checkbox" name="kuka-vaka" />
 						<i>&nbsp;</i>
@@ -253,6 +317,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -262,6 +328,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="color">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="2017">
@@ -284,6 +352,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -293,6 +363,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="kulir">
@@ -336,6 +408,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -345,6 +419,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="otdelka1">
@@ -388,6 +464,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -397,6 +475,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="red">
@@ -461,6 +541,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -470,6 +552,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="xxs">
@@ -534,6 +618,8 @@
 														</div>
 													</div>
 												</div>
+												<!--===============-->
+												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -543,6 +629,8 @@
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
 																	<label class="check-label p-filters-label-js" data-filter-name="<5">
@@ -618,17 +706,17 @@
 											<!--filters end-->
 										</div>
 									</div>
-									<div class="m-aside__footer">
-										<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
+									<!--<div class="m-aside__footer">
+								<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
 									<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
 									<span class="for-desk">Сбросить фильтры</span>
 									<span class="for-mob">Сбросить</span>
 								</button>
-										<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
-										<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
-									</div>
+								<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>
+								<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>
+							</div>-->
 								</form>
 							</div>
 						</div>
@@ -639,8 +727,8 @@
 										<div class="p-options__list">
 											<div class="p-options__item">
 												<div class="p-options__inner">
-													<div class="select p-sorting">
-														<select class="field-effects-js" name="reg-form__birth__day" id="reg-form__birth-field">
+													<div class="select select-minimal p-sorting">
+														<select class="field-effects-js" name="sorting">
 						<option value="">Сортировать по:</option>
 						<option value="1">По&nbsp;Названию (по убыванию)</option>
 						<option value="2">По&nbsp;Названию (по возрастанию)</option>
@@ -973,20 +1061,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="p-filters-results">
+						<div class="p-filters-results p-filters-results-js">
 							<div class="selected">
-								<div class="selected-label">Выбрано</div>
-								<div class="selected-count">474 из 1202</div>
+								<div class="selected-align">
+									<div class="selected-label">Выбрано</div>
+									<div class="selected-count">1202 из 1202</div>
+								</div>
 							</div>
 							<a href="#" class="btn-filters-apply"><span>подобрать</span></a>
-							<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры" disabled>
+							<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
 						<svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
 	<path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
 </svg>
 					</button>
-							<!--<a href="#" class="btn-default btn-filters-apply btn-shutter-close-js"><span>подобрать</span></a>-->
-							<!--<a href="#" class="btn-shutter-close btn-shutter-close-js"><i>&nbsp;</i><span>Закрыть</span></a>-->
+							<div class="results-loading">Подбор результатов...</div>
 						</div>
+						<div class="loader-cover">&nbsp;</div>
 					</div>
 				</div>
 				<!--CONTENT end-->

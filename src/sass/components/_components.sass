@@ -1329,6 +1329,7 @@ $pagination-border-width: 0
 
 .new__list
 	position: relative
+	overflow: hidden
 
 	&::before
 		content: ""
@@ -1571,6 +1572,7 @@ $pagination-border-width: 0
 	position: relative
 	text-decoration: none
 	color: inherit
+	transition: none
 
 .products__spacer
 	position: relative
@@ -1589,6 +1591,7 @@ $pagination-border-width: 0
 	left: 0
 	top: 0
 	width: 100%
+	background-color: white
 
 .products__visual
 	position: absolute
@@ -1601,7 +1604,7 @@ $pagination-border-width: 0
 .products__figure
 	display: block
 	position: relative
-	max-width: 290px // ограничиваем ширину изображения продукта
+	max-width: 320px // ограничиваем ширину изображения продукта
 	height: 100%
 	+push-auto
 	text-decoration: none
@@ -1722,22 +1725,24 @@ $pagination-border-width: 0
 // labels
 .products__labels
 	position: absolute
-	left: -14px
+	left: 0
 	top: nth($products-inner-space, 1)
+	//transform: translate(34px, 0)
+	//transform: translate3d(34px, 0, 0)
+	transition:
+		property: opacity, transfrom, left
+		duration: $animation-speed
 
-	.slick-slide
+	.slick-slide &
 		will-change: opacity, transfrom
 		//opacity: 0
 		transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
 		transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
-		transition:
-			property: opacity, transfrom
-			duration: 0.5s
 
-		.slick-active &
-			transform: translate(0, 0)
-			transform: translate3d(0, 0, 0)
-			//opacity: 1
+	.slick-slide.slick-active &
+		transform: translate(0, 0)
+		transform: translate3d(0, 0, 0)
+		//opacity: 1
 
 .products__label
 	position: relative
@@ -1801,7 +1806,7 @@ $pagination-border-width: 0
 
 // hover
 .no-touchevents .products__inner:hover
-	z-index: 50
+	z-index: 5
 
 	.products__animation-wrap
 		transform: translate(0, -$products-rang)
@@ -1815,11 +1820,16 @@ $pagination-border-width: 0
 	.products__tags
 		opacity: 1
 
+	.products__labels
+		//transform: translate(0, 0)
+		//transform: translate3d(0, 0, 0)
+		left: -14px
+
 	.products__img
-		width: calc(100% + #{$products-rang*2})
-		height: calc(100% + #{$products-rang*2})
-		left: -#{$products-rang}
-		top: -#{$products-rang}
+		width: calc(100% + #{round($products-rang*2*1.5)})
+		height: calc(100% + #{round($products-rang*2*1.5)})
+		left: -#{round($products-rang*1.5)}
+		top: -#{round($products-rang*1.5)}
 
 /* products preview end
 
@@ -1832,15 +1842,12 @@ $pagination-border-width: 0
 		margin-bottom: 0
 
 .products__list
-	+grid-parent(nth($products-inner-space, 2))
-	+clear-spacing
-
-.products__list
-	+grid-parent(nth($products-inner-space, 2))
+	+grid-parent(nth($products-outer-space, 2))
+	margin-bottom: 8rem
 	+clear-spacing
 
 .products__item
-	+grid-item(4, nth($products-inner-space, 2))
+	+grid-item(4, nth($products-outer-space, 2), nth($products-outer-space, 1))
 
 /* products list end
 
@@ -1856,7 +1863,7 @@ $pagination-border-width: 0
 			position: absolute
 			top: 0
 			height: 100%
-			width: round($products-rang*1.2)
+			width: round($products-rang*1.5)
 			background-color: white
 			z-index: 1
 
@@ -1910,7 +1917,7 @@ $pagination-border-width: 0
 	display: inline-block
 	vertical-align: top
 	// before slide load end
-	+padding-horizontal(round(nth($products-inner-space, 2)/2))
+	+padding-horizontal(10px)
 
 	.no-js &
 		width: 320px
@@ -2052,7 +2059,9 @@ $pagination-border-width: 0
 	width: $p-filters-width
 	position: sticky
 	align-self: flex-start
-	padding-bottom: 50px
+
+	.filters-results-show &
+		padding-bottom: 51px
 
 	//float: left
 
@@ -2158,37 +2167,6 @@ $pagination-border-width: 0
 			z-index: 20
 			display: block
 			flex: 0 0 #{$header-height--sm}
-			
-.p-filters-results
-	position: absolute
-	left: 0
-	bottom: 0
-	height: 50px
-	background-color: #eee
-	width: $p-filters-width
-	display: flex
-	justify-content: space-between
-
-	.filters-result-fixed &
-		position: fixed
-		left: 0
-		bottom: 0
-
-	.btn-clear-filters
-		+size(50px)
-		padding: 0
-		color: black
-		background-color: #eee
-
-		svg
-			+size(18px)
-
-		path
-			fill: currentColor
-
-		.no-touchevents &:hover
-			background-color: $base-color
-			color: white
 
 .m-content
 	display: flex
@@ -2213,6 +2191,175 @@ $pagination-border-width: 0
 
 .m-content__footer
 	position: relative
+
+.p-filters-results
+	position: absolute
+	left: 0
+	bottom: 0
+	height: 52px
+	background-color: #eee
+	width: $p-filters-width
+	border: solid $border-color
+	border-width: 1px 0
+	display: flex
+	justify-content: space-between
+	opacity: 0
+	visibility: hidden
+	pointer-events: none
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
+		delay: 0.5s
+
+	.filters-results-show &
+		opacity: 1
+		visibility: visible
+		pointer-events: auto
+		transition:
+			delay: 0s
+
+	.filters-result-fixed &
+		position: fixed
+		left: 0
+		bottom: -1px
+
+	.selected
+		+padding-horizontal(10px)
+		+clear-spacing
+		line-height: 1
+		text-align: center
+
+		flex: 1 1
+
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 100%
+
+		.selected-align
+			+display-inline-block-middle
+			max-width: calc(100% - 2px)
+			text-align: left
+
+		.selected-label
+			+font-light
+			+font(1.2rem, round-float(16/12, 2))
+			letter-spacing: 0.05em
+			text-transform: uppercase
+
+		.selected-count
+			+font-alt-bold
+			+font(1.4rem, round-float(16/14, 2))
+			letter-spacing: normal
+
+	.btn-filters-apply
+		+display-inline-block-top
+		height: calc(100% + 2px)
+		margin: -1px 0
+		padding: 0 14px
+		+font-bold
+		+clear-spacing
+		line-height: 1
+		color: white
+		text-transform: uppercase
+		background-color: $btn-bg-hover-color
+		z-index: 1
+
+		flex: 1 1
+
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 100%
+
+		span
+			+display-inline-block-middle
+			+font(14px, 20px)
+			letter-spacing: 0.05em
+			max-width: calc(100% - 2px)
+
+		// hover
+		.no-touchevents &:hover
+			background-color: $base-color
+
+	.btn-clear-filters
+		+size(52px)
+		padding: 0
+		color: black
+		background-color: #eee
+		margin: -1px
+		border: 1px solid $border-color
+
+		svg
+			+size(18px)
+
+		path
+			fill: currentColor
+
+		// hover
+		.no-touchevents &:hover
+			background-color: $base-color
+			border-color: $base-color
+			color: white
+
+		// focus
+		&:disabled
+			background-color: #eee !important
+			border-color: $border-color !important
+			color: $border-color !important
+
+	.results-loading
+		+size(calc(100% + 2px))
+		position: absolute
+		left: -1px
+		top: -1px
+		+font-bold
+		+font(1.6rem, 50px)
+		color: white
+		text-align: center
+		z-index: 5
+		background-color: rgba(153, 153, 153, 1)
+		opacity: 0
+		visibility: hidden
+		transition:
+			property: opacity, visibility
+			duration: $animation-speed
+
+		.js-loading &
+			opacity: 1
+			visibility: visible
+
+.loader-cover
+	+size(100%)
+	position: absolute
+	left: 0
+	top: 0
+	z-index: 5
+	background-color: rgba(255, 255, 255, 0.50)
+	opacity: 0
+	visibility: hidden
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
+
+	.js-loading &
+		opacity: 1
+		visibility: visible
+
+	&::before
+		$loader-size: 120px
+		// ==================
+		content: ""
+		display: block
+		position: fixed
+		left: 50%
+		top: 50%
+		+size($loader-size)
+		transform: translate(-50%, -50%)
+		background-image: url(../../img/preloader.svg)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
 
 /* sticky-sidebar
 .m-aside-sticky-js,
@@ -2306,21 +2453,10 @@ $pagination-border-width: 0
 	position: relative
 	width: 300px
 
-	select
-		height: 50px
-		padding: 11px 40px 11px 18px
-		border-width: 1px
-		+font-light
-		font-size: 13px
-		letter-spacing: 0.05em
-		color: #333
-		text-transform: uppercase
-
 /* options panel end
 
 /* products filters
 .p-filters-list
-	padding-bottom: 1px
 	margin-bottom: $bottom-space
 
 	&:last-child
@@ -2332,7 +2468,7 @@ $pagination-border-width: 0
 	border-width: 1px 0
 	margin-bottom: -1px
 
-	&:last-child
+	//&:last-child
 		margin-bottom: 0
 
 .p-filters-inner

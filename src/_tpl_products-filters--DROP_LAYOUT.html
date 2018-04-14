@@ -1,0 +1,15 @@
+@@if(itemLayout === "START")
+{
+<div class="p-filters-drop p-filters-drop-js">
+	<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+	<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+	<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="@@group">
+}
+@@if(itemLayout === "END")
+{
+	</ul>
+	<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+</div>
+}
