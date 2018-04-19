@@ -149,6 +149,7 @@
 											<!--filters-->
 											<div class="p-filters-list">
 												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -162,66 +163,81 @@
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="stock">
 																<li>
 																	<div class="select select-minimal">
-																		<select class="field-effects-js" name="filter-by-city">
+																		<select class="field-effects-js" name="filter-by-city" data-filter-select="city" data-filter-default="">
 						<option value="">Выберите город:</option>
-						<option value="minsk" class="p-filters-label-js" data-filter-name="minsk" data-filter-tag="Минск">Минск</option>
-						<option value="bobruysk" class="p-filters-label-js" data-filter-name="bobruysk" data-filter-tag="Бобруйск">Бобруйск</option>
+						<option value="minsk" class="p-filters-label-js" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
+						<option value="bobruysk" class="p-filters-label-js" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
 					</select>
 																	</div>
 																</li>
 																<li>
 																	<div class="select select-minimal">
-																		<select class="field-effects-js" name="filter-by-shop">
+																		<select class="field-effects-js" name="filter-by-shop" data-filter-select="address" data-filter-default="">
 						<option value="">Выберите магазин:</option>
 						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
 						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
 					</select>
 																	</div>
 																</li>
+																<li>
+																	<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="hit" data-filter-name="test" data-filter-tag="селект+чекбокс" />
+					<i>&nbsp;</i> <span class="p-filters-label-text-js">селект+чекбокс</span>
+				</label>
+																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
-																<div class="p-filters__title">Цена</div>
+																<div class="p-filters__title">Цена, б.р.</div>
 															</div>
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
 														<div class="p-filters-drop p-filters-drop-js">
 															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="stock">
-																<li>
-																	<input type="text" id="price-slider-js" name="price-range" value="" data-min="50" data-max="2000" />
-																	<div><span class="price-slider-value-js"></span> б.р.</div>
+															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="price">
+																<li class="has-slider">
+																	<input type="text" id="price-slider-js" class="range-slider" name="price-range" value="" data-filter-default="50;3000" data-filter-select="price-range" data-min="50" data-max="3000" data-step="50" />
+																	<div class="p-filters-price-value"><span class="price-slider-value-js"></span> б.р.</div>
 																</li>
-																<li>
-																	<div class="select select-minimal">
-																		<select class="field-effects-js" name="filter-by-shop">
-						<option value="">Выберите магазин:</option>
-						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
-						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
-					</select>
+																<li class="add-slider">
+																	<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="sale" data-filter-name="sale" data-filter-tag="Только акционные" />
+					<i>&nbsp;</i> <span><em class="p-filters-share p-filters-share--sale p-filters-label-text-js">Скидка</em></span>
+				</label>
+																	<div class="p-filters-share-range">
+																		<input type="text" id="sale-slider-js" class="range-slider" name="sale-range" value="" data-filter-default="5" data-filter-select="sale-range" data-min="5" data-max="50" data-step="5" />
+																		<div class="p-filters-share-value"><span class="sale-slider-value-js"></span> %</div>
 																	</div>
 																</li>
+																<li>
+																	<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="hit" data-filter-name="hit" data-filter-tag="Только популярные" />
+					<i>&nbsp;</i> <span><em class="p-filters-share p-filters-share--hit p-filters-label-text-js">Хит</em></span>
+				</label>
+																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -234,43 +250,44 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="seasons">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="winter" data-filter-tag="Сезон - Зима">
-						<input type="checkbox" name="winter" />
+																	<label class="check-label">
+						<input type="checkbox" name="winter" data-filter-name="winter" data-filter-tag="Сезон - Зима" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Зима</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="spring" data-filter-tag="Сезон - Весна">
-						<input type="checkbox" name="spring" />
+																	<label class="check-label">
+						<input type="checkbox" name="spring" data-filter-name="spring" data-filter-tag="Сезон - Весна" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Весна</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="summer" data-filter-tag="Сезон - Лето">
-						<input type="checkbox" name="summer" />
+																	<label class="check-label">
+						<input type="checkbox" name="summer" data-filter-name="summer" data-filter-tag="Сезон - Лето" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Лето</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="autumn" data-filter-tag="Сезон - Осень">
-						<input type="checkbox" name="autumn" />
+																	<label class="check-label">
+						<input type="checkbox" name="autumn" data-filter-name="autumn" data-filter-tag="Сезон - Осень" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Осень</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -283,43 +300,44 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="brands">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="svitanak" data-filter-tag="Свiтанак">
-						<input type="checkbox" name="svitanak" />
+																	<label class="check-label">
+						<input type="checkbox" name="svitanak" data-filter-name="svitanak" data-filter-tag="Свiтанак" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Свiтанак</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="ego" data-filter-tag="Эго">
-						<input type="checkbox" name="ego" />
+																	<label class="check-label">
+						<input type="checkbox" name="ego" data-filter-name="ego" data-filter-tag="Эго" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Эго</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="fishka" data-filter-tag="Fishka">
-						<input type="checkbox" name="fishka" />
+																	<label class="check-label">
+						<input type="checkbox" name="fishka" data-filter-name="fishka" data-filter-tag="Fishka" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Fishka</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="kuka-vaka" data-filter-tag="Кука-Вака">
-						<input type="checkbox" name="kuka-vaka" />
+																	<label class="check-label">
+						<input type="checkbox" name="kuka-vaka" data-filter-name="kuka-vaka" data-filter-tag="Кука-Вака" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Кука-Вака</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -332,29 +350,30 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="color">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="2017">
-						<input type="checkbox" name="2017" />
+																	<label class="check-label">
+						<input type="checkbox" name="2017" data-filter-name="2017" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">2017 г.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="winter">
-						<input type="checkbox" name="winter" />
+																	<label class="check-label">
+						<input type="checkbox" name="winter" data-filter-name="winter" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Зима</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -367,50 +386,51 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="kulir">
-						<input type="checkbox" name="kulir" />
+																	<label class="check-label">
+						<input type="checkbox" name="kulir" data-filter-name="kulir" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">кулир</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="interlok">
-						<input type="checkbox" name="interlok" />
+																	<label class="check-label">
+						<input type="checkbox" name="interlok" data-filter-name="interlok" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">интерлок</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="comb">
-						<input type="checkbox" name="comb" />
+																	<label class="check-label">
+						<input type="checkbox" name="comb" data-filter-name="comb" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">комбинир.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="lastik">
-						<input type="checkbox" name="lastik" />
+																	<label class="check-label">
+						<input type="checkbox" name="lastik" data-filter-name="lastik" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">ластик 1*1</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="neop">
-						<input type="checkbox" name="neop" />
+																	<label class="check-label">
+						<input type="checkbox" name="neop" data-filter-name="neop" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">непол ласт</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -423,50 +443,51 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="otdelka1">
-						<input type="checkbox" name="otdelka1" />
+																	<label class="check-label">
+						<input type="checkbox" name="otdelka1" data-filter-name="otdelka1" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">отделка 1</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="otdelka2">
-						<input type="checkbox" name="otdelka2" />
+																	<label class="check-label">
+						<input type="checkbox" name="otdelka2" data-filter-name="otdelka2" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">отделка 2</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="otdelka3">
-						<input type="checkbox" name="otdelka3" />
+																	<label class="check-label">
+						<input type="checkbox" name="otdelka3" data-filter-name="otdelka3" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">отделка 3</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="otdelka4">
-						<input type="checkbox" name="otdelka4" />
+																	<label class="check-label">
+						<input type="checkbox" name="otdelka4" data-filter-name="otdelka4" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">отделка 4</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="otdelka5">
-						<input type="checkbox" name="otdelka5" />
+																	<label class="check-label">
+						<input type="checkbox" name="otdelka5" data-filter-name="otdelka5" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">отделка 5</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -479,71 +500,72 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="red">
-						<input type="checkbox" name="red" />
+																	<label class="check-label">
+						<input type="checkbox" name="red" data-filter-name="red" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Красны</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="black">
-						<input type="checkbox" name="black" />
+																	<label class="check-label">
+						<input type="checkbox" name="black" data-filter-name="black" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Черный</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="white">
-						<input type="checkbox" name="white" />
+																	<label class="check-label">
+						<input type="checkbox" name="white" data-filter-name="white" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Белый</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="green">
-						<input type="checkbox" name="green" />
+																	<label class="check-label">
+						<input type="checkbox" name="green" data-filter-name="green" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Зеленый</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="blue">
-						<input type="checkbox" name="blue" />
+																	<label class="check-label">
+						<input type="checkbox" name="blue" data-filter-name="blue" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Синий</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="gray">
-						<input type="checkbox" name="gray" />
+																	<label class="check-label">
+						<input type="checkbox" name="gray" data-filter-name="gray" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Серый</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="alizarin">
-						<input type="checkbox" name="alizarin" />
+																	<label class="check-label">
+						<input type="checkbox" name="alizarin" data-filter-name="alizarin" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Ализариновый красный с легким оттенком берюзы</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="yellow">
-						<input type="checkbox" name="yellow" />
+																	<label class="check-label">
+						<input type="checkbox" name="yellow" data-filter-name="yellow" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">Желный</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -556,71 +578,72 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="xxs">
-						<input type="checkbox" name="xxs" />
+																	<label class="check-label">
+						<input type="checkbox" name="xxs" data-filter-name="xxs" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">xxs (42)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="xs">
-						<input type="checkbox" name="xs" />
+																	<label class="check-label">
+						<input type="checkbox" name="xs" data-filter-name="xs" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">xs (44)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="s">
-						<input type="checkbox" name="s" />
+																	<label class="check-label">
+						<input type="checkbox" name="s" data-filter-name="s" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">s (46)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="m">
-						<input type="checkbox" name="m" />
+																	<label class="check-label">
+						<input type="checkbox" name="m" data-filter-name="m" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">m (48)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="l">
-						<input type="checkbox" name="l" />
+																	<label class="check-label">
+						<input type="checkbox" name="l" data-filter-name="l" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">l (50)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="xl">
-						<input type="checkbox" name="xl" />
+																	<label class="check-label">
+						<input type="checkbox" name="xl" data-filter-name="xl" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">xl (52)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="xxl">
-						<input type="checkbox" name="xxl" />
+																	<label class="check-label">
+						<input type="checkbox" name="xxl" data-filter-name="xxl" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">xxl (54)</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="xxxl">
-						<input type="checkbox" name="xxxl" />
+																	<label class="check-label">
+						<input type="checkbox" name="xxxl" data-filter-name="xxxl" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">xxxl (56)</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
 												<div class="p-filters-item p-filters-item-js">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
 															<div class="p-filters-select-head">
@@ -633,72 +656,72 @@
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filters-group="type">
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="<5">
-						<input type="checkbox" name="<5" />
+																	<label class="check-label">
+						<input type="checkbox" name="<5" data-filter-name="<5" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">до 5 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="6-15">
-						<input type="checkbox" name="6-15" />
+																	<label class="check-label">
+						<input type="checkbox" name="6-15" data-filter-name="6-15" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">6 р. — 15 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="16-30">
-						<input type="checkbox" name="16-30" />
+																	<label class="check-label">
+						<input type="checkbox" name="16-30" data-filter-name="16-30" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">16 р. — 30 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="31-50">
-						<input type="checkbox" name="31-50" />
+																	<label class="check-label">
+						<input type="checkbox" name="31-50" data-filter-name="31-50" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">31 р. — 50 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="51-100">
-						<input type="checkbox" name="51-100" />
+																	<label class="check-label">
+						<input type="checkbox" name="51-100" data-filter-name="51-100" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">51 р. — 100 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="101-200">
-						<input type="checkbox" name="101-200" />
+																	<label class="check-label">
+						<input type="checkbox" name="101-200" data-filter-name="101-200" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">101 р. — 200 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="201-500">
-						<input type="checkbox" name="201-500" />
+																	<label class="check-label">
+						<input type="checkbox" name="201-500" data-filter-name="201-500" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">201 р. — 500 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name="501-1000">
-						<input type="checkbox" name="501-1000" />
+																	<label class="check-label">
+						<input type="checkbox" name="501-1000" data-filter-name="501-1000" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">501 р. — 1000 р.</span>
 					</label>
 																</li>
 																<li>
-																	<label class="check-label p-filters-label-js" data-filter-name=">1000">
-						<input type="checkbox" name=">1000" />
+																	<label class="check-label">
+						<input type="checkbox" name=">1000" data-filter-name=">1000" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">свыше 1001 р.</span>
 					</label>
 																</li>
 															</ul>
-															<!--<div class="p-filters-drop-footer">
-		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-	</div>-->
+															<div class="p-filters-drop-footer">
+																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+															</div>
 														</div>
 													</div>
 												</div>

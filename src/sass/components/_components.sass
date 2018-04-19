@@ -309,6 +309,67 @@
 
 /* swiper slider end
 
+/* irs
+.irs
+	height: 3px
+	margin-bottom: 20px
+
+	.p-filters-drop &
+		margin: 6px 0 8px
+
+		.irs
+			margin: 0
+
+.irs-line
+	background: #ccc
+	border: none
+	border-radius: 0
+	top: 0
+	height: 100%
+
+.irs-bar, .irs-bar-edge
+	top: 0
+	height: 100%
+	background: #333
+	border: none
+
+.irs-slider
+	+size(16px)
+	border: 3px solid #333
+	background: #fff
+	box-shadow: none
+	top: 2px
+	transform: translate(0, -50%)
+
+.irs-min, .irs-max, .irs-from, .irs-to, .irs-single
+	top: auto
+	bottom: 0
+	margin-bottom: 8px
+	opacity: 0
+	will-change: opacity
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+	.no-touchevents .irs:hover &
+		opacity: 1
+
+.irs-from, .irs-single, .irs-to
+	padding: 0
+	+font-regular
+	font-size: 12px
+	color: #333
+	background: none
+
+.irs-max, .irs-min
+	padding: 0
+	+font-regular
+	font-size: 10px
+	color: #ccc
+	background: none
+
+/* irs end
+
 /* images slider
 .images-slider
 	position: relative
@@ -1744,14 +1805,10 @@ $pagination-border-width: 0
 		transform: translate3d(0, 0, 0)
 		//opacity: 1
 
-.products__label
+.products__label, .p-filters-share
 	position: relative
-	margin-bottom: 16px
-	height: 25px
-	min-width: 82px
 	+padding-horizontal(10px)
 	+font-bold
-	+font(14px, 25px)
 	text-align: center
 	text-transform: uppercase
 	color: #fff
@@ -1765,13 +1822,36 @@ $pagination-border-width: 0
 		top: 100%
 		+size(0)
 		border: solid transparent
-		border-width: 10px 0 0 14px
 		border-top-color: #880002
 
-.products__label--sale
+.products__label
+	+font(14px, 25px)
+	height: 25px
+	margin-bottom: 16px
+	min-width: 82px
+
+	&::before
+		border-width: 10px 0 0 14px
+
+.p-filters-share
+	display: inline-block
+	vertical-align: top
+	margin: 2px 0 -2px
+	+font(10px, 18px)
+	height: 18px
+	letter-spacing: 0.1em
+	min-width: 68px
+
+	&::before
+		border-width: 6px 0 0 10px
+
+.products__label--sale, .p-filters-share--sale
 	background-color: #f70106
 
-.products__label--hit
+	&::before
+		border-top-color: #880002
+
+.products__label--hit, .p-filters-share--hit
 	background-color: #ffa200
 
 	&::before
@@ -2400,7 +2480,7 @@ $pagination-border-width: 0
 	&.p-options__item--filters-toggle
 		+size(60px)
 		border: 1px solid $border-color
-		display: none
+		//display: none
 
 		+media('<tab-lg')
 			display: block
@@ -2479,8 +2559,28 @@ $pagination-border-width: 0
 	position: relative
 	cursor: pointer
 	padding: nth($filters-space, 1) nth($filters-space, 2)+20 nth($filters-space, 1) nth($filters-space, 2)
+	+font(1.6rem, round-float(20/16, 2))
 	user-select: none
 	-webkit-tap-highlight-color: transparent
+
+.p-filters-selected
+	position: absolute
+	right: 5px
+	top: 3px
+	z-index: 2
+	+font-bold
+	+font(1.2rem, round-float(18/14, 2))
+	opacity: 0
+	pointer-events: none
+	//===================
+	$param: transform, opacity
+	will-change: $param
+	transition:
+		property: $param
+		duration: $animation-speed
+
+	&.filters-selected-show
+		opacity: 1
 
 // angle
 .p-filters-angle
@@ -2529,6 +2629,7 @@ $pagination-border-width: 0
 		padding: 0 nth($filters-space, 2) nth($filters-space, 1)
 
 		li
+			position: relative
 			padding-left: 0
 			margin: 0 0 10px
 
@@ -2538,17 +2639,27 @@ $pagination-border-width: 0
 			&:last-child
 				margin-bottom: 0
 
+			&.has-slider
+				margin-bottom: 20px
+
+			&.add-slider
+				padding-right: 80px
+
+				label
+					display: inline-block
+					vertical-align: top
+
 	label
 		display: block
 		font-size: 16px
 
-		[type="checkbox"]:checked
+		//[type="checkbox"]:checked
 			& ~ span
 				+font-bold
 
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,
-.p-filters-item.p-filters-on
+.p-filters-item.p-filters-on .p-filters-select
 	color: $base-color
 
 	.p-filters-angle
@@ -2572,6 +2683,34 @@ $pagination-border-width: 0
 	.p-filters-drop
 		display: block
 
+/* range-slider
+.range-slider
+	opacity: 0
+	visibility: hidden
+
+.p-filters-share-range
+	&, input[type] ~ &
+		display: inline-block
+		vertical-align: top
+		width: 80px
+		padding: 0
+		position: absolute
+		right: 0
+		top: 0
+		opacity: 0.1
+
+	.irs
+		margin-top: 8px
+
+	li.is-active &, .no-js &
+		opacity: 1
+
+.p-filters-price-value, .p-filters-share-value
+	text-align: center
+	+font(1.6rem, round-float(20/16, 2))
+
+/* range-slider end
+
 /* filters tags
 .p-filters-tags
 	position: relative
@@ -2592,7 +2731,7 @@ $pagination-border-width: 0
 	position: relative
 	margin: 0 10px 10px 0
 	cursor: pointer
-	padding: 5px 20px 5px 40px
+	padding: 5px 10px 5px 35px
 	+font(13px, 20px)
 	color: #333
 	letter-spacing: normal
@@ -2601,7 +2740,7 @@ $pagination-border-width: 0
 
 	& > span
 		+display-inline-block-top
-		+truncate(120px)
+		+truncate(140px)
 
 	&:last-child::after
 		content: none

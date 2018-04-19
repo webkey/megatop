@@ -8,21 +8,28 @@
 		@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "stock" })
 			<li>
 				<div class="select select-minimal">
-					<select class="field-effects-js" name="filter-by-city">
+					<select class="field-effects-js" name="filter-by-city" data-filter-select="city" data-filter-default="">
 						<option value="">Выберите город:</option>
-						<option value="minsk" class="p-filters-label-js" data-filter-name="minsk" data-filter-tag="Минск">Минск</option>
-						<option value="bobruysk" class="p-filters-label-js" data-filter-name="bobruysk" data-filter-tag="Бобруйск">Бобруйск</option>
+						<option value="minsk" class="p-filters-label-js" data-filter-name="minsk" data-filter-tag="Наличие - Минск">Минск</option>
+						<option value="bobruysk" class="p-filters-label-js" data-filter-name="bobruysk" data-filter-tag="Наличие - Бобруйск">Бобруйск</option>
 					</select>
 				</div>
 			</li>
 			<li>
 				<div class="select select-minimal">
-					<select class="field-effects-js" name="filter-by-shop">
+					<select class="field-effects-js" name="filter-by-shop" data-filter-select="address" data-filter-default="">
 						<option value="">Выберите магазин:</option>
 						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
 						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
 					</select>
 				</div>
+			</li>
+
+			<li>
+				<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="hit" data-filter-name="test" data-filter-tag="селект+чекбокс" />
+					<i>&nbsp;</i> <span class="p-filters-label-text-js">селект+чекбокс</span>
+				</label>
 			</li>
 		@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
 
@@ -34,22 +41,29 @@
 	@@include('_tpl_products-filters--ITEM_LAYOUT.html', {"itemLayout": "START", "isOpen": "true" })
 
 		@@include('_tpl_products-filters--head.html', {
-			"title": "Цена"
+			"title": "Цена, б.р."
 		})
 
-		@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "stock" })
-			<li>
-				<input type="text" id="price-slider-js" name="price-range" value="" data-min="50" data-max="2000" />
-				<div><span class="price-slider-value-js"></span> б.р.</div>
+		@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "group": "price" })
+			<li class="has-slider">
+				<input type="text" id="price-slider-js" class="range-slider" name="price-range" value="" data-filter-default="50;3000" data-filter-select="price-range" data-min="50" data-max="3000" data-step="50" />
+				<div class="p-filters-price-value"><span class="price-slider-value-js"></span> б.р.</div>
+			</li>
+			<li class="add-slider">
+				<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="sale" data-filter-name="sale" data-filter-tag="Только акционные" />
+					<i>&nbsp;</i> <span><em class="p-filters-share p-filters-share--sale p-filters-label-text-js">Скидка</em></span>
+				</label>
+				<div class="p-filters-share-range">
+					<input type="text" id="sale-slider-js" class="range-slider" name="sale-range" value="" data-filter-default="5" data-filter-select="sale-range" data-min="5" data-max="50" data-step="5" />
+					<div class="p-filters-share-value"><span class="sale-slider-value-js"></span> %</div>
+				</div>
 			</li>
 			<li>
-				<div class="select select-minimal">
-					<select class="field-effects-js" name="filter-by-shop">
-						<option value="">Выберите магазин:</option>
-						<option value="simashko_120" class="p-filters-label-js" data-filter-name="simashko_120" data-filter-tag="Симашко ул., д. 120">Симашко ул., д. 120</option>
-						<option value="dzerzhinskogo_12_2a" class="p-filters-label-js" data-filter-name="dzerzhinskogo_12_2a" data-filter-tag="Дзержининского пр-т, д. 12, к. 2а">Дзержининского пр-т, д. 12, к. 2а</option>
-					</select>
-				</div>
+				<label class="check-label p-filters-label-js">
+					<input type="checkbox" name="hit" data-filter-name="hit" data-filter-tag="Только популярные" />
+					<i>&nbsp;</i> <span><em class="p-filters-share p-filters-share--hit p-filters-label-text-js">Хит</em></span>
+				</label>
 			</li>
 		@@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
 

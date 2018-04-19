@@ -3,8 +3,8 @@
 		@@if (context.checkboxesExpanded) {
 			@@for (var key in checkboxesExpanded) {
 				<li>
-					<label class="check-label p-filters-label-js" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].short+`">
-						<input type="checkbox" name="`+key+`" />
+					<label class="check-label">
+						<input type="checkbox" name="`+key+`" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].short+`" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">`+checkboxesExpanded[key].full+`</span>
 					</label>
@@ -14,8 +14,8 @@
 		@@if (context.checkboxes) {
 			@@for (var key in checkboxes) {
 				<li>
-					<label class="check-label p-filters-label-js" data-filter-name="`+key+`">
-						<input type="checkbox" name="`+key+`" />
+					<label class="check-label">
+						<input type="checkbox" name="`+key+`" data-filter-name="`+key+`" />
 						<i>&nbsp;</i>
 						<span class="p-filters-label-text-js">`+checkboxes[key]+`</span>
 					</label>
