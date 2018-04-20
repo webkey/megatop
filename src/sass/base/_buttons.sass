@@ -334,8 +334,11 @@
 	padding: round((nth($btn-more--size, 2) - nth($btn-more--font, 2))/2) 10px
 
 	& > span
-		+font(nth($btn-more--font, 1), nth($btn-more--font, 1))
+		+font(nth($btn-more--font, 1), nth($btn-more--font, 2))
 		letter-spacing: 0.1em
 
+	// hover
+	.no-touchevents &:hover
+		background-color: #ccc
 
 /* btn-more-items end

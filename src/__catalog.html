@@ -25,8 +25,8 @@
 			})
 
 			<!--Во время подбора результатов добавляем класс js-loading на контейнер с классом p-filters-js-->
-			<div class="m-container p-filters-js m-container-sticky-js">
-				<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
+			<div class="m-container p-filters-js">
+				<div class="m-aside  shutter--filters shutter--filters-js m-aside-sticky-js">
 					<div class="m-aside-sticky__layout-js">
 						<form name="_form" action="#?" method="get" class="js-filter-form">
 							<div class="m-aside__align">
@@ -62,7 +62,9 @@
 						<div class="m-content__body__layout">
 							<div class="products">
 								<section class="products__list">
-									@@loop("_tpl_products--items.html", "includes/json/products.json")
+									<div class="products__list__holder equal-height-js">
+										@@loop("_tpl_products--items.html", "includes/json/products--catalog.json")
+									</div>
 								</section>
 							</div>
 						</div>

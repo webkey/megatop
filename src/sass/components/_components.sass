@@ -310,6 +310,12 @@
 /* swiper slider end
 
 /* irs
+.range-slider-js, .p-filters-price-value
+	opacity: 0
+
+.irs ~ .p-filters-price-value
+	opacity: 1
+
 .irs
 	height: 3px
 	margin-bottom: 20px
@@ -732,6 +738,7 @@
 		+padding-horizontal($text-layout-space--mob)
 		margin-bottom: 3rem
 
+
 /* jFiler
 //.upload-file__container
 	.upload-file
@@ -872,6 +879,9 @@
 	border-bottom: 1px solid $border-color
 	margin-bottom: -1px
 
+	+media('<tab-lg')
+		display: none
+
 	&:last-child
 		margin-bottom: 0
 
@@ -1010,30 +1020,23 @@
 /* feature list end
 
 // pagination
-$pagination-hspace: round($grid-space/2)
-$pagination-vspace: 4px
+$pagination-space: 4px 4px // v h
 $pagination-font-size: 14px
-$pagination-height: 30px
-$pagination-width: $pagination-height
-$pagination-border-width: 0
+$pagination-item-size: 40px 40px // w h
+$pagination-border-width: 1px
 
 /* pagination
 .pagination
+	overflow: hidden
+	margin-bottom: $bottom-space--lg
+	border: solid $border-color
+	border-width: 1px 0
 	+font-bold
-	+clear-spacing
 	color: inherit
 	text-align: center
 	cursor: default
-	margin-bottom: $bottom-space--lg
 	+push-auto
 	+clear
-
-	+media('<desk-lg')
-		margin-bottom: $bottom-space--ml
-
-	+media('<mob-lg')
-		position: relative
-		padding-bottom: $pagination-height + $pagination-vspace*2
 
 	&:last-child
 		margin-bottom: 0
@@ -1041,122 +1044,51 @@ $pagination-border-width: 0
 .pg-left
 	float: left
 
-	+media('<mob-lg')
-		float: none
-		position: absolute
-		bottom: 0
-		right: 50%
-
 .pg-right
 	float: right
 
-	+media('<mob-lg')
-		float: none
-		position: absolute
-		bottom: 0
-		left: 50%
-
-	&::before
-		+pseudo()
-		width: 0
-		height: 20px
-		margin-top: -10px
-		top: 50%
-		left: -1px
-		border-left: 2px solid
-		display: none
-
-		+media('<mob-lg')
-			display: block
-
-.pg-first-arr, .pg-last-arr, .pg-prev-arr, .pg-next-arr
-	position: absolute
-	+position(50%, 0)
-	+size(12px, 2px)
-	margin-top: -1px
-	letter-spacing: 0
-	border-top: 2px solid $text-color
-
-	&::before, &::after
-		+pseudo()
-		top: 0
-		+size(8px)
-		margin-top: -1px
-		border: 0 solid $text-color
-		backface-visibility: hidden
-
-.pg-first-arr, .pg-prev-arr
-	&::before, &::after
-		transform: rotate(-45deg)
-		transform-origin: left top
-		left: 0
-		margin-left: -1px
-		border-width: 2px 0 0 2px
-
-.pg-last-arr, .pg-next-arr
-	left: auto
-	right: 0
-
-	&::before, &::after
-		right: 0
-		margin-right: -1px
-		transform-origin: top right
-		transform: rotate(45deg)
-		border-width: 2px 2px 0 0
-
-.pg-first-arr
-
-	&::after
-		margin-left: 6px
-
-.pg-last-arr
-
-	&::after
-		margin-right: 6px
-
-.pg-prev-arr, .pg-next-arr
-
-	&::after
-		display: none
-
-.pg-first, .pg-last, .pg-prev, .pg-next
-	+display-inline-block-middle
+.pg-prev, .pg-next
 	position: relative
-	//width: 27px
-	@if $pagination-border-width != 0
-		margin: 0 0 0 -#{$pagination-border-width}
-	@else
-		margin: #{$pagination-vspace} #{$pagination-hspace}
-	color: inherit
+	display: block
+	+size(nth($pagination-space, 1)*2+(nth($pagination-item-size, 2))+$form-border-width)
+	border: $pagination-border-width solid $border-color
+	margin: -$pagination-border-width 0
+
+	span
+		display: none
+
+.pg-prev
+	margin-left: -$pagination-border-width
+
+.pg-next
+	margin-right: -$pagination-border-width
+
+.pg-prev, .pg-next
+	color: #999
 	text-decoration: none
 
-	span
-		+padding-horizontal(20px)
-
-	&.disabled
-		opacity: 0.5
-		cursor: default
-
-	.no-touchevents &:not(.disabled):hover
+	// hover
+	.no-touchevents &:hover
 		color: $base-color
 
-		[class*="-arr"]
-			&, &::before, &::after
-				border-color: $base-color
+	// disabled
+	&.disabled, .no-touchevents &.disabled
+		cursor: default
+		color: #dedede
 
-.pg-first, .pg-prev
-	span
-		padding-right: 0
-
-.pg-last, .pg-next
-	span
-		padding-left: 0
-
-.pg-first, .pg-last
-	display: none
-
-	+media('<mob-lg')
-		display: none
+.pg-prev-arr, .pg-next-arr
+	position: absolute
+	+position(50%, 50%)
+	+size(16px)
+	margin: -8px 0 0 -8px
+	letter-spacing: 0
+	
+	svg
+		display: block
+		+size(100%)
+		
+	path
+		fill: currentColor
 
 .pg-list
 	+display-inline-block-middle
@@ -1165,14 +1097,14 @@ $pagination-border-width: 0
 		margin: 0
 
 		li
-			margin: #{$pagination-vspace} 4px
+			margin: nth($pagination-space, 1) nth($pagination-space, 2)
 			padding: 0
-
-			+media('<mob-md')
-				+margin-horizontal(0)
 
 			&:before
 				content: none
+
+	&
+		+clear-spacing
 
 	li
 		+display-inline-block-top
@@ -1182,39 +1114,25 @@ $pagination-border-width: 0
 			+display-inline-block-top
 			color: inherit
 			background: transparent
-			min-width: $pagination-width
-			padding: 0 2px
+			min-width: nth($pagination-item-size, 1)
+			height: nth($pagination-item-size, 2)
+			padding: 0 3px
 			border-radius: 50%
+			+font($pagination-font-size, nth($pagination-item-size, 1))
+			letter-spacing: normal
+			text-transform: uppercase
 
 		a
 			text-decoration: none
 			cursor: pointer
 
+			// hover
 			.no-touchevents &:hover
 				color: $base-color
 
-		&.active a, .no-touchevents &.active a:hover
-			color: white
-			background-color: $base-color
-			@if $pagination-border-width != 0
-				border:
-					top-color: $base-color
-					bottom-color: $base-color
-
-// шрифт для элементов пагинации
-.pg-first, .pg-last, .pg-prev, .pg-next, .pg-list a, .pg-list li > span
-	height: $pagination-height
-	+font($pagination-font-size, #{$pagination-height - $pagination-border-width*2})
-	letter-spacing: 0.2em
-	text-transform: uppercase
-	@if $pagination-border-width != 0
-		border: #{$pagination-border-width} solid #{$border-color}
-
-	+media('<mob-md')
-		font-size: 14px
-
-.pg-list a, .pg-list li > span
-	letter-spacing: normal
+		// active
+		&.active span
+			color: #999
 
 /* pagination end
 
@@ -1599,11 +1517,12 @@ $pagination-border-width: 0
 		border: 1px solid #ccc
 
 .products__animation-wrap
-	position: relative
-	+ratio(338, 389)
-	will-change: margin, transform
+	//position: relative
+	//+ratio(338, 389)
+	$prop: margin, transform
+	will-change: $prop
 	transition:
-		property: transform, margin
+		property: $prop
 		duration: $animation-speed
 
 .products__align
@@ -1611,7 +1530,7 @@ $pagination-border-width: 0
 	left: 0
 	top: 0
 	width: 100%
-	box-shadow: inset 0 0 0 nth($products-inner-space, 2) #fff, inset 0 -60px 0 #fff, inset 0 60px 0 #fff
+	//box-shadow: inset 0 0 0 nth($products-inner-space, 2) #fff, inset 0 -60px 0 #fff, inset 0 60px 0 #fff
 
 .product__shadow
 	position: absolute
@@ -1651,8 +1570,12 @@ $pagination-border-width: 0
 	position: absolute
 	left: 0
 	top: 0
-	width: 100%
-	background-color: white
+	right: 0
+	$prop: margin, transform
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: $animation-speed
 
 .products__visual
 	position: absolute
@@ -1660,14 +1583,19 @@ $pagination-border-width: 0
 	top: 0
 	width: 100%
 	height: 100%
-	padding: nth($products-inner-space, 1)+40 nth($products-inner-space, 2)
+	+ratio(338, 389)
+	background-color: #a3f7ff
 
 .products__figure
 	display: block
-	position: relative
-	max-width: 320px // ограничиваем ширину изображения продукта
-	height: 100%
-	+push-auto
+	position: absolute
+	left: 0
+	top: 0
+	+size(100%)
+	padding: nth($products-inner-space, 1)+40 nth($products-inner-space, 2)
+	//max-width: 320px // ограничиваем ширину изображения продукта
+	//height: 100%
+	//+push-auto
 	text-decoration: none
 	color: inherit
 
@@ -1676,7 +1604,7 @@ $pagination-border-width: 0
 		+ratio(338, 389)
 
 .products__img
-	+cover-abs()
+	height: 100%
 	transition:
 		property: width, height, top, left
 		duration: $animation-speed
@@ -1888,7 +1816,7 @@ $pagination-border-width: 0
 .no-touchevents .products__inner:hover
 	z-index: 5
 
-	.products__animation-wrap
+	.products__animation-wrap, .products__visual-wrap
 		transform: translate(0, -$products-rang)
 		transform: translate3d(0, -$products-rang, 0)
 		margin-left: -$products-rang
@@ -1905,12 +1833,6 @@ $pagination-border-width: 0
 		//transform: translate3d(0, 0, 0)
 		left: -14px
 
-	.products__img
-		width: calc(100% + #{round($products-rang*2*1.5)})
-		height: calc(100% + #{round($products-rang*2*1.5)})
-		left: -#{round($products-rang*1.5)}
-		top: -#{round($products-rang*1.5)}
-
 /* products preview end
 
 /* products list
@@ -1922,14 +1844,62 @@ $pagination-border-width: 0
 		margin-bottom: 0
 
 .products__list
-	+grid-parent(nth($products-outer-space, 2))
 	margin-bottom: 8rem
 	+clear-spacing
+	+clear
+
+.products__list__holder
+	float: left
+	width: 100%
+	margin-bottom: -#{nth($products-outer-space, 1)}
 
 .products__item
-	+grid-item(4, nth($products-outer-space, 2), nth($products-outer-space, 1))
+	display: inline-block
+	vertical-align: top
+	width: 25%
+	margin-bottom: nth($products-outer-space, 1)
+
+	+media('<1500px')
+		width: 33.33%
+
+	+media('<1160px')
+		width: 50%
+
+	&.products__item--banner
+		width: 50%
+		+padding-horizontal(30px)
+
+		+media('<1500px')
+			width: 66.66%
+
+		+media('<1160px')
+			width: 50%
+
+	.products__banner
+		width: 100%
+		height: 100%
 
 /* products list end
+
+/* products banner
+.products__banner
+	display: block
+	position: relative
+	//height: 100%
+	text-decoration: none
+	color: currentColor
+
+	img
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		max-width: none
+		width: 100%
+		height: 100%
+		+object-fit(scale-down)
+
+/* products banner end
 
 /* similar slider
 // slider
@@ -2125,15 +2095,20 @@ $pagination-border-width: 0
 	display: flex
 
 	//+clear
+	+media('<tab-lg')
+		display: block
 
 	&::before
 		content: ""
 		display: block
 		position: absolute
-		left: $p-filters-width
+		left: $p-filters-width - 1
 		top: 0
 		height: 100%
 		border-right: 1px solid $border-color
+
+		+media('<tab-lg')
+			content: none
 
 .m-aside
 	width: $p-filters-width
@@ -2146,8 +2121,6 @@ $pagination-border-width: 0
 	//float: left
 
 	//+media('<tab-lg')
-		opacity: 0
-		visibility: hidden
 		position: fixed
 		overflow: hidden
 		right: 0
@@ -2258,7 +2231,8 @@ $pagination-border-width: 0
 	//float: right
 
 	+media('<tab-lg')
-		margin-left: 0
+		width: auto
+		display: block
 
 .m-content__body
 	position: relative
@@ -2302,6 +2276,13 @@ $pagination-border-width: 0
 		position: fixed
 		left: 0
 		bottom: -1px
+
+	&, .filters-result-fixed &
+		+media('<tab-lg')
+			z-index: 10100
+			position: fixed
+			left: 0
+			bottom: 0
 
 	.selected
 		+padding-horizontal(10px)
@@ -2367,7 +2348,7 @@ $pagination-border-width: 0
 		padding: 0
 		color: black
 		background-color: #eee
-		margin: -1px
+		margin: -1px 0 -1px -1px
 		border: 1px solid $border-color
 
 		svg
@@ -2471,37 +2452,40 @@ $pagination-border-width: 0
 	//justify-content: flex-end
 	//align-items: center
 	//flex-wrap: nowrap
+	+clear
 
 .p-options__item
 	//&:first-child
 		text-align: left
 		flex: 1 1
+	float: left
+	line-height: 1
+	margin-right: 20px
 
-	&.p-options__item--filters-toggle
-		+size(60px)
-		border: 1px solid $border-color
-		//display: none
+	&.p-options__item--filters
+		display: none
 
 		+media('<tab-lg')
 			display: block
 
-.btn-filters-show
+.btn-filters-toggle
 	position: relative
 	+display-inline-block-top
-	color: $text-color
+	color: currentColor
 	user-select: none
+	+font-bold
+	+font(1.4rem, 20px)
+	letter-spacing: 0.1em
+	text-transform: uppercase
+	border: 1px solid $border-color
+	padding: 9px 20px 9px 40px
+	background-color: #fff
 
-	+media('<tab-lg')
-		display: block
-		height: 100%
-
-	& > span
-		+hide-text
-
-	.p-filters-activated-js
+	.p-filters-activated
 		position: absolute
-		left: 5px
+		right: 5px
 		top: 5px
+		+font-bold
 		font-size: 10px
 		line-height: 1
 		letter-spacing: normal
@@ -2512,22 +2496,19 @@ $pagination-border-width: 0
 			display: none
 
 	svg
-		+display-inline-block-top
-		+size(24px)
-
-		.p-options__item &
-			+media('<tab-lg')
-				position: absolute
-				left: 50%
-				top: 50%
-				margin: -12px 0 0 -12px
+		display: block
+		position: absolute
+		left: 12px
+		top: 50%
+		+size(18px)
+		margin-top: -9px
 
 	path
 		fill: currentColor
 
 	// hover
 	.no-touchevents &:hover
-		color: $base-color
+		border-color: $form-border-focus-color
 
 .p-sorting
 	position: relative
@@ -2536,6 +2517,54 @@ $pagination-border-width: 0
 /* options panel end
 
 /* products filters
+.shutter--filters
+	+media('<tab-lg')
+		overflow: hidden // необходим для скрытия скролла
+		position: fixed !important // !important нужен, чтобы перебить стили назначенные скриптом
+		width: 100%
+		left: 0
+		top: $header-height--sm !important // !important нужен, чтобы перебить стили назначенные скриптом
+		bottom: 0
+		z-index: 10000
+
+	&, & .m-aside__holder
+		+media('<tab-lg')
+			// ширину устанавливаем на основной
+			// и вложенный контейнер,
+			// чтобы корректно обрезать скролл
+			width: $shutter-width
+
+		+media('<mob-lg')
+			width: 100%
+
+	.m-aside__align
+		+media('<tab-lg')
+			overflow-x: hidden
+			overflow-y: auto
+			height: 100%
+
+			.no-touchevents &
+				overflow: hidden
+
+			.no-touchevents &:hover
+				overflow-y: auto
+
+.shutter--filters, .p-filters-results
+	+media('<tab-lg')
+		//opacity: 0
+		//visibility: hidden
+		will-change: transform
+		transform: translate(-100%, 0)
+		transform: translateX(-100%)
+		background-color: white
+		transition:
+			property: transform
+			duration: $animation-speed
+
+		&.active
+			transform: translate(0, 0)
+			transform: translateX(0)
+
 .p-filters-list
 	margin-bottom: $bottom-space
 
@@ -2547,6 +2576,9 @@ $pagination-border-width: 0
 	border: solid $border-color
 	border-width: 1px 0
 	margin-bottom: -1px
+
+	&:last-child
+		margin-bottom: 0
 
 	//&:last-child
 		margin-bottom: 0
@@ -2577,6 +2609,8 @@ $pagination-border-width: 0
 	will-change: $param
 	transition:
 		property: $param
+
+	display: none
 
 	&.filters-selected-show
 		opacity: 1
@@ -2658,6 +2692,61 @@ $pagination-border-width: 0
 			& ~ span
 				+font-bold
 
+	// filter colors
+	.p-filters--color &
+		+margin-horizontal(-2px)
+		+clear
+
+		li
+			float: left
+			margin: 0 2px 5px
+			line-height: 1
+
+			i, span, span::before, span::after
+				display: none
+
+			img
+				border-radius: 50%
+				+size(32px)
+				max-width: none
+				border: 1px solid transparent
+
+			input[type="checkbox"]:checked ~ img
+				//border-color: black
+				box-shadow: 0 0 1px 1px rgba(0, 0, 0, 1)
+
+	// filter sizes
+	.p-filters--size &
+		+margin-horizontal(-2px)
+		+clear
+
+		li
+			float: left
+			margin: 0 2px 5px
+			line-height: 1
+
+	label.checkbox--size
+
+		& > i, & > span::before, & > span::after
+			display: none
+
+		& > span
+			display: inline-block
+			vertical-align: top
+			min-width: 48px
+			height: 34px
+			border-radius: 17px
+			border: 1px solid #ccc
+			text-align: center
+			padding: 0 5px
+			+font(1.6rem, 32px)
+			background-color: white
+
+		input[type="checkbox"]:checked ~ span
+			background-color: #999
+			border-color: #999
+			color: white
+
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,
 .p-filters-item.p-filters-on .p-filters-select
@@ -2698,13 +2787,17 @@ $pagination-border-width: 0
 		position: absolute
 		right: 0
 		top: 0
-		opacity: 0.1
+		//opacity: 0.1
+		visibility: hidden
+		pointer-events: none
 
 	.irs
 		margin-top: 8px
 
 	li.is-active &, .no-js &
-		opacity: 1
+		//opacity: 1
+		visibility: visible
+		pointer-events: auto
 
 .p-filters-price-value, .p-filters-share-value
 	text-align: center

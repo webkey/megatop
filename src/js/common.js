@@ -22,6 +22,7 @@ var DESKTOP = device.desktop();
 var MOBILE = device.mobile();
 var TABLET = device.tablet();
 
+var mediaWidth = 992;
 var prodCardMediaWidth = 992;
 
 /**
@@ -585,33 +586,46 @@ function multiAccordionInit() {
 }
 
 /**
- * !Toggle nav
+ * !Toggle shutters
  * */
-function toggleNav() {
+function toggleShutters() {
 	var $overlay = $('.shutter-overlay-js'),
 		$html = $('html'),
-		activeClass = 'active';
+		activeClass = 'active',
+		shutterAfterOpenFilters = 'shutter-after-open--filters';
 
 	var $nav = $('.shutter--nav-js'),
 		$login = $('.shutter--login-js'),
-		$reg = $('.shutter--reg-js');
+		$reg = $('.shutter--reg-js'),
+
+		$filters = $('.shutter--filters-js');
 
 	var $btnNav = $('.btn-nav-js'),
 		$btnLogin = $('.btn-login-js'),
-		$btnReg = $('.btn-reg-js');
+		$btnReg = $('.btn-reg-js'),
+
+		$btnFilters = $('.btn-filters-js');
+
+	var $filtersResult = $('.p-filters-results-js');
 
 	$btnNav.on('click', function (e) {
 		var $curOpener = $(this);
 		$curOpener.toggleClass(activeClass);
 		$btnLogin.removeClass(activeClass);
 		$btnReg.removeClass(activeClass);
+		$btnFilters.removeClass(activeClass);
 
 		$nav.toggleClass(activeClass);
 		$login.removeClass(activeClass);
 		$reg.removeClass(activeClass);
+		$filters.removeClass(activeClass);
+
+		$filtersResult.removeClass(activeClass);
 
 		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
 		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+		$html.removeClass(shutterAfterOpenFilters);
+
 		e.preventDefault();
 	});
 
@@ -620,13 +634,19 @@ function toggleNav() {
 		$curOpener.toggleClass(activeClass);
 		$btnNav.removeClass(activeClass);
 		$btnReg.removeClass(activeClass);
+		$btnFilters.removeClass(activeClass);
 
 		$login.toggleClass(activeClass);
 		$nav.removeClass(activeClass);
 		$reg.removeClass(activeClass);
+		$filters.removeClass(activeClass);
+
+		$filtersResult.removeClass(activeClass);
 
 		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
 		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+		$html.removeClass(shutterAfterOpenFilters);
+
 		e.preventDefault();
 	});
 
@@ -635,13 +655,38 @@ function toggleNav() {
 		$curOpener.toggleClass(activeClass);
 		$btnNav.removeClass(activeClass);
 		$btnLogin.removeClass(activeClass);
+		$btnFilters.removeClass(activeClass);
 
 		$reg.toggleClass(activeClass);
 		$nav.removeClass(activeClass);
 		$login.removeClass(activeClass);
+		$filters.removeClass(activeClass);
+
+		$filtersResult.removeClass(activeClass);
 
 		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
 		$html.toggleClass('shutter-after-open css-scroll-fixed', $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+		$html.removeClass(shutterAfterOpenFilters);
+
+		e.preventDefault();
+	});
+
+	$btnFilters.on('click', function (e) {
+		var $curOpener = $(this);
+		$curOpener.toggleClass(activeClass);
+		$btnNav.removeClass(activeClass);
+		$btnLogin.removeClass(activeClass);
+		$btnReg.removeClass(activeClass);
+
+		$filters.toggleClass(activeClass);
+		$filtersResult.toggleClass(activeClass);
+		$nav.removeClass(activeClass);
+		$login.removeClass(activeClass);
+		$reg.removeClass(activeClass);
+
+		$overlay.toggleClass(activeClass, $curOpener.hasClass(activeClass));
+		$html.toggleClass('shutter-after-open ' + shutterAfterOpenFilters, $curOpener.hasClass(activeClass)).addClass('header-show').removeClass('header-hide');
+
 		e.preventDefault();
 	});
 
@@ -650,13 +695,17 @@ function toggleNav() {
 		$btnNav.removeClass(activeClass);
 		$btnLogin.removeClass(activeClass);
 		$btnReg.removeClass(activeClass);
+		$btnFilters.removeClass(activeClass);
 
 		$nav.removeClass(activeClass);
 		$login.removeClass(activeClass);
 		$reg.removeClass(activeClass);
+		$filters.removeClass(activeClass);
+
+		$filtersResult.removeClass(activeClass);
 
 		$overlay.removeClass(activeClass);
-		$html.removeClass('shutter-after-open css-scroll-fixed');
+		$html.removeClass('shutter-after-open css-scroll-fixed ' + shutterAfterOpenFilters);
 
 		e.preventDefault();
 	})
@@ -666,7 +715,7 @@ function toggleNav() {
  * !Equal height of blocks by maximum height of them
  */
 function equalHeight() {
-	// example
+	// equel height
 	var $equalHeight = $('.equal-height-js');
 
 	if($equalHeight.length) {
@@ -758,6 +807,7 @@ function formAccept() {
 function stickyInit() {
 	var $mAside = $('.m-aside-sticky-js'),
 	$mContent = $('.m-content-sticky-js');
+
 	if ($mAside.length) {
 
 		// var mAsideSticky = new StickySidebar('.m-aside-sticky-js', {
@@ -783,6 +833,9 @@ function stickyInit() {
 			}
 		});
 
+		// if(window.innerWidth >= mediaWidth) {
+		//
+		// }
 		stickybits('.m-aside', {
 			useStickyClasses: true,
 			stickyBitStickyOffset: 70
@@ -988,8 +1041,8 @@ function stickyInit() {
 
 			// console.log(curAttrName + " (state): ", self.getFilterState($curFilter));
 			// console.log(curAttrName + " (defaultValue): ", $curFilter.attr(self.attributes.dataDefaultValue));
-			console.log(curAttrName + " (filterType): ", $curFilter.attr(self.attributes.dataType));
-			console.log(curAttrName + " (value): ", $curFilter.val());
+			// console.log(curAttrName + " (filterType): ", $curFilter.attr(self.attributes.dataType));
+			// console.log(curAttrName + " (value): ", $curFilter.val());
 
 			var dataGroup = "[" + self.attributes.dataGroup + "=" + curAttrGroup + "]",
 				dataName = "[" + self.attributes.dataName + "=" + curAttrName + "]",
@@ -1072,7 +1125,7 @@ function stickyInit() {
 
 	MultiFilters.prototype.countActivateFilters = function ($filter, $container) {
 		// возвращает количество отмеченных (активных) фильтров
-		self = this;
+		var self = this;
 
 		// console.log("$filter: ", $filter);
 
@@ -1110,11 +1163,12 @@ function stickyInit() {
 					.prop('selectedIndex', 0)
 					.trigger('change');
 
-				var priceSliderObj = this.priceSlider, key;
+				var priceSliderObj = self.priceSlider,
+					key;
+
 				for (key in priceSliderObj) {
 					priceSliderObj[key].reset();
 				}
-
 			} else {
 				$curFiltersGroup
 					.find(dataName)
@@ -1158,7 +1212,9 @@ function stickyInit() {
 		$container.find(':checked').prop('checked', false).trigger('change');
 		$container.find('select').prop('selectedIndex', false).trigger('change');
 
-		var priceSliderObj = this.priceSlider, key;
+		var priceSliderObj = this.priceSlider,
+			key;
+
 		for (key in priceSliderObj) {
 			priceSliderObj[key].reset();
 		}
@@ -1501,14 +1557,14 @@ $(document).ready(function () {
 	slidersInit();
 	selectLang();
 	multiAccordionInit();
-	toggleNav();
+	toggleShutters();
 	equalHeight();
 	productLiked();
 	formMaskInit();
 	formAccept();
 	stickyInit();
 	multiFiltersInit();
-	objectFitImages(); // object-fit-images initial
+	objectFitImages('img'); // object-fit-images initial
 
 	formSuccessExample();
 });

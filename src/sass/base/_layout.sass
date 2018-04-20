@@ -6,6 +6,10 @@ html
 	&.css-scroll-fixed
 		+scroll-blocked() // блокировка скролла
 
+	&.shutter-after-open--filters
+		+media('<tab-lg')
+			+scroll-blocked() // блокировка скролла
+
 /* === LAYOUT ===
 .max-wrap
 	max-width: $page-layout-width + nth($page-layout-space, 2)*2
@@ -173,7 +177,7 @@ html
 	z-index: 10
 	// ===================
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		opacity: 0
 		overflow: hidden
 		//visibility: hidden
@@ -720,7 +724,7 @@ html
 	position: absolute
 	left: $space
 	top: $space
-	z-index: 25
+	z-index: 5
 	padding: 13px
 	width: 280px
 	max-width: calc(100% - #{round($space*2)})
@@ -1243,10 +1247,9 @@ html
 .shutter-overlay
 	position: fixed
 	left: 0
+	top: $header-height
 	bottom: 0
 	width: 100%
-	height: 100%
-	max-height: calc(100% - #{$header-height})
 	background-color: black
 	visibility: hidden
 	opacity: 0
@@ -1257,11 +1260,15 @@ html
 		timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
 	+media('<desk-md')
-		max-height: calc(100% - #{$header-height--sm})
+		top: $header-height--sm
 
 	&.active
 		visibility: visible
 		opacity: 0.35
+
+	.shutter-after-open--filters &
+		+media('>=tab-lg')
+			display: none
 
 /* shutter overlay end
 

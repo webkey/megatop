@@ -1,5 +1,14 @@
 <div class="p-options">
 	<div class="p-options__list">
+		<div class="p-options__item p-options__item--filters">
+			<div class="p-options__inner">
+				<a href="#" class="btn-filters-toggle btn-filters-js" title="Показать фильтры">
+					<div class="p-filters-activated p-filters-activated-js hide">0</div>
+					@@include("includes/svg/icon-filters.svg")
+					<span>Фильтр</span>
+				</a>
+			</div>
+		</div>
 		<div class="p-options__item">
 			<div class="p-options__inner">
 				<div class="select select-minimal p-sorting">
@@ -13,15 +22,6 @@
 						<option value="2">По&nbsp;Модели (по возрастанию)</option>
 					</select>
 				</div>
-			</div>
-		</div>
-		<div class="p-options__item p-options__item--filters-toggle">
-			<div class="p-options__inner">
-				<a href="#" class="btn-filters-toggle btn-m-aside-open-js" title="Показать фильтры">
-					<div class="p-filters-activated-js hide">0</div>
-					@@include("includes/svg/icon-filters.svg")
-					<span>Показать фильтры</span>
-				</a>
 			</div>
 		</div>
 	</div>

@@ -140,8 +140,8 @@
 						</ul>
 					</div>
 					<!--Во время подбора результатов добавляем класс js-loading на контейнер с классом p-filters-js-->
-					<div class="m-container p-filters-js m-container-sticky-js">
-						<div class="m-aside m-aside-sticky-js m-aside-shutter-js">
+					<div class="m-container p-filters-js">
+						<div class="m-aside  shutter--filters shutter--filters-js m-aside-sticky-js">
 							<div class="m-aside-sticky__layout-js">
 								<form name="_form" action="#?" method="get" class="js-filter-form">
 									<div class="m-aside__align">
@@ -157,7 +157,7 @@
 															</div>
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
-														<div class="p-filters-drop p-filters-drop-js">
+														<div class="p-filters-drop p-filters-drop-js @@modGroup">
 															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="stock">
@@ -179,16 +179,10 @@
 					</select>
 																	</div>
 																</li>
-																<li>
-																	<label class="check-label">
-					<input type="checkbox" name="hit" data-filter-name="test" data-filter-tag="селект+чекбокс" />
-					<i>&nbsp;</i> <span>селект+чекбокс</span>
-				</label>
-																</li>
 															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
 														</div>
 													</div>
 												</div>
@@ -203,7 +197,7 @@
 															</div>
 															<div class="p-filters-angle"><i>&nbsp;</i></div>
 														</div>
-														<div class="p-filters-drop p-filters-drop-js">
+														<div class="p-filters-drop p-filters-drop-js @@modGroup">
 															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
 															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price">
@@ -218,8 +212,8 @@
 					<i>&nbsp;</i> <span><em class="p-filters-share p-filters-share--sale">Скидка</em></span>
 				</label>
 																	<div class="p-filters-share-range">
-																		<input type="text" id="sale-slider-js" class="range-slider-js" name="sale-range" value="5" data-postfix="%" data-min="5" data-max="50" data-step="5" data-filter-type="range-slider" data-filter-default="5" data-filter-select="sale-range" data-filter-name="sale-range"
-																		/>
+																		<input type="text" id="sale-slider-js" class="range-slider-js" name="sale-range" value="5;50" data-type="double" data-postfix="%" data-min="5" data-max="50" data-step="5" data-filter-type="range-slider" data-filter-default="5;50" data-filter-select="sale-range"
+																		    data-filter-name="sale-range" />
 																		<div class="p-filters-share-value"><span class="range-slider-value-js sale-slider-value-js"></span> %</div>
 																	</div>
 																</li>
@@ -230,9 +224,9 @@
 				</label>
 																</li>
 															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
 														</div>
 													</div>
 												</div>
@@ -253,42 +247,728 @@
 															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="seasons">
 																<li>
 																	<label class="check-label">
+						<input type="checkbox" name="demi" data-filter-name="demi" data-filter-tag="Сезон - Деми" />
+						<i>&nbsp;</i>
+						
+						<span>Деми</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="all" data-filter-name="all" data-filter-tag="Сезон - Круглогодичная" />
+						<i>&nbsp;</i>
+						
+						<span>Круглогодичная</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
 						<input type="checkbox" name="winter" data-filter-name="winter" data-filter-tag="Сезон - Зима" />
 						<i>&nbsp;</i>
+						
 						<span>Зима</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
 						<input type="checkbox" name="spring" data-filter-name="spring" data-filter-tag="Сезон - Весна" />
 						<i>&nbsp;</i>
+						
 						<span>Весна</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
 						<input type="checkbox" name="summer" data-filter-name="summer" data-filter-tag="Сезон - Лето" />
 						<i>&nbsp;</i>
+						
 						<span>Лето</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
 						<input type="checkbox" name="autumn" data-filter-name="autumn" data-filter-tag="Сезон - Осень" />
 						<i>&nbsp;</i>
+						
 						<span>Осень</span>
+						
 					</label>
 																</li>
 															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
 														</div>
 													</div>
 												</div>
 												<!--===============-->
 												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Цвет</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js p-filters--color">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="color">
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="white" data-filter-name="white" data-filter-tag="Белый" />
+						<i>&nbsp;</i>
+						
+						<span>Белый</span>
+						
+							<img src="img/img-color-01.png" alt="Белый" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="gray" data-filter-name="gray" data-filter-tag="Оттенки серого" />
+						<i>&nbsp;</i>
+						
+						<span>Серый</span>
+						
+							<img src="img/img-color-02.png" alt="Оттенки серого" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="black" data-filter-name="black" data-filter-tag="Черный" />
+						<i>&nbsp;</i>
+						
+						<span>Черный</span>
+						
+							<img src="img/img-color-03.png" alt="Черный" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="blue" data-filter-name="blue" data-filter-tag="Оттенки синего" />
+						<i>&nbsp;</i>
+						
+						<span>Синий</span>
+						
+							<img src="img/img-color-04.png" alt="Оттенки синего" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="purple" data-filter-name="purple" data-filter-tag="Оттенки пурпурного" />
+						<i>&nbsp;</i>
+						
+						<span>Пурпурный</span>
+						
+							<img src="img/img-color-05.png" alt="Оттенки пурпурного" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="pink" data-filter-name="pink" data-filter-tag="Оттенки розового" />
+						<i>&nbsp;</i>
+						
+						<span>Розовый</span>
+						
+							<img src="img/img-color-06.png" alt="Оттенки розового" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="green" data-filter-name="green" data-filter-tag="Оттенки зеленого" />
+						<i>&nbsp;</i>
+						
+						<span>Зеленый</span>
+						
+							<img src="img/img-color-07.png" alt="Оттенки зеленого" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="yellow" data-filter-name="yellow" data-filter-tag="Оттенки желтого" />
+						<i>&nbsp;</i>
+						
+						<span>Желтый</span>
+						
+							<img src="img/img-color-08.png" alt="Оттенки желтого" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="orange" data-filter-name="orange" data-filter-tag="Оттенки оранжевого" />
+						<i>&nbsp;</i>
+						
+						<span>Оранжевый</span>
+						
+							<img src="img/img-color-09.png" alt="Оттенки оранжевого" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="brown" data-filter-name="brown" data-filter-tag="Оттенки коричневого" />
+						<i>&nbsp;</i>
+						
+						<span>Коричневый</span>
+						
+							<img src="img/img-color-10.png" alt="Оттенки коричневого" />
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--color">
+						<input type="checkbox" name="red" data-filter-name="red" data-filter-tag="Оттенки красного" />
+						<i>&nbsp;</i>
+						
+						<span>Красный</span>
+						
+							<img src="img/img-color-11.png" alt="Оттенки красного" />
+						
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Тип</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="bosonozhki" data-filter-name="bosonozhki" data-filter-tag="Босоножки" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-bosonozhki.png" alt="Босоножки" />
+							</em>
+						
+						<span>Босоножки</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="botinki" data-filter-name="botinki" data-filter-tag="Ботинки" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-botinki.png" alt="Ботинки" />
+							</em>
+						
+						<span>Ботинки</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="mokasiny" data-filter-name="mokasiny" data-filter-tag="Мокасины" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-mokasiny.png" alt="Мокасины" />
+							</em>
+						
+						<span>Мокасины</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="pantolety" data-filter-name="pantolety" data-filter-tag="Пантолеты" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-pantolety.png" alt="Пантолеты" />
+							</em>
+						
+						<span>Пантолеты</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="polubotinki" data-filter-name="polubotinki" data-filter-tag="Полуботинки" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-polubotinki.png" alt="Полуботинки" />
+							</em>
+						
+						<span>Полуботинки</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="polusapogi" data-filter-name="polusapogi" data-filter-tag="Полусапоги" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-polusapogi.png" alt="Полусапоги" />
+							</em>
+						
+						<span>Полусапоги</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="sapogi" data-filter-name="sapogi" data-filter-tag="Туфли" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-shoes-tufli.png" alt="Туфли" />
+							</em>
+						
+						<span>Туфли</span>
+						
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Размер</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js p-filters--size">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="size">
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_34" data-filter-name="size_34" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">34</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_35" data-filter-name="size_35" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">35</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_36" data-filter-name="size_36" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">36</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_37" data-filter-name="size_37" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">37</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_38" data-filter-name="size_38" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">38</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_39" data-filter-name="size_39" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">39</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_40" data-filter-name="size_40" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">40</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_41" data-filter-name="size_41" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">41</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_42" data-filter-name="size_42" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">42</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_43" data-filter-name="size_43" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">43</span>
+					</label>
+																</li>
+																<li>
+																	<label class="check-label checkbox--size">
+						<input type="checkbox" name="size_44" data-filter-name="size_44" />
+						<i>&nbsp;</i>
+						<span class="p-filters-label-text-js">44</span>
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Материал верха</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="material">
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="kozha" data-filter-name="kozha" data-filter-tag="Кожа" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-material-kozha.png" alt="Кожа" />
+							</em>
+						
+						<span>Кожа</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="nekozha" data-filter-name="nekozha" data-filter-tag="Не кожа" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-material-nekozha.png" alt="Не кожа" />
+							</em>
+						
+						<span>Не кожа</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="tekstil" data-filter-name="tekstil" data-filter-tag="Текстиль" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-material-tekstil.png" alt="Текстиль" />
+							</em>
+						
+						<span>Текстиль</span>
+						
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Высота каблука</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="heel">
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="heel_7" data-filter-name="heel_7" data-filter-tag="7 см и более" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-heel-7.png" alt="7 см и более" />
+							</em>
+						
+						<span>7 см и более</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="heel_5-7" data-filter-name="heel_5-7" data-filter-tag="5 - 7 см" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-heel-5_7.png" alt="5 - 7 см" />
+							</em>
+						
+						<span>5 - 7 см</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="heel_3-5" data-filter-name="heel_3-5" data-filter-tag="3 - 5 см" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-heel-3_5.png" alt="3 - 5 см" />
+							</em>
+						
+						<span>3 - 5 см</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="heel_0-3" data-filter-name="heel_0-3" data-filter-tag="0 - 3 cм" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-heel-0_3.png" alt="0 - 3 cм" />
+							</em>
+						
+						<span>0 - 3 cм</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="heel_tanketka" data-filter-name="heel_tanketka" data-filter-tag="Танкетка" />
+						<i>&nbsp;</i>
+						
+							<em class="checkbox-icon">
+								<img src="img/icon-heel-tanketka.png" alt="Танкетка" />
+							</em>
+						
+						<span>Танкетка</span>
+						
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
+													<div class="p-filters-selected p-filters-selected-js">0</div>
+													<div class="p-filters-inner">
+														<div class="p-filters-select p-filters-select-js">
+															<div class="p-filters-select-head">
+																<div class="p-filters__title">Стиль</div>
+															</div>
+															<div class="p-filters-angle"><i>&nbsp;</i></div>
+														</div>
+														<div class="p-filters-drop p-filters-drop-js">
+															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="stile">
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="business" data-filter-name="business" data-filter-tag="Business" />
+						<i>&nbsp;</i>
+						
+						<span>Business</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="casual-trend" data-filter-name="casual-trend" data-filter-tag="Casual Trend" />
+						<i>&nbsp;</i>
+						
+						<span>Casual Trend</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="cocktail" data-filter-name="cocktail" data-filter-tag="Cocktail" />
+						<i>&nbsp;</i>
+						
+						<span>Cocktail</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="active" data-filter-name="active" data-filter-tag="Active" />
+						<i>&nbsp;</i>
+						
+						<span>Active</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="business-casual" data-filter-name="business-casual" data-filter-tag="Business Casual" />
+						<i>&nbsp;</i>
+						
+						<span>Business Casual</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="casual" data-filter-name="casual" data-filter-tag="Casual" />
+						<i>&nbsp;</i>
+						
+						<span>Casual</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="casual-comfort" data-filter-name="casual-comfort" data-filter-tag="Casual Comfort" />
+						<i>&nbsp;</i>
+						
+						<span>Casual Comfort</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="classic" data-filter-name="classic" data-filter-tag="Classic" />
+						<i>&nbsp;</i>
+						
+						<span>Classic</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="comfort" data-filter-name="comfort" data-filter-tag="Comfort" />
+						<i>&nbsp;</i>
+						
+						<span>Comfort</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="comfort-casual" data-filter-name="comfort-casual" data-filter-tag="Comfort Casual" />
+						<i>&nbsp;</i>
+						
+						<span>Comfort Casual</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="fashion" data-filter-name="fashion" data-filter-tag="Fashion" />
+						<i>&nbsp;</i>
+						
+						<span>Fashion</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="sport-active" data-filter-name="sport-active" data-filter-tag="Sport Active" />
+						<i>&nbsp;</i>
+						
+						<span>Sport Active</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="sport-trend" data-filter-name="sport-trend" data-filter-tag="Sport Trend" />
+						<i>&nbsp;</i>
+						
+						<span>Sport Trend</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="domashniaya" data-filter-name="domashniaya" data-filter-tag="Домашняя" />
+						<i>&nbsp;</i>
+						
+						<span>Домашняя</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="oblegchennaya" data-filter-name="oblegchennaya" data-filter-tag="Облегченная" />
+						<i>&nbsp;</i>
+						
+						<span>Облегченная</span>
+						
+					</label>
+																</li>
+															</ul>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
+														</div>
+													</div>
+												</div>
+												<!--===============-->
+												<!--===============-->
+												<div class="p-filters-item p-filters-item-js p-filters-is-open">
 													<div class="p-filters-selected p-filters-selected-js">0</div>
 													<div class="p-filters-inner">
 														<div class="p-filters-select p-filters-select-js">
@@ -300,430 +980,128 @@
 														<div class="p-filters-drop p-filters-drop-js">
 															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
 															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="brands">
+															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="brend">
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="svitanak" data-filter-name="svitanak" data-filter-tag="Свiтанак" />
+						<input type="checkbox" name="clara-barson" data-filter-name="clara-barson" data-filter-tag="Clara Barson" />
 						<i>&nbsp;</i>
-						<span>Свiтанак</span>
+						
+						<span>Clara Barson</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="ego" data-filter-name="ego" data-filter-tag="Эго" />
+						<input type="checkbox" name="enjoin" data-filter-name="enjoin" data-filter-tag="ENJOIN" />
 						<i>&nbsp;</i>
-						<span>Эго</span>
+						
+						<span>ENJOIN</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="fishka" data-filter-name="fishka" data-filter-tag="Fishka" />
+						<input type="checkbox" name="enjoy" data-filter-name="enjoy" data-filter-tag="ENJOY" />
 						<i>&nbsp;</i>
-						<span>Fishka</span>
+						
+						<span>ENJOY</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="kuka-vaka" data-filter-name="kuka-vaka" data-filter-tag="Кука-Вака" />
+						<input type="checkbox" name="happy-family" data-filter-name="happy-family" data-filter-tag="Happy family" />
 						<i>&nbsp;</i>
-						<span>Кука-Вака</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Коллекция</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="color">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="2017" data-filter-name="2017" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">2017 г.</span>
+						
+						<span>Happy family</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="winter" data-filter-name="winter" />
+						<input type="checkbox" name="inblu" data-filter-name="inblu" data-filter-tag="INBLU" />
 						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Зима</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Вид полотна</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="kulir" data-filter-name="kulir" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">кулир</span>
+						
+						<span>INBLU</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="interlok" data-filter-name="interlok" />
+						<input type="checkbox" name="jenny-fairy" data-filter-name="jenny-fairy" data-filter-tag="Jenny Fairy" />
 						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">интерлок</span>
+						
+						<span>Jenny Fairy</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="comb" data-filter-name="comb" />
+						<input type="checkbox" name="larossa" data-filter-name="larossa" data-filter-tag="LAROSSA" />
 						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">комбинир.</span>
+						
+						<span>LAROSSA</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="lastik" data-filter-name="lastik" />
+						<input type="checkbox" name="lasocki" data-filter-name="lasocki" data-filter-tag="Lasocki" />
 						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">ластик 1*1</span>
+						
+						<span>Lasocki</span>
+						
 					</label>
 																</li>
 																<li>
 																	<label class="check-label">
-						<input type="checkbox" name="neop" data-filter-name="neop" />
+						<input type="checkbox" name="moleca" data-filter-name="moleca" data-filter-tag="Moleca" />
 						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">непол ласт</span>
+						
+						<span>Moleca</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="nylon-red" data-filter-name="nylon-red" data-filter-tag="Nylon Red" />
+						<i>&nbsp;</i>
+						
+						<span>Nylon Red</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="paola-platini" data-filter-name="paola-platini" data-filter-tag="Paola Platini" />
+						<i>&nbsp;</i>
+						
+						<span>Paola Platini</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="shuzzi" data-filter-name="shuzzi" data-filter-tag="Shuzzi" />
+						<i>&nbsp;</i>
+						
+						<span>Shuzzi</span>
+						
+					</label>
+																</li>
+																<li>
+																	<label class="check-label">
+						<input type="checkbox" name="megatop" data-filter-name="megatop" data-filter-tag="МЕГАТОП" />
+						<i>&nbsp;</i>
+						
+						<span>МЕГАТОП</span>
+						
 					</label>
 																</li>
 															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Вид отделки</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="otdelka1" data-filter-name="otdelka1" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">отделка 1</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="otdelka2" data-filter-name="otdelka2" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">отделка 2</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="otdelka3" data-filter-name="otdelka3" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">отделка 3</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="otdelka4" data-filter-name="otdelka4" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">отделка 4</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="otdelka5" data-filter-name="otdelka5" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">отделка 5</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Цвет</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="red" data-filter-name="red" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Красны</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="black" data-filter-name="black" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Черный</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="white" data-filter-name="white" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Белый</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="green" data-filter-name="green" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Зеленый</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="blue" data-filter-name="blue" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Синий</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="gray" data-filter-name="gray" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Серый</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="alizarin" data-filter-name="alizarin" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Ализариновый красный с легким оттенком берюзы</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="yellow" data-filter-name="yellow" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">Желный</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Размер</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="xxs" data-filter-name="xxs" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">xxs (42)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="xs" data-filter-name="xs" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">xs (44)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="s" data-filter-name="s" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">s (46)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="m" data-filter-name="m" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">m (48)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="l" data-filter-name="l" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">l (50)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="xl" data-filter-name="xl" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">xl (52)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="xxl" data-filter-name="xxl" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">xxl (54)</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="xxxl" data-filter-name="xxxl" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">xxxl (56)</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
-														</div>
-													</div>
-												</div>
-												<!--===============-->
-												<!--===============-->
-												<div class="p-filters-item p-filters-item-js">
-													<div class="p-filters-selected p-filters-selected-js">0</div>
-													<div class="p-filters-inner">
-														<div class="p-filters-select p-filters-select-js">
-															<div class="p-filters-select-head">
-																<div class="p-filters__title">Цена</div>
-															</div>
-															<div class="p-filters-angle"><i>&nbsp;</i></div>
-														</div>
-														<div class="p-filters-drop p-filters-drop-js">
-															<!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
-															<!--Если data-filter-tag не добавлять, то тег берется с .p-filters-label-text-js-->
-															<ul class="p-filters-drop-list p-filters-group-js" data-filter-group="type">
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="<5" data-filter-name="<5" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">до 5 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="6-15" data-filter-name="6-15" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">6 р. — 15 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="16-30" data-filter-name="16-30" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">16 р. — 30 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="31-50" data-filter-name="31-50" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">31 р. — 50 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="51-100" data-filter-name="51-100" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">51 р. — 100 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="101-200" data-filter-name="101-200" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">101 р. — 200 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="201-500" data-filter-name="201-500" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">201 р. — 500 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name="501-1000" data-filter-name="501-1000" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">501 р. — 1000 р.</span>
-					</label>
-																</li>
-																<li>
-																	<label class="check-label">
-						<input type="checkbox" name=">1000" data-filter-name=">1000" />
-						<i>&nbsp;</i>
-						<span class="p-filters-label-text-js">свыше 1001 р.</span>
-					</label>
-																</li>
-															</ul>
-															<div class="p-filters-drop-footer">
-																<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
-															</div>
+															<!--<div class="p-filters-drop-footer">
+		<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>
+	</div>-->
 														</div>
 													</div>
 												</div>
@@ -750,6 +1128,17 @@
 								<div class="m-content__body__options">
 									<div class="p-options">
 										<div class="p-options__list">
+											<div class="p-options__item p-options__item--filters">
+												<div class="p-options__inner">
+													<a href="#" class="btn-filters-toggle btn-filters-js" title="Показать фильтры">
+														<div class="p-filters-activated p-filters-activated-js hide">0</div>
+														<svg class="svg-ico-filters" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 79.2 89.6">
+    <path d="M3.8 18.7h6.6C12 25.1 18 30 24.9 30c6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7 0-2.1-1.6-3.7-3.7-3.7H39.3C37.7 4.9 31.7 0 24.8 0 17.9 0 12 4.7 10.4 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7C0.1 17.1 1.8 18.7 3.8 18.7zM24.8 6.1c4.9 0 8.9 4 8.9 8.9 0 4.9-4 8.9-8.9 8.9 -4.9 0-8.9-4-8.9-8.9C15.9 10.1 19.9 6.1 24.8 6.1zM75.4 41.1h-6.3c-1.6-6.4-7.6-11.3-14.5-11.3s-12.8 4.8-14.5 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h36.4c1.6 6.4 7.6 11.3 14.4 11.3S67.4 55 69.1 48.5h6.3c2.1 0 3.7-1.6 3.7-3.7S77.4 41.1 75.4 41.1zM54.6 53.7c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9S59.6 53.7 54.6 53.7zM75.4 70.9H39.3c-1.6-6.4-7.6-11.3-14.5-11.3 -6.9 0-12.8 4.8-14.5 11.3H3.7c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h6.6c1.6 6.4 7.6 11.3 14.5 11.3 6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7S77.4 70.9 75.4 70.9zM24.8 83.5c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9c4.9 0 8.9 4 8.9 8.9S29.8 83.5 24.8 83.5z"></path>
+</svg>
+														<span>Фильтр</span>
+													</a>
+												</div>
+											</div>
 											<div class="p-options__item">
 												<div class="p-options__inner">
 													<div class="select select-minimal p-sorting">
@@ -765,17 +1154,6 @@
 													</div>
 												</div>
 											</div>
-											<div class="p-options__item p-options__item--filters-toggle">
-												<div class="p-options__inner">
-													<a href="#" class="btn-filters-toggle btn-m-aside-open-js" title="Показать фильтры">
-														<div class="p-filters-activated-js hide">0</div>
-														<svg class="svg-ico-filters" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 79.2 89.6">
-    <path d="M3.8 18.7h6.6C12 25.1 18 30 24.9 30c6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7 0-2.1-1.6-3.7-3.7-3.7H39.3C37.7 4.9 31.7 0 24.8 0 17.9 0 12 4.7 10.4 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7C0.1 17.1 1.8 18.7 3.8 18.7zM24.8 6.1c4.9 0 8.9 4 8.9 8.9 0 4.9-4 8.9-8.9 8.9 -4.9 0-8.9-4-8.9-8.9C15.9 10.1 19.9 6.1 24.8 6.1zM75.4 41.1h-6.3c-1.6-6.4-7.6-11.3-14.5-11.3s-12.8 4.8-14.5 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h36.4c1.6 6.4 7.6 11.3 14.4 11.3S67.4 55 69.1 48.5h6.3c2.1 0 3.7-1.6 3.7-3.7S77.4 41.1 75.4 41.1zM54.6 53.7c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9S59.6 53.7 54.6 53.7zM75.4 70.9H39.3c-1.6-6.4-7.6-11.3-14.5-11.3 -6.9 0-12.8 4.8-14.5 11.3H3.7c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h6.6c1.6 6.4 7.6 11.3 14.5 11.3 6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7S77.4 70.9 75.4 70.9zM24.8 83.5c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9c4.9 0 8.9 4 8.9 8.9S29.8 83.5 24.8 83.5z"></path>
-</svg>
-														<span>Показать фильтры</span>
-													</a>
-												</div>
-											</div>
 										</div>
 									</div>
 									<div class="p-filters-tags">
@@ -787,259 +1165,779 @@
 								<div class="m-content__body__layout">
 									<div class="products">
 										<section class="products__list">
-											<div class="products__item">
-												<div class="products__inner">
-													<div class="products__visual-wrap products__spacer">
-														<div class="products__visual">
-															<div class="products__figure">
-																<div class="products__img">
-																	<img src="img/img-products-01.jpg" alt="Товар первый" />
+											<div class="products__list__holder equal-height-js">
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-01.jpg" alt="Товар первый" />
+																	</div>
 																</div>
 															</div>
 														</div>
-													</div>
-													<div class="products__animation-wrap">
-														<div class="products__align">
-															<a href="#" class="products__inset">
-																<!--<div class="products__title"><span>Товар первый</span></div>-->
-																<div class="products__spacer">&nbsp;</div>
-																<div class="products__price">
-																	<div class="products__price__share">
-																		<div class="products__price__old">
-																			<strong class="products__price__old__val">47.55</strong>
-																			<span class="products__price__old__unit">руб.</span>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар первый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">47.55</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">10%</span>
 																		</div>
-																		<span class="products__price__sale">10%</span>
-																	</div>
-																	<div class="products__price__cur">
-																		<strong class="products__price__cur__val">45.95</strong>
-																		<span class="products__price__cur__unit">руб.</span>
-																	</div>
-																</div>
-																<div class="products__info">
-																	<div class="products__info__brand">Enjoin</div>
-																	<div class="products__info__model">Casual</div>
-																</div>
-																<div class="products__labels">
-																	<div class="products__label products__label--sale">Скидка!</div>
-																	<div class="products__label products__label--hit">Хит!</div>
-																</div>
-																<div class="products__tags">
-																	<div class="products__tag">
-																		<i>
-									<img src="img/ico-leather.png" alt="Кожа" />
-								</i>
-																		<span>Кожа</span>
-																	</div>
-																</div>
-															</a>
-															<a href="#" class="products__likes products-likes-js active" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
-						
-						<span>Нравится</span>
-					</a>
-															<div class="product__shadow">&nbsp;</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="products__item">
-												<div class="products__inner">
-													<div class="products__visual-wrap products__spacer">
-														<div class="products__visual">
-															<div class="products__figure">
-																<div class="products__img">
-																	<img src="img/img-products-02.jpg" alt="Товар второй" />
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="products__animation-wrap">
-														<div class="products__align">
-															<a href="#" class="products__inset">
-																<!--<div class="products__title"><span>Товар второй</span></div>-->
-																<div class="products__spacer">&nbsp;</div>
-																<div class="products__price">
-																	<div class="products__price__share">
-																		<div class="products__price__old">
-																			<strong class="products__price__old__val">91.99</strong>
-																			<span class="products__price__old__unit">руб.</span>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">45.95</strong>
+																			<span class="products__price__cur__unit">руб.</span>
 																		</div>
-																		<span class="products__price__sale">5%</span>
 																	</div>
-																	<div class="products__price__cur">
-																		<strong class="products__price__cur__val">73.99</strong>
-																		<span class="products__price__cur__unit">руб.</span>
+																	<div class="products__info">
+																		<div class="products__info__brand">Sprandi earth gear</div>
+																		<div class="products__info__model">Casual</div>
 																	</div>
-																</div>
-																<div class="products__info">
-																	<div class="products__info__brand">Happy Family</div>
-																	<div class="products__info__model">Slim</div>
-																</div>
-																<div class="products__labels">
-																	<div class="products__label products__label--hit">Хит!</div>
-																</div>
-																<div class="products__tags">
-																	<div class="products__tag">
-																		<i>
-									<img src="img/ico-leather.png" alt="Кожа" />
-								</i>
-																		<span>Кожа</span>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
 																	</div>
-																</div>
-															</a>
-															<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
-						
-						<span>Нравится</span>
-					</a>
-															<div class="product__shadow">&nbsp;</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="products__item">
-												<div class="products__inner">
-													<div class="products__visual-wrap products__spacer">
-														<div class="products__visual">
-															<div class="products__figure">
-																<div class="products__img">
-																	<img src="img/img-products-03.jpg" alt="Товар третий" />
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="products__animation-wrap">
-														<div class="products__align">
-															<a href="#" class="products__inset">
-																<!--<div class="products__title"><span>Товар третий</span></div>-->
-																<div class="products__spacer">&nbsp;</div>
-																<div class="products__price">
-																	<div class="products__price__cur">
-																		<strong class="products__price__cur__val">315.05</strong>
-																		<span class="products__price__cur__unit">$</span>
-																	</div>
-																</div>
-																<div class="products__info">
-																	<div class="products__info__brand">Adidas</div>
-																	<div class="products__info__model">Medium</div>
-																</div>
-																<div class="products__labels">
-																	<div class="products__label products__label--sale">Скидка!</div>
-																</div>
-																<div class="products__tags">
-																	<div class="products__tag">
-																		<i>
-									<img src="img/ico-leather.png" alt="Заменитель кожи" />
-								</i>
-																		<span>Заменитель кожи</span>
-																	</div>
-																</div>
-															</a>
-															<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
-						
-						<span>Нравится</span>
-					</a>
-															<div class="product__shadow">&nbsp;</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="products__item">
-												<div class="products__inner">
-													<div class="products__visual-wrap products__spacer">
-														<div class="products__visual">
-															<div class="products__figure">
-																<div class="products__img">
-																	<img src="img/img-products-04.jpg" alt="Товар четвертый" />
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="products__animation-wrap">
-														<div class="products__align">
-															<a href="#" class="products__inset">
-																<!--<div class="products__title"><span>Товар четвертый</span></div>-->
-																<div class="products__spacer">&nbsp;</div>
-																<div class="products__price">
-																	<div class="products__price__share">
-																		<div class="products__price__old">
-																			<strong class="products__price__old__val">158.00</strong>
-																			<span class="products__price__old__unit">руб.</span>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
 																		</div>
-																		<span class="products__price__sale">350%</span>
 																	</div>
-																	<div class="products__price__cur">
-																		<strong class="products__price__cur__val">45.15</strong>
-																		<span class="products__price__cur__unit">руб.</span>
-																	</div>
-																</div>
-																<div class="products__info">
-																	<div class="products__info__brand">Nike</div>
-																	<div class="products__info__model">Slim</div>
-																</div>
-																<div class="products__labels">
-																</div>
-																<div class="products__tags">
-																	<div class="products__tag">
-																		<i>
-									<img src="img/ico-leather.png" alt="Искусственный материал" />
-								</i>
-																		<span>Искусственный материал</span>
-																	</div>
-																</div>
-															</a>
-															<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
-						
-						<span>Нравится</span>
-					</a>
-															<div class="product__shadow">&nbsp;</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="products__item">
-												<div class="products__inner">
-													<div class="products__visual-wrap products__spacer">
-														<div class="products__visual">
-															<div class="products__figure">
-																<div class="products__img">
-																	<img src="img/img-products-05.jpg" alt="Товар пятый" />
-																</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js active" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
 															</div>
 														</div>
 													</div>
-													<div class="products__animation-wrap">
-														<div class="products__align">
-															<a href="#" class="products__inset">
-																<!--<div class="products__title"><span>Товар пятый</span></div>-->
-																<div class="products__spacer">&nbsp;</div>
-																<div class="products__price">
-																	<div class="products__price__cur">
-																		<strong class="products__price__cur__val">8.99</strong>
-																		<span class="products__price__cur__unit">руб.</span>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-02.jpg" alt="Товар второй" />
 																	</div>
 																</div>
-																<div class="products__info">
-																	<div class="products__info__brand">Puma</div>
-																	<div class="products__info__model">Full cover</div>
-																</div>
-																<div class="products__labels">
-																	<div class="products__label products__label--sale">Скидка!</div>
-																	<div class="products__label products__label--hit">Хит!</div>
-																</div>
-																<div class="products__tags">
-																	<div class="products__tag">
-																		<i>
-									<img src="img/ico-leather.png" alt="Ткань" />
-								</i>
-																		<span>Ткань</span>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар второй</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">91.99</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">5%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">73.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Happy Family</div>
+																		<div class="products__info__model">Slim</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item products__item--banner">
+													<a href="#" class="products__banner">
+			<img src="img/img-banner-03.jpg" alt="Новая коллекция 2017" />
+		</a>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-03.jpg" alt="Товар третий" />
 																	</div>
 																</div>
-															</a>
-															<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
-						
-						<span>Нравится</span>
-					</a>
-															<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар третий</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">315.05</strong>
+																			<span class="products__price__cur__unit">$</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Adidas</div>
+																		<div class="products__info__model">Medium</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Заменитель кожи" />
+									</i>
+																			<span>Заменитель кожи</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-06.jpg" alt="Товар четвертый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар четвертый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">65.95</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Enjoin</div>
+																		<div class="products__info__model">Ботинки</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Искусственная кожа" />
+									</i>
+																			<span>Искусственная кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-05.jpg" alt="Товар пятый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар пятый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">8.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Puma</div>
+																		<div class="products__info__model">Full cover</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Ткань" />
+									</i>
+																			<span>Ткань</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-07.jpg" alt="Товар первый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар первый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">47.55</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">10%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">45.95</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Enjoin</div>
+																		<div class="products__info__model">Casual</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js active" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-02.jpg" alt="Товар второй" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар второй</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">91.99</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">5%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">73.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Happy Family</div>
+																		<div class="products__info__model">Slim</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-03.jpg" alt="Товар третий" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар третий</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">315.05</strong>
+																			<span class="products__price__cur__unit">$</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Adidas</div>
+																		<div class="products__info__model">Medium</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Заменитель кожи" />
+									</i>
+																			<span>Заменитель кожи</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-04.jpg" alt="Товар четвертый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар четвертый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">158.00</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">350%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">45.15</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Nike</div>
+																		<div class="products__info__model">Slim</div>
+																	</div>
+																	<div class="products__labels">
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Искусственный материал" />
+									</i>
+																			<span>Искусственный материал</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-05.jpg" alt="Товар пятый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар пятый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">8.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Puma</div>
+																		<div class="products__info__model">Full cover</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Ткань" />
+									</i>
+																			<span>Ткань</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item products__item--banner">
+													<a href="#" class="products__banner">
+			<img src="img/img-banner-03.jpg" alt="Новая коллекция 2017" />
+		</a>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-01.jpg" alt="Товар первый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар первый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">47.55</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">10%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">45.95</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Enjoin</div>
+																		<div class="products__info__model">Casual</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js active" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-02.jpg" alt="Товар второй" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар второй</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">91.99</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">5%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">73.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Happy Family</div>
+																		<div class="products__info__model">Slim</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Кожа" />
+									</i>
+																			<span>Кожа</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-03.jpg" alt="Товар третий" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар третий</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">315.05</strong>
+																			<span class="products__price__cur__unit">$</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Adidas</div>
+																		<div class="products__info__model">Medium</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Заменитель кожи" />
+									</i>
+																			<span>Заменитель кожи</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-04.jpg" alt="Товар четвертый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар четвертый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__share">
+																			<div class="products__price__old">
+																				<strong class="products__price__old__val">158.00</strong>
+																				<span class="products__price__old__unit">руб.</span>
+																			</div>
+																			<span class="products__price__sale">350%</span>
+																		</div>
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">45.15</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Nike</div>
+																		<div class="products__info__model">Slim</div>
+																	</div>
+																	<div class="products__labels">
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Искусственный материал" />
+									</i>
+																			<span>Искусственный материал</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="products__item">
+													<div class="products__inner">
+														<div class="products__visual-wrap products__spacer">
+															<div class="products__visual">
+																<div class="products__figure">
+																	<div class="products__img">
+																		<img src="img/img-products-05.jpg" alt="Товар пятый" />
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="products__animation-wrap products__spacer">
+															<div class="products__align">
+																<a href="#" class="products__inset">
+																	<!--<div class="products__title"><span>Товар пятый</span></div>-->
+																	<div class="products__spacer">&nbsp;</div>
+																	<div class="products__price">
+																		<div class="products__price__cur">
+																			<strong class="products__price__cur__val">8.99</strong>
+																			<span class="products__price__cur__unit">руб.</span>
+																		</div>
+																	</div>
+																	<div class="products__info">
+																		<div class="products__info__brand">Puma</div>
+																		<div class="products__info__model">Full cover</div>
+																	</div>
+																	<div class="products__labels">
+																		<div class="products__label products__label--sale">Скидка!</div>
+																		<div class="products__label products__label--hit">Хит!</div>
+																	</div>
+																	<div class="products__tags">
+																		<div class="products__tag">
+																			<i>
+										<img src="img/ico-leather.png" alt="Ткань" />
+									</i>
+																			<span>Ткань</span>
+																		</div>
+																	</div>
+																</a>
+																<a href="#" class="products__likes products-likes-js" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">
+							
+							<span>Нравится</span>
+						</a>
+																<div class="product__shadow">&nbsp;</div>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -1053,22 +1951,20 @@
 							<span>Показать еще 50</span>
 							<svg class="svg-ico-ico"  width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42.8"><path d="M20.6 0C14.2 0 8.4 2.9 4.4 7.4L0 3 0 15l12.1 0L6.8 9.7c3.3-3.9 8.3-6.4 13.8-6.4 10 0 18.1 8.1 18.1 18.1s-8.1 18.1-18.1 18.1c-5.8 0-11-2.7-14.3-7l-2.9 1.7c3.9 5.3 10.2 8.7 17.2 8.7 11.8 0 21.4-9.6 21.4-21.4S32.4 0 20.6 0z"></path></svg>
 						</a>
-								<div class="pagination max-wrap-text">
+								<div class="pagination">
 									<div class="pg-left">
-										<a class="pg-first disabled" href="#">
-			<span>В начало</span>
-			<i class="pg-first-arr">&nbsp;</i>
-		</a>
 										<a class="pg-prev disabled" href="#">
 			<span>Назад</span>
-			<i class="pg-prev-arr">&nbsp;</i>
+			<i class="pg-prev-arr">
+				<svg class="svg-ico-arrow-left"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 582 998"><path d="M582 83c0 8.7-3.3 16.3-10 23L179 499l393 393c6.7 6.7 10 14.3 10 23s-3.3 16.3-10 23l-50 50c-6.7 6.7-14.3 10-23 10s-16.3-3.3-23-10L10 522c-6.7-6.7-10-14.3-10-23s3.3-16.3 10-23L476 10c6.7-6.7 14.3-10 23-10s16.3 3.3 23 10l50 50C578.7 66.7 582 74.3 582 83z"></path></svg>
+			</i>
 		</a>
 									</div>
 									<ul class="pg-list">
 										<li><a href="#">1</a></li>
 										<li><span class="dots">...</span></li>
 										<li><a href="#">8</a></li>
-										<li class="active"><a href="">9</a></li>
+										<li class="active"><span>9</span></li>
 										<li><a href="#">10</a></li>
 										<li><span class="dots">...</span></li>
 										<li><a href="#">127</a></li>
@@ -1076,11 +1972,9 @@
 									<div class="pg-right">
 										<a class="pg-next" href="#">
 			<span>Вперед</span>
-			<i class="pg-next-arr">&nbsp;</i>
-		</a>
-										<a class="pg-last" href="#">
-			<span>В конец</span>
-			<i class="pg-last-arr">&nbsp;</i>
+			<i class="pg-next-arr">
+				<svg class="svg-ico-arrow-right" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 582 998"><path d="M582 499c0 8.7-3.3 16.3-10 23L106 988c-6.7 6.7-14.3 10-23 10s-16.3-3.3-23-10l-50-50c-6.7-6.7-10-14.3-10-23s3.3-16.3 10-23l393-393L10 106C3.3 99.3 0 91.7 0 83s3.3-16.3 10-23l50-50C66.7 3.3 74.3 0 83 0s16.3 3.3 23 10l466 466C578.7 482.7 582 490.3 582 499z"></path></svg>
+			</i>
 		</a>
 									</div>
 								</div>
