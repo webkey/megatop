@@ -1006,13 +1006,30 @@ function stickyInit() {
 					.attr(self.attributes.dataGroup, curAttrGroup)
 					.attr(self.attributes.dataName, curAttrName);
 
-				if($curFilter.is(':checkbox')) {
-					$tagClone.appendTo($curContainer.find(self.$tagsContainer));
-				} else {
-					$curContainer.find(self.tagsItem).filter(dataSelect).remove();
-					$tagClone
-						.attr(self.attributes.dataSelect, curAttrSelect)
-						.appendTo($curContainer.find(self.$tagsContainer));
+				switch (true) {
+					case $curFilter.is(':checkbox'):
+						$tagClone.appendTo($curContainer.find(self.$tagsContainer));
+						break;
+
+					case $curFilter.attr(self.attributes.dataType) === 'range-slider':
+						$curContainer.find(self.tagsItem).filter(dataSelect).remove();
+						var val = $curFilter.val().split(';');
+						$(self.tagsItemTpl).clone()
+							.find(self.tagTextContainer)
+							.html(val[0] + " - " + val[1])
+							.end()
+							.attr(self.attributes.dataGroup, curAttrGroup)
+							.attr(self.attributes.dataName, curAttrName)
+							.attr(self.attributes.dataSelect, curAttrSelect)
+							.appendTo($curContainer.find(self.$tagsContainer));
+
+						break;
+
+					default:
+						$curContainer.find(self.tagsItem).filter(dataSelect).remove();
+						$tagClone
+							.attr(self.attributes.dataSelect, curAttrSelect)
+							.appendTo($curContainer.find(self.$tagsContainer));
 				}
 			} else {
 				// удалить тэг
@@ -1092,6 +1109,12 @@ function stickyInit() {
 					.find(dataSelect)
 					.prop('selectedIndex', 0)
 					.trigger('change');
+
+				var priceSliderObj = this.priceSlider, key;
+				for (key in priceSliderObj) {
+					priceSliderObj[key].reset();
+				}
+
 			} else {
 				$curFiltersGroup
 					.find(dataName)
