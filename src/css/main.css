@@ -817,44 +817,37 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 /* content img end */
 /* columnize */
 .columnize, .columnize--3, .columnize--4 {
-	-webkit-column-count: 2;
-	        column-count: 2;
-	-webkit-column-gap: 2em;
-	        column-gap: 2em;
+	column-count: 2;
+	column-gap: 2em;
 	margin-bottom: 2.4rem;
 	font-size: 0.9em;
 }
 
 .columnize--3 {
-	-webkit-column-count: 3;
-	        column-count: 3;
+	column-count: 3;
 	font-size: 0.85em;
 }
 
 .columnize--4 {
-	-webkit-column-count: 4;
-	        column-count: 4;
+	column-count: 4;
 	font-size: 0.8em;
 }
 
 @media (max-width: 1199px) {
 	.columnize--4 {
-		-webkit-column-count: 3;
-		        column-count: 3;
+		column-count: 3;
 	}
 }
 
 @media (max-width: 991px) {
 	.columnize--3, .columnize--4 {
-		-webkit-column-count: 2;
-		        column-count: 2;
+		column-count: 2;
 	}
 }
 
 @media (max-width: 767px) {
 	.columnize, .columnize--3, .columnize--4 {
-		-webkit-column-count: 1;
-		        column-count: 1;
+		column-count: 1;
 	}
 }
 
@@ -1651,18 +1644,15 @@ label, .label {
 }
 
 .form-columnize {
-	-webkit-column-count: 2;
-	        column-count: 2;
+	column-count: 2;
 }
 
 .form-columnize--3 {
-	-webkit-column-count: 3;
-	        column-count: 3;
+	column-count: 3;
 }
 
 .form-columnize, .form-columnize--3 {
-	-webkit-column-gap: 40px;
-	        column-gap: 40px;
+	column-gap: 40px;
 }
 
 .form-columnize label, .form-columnize--3 label {
@@ -1674,10 +1664,8 @@ label, .label {
 
 @media (max-width: 639px) {
 	.form-columnize, .form-columnize--3 {
-		-webkit-column-count: 1;
-		        column-count: 1;
-		-webkit-column-gap: 0;
-		        column-gap: 0;
+		column-count: 1;
+		column-gap: 0;
 	}
 }
 
@@ -5681,11 +5669,11 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	pointer-events: none;
 	will-change: transform, opacity;
 	transition-property: transform, opacity;
-	transition-duration: 0.2s;
 }
 
 .p-filters-selected.filters-selected-show {
 	opacity: 1;
+	transition-duration: 0.2s;
 }
 
 .p-filters-angle {
@@ -7675,9 +7663,10 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 .shutter {
 	overflow: hidden;
 	position: fixed;
-	height: calc(100% - 70px);
+	width: 100%;
 	left: 0;
 	top: 70px;
+	bottom: 0;
 	z-index: 10000;
 	will-change: transform;
 	-ms-transform: translate(-100%, 0);
@@ -7691,7 +7680,6 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 
 @media (max-width: 1365px) {
 	.shutter {
-		height: calc(100% - 50px);
 		top: 50px;
 	}
 }
@@ -7705,35 +7693,8 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 
 .shutter__content {
 	overflow-x: hidden;
-	height: 100%;
-}
-
-.no-touchevents .shutter__content {
-	overflow-y: hidden;
-}
-
-.no-touchevents .shutter__content:hover {
 	overflow-y: auto;
-}
-
-@media (max-width: 639px) {
-	.shutter__content {
-		width: 100%;
-	}
-}
-
-.touchevents .shutter__content {
-	width: 100%;
-}
-
-.shutter, .shutter__content__holder {
-	width: 280px;
-}
-
-@media (max-width: 639px) {
-	.shutter, .shutter__content__holder {
-		width: 100%;
-	}
+	height: 100%;
 }
 
 /* shutter layout end */
@@ -7906,6 +7867,24 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 	}
 }
 
+.no-touchevents .shutter--nav .shutter__content {
+	overflow-y: hidden;
+}
+
+.no-touchevents .shutter--nav .shutter__content:hover {
+	overflow-y: auto;
+}
+
+.shutter--nav, .shutter--nav .shutter__content__holder {
+	width: 280px;
+}
+
+@media (max-width: 639px) {
+	.shutter--nav, .shutter--nav .shutter__content__holder {
+		width: 100%;
+	}
+}
+
 @media (max-width: 991px) {
 	.shutter--nav .shutter__mask--start {
 		top: 50px;
@@ -7929,14 +7908,6 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 /* shutter--login */
 .shutter--login {
 	background-color: #f6f6f6;
-}
-
-.shutter--login .shutter__content {
-	width: 100%;
-}
-
-.shutter--login, .shutter--login .shutter__content__holder {
-	width: 100%;
 }
 
 .shutter--login .shutter__content__holder {

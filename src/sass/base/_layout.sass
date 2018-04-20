@@ -1095,9 +1095,11 @@ html
 .shutter
 	overflow: hidden // необходим для скрытия скролла
 	position: fixed
-	height: calc(100% - #{$header-height})
+	//height: calc(100% - #{$header-height})
+	width: 100%
 	left: 0
 	top: $header-height
+	bottom: 0
 	z-index: 10000
 	// ==========================
 	//opacity: 0
@@ -1111,7 +1113,7 @@ html
 		duration: $animation-speed
 
 	+media('<desk-md')
-		height: calc(100% - #{$header-height--sm})
+		//height: calc(100% - #{$header-height--sm})
 		top: $header-height--sm
 
 	&.active
@@ -1119,31 +1121,9 @@ html
 		transform: translateX(0)
 
 .shutter__content
-	//width: calc(100% + 100px) // скрываем скролл на десктопе
-	//overflow-y: auto
 	overflow-x: hidden
+	overflow-y: auto
 	height: 100%
-
-	.no-touchevents &
-		overflow-y: hidden
-
-	.no-touchevents &:hover
-		overflow-y: auto
-
-	+media('<mob-lg')
-		width: 100%
-
-	.touchevents &
-		width: 100% // возвращаем скролл на тачскрине
-
-.shutter, .shutter__content__holder
-	// ширину устанавливаем на основной
-	// и вложенный контейнер,
-	// чтобы корректно обрезать скролл
-	width: $shutter-width
-
-	+media('<mob-lg')
-		width: 100%
 
 /* shutter layout end
 
@@ -1287,13 +1267,6 @@ html
 
 /* shutter--nav
 .shutter--nav
-	//position: fixed
-	//left: 0
-	//height: calc(100% - #{$header-height})
-	//top: $header-height
-	//&, .shutter__content__holder
-		width: $nav-width
-	
 	+media('<desk-sm')
 		border-top: 1px solid #666
 
@@ -1304,6 +1277,22 @@ html
 	+media('<mob-lg')
 		// для мобил на всю ширину экрана
 		width: 100%
+
+	.shutter__content
+		.no-touchevents &
+			overflow-y: hidden
+
+		.no-touchevents &:hover
+			overflow-y: auto
+
+	&, & .shutter__content__holder
+		// ширину устанавливаем на основной
+		// и вложенный контейнер,
+		// чтобы корректно обрезать скролл
+		width: $shutter-width
+
+		+media('<mob-lg')
+			width: 100%
 
 	.shutter__mask--start
 		+media('<tab-lg')
@@ -1322,14 +1311,6 @@ html
 /* shutter--login
 .shutter--login
 	background-color: #f6f6f6
-	//transform: translate(0, 0)
-	//transform: translateX(0)
-
-	.shutter__content
-		width: 100%
-
-	&, .shutter__content__holder
-		width: 100%
 
 	.shutter__content__holder
 		+padding-vertical($header-height, 6rem)

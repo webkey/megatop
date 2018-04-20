@@ -2577,10 +2577,11 @@ $pagination-border-width: 0
 	will-change: $param
 	transition:
 		property: $param
-		duration: $animation-speed
 
 	&.filters-selected-show
 		opacity: 1
+		transition:
+			duration: $animation-speed
 
 // angle
 .p-filters-angle

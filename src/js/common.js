@@ -821,13 +821,14 @@ function stickyInit() {
 			showPlaceholderClass: 'filters-placeholder-show',
 			filterActiveClass: 'is-active',
 
-			dataGroup: 'group',
-			dataDefaultValue: 'default',
-			dataSelect: 'select', // add this attribute on a select
-			dataTag: 'tag',
-			dataName: 'index',
-			dataPrefix: 'prefix',
-			dataPostfix: 'postfix'
+			dataGroup: 'data-filter-group',
+			dataDefaultValue: 'data-filter-default',
+			dataSelect: 'data-filter-select', // добавлять этот атрибут, если можно выбирать из нескольких вариантов, например select или slider
+			dataTag: 'data-filter-tag',
+			dataName: 'data-filter-name',
+			dataType: 'data-filter-type',
+			dataPrefix: 'data-filter-value-prefix',
+			dataPostfix: 'data-filter-value-postfix'
 		}, settings || {});
 
 		this.options = options;
@@ -863,13 +864,14 @@ function stickyInit() {
 		};
 
 		this.attributes = {
-			group: options.dataGroup,
-			defaultValue: options.dataDefaultValue,
-			select: options.dataSelect,
-			tag: options.dataTag,
-			name: options.dataName,
-			prefix: options.dataPrefix,
-			postfix: options.dataPostfix
+			dataGroup: options.dataGroup,
+			dataDefaultValue: options.dataDefaultValue,
+			dataSelect: options.dataSelect,
+			dataTag: options.dataTag,
+			dataName: options.dataName,
+			dataType: options.dataType,
+			dataPrefix: options.dataPrefix,
+			dataPostfix: options.dataPostfix
 		};
 
 		this.changeFilters();
@@ -877,11 +879,45 @@ function stickyInit() {
 		this.toggleDrop();
 		this.resetFiltersInGroup();
 		this.resetAllFilters();
-		// this.addClassCustom();
+		this.initRangeSlider();
 
 	};
 
 	// MultiFilters.prototype.dropIsOpened = false;
+
+	MultiFilters.prototype.initRangeSlider = function () {
+		var self = this,
+			$rangeSlider = $(".range-slider-js"),
+			$rangeSliderValue = $('.range-slider-value-js');
+
+		self.priceSlider = {};
+
+		$.each($rangeSlider, function (i, el) {
+			var $curSlider = $(this),
+				$curSliderValue = $curSlider.closest('li').find($rangeSliderValue);
+
+			$curSlider.ionRangeSlider({
+				onStart: function (data) {
+					getValue(data, $curSliderValue)
+				},
+				onChange: function (data) {
+					getValue(data, $curSliderValue);
+				}
+			});
+
+			self.priceSlider[i] = $curSlider.data('ionRangeSlider');
+		});
+
+		function getValue(data, $elem) {
+			var from = data.from, to = data.to;
+
+			if (data.input.attr('data-type') === "double") {
+				$elem.html(from + " - " + to);
+			} else {
+				$elem.html(from);
+			}
+		}
+	};
 
 	MultiFilters.prototype.changeFilters = function () {
 		var self = this;
@@ -898,9 +934,8 @@ function stickyInit() {
 			var $curBtnReset = $curItem.find(self.$btnReset);
 			var $curBtnResetAll = $curContainer.find(self.$btnResetAll);
 
-			// console.log(curAttrTag + ": " + self.getFilterState($curFilter));
-
 			// на li добвить класс, если чекбокс отмечен
+			$curFilter.is(':checkbox') &&
 			$curFilter.closest('li').toggleClass(self.modifiers.filterActive, self.getFilterState($curFilter));
 
 			// отключить кнопку очистки чекбоксов в ГРУППЕ
@@ -942,18 +977,23 @@ function stickyInit() {
 			$curContainer.find(self.$activatedFilters).html(activeGroupLength).toggleClass('hide', !activeGroupLength);
 
 			// attributes
-			var curAttrGroup = $curGroup.data(self.attributes.group);
-			var curAttrSelect = $curFilter.data(self.attributes.select);
-			var curAttrName = $curFilter.data(self.attributes.name) || $('option:selected', $curFilter).data(self.attributes.name);
-			var curAttrTag = $curFilter.data(self.attributes.tag) || $('option:selected', $curFilter).data(self.attributes.tag);
+			var curAttrGroup = $curGroup.attr(self.attributes.dataGroup);
+			var curAttrSelect = $curFilter.attr(self.attributes.dataSelect);
+			var curAttrName = $curFilter.attr(self.attributes.dataName) || $('option:selected', $curFilter).attr(self.attributes.dataName);
+			var curAttrTag = $curFilter.attr(self.attributes.dataTag) || $('option:selected', $curFilter).attr(self.attributes.dataTag);
 			// console.log("curAttrGroup: ", curAttrGroup);
 			// console.log("curAttrSelect: ", curAttrSelect);
 			// console.log("curAttrName: ", curAttrName);
 			// console.log("curAttrTag: ", curAttrTag);
 
-			var dataGroup = "[data-" + self.attributes.group + "=" + curAttrGroup + "]",
-				dataSelect = "[data-" + self.attributes.select + "=" + curAttrSelect + "]",
-				dataName = "[data-" + self.attributes.name + "=" + curAttrName + "]";
+			// console.log(curAttrName + " (state): ", self.getFilterState($curFilter));
+			// console.log(curAttrName + " (defaultValue): ", $curFilter.attr(self.attributes.dataDefaultValue));
+			console.log(curAttrName + " (filterType): ", $curFilter.attr(self.attributes.dataType));
+			console.log(curAttrName + " (value): ", $curFilter.val());
+
+			var dataGroup = "[" + self.attributes.dataGroup + "=" + curAttrGroup + "]",
+				dataName = "[" + self.attributes.dataName + "=" + curAttrName + "]",
+				dataSelect = "[" + self.attributes.dataSelect + "=" + curAttrSelect + "]";
 
 			// добавить/удалить тэг
 			if(self.getFilterState($curFilter)) {
@@ -963,20 +1003,20 @@ function stickyInit() {
 					.find(self.tagTextContainer)
 					.html(textInsideTag)
 					.end()
-					.attr('data-' + self.attributes.group, curAttrGroup)
-					.attr('data-' + self.attributes.name, curAttrName);
+					.attr(self.attributes.dataGroup, curAttrGroup)
+					.attr(self.attributes.dataName, curAttrName);
 
-				if($curFilter[0].type === "checkbox") {
+				if($curFilter.is(':checkbox')) {
 					$tagClone.appendTo($curContainer.find(self.$tagsContainer));
 				} else {
 					$curContainer.find(self.tagsItem).filter(dataSelect).remove();
 					$tagClone
-						.attr('data-' + self.attributes.select, curAttrSelect)
+						.attr(self.attributes.dataSelect, curAttrSelect)
 						.appendTo($curContainer.find(self.$tagsContainer));
 				}
 			} else {
 				// удалить тэг
-				if($curFilter[0].type === "checkbox") {
+				if($curFilter.is(':checkbox')) {
 					$curContainer.find(self.tagsItem).filter(dataGroup + dataName).remove();
 				} else {
 					$curContainer.find(self.tagsItem).filter(dataSelect).remove();
@@ -1001,17 +1041,17 @@ function stickyInit() {
 		$curItem.find(self.$placeholder).toggleClass(self.modifiers.showPlaceholder, !lengthChecked > 0);
 		$curItem.find(self.$selected).toggleClass(self.modifiers.showSelected, lengthChecked > 0);
 
-		var textPrefix = $curItem.find(self.$selected).data(self.attributes.prefix) || "",
-			textPostfix = $curItem.find(self.$selected).data(self.attributes.postfix) || "";
+		var textPrefix = $curItem.find(self.$selected).attr(self.attributes.dataPrefix) || "",
+			textPostfix = $curItem.find(self.$selected).attr(self.attributes.dataPostfix) || "";
 
 		$curItem.find(self.$selected).html(textPrefix + " " + lengthChecked + " " + textPostfix);
 	};
 
-	MultiFilters.prototype.checkPropAll = function ($filter, $container) {
-		// если отмеченны ВСЕ фильтры в группе, возвращает true, иначе false
-
-		// return $container.find(':checkbox').length === this.countActivateFilters($filter, $container);
-	};
+	// MultiFilters.prototype.checkPropAll = function ($filter, $container) {
+	// 	// если отмеченны ВСЕ фильтры в группе, возвращает true, иначе false
+	//
+	// 	return $container.find(':checkbox').length === this.countActivateFilters($filter, $container);
+	// };
 
 	MultiFilters.prototype.countActivateFilters = function ($filter, $container) {
 		// возвращает количество отмеченных (активных) фильтров
@@ -1023,11 +1063,8 @@ function stickyInit() {
 			lengthActivateFilters = 0;
 
 		$.each($curFilters, function () {
-			var $thisFilter = $(this),
-				filtersState = self.getFilterState($thisFilter);
-
-			// console.log("filter is active or not?: ", filtersState);
-			filtersState && lengthActivateFilters++
+			var $thisFilter = $(this);
+			self.getFilterState($thisFilter) && lengthActivateFilters++
 		});
 
 		// console.log("lengthActivateFilters: ", lengthActivateFilters);
@@ -1042,17 +1079,25 @@ function stickyInit() {
 		var self = this;
 
 		self.$container.on('click', self.tagsItem, function (e) {
-			var $currentTag = $(this);
+			var $curTag = $(this);
+			var dataGroup = "[" + self.attributes.dataGroup + "=" + $curTag.attr(self.attributes.dataGroup) + "]",
+				dataName = "[" + self.attributes.dataName + "=" + $curTag.attr(self.attributes.dataName) + "]";
+			var $curFiltersGroup = $curTag.closest(self.$container).find(self.$group).filter(dataGroup);
 
 			// отключить соответствующий фильтр
-			var dataGroup = "[data-" + self.attributes.group + "=" + $currentTag.data(self.attributes.group) + "]",
-				dataName = "[data-" + self.attributes.name + "=" + $currentTag.data(self.attributes.name) + "]";
+			if($curTag.attr(self.attributes.dataSelect)){
+				var dataSelect = "[" + self.attributes.dataSelect + "=" + $curTag.attr(self.attributes.dataSelect) + "]";
 
-			$currentTag.closest(self.$container)
-				.find(self.$group).filter(dataGroup)
-				.find(dataName)
-				.prop('checked', false)
-				.trigger('change');
+				$curFiltersGroup
+					.find(dataSelect)
+					.prop('selectedIndex', 0)
+					.trigger('change');
+			} else {
+				$curFiltersGroup
+					.find(dataName)
+					.prop('checked', false)
+					.trigger('change');
+			}
 
 			e.preventDefault();
 		});
@@ -1067,6 +1112,8 @@ function stickyInit() {
 			self.resetFilters($currentBtn.closest(self.$item));
 
 			e.preventDefault();
+
+			self.$container.trigger('resetFiltersInGroup');
 		});
 	};
 
@@ -1079,11 +1126,19 @@ function stickyInit() {
 			var $currentBtn = $(this);
 
 			self.resetFilters($currentBtn.closest(self.$container).find(self.$group));
+
+			self.$container.trigger('resetAllFilters');
 		});
 	};
 
 	MultiFilters.prototype.resetFilters = function ($container) {
 		$container.find(':checked').prop('checked', false).trigger('change');
+		$container.find('select').prop('selectedIndex', false).trigger('change');
+
+		var priceSliderObj = this.priceSlider, key;
+		for (key in priceSliderObj) {
+			priceSliderObj[key].reset();
+		}
 	};
 
 	MultiFilters.prototype.enabledButton = function ($button) {
@@ -1174,9 +1229,7 @@ function stickyInit() {
 
 	MultiFilters.prototype.getFilterState = function ($thisFilter) {
 		// возвращает true, если фильтр отмечен, или выбрано значение отличное от дефолтного
-		// console.log("$thisFilter.val(): ", $thisFilter.val());
-		// console.log("$thisFilter.attr('data-filter-default'): ", $thisFilter.attr('data-filter-default'));
-		return $thisFilter.prop('checked') || $thisFilter.attr('data-filter-default') !== undefined && $thisFilter.val() !== $thisFilter.attr('data-filter-default');
+		return $thisFilter.prop('checked') || $thisFilter.attr(this.attributes.dataDefaultValue) !== undefined && $thisFilter.val() !== $thisFilter.attr(this.attributes.dataDefaultValue);
 	};
 
 	// MultiFilters.prototype.addTag = function ($tagsContainer, attrGroup, attrName, tag) {
@@ -1187,16 +1240,16 @@ function stickyInit() {
 	// 		.find(self.tagTextContainer)
 	// 		.html(tag)
 	// 		.end()
-	// 		.attr('data-' + attributes.group, attrGroup)
-	// 		.attr('data-' + attributes.name, attrName)
+	// 		.attr(attributes.group, attrGroup)
+	// 		.attr(attributes.name, attrName)
 	// 		.appendTo($tagsContainer);
 	// };
 
 	// MultiFilters.prototype.removeTag = function ($tagsContainer, attrGroup, attrName) {
 	// 	var self = this;
 	//
-	// 	var dataGroup = "[data-" + self.attributes.group + "=" + attrGroup + "]",
-	// 		dataName = "[data-" + self.attributes.name + "=" + attrName + "]",
+	// 	var dataGroup = "[" + self.attributes.dataGroup + "=" + attrGroup + "]",
+	// 		dataName = "[" + self.attributes.dataName + "=" + attrName + "]",
 	// 		$currentTag = $tagsContainer.find(self.tagsItem).filter(dataGroup + dataName);
 	//
 	// 	// отключить соответствующий чекбокс
@@ -1230,7 +1283,7 @@ function multiFiltersInit() {
 			placeholder: '.p-filters-placeholder-js',
 			selected: '.p-filters-selected-js',
 			drop: '.p-filters-drop-js',
-			filter: '.p-filters-drop-list input[type="checkbox"], .p-filters-drop-list select, .p-filters-drop-list .range-slider',
+			filter: '.p-filters-drop-list input[type="checkbox"], .p-filters-drop-list select, .p-filters-drop-list .range-slider-js',
 			// filter: '.p-filters-drop-list input[type="checkbox"], .p-filters-drop-list select',
 			// filter: '.p-filters-drop-list input[type="checkbox"]',
 			labelText: '.p-filters-label-text-js',
@@ -1247,24 +1300,24 @@ function multiFiltersInit() {
 			activatedFilters: '.p-filters-activated-js',
 
 			// data attributes
-			dataGroup: 'filters-group',
-
-			dataDefaultValue: 'filter-default',
-
-			dataSelect: 'filter-select',
-			dataTag: 'filter-tag',
-			dataName: 'filter-name',
-
-			dataPrefix: 'value-prefix',
-			dataPostfix: 'value-postfix'
+			// dataGroup: 'data-filter-group',
+			//
+			// dataDefaultValue: 'data-filter-default',
+			//
+			// dataSelect: 'data-filter-select',
+			// dataTag: 'data-filter-tag',
+			// dataName: 'data-filter-name',
+			//
+			// dataPrefix: 'data-filter-value-prefix',
+			// dataPostfix: 'data-filter-value-postfix'
 		});
 
 		// range slider for price
-		var $priceSlider = $("#price-slider-js"),
+		/**var $priceSlider = $("#price-slider-js"),
 			$priceSliderValue = $('.price-slider-value-js');
 
 		$priceSlider.ionRangeSlider({
-			type: "double",
+			// type: "double",
 			onStart: function (data) {
 				getValue(data, $priceSliderValue);
 			},
@@ -1273,13 +1326,15 @@ function multiFiltersInit() {
 			}
 		});
 
+		var priceSlider = $priceSlider.data('ionRangeSlider');*/
+
 		// range slider for sale
-		var $saleSlider = $("#sale-slider-js"),
+		/**var $saleSlider = $("#sale-slider-js"),
 			$saleSliderValue = $('.sale-slider-value-js');
 
 		$saleSlider.ionRangeSlider({
 			// type: "double",
-			postfix: "%",
+			// postfix: "%",
 			onStart: function (data) {
 				getValueSingle(data, $saleSliderValue);
 			},
@@ -1288,18 +1343,25 @@ function multiFiltersInit() {
 			}
 		});
 
-		$('.range-slider').on('change', function () {
-			var $this = $(this),
-				value = $this.prop("value").split(';');
+		var saleSlider = $saleSlider.data('ionRangeSlider');*/
 
-			console.log("$this.val(): ", $this.val());
-			console.log("value: ", value);
-		});
+			// $('.range-slider').on('change', function () {
+		// 	var $this = $(this),
+		// 		value = $this.prop("value").split(';');
+		//
+		// 	console.log("$this.val(): ", $this.val());
+		// 	console.log("value: ", value);
+		// });
 
-		console.log("$('.range-slider').val(): ", $('.range-slider').val());
+		// console.log("$('.range-slider').val(): ", $('.range-slider').val());
+
+		// $(productFilters).on('resetFiltersInGroup resetAllFilters', function () {
+		// 	saleSlider.reset();
+		// 	priceSlider.reset();
+		// });
 	}
 
-	function getValue(data, $elem) {
+	/**function getValue(data, $elem) {
 		var from = data.from, to = data.to;
 
 		$elem.html(from + " - " + to)
@@ -1309,7 +1371,7 @@ function multiFiltersInit() {
 		var from = data.from;
 
 		$elem.html(from)
-	}
+	}*/
 }
 
 /**
