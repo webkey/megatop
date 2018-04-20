@@ -881,6 +881,10 @@
 
 	+media('<tab-lg')
 		display: none
+		padding: 20px $text-layout-space--sm
+
+	+media('<mob-lg')
+		padding: 20px $text-layout-space--mob
 
 	&:last-child
 		margin-bottom: 0
@@ -1632,9 +1636,11 @@ $pagination-border-width: 1px
 .products__info__brand
 	+font-bold
 	+font(1.3rem, round-float(16/13, 2))
+	+truncate(100%)
 
 .products__info__model
 	+font-regular
+	+truncate(100%)
 	+font(1.2rem, round-float(14/12, 2))
 	text-transform: uppercase
 
@@ -1853,6 +1859,9 @@ $pagination-border-width: 1px
 	width: 100%
 	margin-bottom: -#{nth($products-outer-space, 1)}
 
+	+media('<tab-lg')
+		margin-bottom: -#{nth($products-outer-space--sm, 1)}
+
 .products__item
 	display: inline-block
 	vertical-align: top
@@ -1865,6 +1874,10 @@ $pagination-border-width: 1px
 	+media('<1160px')
 		width: 50%
 
+	+media('<tab-lg')
+		width: 33.33%
+		margin-bottom: nth($products-outer-space--sm, 1)
+
 	&.products__item--banner
 		width: 50%
 		+padding-horizontal(30px)
@@ -1874,6 +1887,9 @@ $pagination-border-width: 1px
 
 		+media('<1160px')
 			width: 50%
+
+		+media('<tab-lg')
+			width: 66.66%
 
 	.products__banner
 		width: 100%
@@ -2238,10 +2254,23 @@ $pagination-border-width: 1px
 	position: relative
 
 .m-content__body__options
-	padding: nth($m-content-space, 1) nth($m-content-space, 2) 10px
+	//padding: nth($m-content-space, 1) nth($m-content-space, 2) 10px
+	padding: $text-layout-space $text-layout-space 10px
+
+	+media('<tab-lg')
+		padding: $text-layout-space--sm $text-layout-space--sm 10px
+
+	+media('<mob-lg')
+		padding: $text-layout-space--mob $text-layout-space--mob 10px
 
 .m-content__body__layout
-	padding: 0 nth($m-content-space, 2)
+	padding: 0 $text-layout-space
+
+	+media('<tab-lg')
+		padding: 0 $text-layout-space--sm
+
+	+media('<mob-lg')
+		padding: 0 $text-layout-space--mob
 
 .m-content__footer
 	position: relative
@@ -2283,6 +2312,7 @@ $pagination-border-width: 1px
 			position: fixed
 			left: 0
 			bottom: 0
+			overflow: hidden
 
 	.selected
 		+padding-horizontal(10px)
@@ -2402,6 +2432,10 @@ $pagination-border-width: 1px
 	transition:
 		property: opacity, visibility
 		duration: $animation-speed
+
+	+media('<tab-lg')
+		position: fixed
+		z-index: 10100
 
 	.js-loading &
 		opacity: 1

@@ -601,6 +601,18 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	margin-bottom: -1px;
 }
 
+@media (max-width: 991px) {
+	.heading {
+		padding: 20px 20px;
+	}
+}
+
+@media (max-width: 639px) {
+	.heading {
+		padding: 20px 15px;
+	}
+}
+
 .heading h1 {
 	font-family: "futura-medium", sans-serif;
 	font-weight: normal;
@@ -3586,6 +3598,13 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 @media (max-width: 991px) {
 	.breadcrumbs {
 		display: none;
+		padding: 20px 20px;
+	}
+}
+
+@media (max-width: 639px) {
+	.breadcrumbs {
+		padding: 20px 15px;
 	}
 }
 
@@ -4546,12 +4565,20 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	font-style: normal;
 	font-size: 1.3rem;
 	line-height: 1.23;
+	max-width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .products__info__model {
 	font-family: "proximanova-regular", sans-serif;
 	font-weight: normal;
 	font-style: normal;
+	max-width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 	font-size: 1.2rem;
 	line-height: 1.17;
 	text-transform: uppercase;
@@ -4831,6 +4858,12 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	margin-bottom: -60px;
 }
 
+@media (max-width: 991px) {
+	.products__list__holder {
+		margin-bottom: -40px;
+	}
+}
+
 .products__item {
 	display: inline-block;
 	vertical-align: top;
@@ -4850,6 +4883,13 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	}
 }
 
+@media (max-width: 991px) {
+	.products__item {
+		width: 33.33%;
+		margin-bottom: 40px;
+	}
+}
+
 .products__item.products__item--banner {
 	width: 50%;
 	padding-right: 30px;
@@ -4865,6 +4905,12 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 @media (max-width: 1159px) {
 	.products__item.products__item--banner {
 		width: 50%;
+	}
+}
+
+@media (max-width: 991px) {
+	.products__item.products__item--banner {
+		width: 66.66%;
 	}
 }
 
@@ -5264,11 +5310,35 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 }
 
 .m-content__body__options {
-	padding: 30px 40px 10px;
+	padding: 30px 30px 10px;
+}
+
+@media (max-width: 991px) {
+	.m-content__body__options {
+		padding: 20px 20px 10px;
+	}
+}
+
+@media (max-width: 639px) {
+	.m-content__body__options {
+		padding: 15px 15px 10px;
+	}
 }
 
 .m-content__body__layout {
-	padding: 0 40px;
+	padding: 0 30px;
+}
+
+@media (max-width: 991px) {
+	.m-content__body__layout {
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 639px) {
+	.m-content__body__layout {
+		padding: 0 15px;
+	}
 }
 
 .m-content__footer {
@@ -5315,6 +5385,7 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 		position: fixed;
 		left: 0;
 		bottom: 0;
+		overflow: hidden;
 	}
 }
 
@@ -5471,6 +5542,13 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	visibility: hidden;
 	transition-property: opacity, visibility;
 	transition-duration: 0.2s;
+}
+
+@media (max-width: 991px) {
+	.loader-cover {
+		position: fixed;
+		z-index: 10100;
+	}
 }
 
 .js-loading .loader-cover {

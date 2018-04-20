@@ -118,6 +118,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	border-bottom: 1px solid $border-color
 	margin-bottom: -1px
 
+	+media('<tab-lg')
+		padding: 20px $text-layout-space--sm
+
+	+media('<mob-lg')
+		padding: 20px $text-layout-space--mob
+
 	h1
 		+font-alt-medium
 		+font(3rem, round-float(34/30, 2))
