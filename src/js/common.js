@@ -362,31 +362,24 @@ function slidersInit() {
 				arrows: true,
 				responsive: [
 					{
-						breakpoint: 1600,
+						breakpoint: 1366,
 						settings: {
 							slidesToShow: 4,
 							slidesToScroll: 2,
 						}
 					},
 					{
-						breakpoint: 1280,
+						breakpoint: 992,
 						settings: {
 							slidesToShow: 3,
 							slidesToScroll: 2,
 						}
 					},
 					{
-						breakpoint: 960,
+						breakpoint: 640,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2,
-						}
-					},
-					{
-						breakpoint: 640,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1,
 						}
 					}
 				]

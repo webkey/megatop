@@ -133,7 +133,6 @@
 
 	+media('<mob-lg')
 		+size(nth($slider-btn-size--sm, 1), nth($slider-btn-size--sm, 2))
-		background-color: red
 
 	.no-touchevents &:hover
 		opacity: 1
@@ -1517,17 +1516,13 @@
 	position: relative
 	letter-spacing: $letter-spacing
 	z-index: 1
-
-	//.touchevents &
-		outline: 1px	 solid #cc2300
+	//outline: 1px solid #cc2300
 
 	+media('<mob-lg')
 		border: solid $border-color
 		border-width: 1px 0
 
 .products__animation-wrap
-	//position: relative
-	//+ratio(338, 389)
 	$prop: margin, transform
 	will-change: $prop
 	transition:
@@ -1539,7 +1534,6 @@
 	left: 0
 	top: 0
 	width: 100%
-	//box-shadow: inset 0 0 0 nth($products-inner-space, 2) #fff, inset 0 -60px 0 #fff, inset 0 60px 0 #fff
 
 .product__shadow
 	position: absolute
@@ -1565,13 +1559,13 @@
 
 .products__spacer
 	position: relative
-	+ratio(338, 389)
+	+ratio(nth($products-size, 1), nth($products-size, 2))
 
 	+media('<mob-md')
-		+ratio(3, 4)
+		+ratio(nth($products-size--sm, 1), nth($products-size--sm, 2))
 
 	+media('<mob-sm')
-		+ratio(8, 13)
+		+ratio(nth($products-size--mob, 1), nth($products-size--mob, 2))
 
 	// Если блок не нужно масштабировать пропорционально
 	//min-height: 389px
@@ -1586,18 +1580,13 @@
 	left: 0
 	top: 0
 	right: 0
-	$prop: margin, transform
-	will-change: $prop
-	transition:
-		property: $prop
-		duration: $animation-speed
 
 .products__visual
 	position: absolute
 	left: 0
 	top: 0
 	width: 100%
-	background-color: #a3f7ff
+	background-color: white
 
 .products__figure
 	display: block
@@ -1795,16 +1784,7 @@
 
 	+media('<tab-lg')
 		top: nth($products-inner-space--sm, 1)
-		left: nth($products-inner-space--sm, 2)
-
-	.slick-slide &
-		will-change: opacity, transfrom
-		transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
-		transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
-
-	.slick-slide.slick-active &
-		transform: translate(0, 0)
-		transform: translate3d(0, 0, 0)
+		left: 5px
 
 .products__label, .p-filters-share
 	position: relative
@@ -1873,8 +1853,8 @@
 	right: 60px
 	top: nth($products-inner-space, 1)
 	max-width: calc(100% - 160px)
-	+font(1.4rem)
 	color: #666
+	+clear-spacing
 	opacity: 0
 	transition:
 		property: opacity
@@ -1893,38 +1873,99 @@
 		opacity: 1
 
 .products__tag
-	+truncate(none)
+	$icon-size: 29px
+	$icon-size--sm: 24px
+	//==============
+	position: relative
+	white-space: nowrap
+	margin-bottom: 5px
+	display: flex
+	align-items: center
+
+	&:last-child
+		margin-bottom: 0
 
 	i, span
 		+display-inline-block-middle
+		+font(1.4rem, 1.2em)
+		letter-spacing: normal
+		white-space: normal
 
 	i
 		padding-right: 5px
-		width: 29px
+		width: $icon-size
 
 		+media('<tab-lg')
-			width: 24px
+			width: $icon-size--sm
+
+	span
+		position: relative
+		flex: 1 1
 
 // hover
-.no-touchevents .products__inner:hover
-	z-index: 5
+.products__inner:hover
+	.no-touchevents &
+		z-index: 5
 
-	.products__animation-wrap, .products__visual-wrap
-		transform: translate(0, -$products-rang)
-		transform: translate3d(0, -$products-rang, 0)
-		margin-left: -$products-rang
-		margin-right: -$products-rang
+		.product__shadow
+			opacity: 1
 
-	.product__shadow
-		opacity: 1
+		.products__tags
+			opacity: 1
 
-	.products__tags
-		opacity: 1
+		.products__labels
+			left: -14px
 
-	.products__labels
-		//transform: translate(0, 0)
-		//transform: translate3d(0, 0, 0)
-		left: -14px
+			+media('<tab-lg')
+				left: -10px
+
+		.products__animation-wrap
+			transform: translate(0, -#{nth($products-rang-size, 1)})
+			transform: translate3d(0, -#{nth($products-rang-size, 1)}, 0)
+			margin-left: -#{nth($products-rang-size, 2)}
+			margin-right: -#{nth($products-rang-size, 2)}
+
+			+media('<mob-md')
+				transform: translate(0, -#{nth($products-rang-size--sm, 1)})
+				transform: translate3d(0, -#{nth($products-rang-size--sm, 1)}, 0)
+				margin-left: -#{nth($products-rang-size--sm, 2)}
+				margin-right: -#{nth($products-rang-size--sm, 2)}
+
+			+media('<mob-sm')
+				transform: translate(0, -#{nth($products-rang-size--mob, 1)})
+				transform: translate3d(0, -#{nth($products-rang-size--mob, 1)}, 0)
+				margin-left: -#{nth($products-rang-size--mob, 2)}
+				margin-right: -#{nth($products-rang-size--mob, 2)}
+
+	// если продукт находится внутри слайдера
+	.no-touchevents .slick-active &
+		.products__animation-wrap
+			margin-left: 0
+			margin-right: -(#{nth($products-rang-size, 2)*2})
+
+		.products__labels
+			left: 0
+
+	.no-touchevents .slick-active + .slick-active &
+		.products__animation-wrap
+			margin-left: -#{nth($products-rang-size, 2)}
+			margin-right: -#{nth($products-rang-size, 2)}
+
+			+media('<mob-md')
+				margin-left: -#{nth($products-rang-size--sm, 2)}
+				margin-right: -#{nth($products-rang-size--sm, 2)}
+
+			+media('<mob-sm')
+				margin-left: -#{nth($products-rang-size--mob, 2)}
+				margin-right: -#{nth($products-rang-size--mob, 2)}
+
+		.products__labels
+			left: -14px
+
+			+media('<tab-lg')
+				left: -10px
+
+	// если продукт находится внутри слайдера END
 
 /* products preview end
 
@@ -2039,7 +2080,7 @@
 .similar-slider
 	position: relative
 
-	.no-touchevents &
+	//.no-touchevents &
 		&::before, &::after
 			content: ""
 			display: block
@@ -2061,12 +2102,12 @@
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
-	+padding-horizontal(nth($slider-btn-size, 1))
+	//+padding-horizontal(nth($slider-btn-size, 1))
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		+padding-horizontal(nth($slider-btn-size--sm, 1))
 
-	.no-touchevents &
+	//.no-touchevents &
 		+padding-horizontal(nth($slider-btn-size, 1)-($products-rang+$products-shade-size))
 
 		+media('<mob-lg')
@@ -2084,8 +2125,27 @@
 	.slick-track
 		margin: 0
 
-	.no-touchevents & .slick-list
-		padding: $products-rang+$products-shade-size $products-rang+$products-shade-size
+	.no-touchevents &
+		.slick-list
+			//padding: $products-rang+$products-shade-size $products-rang+$products-shade-size
+			+padding-vertical(nth($products-rang-size, 1)+$products-shade-size)
+
+			+media('<mob-md')
+				+padding-vertical(nth($products-rang-size--sm, 1)+$products-shade-size)
+
+			+media('<mob-sm')
+				+padding-vertical(nth($products-rang-size--mob, 1)+$products-shade-size)
+
+		.slick-arrow
+			height: 140px
+			top: 50%
+			//top: $products-rang+$products-shade-size
+			//bottom: $products-rang+$products-shade-size
+			//transform: none
+
+		&:hover .slick-arrow
+			//opacity: 1
+			background: rgba(195, 195, 195, 0.2)
 
 	.slick-prev
 		left: 0
@@ -2100,7 +2160,7 @@
 	display: inline-block
 	vertical-align: top
 	// before slide load end
-	+padding-horizontal(10px)
+	//+padding-horizontal(10px)
 
 	.no-js &
 		width: 320px
@@ -2110,6 +2170,27 @@
 		float: left
 		display: block
 		// after slide load end
+
+	//======================
+	//$similar-slide-padding: nth($products-rang-size, 2)+$products-shade-size+10
+	//======================
+	//&.slick-slide
+		will-change: opacity, transfrom
+		transform: translate(-$similar-slide-padding, 0)
+		transform: translate3d(-$similar-slide-padding, 0, 0)
+
+	//&.slick-active + &
+		transform: translate($similar-slide-padding, 0)
+		transform: translate3d($similar-slide-padding, 0, 0)
+
+	//&.slick-active, &.slick-active + &.slick-active
+		transform: translate(0, 0)
+		transform: translate3d(0, 0, 0)
+
+	// если продукты лежыт в слайдере
+	.products__inner
+		+media('<mob-lg')
+			border: none
 
 /* similar slider end
 
@@ -2145,7 +2226,7 @@
 	position: relative
 	text-decoration: none
 	color: inherit
-	+ratio(nth($events-size, 1), nth($events-size, 2))
+	+ratio(nth($events-size, 2), nth($events-size, 1))
 	will-change: margin, transform
 	transition:
 		property: transform, margin
@@ -2159,7 +2240,7 @@
 
 .events-slider__img
 	position: relative
-	+ratio(nth($events-size, 1), nth($events-size, 2))
+	+ratio(nth($events-size, 2), nth($events-size, 1))
 
 	&::before
 		content: ""

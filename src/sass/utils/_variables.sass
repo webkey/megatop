@@ -200,6 +200,9 @@ $new-ratio: 37% 63% 54% 46% !default
 $new-space: 10px !default
 
 // products previews
+$products-size: 320 368 !default // w h, без единиц измерения
+$products-size--sm: 320 426 !default // w h, без единиц измерения
+$products-size--mob: 320 520 !default // w h, без единиц измерения
 $products-outer-space: 60px 0 !default // vertical horizontal
 $products-outer-space--touch: 0 0 !default // vertical horizontal
 $products-outer-space--sm: 20px 0 !default // vertical horizontal
@@ -207,7 +210,11 @@ $products-inner-space: 20px 20px !default // vertical horizontal
 $products-inner-space--sm: 12px 15px !default // vertical horizontal
 $products-label-size: 82px 25px !default // w h
 $products-label-size--sm: 64px 18px !default // w h
-$products-rang: 20px !default
+//$products-rang: 20px !default
+$products-rang: 0.06 !default // относитлеьно размера элемента
+$products-rang-size: round(nth($products-size, 2)*$products-rang*1px) round(nth($products-size, 1)*$products-rang*1px) !default // vertical horizontal
+$products-rang-size--sm: round(nth($products-size--sm, 2)*$products-rang*1px) round(nth($products-size--sm, 1)*$products-rang*1px) !default // vertical horizontal
+$products-rang-size--mob: round(nth($products-size--mob, 2)*$products-rang*1px) round(nth($products-size--mob, 1)*$products-rang*1px) !default // vertical horizontal
 $products-shade-size: 18px !default
 
 // filters
@@ -216,10 +223,10 @@ $p-filters-angle-lines-size: 12px 2px // width height
 $p-filters-angle-lines-color: #999
 
 // events slider
-$events-size: 373 278 !default // horizontal vertical, без единиц измерения
+$events-size: 278 373 !default // w h, без единиц измерения
 $events-inner-space: 6px !default // vertical horizontal
 $events-rang: 0.1 !default // относитлеьно размера элемента
-$events-rang-size: round(nth($events-size, 2)*$events-rang*1px) round(nth($events-size, 1)*$events-rang*1px) !default // vertical horizontal
+$events-rang-size: round(nth($events-size, 1)*$events-rang*1px) round(nth($events-size, 2)*$events-rang*1px) !default // vertical horizontal
 $events-shade-size: 18px !default
 
 // social color
