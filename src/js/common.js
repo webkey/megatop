@@ -391,7 +391,6 @@ function slidersInit() {
 					}
 				]
 			});
-
 		});
 	}
 
@@ -691,7 +690,7 @@ function toggleShutters() {
 	});
 
 	// close
-	$('.js-btn-shutter-close, .shutter-overlay-js').on('click', function (e) {
+	$('.js-btn-shutter-close, .shutter-overlay-js, .btn-filters-apply').on('click', function (e) {
 		$btnNav.removeClass(activeClass);
 		$btnLogin.removeClass(activeClass);
 		$btnReg.removeClass(activeClass);
@@ -720,6 +719,14 @@ function equalHeight() {
 
 	if($equalHeight.length) {
 		$equalHeight.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+	// product list
+	var $productList = $('.products__list__holder');
+
+	if($productList.length) {
+		$productList.children().matchHeight({
 			byRow: true, property: 'height', target: null, remove: false
 		});
 	}

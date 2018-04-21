@@ -1023,12 +1023,6 @@
 
 /* feature list end
 
-// pagination
-$pagination-space: 4px 4px // v h
-$pagination-font-size: 14px
-$pagination-item-size: 40px 40px // w h
-$pagination-border-width: 1px
-
 /* pagination
 .pagination
 	overflow: hidden
@@ -1054,9 +1048,12 @@ $pagination-border-width: 1px
 .pg-prev, .pg-next
 	position: relative
 	display: block
-	+size(nth($pagination-space, 1)*2+(nth($pagination-item-size, 2))+$form-border-width)
+	+size(nth($pagination-space, 1)*2+(nth($pagination-item-size, 2))+$pagination-border-width*2)
 	border: $pagination-border-width solid $border-color
 	margin: -$pagination-border-width 0
+
+	+media('<mob-md')
+		+size(nth($pagination-space, 1)*2+(nth($pagination-item-size--sm, 2))+$pagination-border-width*2)
 
 	span
 		display: none
@@ -1122,9 +1119,13 @@ $pagination-border-width: 1px
 			height: nth($pagination-item-size, 2)
 			padding: 0 3px
 			border-radius: 50%
-			+font($pagination-font-size, nth($pagination-item-size, 1))
+			+font($pagination-font-size, nth($pagination-item-size, 2))
 			letter-spacing: normal
 			text-transform: uppercase
+
+			+media('<mob-md')
+				min-width: nth($pagination-item-size--sm, 1)
+				height: nth($pagination-item-size--sm, 2)
 
 		a
 			text-decoration: none
@@ -1517,8 +1518,12 @@ $pagination-border-width: 1px
 	letter-spacing: $letter-spacing
 	z-index: 1
 
-	.touchevents &
-		border: 1px solid #ccc
+	//.touchevents &
+		outline: 1px	 solid #cc2300
+
+	+media('<mob-lg')
+		border: solid $border-color
+		border-width: 1px 0
 
 .products__animation-wrap
 	//position: relative
@@ -1562,6 +1567,12 @@ $pagination-border-width: 1px
 	position: relative
 	+ratio(338, 389)
 
+	+media('<mob-md')
+		+ratio(3, 4)
+
+	+media('<mob-sm')
+		+ratio(8, 13)
+
 	// Если блок не нужно масштабировать пропорционально
 	//min-height: 389px
 	//height: 100%
@@ -1586,8 +1597,6 @@ $pagination-border-width: 1px
 	left: 0
 	top: 0
 	width: 100%
-	height: 100%
-	+ratio(338, 389)
 	background-color: #a3f7ff
 
 .products__figure
@@ -1597,15 +1606,11 @@ $pagination-border-width: 1px
 	top: 0
 	+size(100%)
 	padding: nth($products-inner-space, 1)+40 nth($products-inner-space, 2)
-	//max-width: 320px // ограничиваем ширину изображения продукта
-	//height: 100%
-	//+push-auto
 	text-decoration: none
 	color: inherit
 
-	//&::before
-		+pseudo-block-relative()
-		+ratio(338, 389)
+	+media('<tab-lg')
+		+padding-horizontal(nth($products-inner-space--sm, 2))
 
 .products__img
 	height: 100%
@@ -1624,6 +1629,15 @@ $pagination-border-width: 1px
 		max-width: none
 		+object-fit(scale-down)
 
+// footer
+.products__footer
+	+media('<tab-sm')
+		position: absolute
+		width: 100%
+		bottom: 0
+		left: 0
+		padding: 0 nth($products-inner-space--sm, 2) nth($products-inner-space--sm, 1)
+
 // info
 .products__info
 	position: absolute
@@ -1632,6 +1646,19 @@ $pagination-border-width: 1px
 	min-height: 30px
 	max-width: calc(50% - #{nth($products-inner-space, 2)})
 	line-height: 1
+
+	+media('<tab-lg')
+		left: nth($products-inner-space--sm, 2)
+		bottom: nth($products-inner-space--sm, 1)
+		max-width: calc(50% - #{nth($products-inner-space--sm, 2)})
+
+	+media('<tab-sm')
+		position: relative
+		left: auto
+		bottom: auto
+		min-height: 0
+		max-width: none
+		margin-bottom: 5px
 
 .products__info__brand
 	+font-bold
@@ -1644,6 +1671,9 @@ $pagination-border-width: 1px
 	+font(1.2rem, round-float(14/12, 2))
 	text-transform: uppercase
 
+	+media('<tab-sm')
+		display: none
+
 // price
 .products__price
 	position: absolute
@@ -1655,8 +1685,29 @@ $pagination-border-width: 1px
 	text-align: right
 	line-height: 1
 
+	+media('<tab-lg')
+		right: nth($products-inner-space--sm, 2)
+		bottom: nth($products-inner-space--sm, 1)
+		max-width: calc(50% - #{nth($products-inner-space--sm, 2)})
+
+	+media('<tab-sm')
+		position: relative
+		right: auto
+		bottom: auto
+		min-height: 0
+		margin: 0
+		text-align: left
+		max-width: none
+		direction: rtl
+		white-space: nowrap
+
 .products__price__share
 	white-space: nowrap
+
+	+media('<tab-sm')
+		display: inline-block
+		vertical-align: bottom
+		direction: ltr
 
 .products__price__old
 	+display-inline-block-top
@@ -1664,6 +1715,9 @@ $pagination-border-width: 1px
 	color: #666
 	text-decoration: line-through
 	margin-right: 5px
+
+	+media('<tab-sm')
+		line-height: 22px
 
 .products__price__old__val
 	+font-bold
@@ -1692,9 +1746,18 @@ $pagination-border-width: 1px
 		+size(2px)
 		background-color: currentColor
 
+	+media('<tab-sm')
+		display: none
+
 .products__price__cur
 	+font-bold
 	+font(18px, 22px)
+
+	+media('<tab-sm')
+		display: inline-block
+		vertical-align: bottom
+		direction: ltr
+		margin-right: 5px
 
 .products__price__cur__unit
 	font-size: 14px
@@ -1711,6 +1774,10 @@ $pagination-border-width: 1px
 	background: url(../../img/like.png) no-repeat
 	text-indent: -9999px
 
+	+media('<tab-lg')
+		right: nth($products-inner-space--sm, 2)
+		top: nth($products-inner-space--sm, 1)
+
 	&:hover
 		background-position: 0 -43px
 
@@ -1722,22 +1789,22 @@ $pagination-border-width: 1px
 	position: absolute
 	left: 0
 	top: nth($products-inner-space, 1)
-	//transform: translate(34px, 0)
-	//transform: translate3d(34px, 0, 0)
 	transition:
 		property: opacity, transfrom, left
 		duration: $animation-speed
 
+	+media('<tab-lg')
+		top: nth($products-inner-space--sm, 1)
+		left: nth($products-inner-space--sm, 2)
+
 	.slick-slide &
 		will-change: opacity, transfrom
-		//opacity: 0
 		transform: translate(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0)
 		transform: translate3d(#{nth($products-inner-space, 2)+nth($products-outer-space, 2)}, 0, 0)
 
 	.slick-slide.slick-active &
 		transform: translate(0, 0)
 		transform: translate3d(0, 0, 0)
-		//opacity: 1
 
 .products__label, .p-filters-share
 	position: relative
@@ -1759,13 +1826,22 @@ $pagination-border-width: 1px
 		border-top-color: #880002
 
 .products__label
-	+font(14px, 25px)
-	height: 25px
+	+font(14px, nth($products-label-size, 2))
+	height: nth($products-label-size, 2)
+	min-width: nth($products-label-size, 1)
 	margin-bottom: 16px
-	min-width: 82px
+
+	+media('<tab-lg')
+		+font(10px, nth($products-label-size--sm, 2))
+		height: nth($products-label-size--sm, 2)
+		min-width: nth($products-label-size--sm, 1)
+		margin-bottom: 10px
 
 	&::before
 		border-width: 10px 0 0 14px
+
+		+media('<tab-lg')
+			border-width: 7px 0 0 10px
 
 .p-filters-share
 	display: inline-block
@@ -1796,6 +1872,7 @@ $pagination-border-width: 1px
 	position: absolute
 	right: 60px
 	top: nth($products-inner-space, 1)
+	max-width: calc(100% - 160px)
 	+font(1.4rem)
 	color: #666
 	opacity: 0
@@ -1803,20 +1880,30 @@ $pagination-border-width: 1px
 		property: opacity
 		duration: $animation-speed
 
+	+media('<tab-lg')
+		right: 50px
+		top: nth($products-inner-space--sm, 1)
+		max-width: calc(100% - 130px)
+		font-size: 1.3rem
+
+	+media('<tab-sm')
+		display: none
+
 	.touchevents &
 		opacity: 1
 
 .products__tag
-	white-space: nowrap
+	+truncate(none)
 
 	i, span
 		+display-inline-block-middle
 
 	i
 		padding-right: 5px
+		width: 29px
 
-	span
-		+truncate(140px)
+		+media('<tab-lg')
+			width: 24px
 
 // hover
 .no-touchevents .products__inner:hover
@@ -1846,6 +1933,9 @@ $pagination-border-width: 1px
 	//overflow: hidden // обрезает превью продуктов при увиличении на ховер
 	margin-bottom: $bottom-space--lg
 
+	+media('<mob-lg')
+		+margin-horizontal(-$text-layout-space--mob)
+
 	&:last-child
 		margin-bottom: 0
 
@@ -1854,6 +1944,12 @@ $pagination-border-width: 1px
 	+clear-spacing
 	+clear
 
+	+media('<tab-lg')
+		margin-bottom: 4rem
+
+	+media('<mob-lg')
+		margin-bottom: 0
+
 .products__list__holder
 	float: left
 	width: 100%
@@ -1861,6 +1957,10 @@ $pagination-border-width: 1px
 
 	+media('<tab-lg')
 		margin-bottom: -#{nth($products-outer-space--sm, 1)}
+
+	+media('<mob-lg')
+		border-bottom: 1px solid $border-color
+		margin-bottom: 0
 
 .products__item
 	display: inline-block
@@ -1878,6 +1978,10 @@ $pagination-border-width: 1px
 		width: 33.33%
 		margin-bottom: nth($products-outer-space--sm, 1)
 
+	+media('<mob-lg')
+		width: 50%
+		margin-bottom: -1px
+
 	&.products__item--banner
 		width: 50%
 		+padding-horizontal(30px)
@@ -1890,6 +1994,11 @@ $pagination-border-width: 1px
 
 		+media('<tab-lg')
 			width: 66.66%
+
+		+media('<mob-lg')
+			width: 100%
+			padding: 0
+			height: auto !important
 
 	.products__banner
 		width: 100%
@@ -1914,6 +2023,14 @@ $pagination-border-width: 1px
 		width: 100%
 		height: 100%
 		+object-fit(scale-down)
+
+		+media('<mob-lg')
+			position: relative
+			left: auto
+			top: auto
+			height: auto
+			+object-fit(fill)
+			margin: 0 auto
 
 /* products banner end
 
@@ -2261,7 +2378,8 @@ $pagination-border-width: 1px
 		padding: $text-layout-space--sm $text-layout-space--sm 10px
 
 	+media('<mob-lg')
-		padding: $text-layout-space--mob $text-layout-space--mob 10px
+		//padding: $text-layout-space--mob $text-layout-space--mob 10px
+		padding: 0
 
 .m-content__body__layout
 	padding: 0 $text-layout-space
@@ -2293,6 +2411,9 @@ $pagination-border-width: 1px
 		property: opacity, visibility
 		duration: $animation-speed
 		delay: 0.5s
+
+	+media('<mob-lg')
+		width: 100%
 
 	.filters-results-show &
 		opacity: 1
@@ -2480,13 +2601,21 @@ $pagination-border-width: 1px
 	position: relative
 	margin-bottom: 20px
 
+	+media('<mob-lg')
+		margin-bottom: 0
+
 .p-options__list
 	position: relative
-	//display: flex
-	//justify-content: flex-end
-	//align-items: center
-	//flex-wrap: nowrap
 	+clear
+
+	+media('<mob-lg')
+		display: flex
+		justify-content: space-between
+		flex-wrap: nowrap
+		padding-top: 1px
+
+		&::after
+			content: none
 
 .p-options__item
 	//&:first-child
@@ -2495,6 +2624,10 @@ $pagination-border-width: 1px
 	float: left
 	line-height: 1
 	margin-right: 20px
+
+	+media('<mob-lg')
+		margin-right: 0
+		float: none
 
 	&.p-options__item--filters
 		display: none
@@ -2514,6 +2647,9 @@ $pagination-border-width: 1px
 	border: 1px solid $border-color
 	padding: 9px 20px 9px 40px
 	background-color: #fff
+
+	+media('<mob-lg')
+		border-color: transparent
 
 	.p-filters-activated
 		position: absolute
@@ -2547,6 +2683,13 @@ $pagination-border-width: 1px
 .p-sorting
 	position: relative
 	width: 300px
+
+	+media('<mob-lg')
+		width: auto
+
+	select
+		+media('<mob-lg')
+			border-color: transparent !important
 
 /* options panel end
 
@@ -2845,6 +2988,10 @@ $pagination-border-width: 1px
 	overflow: hidden
 	margin-bottom: $bottom-space
 	user-select: none
+
+	+media('<mob-lg')
+		padding: round($text-layout-space--mob/2) $text-layout-space--mob
+		border-top: 1px solid $border-color
 
 	&:last-child
 		margin-bottom: 0
