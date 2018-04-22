@@ -26,16 +26,23 @@
 	+font-bold
 	text-transform: uppercase
 	color: $btn-text-color
-	fill: $btn-text-color
 	padding: 14px 38px
 	border: 2px solid transparent
 	background: $btn-bg-color
 	box-shadow: none
 	margin: 0
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+
+	+media('<mob-lg')
+		padding: 14px
 
 	&, & > span
 		+font(14px, 18px)
-		letter-spacing: 0.2em
+		letter-spacing: 0.1em
+
+		+media('<mob-lg')
+			font-size: 12px
 
 	// hover
 	.no-touchevents &:hover
@@ -60,7 +67,6 @@
 	.no-touchevents &:hover
 		background: $btn-bg-color
 		border-color: $btn-bg-color
-		//color: $btn-text-color
 
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
@@ -74,7 +80,6 @@
 		& > i
 			&::before, &::after
 				border-color: $btn-disabled-color !important
-				fill: $btn-disabled-color !important
 
 /* btn-default-alt end
 
@@ -93,11 +98,11 @@
 		fill: currentColor
 
 	span
+		padding-right: $btni-space
+		font-size: 1.4rem
+		letter-spacing: 0.1em
 		text-align: left
 		white-space: normal
-		letter-spacing: normal
-		font-size: $font-size
-		padding-right: $btni-space
 
 	svg + span
 		padding-right: 0
@@ -195,6 +200,8 @@
 	text-decoration: none
 	color: $text-color
 	background-color: $btn-menu-bg
+	user-select: none
+	-webkit-tap-highlight-color: transparent
 	transition:
 		property: background-color
 		duration: $animation-speed
@@ -332,6 +339,8 @@
 	color: black
 	text-transform: uppercase
 	padding: round((nth($btn-more--size, 2) - nth($btn-more--font, 2))/2) 10px
+	user-select: none
+	-webkit-tap-highlight-color: transparent
 
 	& > span
 		+font(nth($btn-more--font, 1), nth($btn-more--font, 2))
@@ -342,3 +351,43 @@
 		background-color: #ccc
 
 /* btn-more-items end
+
+/* btn-download
+.btn-download
+	padding: 14px 38px
+	color: black
+	user-select: none
+	-webkit-tap-highlight-color: transparent
+	border: 2px solid transparent
+
+	+media('<mob-lg')
+		padding: 14px
+
+	& > svg
+		+size(18px)
+
+	& > span
+		+font-bold
+		+font(14px, 18px)
+		letter-spacing: 0.1em
+		text-transform: uppercase
+
+		+media('<mob-lg')
+			font-size: 12px
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+/* btn-download end
+
+/* buttons-group
+.buttons-group
+	+media('<mob-lg')
+		display: flex
+
+	a
+		flex: 1 1
+		min-width: 0
+
+/* buttons-group end

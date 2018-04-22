@@ -777,9 +777,14 @@
 .section__title
 	+font-alt-medium
 	+font(3.6rem, round-float(42/36, 2))
+	margin-bottom: nth($grid-space, 1)
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)
 
 	+media('<mob-lg')
 		font-size: 3.0rem
+		margin-bottom: nth($grid-space--mob, 1)
 
 	h2, h3
 		font:
@@ -3239,7 +3244,7 @@
 
 /* advices / prevs end
 
-/* about
+/* about-caption
 .about-caption
 	position: relative
 	overflow: hidden
@@ -3331,6 +3336,7 @@
 	background-color: #181a1b
 	background-image: url(../../img/bg-about-history.jpg)
 	background-repeat: no-repeat
+	background-position: center
 	background-size: cover
 
 	min-height: 630px
@@ -3516,6 +3522,7 @@
 
 		&:first-child
 			border-top: 0
+			padding-top: 0
 
 $about-benefits-icon-size: 61px
 $about-benefits-icon-size--mob: 50px
@@ -3666,3 +3673,533 @@ $about-benefits-icon-size--mob: 50px
 	+font(1.8rem, round-float(26/16, 2))
 
 /* about-promo end
+
+/* jobs-caption
+.jobs-caption
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	position: relative
+	background-color: #181a1b
+	background-image: url(../../img/bg-jobs-caption.jpg)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	color: white
+
+	min-height: 736px
+
+	.section__title
+		color: white
+
+.jobs-caption__caption
+	overflow: hidden
+	margin-bottom: nth($grid-space, 1)*2
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)*2
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)*2
+
+.jobs-caption__caption__holder
+	margin: 0 -#{nth($grid-space, 2)}
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.jobs-caption__title,
+.jobs-caption__desc
+	float: left
+	width: 50%
+	padding: 0 nth($grid-space, 2)
+
+	+media('<tab-lg')
+		padding: 0 nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		width: 100%
+		padding: 0 nth($grid-space--mob, 2)
+
+.jobs-caption__title
+	text-transform: uppercase
+	color: #000
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)
+
+.jobs-caption__desc
+	+font(1.7rem, round-float(28/17, 2))
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.jobs-caption__list
+	overflow: hidden
+
+.jobs-caption__list__title
+	margin-bottom: nth($grid-space, 1)
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)
+
+.jobs-caption__list__holder
+	margin: 0 -#{nth($grid-space, 2)}
+	+clear
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.jobs-caption__item
+	float: left
+	width: 25.0%
+	padding: nth($grid-space, 1) nth($grid-space, 2)
+	border: 1px solid $border-color
+	border-width: 0 1px 0 0
+
+	+media('<desk-md')
+		width: 50%
+		border-width: 1px 1px 0 0
+
+		&:nth-child(2n+1)
+			clear: left
+
+		+media('>=mob-lg')
+			&:nth-child(-n+2)
+				border-top: none
+
+	+media('<tab-lg')
+		padding: nth($grid-space--sm, 1) nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		width: 100%
+		border-width: 1px 0 0
+		padding: nth($grid-space--mob, 1) nth($grid-space--mob, 2)
+
+		&:first-child
+			border-top: 0
+			padding-top: 0
+
+$jobs-caption-icon-size: 61px
+$jobs-caption-icon-size--mob: 50px
+//=============================
+.jobs-caption__item__title
+	position: relative
+	+font-alt-bold
+	+font(2.0rem, round-float(26/20, 2))
+	display: flex
+	align-items: center
+	padding-right: $jobs-caption-icon-size+10
+	min-height: $jobs-caption-icon-size
+
+	+media('<mob-lg')
+		font-size: 18px
+		padding-right: $jobs-caption-icon-size--mob+10
+		min-height: $jobs-caption-icon-size--mob
+
+.jobs-caption__item__icon
+	position: absolute
+	right: 0
+	top: 50%
+	+size($jobs-caption-icon-size)
+	margin-top: -#{round($jobs-caption-icon-size/2)}
+
+	+media('<mob-lg')
+		+size($jobs-caption-icon-size--mob)
+		margin-top: -#{round($jobs-caption-icon-size--mob/2)}
+
+/* jobs-caption end
+
+/* jobs-warranty
+.jobs-warranty
+	position: relative
+
+.jobs-warranty__list
+	overflow: hidden
+	+font(1.8rem, round-float(28/18, 2))
+
+	+media('<mob-lg')
+		font-size: 1.6rem
+
+.jobs-warranty__list__title
+	margin-bottom: nth($grid-space, 1)
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)
+
+.jobs-warranty__list__holder
+	margin: 0 -#{nth($grid-space, 2)}
+	+clear
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.jobs-warranty__item
+	float: left
+	width: 50.0%
+	padding: 0 nth($grid-space, 2) nth($grid-space, 1)
+
+	+media('>=tab-lg')
+		&:nth-child(2n+1)
+			clear: left
+
+	+media('<tab-lg')
+		width: 100%
+		padding: 0 nth($grid-space--sm, 2) nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		width: 100%
+		padding: 0 nth($grid-space--mob, 2) nth($grid-space--mob, 1)
+
+		&:first-child
+			border-top: 0
+			padding-top: 0
+
+$jobs-warranty-icon-size: 40px
+$jobs-warranty-icon-size--mob: 32px
+//=============================
+.jobs-warranty__item__title
+	position: relative
+	display: flex
+	align-items: center
+	padding-left: $jobs-warranty-icon-size+20
+	min-height: $jobs-warranty-icon-size
+
+	+media('<mob-lg')
+		padding-left: $jobs-warranty-icon-size--mob+10
+		min-height: $jobs-warranty-icon-size--mob
+
+.jobs-warranty__item__icon
+	display: flex
+	align-items: center
+	position: absolute
+	left: 0
+	top: 50%
+	+size($jobs-warranty-icon-size)
+	margin-top: -#{round($jobs-warranty-icon-size/2)}
+
+	+media('<mob-lg')
+		+size($jobs-warranty-icon-size--mob)
+		margin-top: -#{round($jobs-warranty-icon-size--mob/2)}
+
+	img
+		max-height: 100%
+
+/* jobs-warranty end
+
+/* jobs-actual
+.jobs-actual
+	position: relative
+
+.jobs-actual__selects
+	position: relative
+	overflow: hidden
+	margin-bottom: nth($grid-space, 1)
+
+	.input-wrap
+		+media('>=tab-lg')
+			&:nth-child(1)
+				width: 290px
+
+			&:nth-child(2)
+				width: 454px
+
+.jobs-actual__foot, .jobs-actual__foot__notes
+	margin-bottom: nth($grid-space, 1)
+
+	&:last-child
+		margin-bottom: 0
+
+.jobs-actual__foot__notes
+	p
+		margin-bottom: 1rem
+
+/* jobs-actual end
+
+/* res
+.res
+	margin-bottom: $bottom-space
+	border: 1px solid $border-color
+	padding: nth($grid-space, 1) nth($grid-space, 2)
+
+	+media('<tab-lg')
+		padding: nth($grid-space--sm, 1) nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		padding: nth($grid-space--mob, 1) nth($grid-space--mob, 2)
+
+	&:last-child
+		margin-bottom: 0
+
+.res__list
+	overflow: hidden
+	position: relative
+	line-height: 1
+
+	+media('<mob-lg')
+		text-align: center
+
+.res__list__holder
+	margin: 0 -#{nth($grid-space, 2)} -#{nth($grid-space, 1)}
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)} -#{nth($grid-space--sm, 1)}
+
+	+media('<mob-lg')
+		display: inline-block
+		vertical-align: top
+		margin: 0 0 -#{round(nth($grid-space--mob, 1)/2)}
+
+.res__item
+	+display-inline-block-middle
+	position: relative
+	padding: 0 nth($grid-space, 2)
+	margin-bottom: nth($grid-space, 1)
+	text-align: left
+
+	+media('<tab-lg')
+		padding: 0 nth($grid-space--sm, 2)
+		margin-bottom: nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		display: block
+		padding: 0
+		margin-bottom: round(nth($grid-space--mob, 1)/2)
+
+.res__item__visual
+	+size(40px)
+	letter-spacing: normal
+	position: absolute
+	top: 50%
+	left: nth($grid-space, 2)
+	margin-top: -20px
+
+	+media('<tab-lg')
+		left: nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		left: 0
+		+size(32px)
+		margin-top: -16px
+
+	img
+		max-height: 100%
+		max-width: 100%
+
+	svg
+		+display-inline-block-top
+		vertical-align: top
+		+size(100%)
+
+.res__item__cont
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	margin-left: 65px
+	+font(1.8rem, round-float(28/18, 2))
+	letter-spacing: normal
+
+	+media('<mob-lg')
+		font-size: 1.6rem
+		margin-left: 45px
+
+	a[href^='mailto:']
+		color: $text-color
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: underline
+
+/* res end
+
+/* accordion
+.accordion
+	margin-bottom: $bottom-space--ml
+	border-bottom: 2px solid $border-color
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.accordion__item
+	position: relative
+
+.accordion__header
+	position: relative
+	z-index: 2
+
+	.accordion__panel &
+		z-index: 1
+
+.accordion__hand
+	position: relative
+	border-top: 2px solid $border-color
+	padding: nth($accordion-space, 1) nth($accordion-space, 2)
+	padding-right: nth($accordion-space, 1)*2+nth($accordion-angle-size, 2)
+	cursor: pointer
+	user-select: none
+
+	+media('<tab-lg')
+		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2)
+		padding-right: nth($accordion-space--sm, 1)*2+nth($accordion-angle-size, 2)
+
+	+media('<mob-lg')
+		padding: nth($accordion-space--mob, 1) nth($accordion-space--mob, 2)
+		padding-right: nth($accordion-space--mob, 1)*2+nth($accordion-angle-size, 2)
+
+	.accordion__header__text
+		+font-alt-bold
+		+font(21px, round-float(27/21, 2))
+
+	.accordion__header__angle
+		display: block
+		position: absolute
+		right: nth($accordion-space, 2)
+		top: 50%
+		+size(nth($accordion-angle-size, 1), nth($accordion-angle-size, 2))
+		border: 2px solid $border-color
+		border-radius: 50%
+		margin-top: -#{round(nth($accordion-angle-size, 2)*0.5)}
+		backface-visibility: hidden
+
+		+media('<tab-lg')
+			right: nth($accordion-space--sm, 2)
+
+		+media('<mob-lg')
+			right: nth($accordion-space--mob, 2)
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			margin: -#{round(nth($accordion-angle-line-size, 2)/2)} 0 0 -#{round(nth($accordion-angle-line-size, 1)/2)}
+			backface-visibility: hidden
+			+size(nth($accordion-angle-line-size, 1), nth($accordion-angle-line-size, 2))
+			background-color: $border-color
+			will-change: transform
+			transition:
+				property: transform
+				duration: $animation-speed
+
+		&::before
+			transform: rotate(-180deg) translateZ(0)
+
+			.ie9 &
+				transform: rotate(-180deg)
+
+		&::after
+			transform: rotate(-270deg) translateZ(0)
+
+			.ie9 &
+				transform: rotate(-270deg)
+
+	// hover, active
+	.no-touchevents &:hover, &.is-open
+		background-color: $bg-color-alt
+
+	// active
+	&.is-open
+		.accordion__header__angle
+			&::before, &::after
+				transform: rotate(0) translateZ(0)
+
+				.ie9 &
+					transform: rotate(0)
+
+.accordion__panel
+	display: none
+	background-color: $bg-color-alt
+
+.accordion__panel__frame
+	position: relative
+	will-change: opacity
+	opacity: 0
+	transition:
+		property: opacity
+		duration: $animation-speed
+
+	.is-open > &
+		opacity: 1
+		transition-delay: 0.08s
+
+.accordion__panel__content
+	padding: nth($accordion-space, 1) nth($accordion-space, 2) nth($accordion-space, 1)*2
+
+	+media('<tab-lg')
+		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2) nth($accordion-space--sm, 1)*2
+
+	+media('<mob-lg')
+		padding: nth($accordion-space--mob, 1) nth($accordion-space--mob, 2) nth($accordion-space--mob, 1)*2
+
+.filter-job-no-items
+	+font-alt-bold
+	+font(21px, round-float(27/21, 2))
+	padding: nth($accordion-space, 1) nth($accordion-space, 2)
+
+	+media('<tab-lg')
+		padding: nth($accordion-space--sm, 1) nth($accordion-space--sm, 2)
+
+	+media('<mob-lg')
+		padding: nth($accordion-space--mob, 1) nth($accordion-space--mob, 2)
+
+/* accordion end
+
+/* jobs-ps
+.jobs-ps
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	position: relative
+	background-color: #181a1b
+	background-image: url(../../img/bg-jobs-ps.jpg)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	color: white
+
+	min-height: 463px
+
+	+media('<tab-lg')
+		min-height: 320px
+
+	+media('<mob-lg')
+		min-height: 240px
+
+	.section__title
+		color: white
+
+.jobs-ps__title
+	width: 810px
+	max-width: 90%
+	margin: 0 auto
+	+font-alt-medium
+	+font(3.6rem, round-float(43/36, 2))
+	color: white
+	text-align: center
+
+	+media('<tab-lg')
+		font-size: 2.8rem
+
+	+media('<mob-lg')
+		font-size: 2rem
+
+/* jobs-ps end

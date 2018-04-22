@@ -1,0 +1,351 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Вакансии",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+				<div class="heading">
+					<h1>Вакансии</h1>
+				</div>
+
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная"],
+					"last": "Вакансии"
+				})
+
+				<section class="section jobs-caption">
+					<div class="jobs-caption__caption">
+						<div class="jobs-caption__caption__holder">
+							<div class="section__title jobs-caption__title">
+								<h2>Работа у нас</h2>
+							</div>
+							<div class="jobs-caption__desc">
+								<p>Такой подход дает отличные результаты: MEGATOP стал узнаваемым брендом, который пользуется доверием белорусов. Лучшим этому доказательством является безоговорочная победа MEGATOP в 2017 году сразу в двух престижных конкурсах потребительского признания «Премия №1» и «Выбор года» в номинации «Сеть магазинов обуви №1».</p>
+							</div>
+						</div>
+					</div>
+					<div class="jobs-caption__list">
+						<div class="section__title jobs-caption__list__title">Ценности Мегатоп</div>
+						<div class="jobs-caption__list__holder equal-height-js">
+							<div class="jobs-caption__item">
+								<div class="jobs-caption__item__title">
+									<div class="jobs-caption__item__icon">
+										<img src="img/icon-pride-01.png" alt="Трудолюбие" />
+									</div>
+									Трудолюбие
+								</div>
+							</div>
+							<div class="jobs-caption__item">
+								<div class="jobs-caption__item__title">
+									<div class="jobs-caption__item__icon">
+										<img src="img/icon-pride-02.png" alt="Честность" />
+									</div>
+									Честность
+								</div>
+							</div>
+							<div class="jobs-caption__item">
+								<div class="jobs-caption__item__title">
+									<div class="jobs-caption__item__icon">
+										<img src="img/icon-pride-03.png" alt="Внимательность к деталям" />
+									</div>
+									Внимательность к деталям
+								</div>
+							</div>
+							<div class="jobs-caption__item">
+								<div class="jobs-caption__item__title">
+									<div class="jobs-caption__item__icon">
+										<img src="img/icon-pride-04.png" alt="Командный дух" />
+									</div>
+									Командный дух
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section jobs-warranty">
+					<div class="section__title">
+						<h2>Почему Мегатоп?</h2>
+					</div>
+					<div class="jobs-warranty__list">
+						<div class="jobs-warranty__list__title">Мы гарантируем своим сотрудникам:</div>
+						<div class="jobs-warranty__list__holder equal-height-js">
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-01.png" alt="Перспективы профессионального развития" />
+									</div>
+									<span>Перспективы профессионального развития и роста в рамках группы компаний</span>
+								</div>
+							</div>
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-02.png" alt="Дополнительные социальные гарантии" />
+									</div>
+									<span>Дополнительные социальные гарантии (скидки на продукцию сети магазинов, дополнительные материальные выплаты)</span>
+								</div>
+							</div>
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-03.png" alt="Достойный уровень оплаты" />
+									</div>
+									<span>Достойный уровень оплаты, зависящий от работы команды</span>
+								</div>
+							</div>
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-04.png" alt="Справедливую" />
+									</div>
+									<span>Справедливую и прозрачную систему оплаты труда</span>
+								</div>
+							</div>
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-05.png" alt="Дружный молодежный коллектив" />
+									</div>
+									<span>Дружный молодежный коллектив единомышленников</span>
+								</div>
+							</div>
+							<div class="jobs-warranty__item">
+								<div class="jobs-warranty__item__title">
+									<div class="jobs-warranty__item__icon">
+										<img src="img/icon-warranty-06.png" alt="Современное оборудованное рабочее место" />
+									</div>
+									<span>Современное оборудованное рабочее место (в офисе или в магазине)</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section jobs-actual filter-job-container-js">
+					<div class="section__title">
+						<h2>Активные вакансии</h2>
+					</div>
+
+					<div class="jobs-actual__selects filter-job-selects-js">
+						<div class="form-row">
+							<div class="input-wrap">
+								<div class="select">
+									<select name="city">
+										<option value="0">Все города</option>
+										<option value="brest">Брест</option>
+										<option value="vitebsk">Витебск</option>
+										<option value="minsk">Минск</option>
+									</select>
+								</div>
+							</div>
+							<div class="input-wrap">
+								<div class="select">
+									<select name="department">
+										<option value="0">Все позиции</option>
+										<option value="buhcalc">Бухгалтер-калькулятор</option>
+										<option value="zavproz">Заведующий/заведующая производством</option>
+										<option value="zamzavmag">Заместитель заведующего магазином</option>
+										<option value="kasir">Касир-оператор</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion accordion__container-js">
+						<div data-property-city="minsk" data-property-department="buhcalc" class="accordion__item accordion__item-js filter-job-item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">Бухгалтер-калькулятор</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>Обязанности:</h4>
+										<ul>
+											<li>Планирование, <a href="#">актуализация</a>, ведение всех текущих проектов в электронной форме планирование, актуализация, ведение всех текущих проектов в электронной форме;</li>
+											<li>Регулярное предоставление информации руководству о состоянии по текущим проектам;</li>
+											<li>Своевременное сигнализирование о намечающихся отклонениях от графика;</li>
+											<li>Ведение отчетности по проектам.</li>
+										</ul>
+										<div class="buttons-group">
+											<a href="#" class="btn-default-alt"><span>Заполнить анкету</span></a>
+											<a href="#" class="btn-download btn-with-icon">
+												@@include("includes/svg/icon-download.svg")
+												<span>Скачать анкету</span>
+											</a>
+										</div>
+									</div>
+									<!--<div class="accordion accordion__container-js"></div>-->
+								</div>
+							</div>
+						</div>
+						<div data-property-city="brest minsk" data-property-department="zavproz" class="accordion__item accordion__item-js filter-job-item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">Заведующий/заведующая производством</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>Обязанности:</h4>
+										<ul>
+											<li>Планирование, <a href="#">актуализация</a>, ведение всех текущих проектов в электронной форме планирование, актуализация, ведение всех текущих проектов в электронной форме;</li>
+											<li>Регулярное предоставление информации руководству о состоянии по текущим проектам;</li>
+											<li>Своевременное сигнализирование о намечающихся отклонениях от графика;</li>
+											<li>Ведение отчетности по проектам.</li>
+										</ul>
+										<div class="buttons-group">
+											<a href="#" class="btn-default-alt"><span>Заполнить анкету</span></a>
+											<a href="#" class="btn-download btn-with-icon">
+												@@include("includes/svg/icon-download.svg")
+												<span>Скачать анкету</span>
+											</a>
+										</div>
+									</div>
+									<!--<div class="accordion accordion__container-js"></div>-->
+								</div>
+							</div>
+						</div>
+						<div data-property-city="brest minsk vitebsk" data-property-department="zamzavmag" class="accordion__item accordion__item-js filter-job-item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">Заместитель заведующего магазином</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>Обязанности:</h4>
+										<ul>
+											<li>Планирование, <a href="#">актуализация</a>, ведение всех текущих проектов в электронной форме планирование, актуализация, ведение всех текущих проектов в электронной форме;</li>
+											<li>Регулярное предоставление информации руководству о состоянии по текущим проектам;</li>
+											<li>Своевременное сигнализирование о намечающихся отклонениях от графика;</li>
+											<li>Ведение отчетности по проектам.</li>
+										</ul>
+										<div class="buttons-group">
+											<a href="#" class="btn-default-alt"><span>Заполнить анкету</span></a>
+											<a href="#" class="btn-download btn-with-icon">
+												@@include("includes/svg/icon-download.svg")
+												<span>Скачать анкету</span>
+											</a>
+										</div>
+									</div>
+									<!--<div class="accordion accordion__container-js"></div>-->
+								</div>
+							</div>
+						</div>
+						<div data-property-city="brest vitebsk" data-property-department="kasir" class="accordion__item accordion__item-js filter-job-item-js">
+							<div class="accordion__header accordion__header-js">
+								<div class="accordion__hand accordion__hand-js">
+									<div class="accordion__header__text">Касир-оператор</div>
+									<i class="accordion__header__angle">&nbsp;</i>
+								</div>
+							</div>
+							<div class="accordion__panel">
+								<div class="accordion__panel__frame">
+									<div class="accordion__panel__content">
+										<h4>Обязанности:</h4>
+										<ul>
+											<li>Планирование, <a href="#">актуализация</a>, ведение всех текущих проектов в электронной форме планирование, актуализация, ведение всех текущих проектов в электронной форме;</li>
+											<li>Регулярное предоставление информации руководству о состоянии по текущим проектам;</li>
+											<li>Своевременное сигнализирование о намечающихся отклонениях от графика;</li>
+											<li>Ведение отчетности по проектам.</li>
+										</ul>
+										<div class="buttons-group">
+											<a href="#" class="btn-default-alt"><span>Заполнить анкету</span></a>
+											<a href="#" class="btn-download btn-with-icon">
+												@@include("includes/svg/icon-download.svg")
+												<span>Скачать анкету</span>
+											</a>
+										</div>
+									</div>
+									<!--<div class="accordion accordion__container-js"></div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="jobs-actual__foot">
+						<div class="jobs-actual__foot__notes">
+							<p>Если Вас заинтересовала одна из приведённых на сайте вакансий, Вы можете заполнить нашу анкету, или выслать готовое резюме на адрес: personal@megatop.by. В теме письма укажите интересующую вас вакансию.</p>
+							<p>Даже если у нас нет открытой вакансии, вы можете прислать нам свое резюме, и мы включим его в кадровый резерв.</p>
+						</div>
+						<div class="buttons-group">
+							<a href="#" class="btn-default-alt"><span>Заполнить анкету</span></a>
+							<a href="#" class="btn-download btn-with-icon">
+								@@include("includes/svg/icon-download.svg")
+								<span>Скачать анкету</span>
+							</a>
+						</div>
+					</div>
+
+					<div class="res">
+						<div class="res__list">
+							<div class="res__list__holder">
+								<div class="res__item">
+									<div class="res__item__visual">
+										<img src="img/img-res.jpg" alt="image description" />
+									</div>
+									<div class="res__item__cont">
+										<div><strong>Наталья Земчинская</strong></div>
+										<div>Менеджер по персоналу</div>
+									</div>
+								</div>
+								<div class="res__item">
+									<div class="res__item__visual">
+										@@include("includes/svg/icon-tel.svg")
+									</div>
+									<div class="res__item__cont">
+										<div><a href="tel:+37517 306-02-27">+37517 306-02-27</a></div>
+										<div><a href="tel:+37529 187-72-60">+37529 187-72-60</a></div>
+									</div>
+								</div>
+								<div class="res__item">
+									<div class="res__item__visual">
+										@@include("includes/svg/icon-email.svg")
+									</div>
+									<div class="res__item__cont">
+										<div><a href="mailto:тpersonal@megatop.by">тpersonal@megatop.by</a></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section jobs-ps">
+					<div class="jobs-ps__title">Мы рады видеть в нашей команде людей профессиональных, инициативных, открытых новому и постоянно развивающихся.</div>
+				</section>
+
+			</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Вакансии"
+})
