@@ -23,20 +23,23 @@ html
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
 .layout-article
-	padding: round($text-layout-space) #{$text-layout-space} round($text-layout-space*1.5)
+	padding: round(nth($text-layout-space, 1)) #{nth($text-layout-space, 2)} round(nth($text-layout-space, 1)*1.5)
+
+	+media('<desk-md')
+		padding: round(nth($text-layout-space--md, 1)*1.5) #{nth($text-layout-space--md, 2)} round(nth($text-layout-space--md, 1)*2)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space--sm*1.5) #{$text-layout-space--sm} round($text-layout-space--sm*2)
+		padding: round(nth($text-layout-space--sm, 1)*1.5) #{nth($text-layout-space--sm, 2)} round(nth($text-layout-space--sm, 1)*2)
 
-	+media('<tab-sm')
-		padding: round($text-layout-space--mob*1.5) #{$text-layout-space--mob} round($text-layout-space--mob*2)
+	+media('<mob-lg')
+		padding: round(nth($text-layout-space--mob, 1)*1.5) #{nth($text-layout-space--mob, 2)} round(nth($text-layout-space--mob, 1)*2)
 
-	& > p, & > ul, & > ol, & > h1, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption
+	& > p, & > ul, & > ol, & > h2, & > h3, & > h4, & > h5, & > h6, & > hr, & > blockquote, & > .layout-text, .imgc figcaption, & > .entry-text
 		max-width: $text-layout-width
 		+padding-horizontal(0)
 		+push-auto
 
-	.layout-flood
+	.layout-flood, & > h1
 		max-width: $flood-layout-width
 		+padding-horizontal(0)
 		+push-auto
@@ -45,76 +48,96 @@ html
 	// минусовые маржины по горизонтале имеют значение только внутри .layout-article
 	.layout-full-width, .layout-wide
 
-		+margin-horizontal(-#{$text-layout-space})
+		+margin-horizontal(-#{nth($text-layout-space, 2)})
+
+		+media('<desk-md')
+			+margin-horizontal(-#{nth($text-layout-space--md, 2)})
 
 		+media('<tab-lg')
-			+margin-horizontal(-#{$text-layout-space--sm})
+			+margin-horizontal(-#{nth($text-layout-space--sm, 2)})
 
-		+media('<tab-sm')
-			+margin-horizontal(-#{$text-layout-space--mob})
+		+media('<mob-lg')
+			+margin-horizontal(-#{nth($text-layout-space--mob, 2)})
 
 // максимальная ширина текстовых элементов на внутренней (текстовой) странице
 .max-wrap-text
-	max-width: #{$text-layout-width + $text-layout-space*2}
+	max-width: #{$text-layout-width + nth($text-layout-space, 2)*2}
+
+	+media('<desk-md')
+		max-width: #{$text-layout-width + nth($text-layout-space--md, 2)*2}
 
 	+media('<tab-lg')
-		max-width: #{$text-layout-width + $text-layout-space--sm*2}
+		max-width: #{$text-layout-width + nth($text-layout-space--sm, 2)*2}
 
-	+media('<tab-sm')
-		max-width: #{$text-layout-width + $text-layout-space--mob*2}
+	+media('<mob-lg')
+		max-width: #{$text-layout-width + nth($text-layout-space--mob, 2)*2}
 
 // выравнивание текстовых элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-text
-	max-width: #{$text-layout-width + $text-layout-space*2}
-	+padding-horizontal($text-layout-space)
+	max-width: #{$text-layout-width + nth($text-layout-space, 2)*2}
+	+padding-horizontal(nth($text-layout-space, 2))
 	+push-auto
 
+	+media('<desk-md')
+		max-width: #{$text-layout-width + nth($text-layout-space--md, 2)*2}
+		+padding-horizontal(nth($text-layout-space--md, 2))
+
 	+media('<tab-lg')
-		max-width: #{$text-layout-width + $text-layout-space--sm*2}
-		+padding-horizontal($text-layout-space--sm)
+		max-width: #{$text-layout-width + nth($text-layout-space--sm, 2)*2}
+		+padding-horizontal(nth($text-layout-space--sm, 2))
 
 	+media('<mob-lg')
-		max-width: #{$text-layout-width + $text-layout-space--mob*2}
-		+padding-horizontal($text-layout-space--mob)
+		max-width: #{$text-layout-width + nth($text-layout-space--mob, 2)*2}
+		+padding-horizontal(nth($text-layout-space--mob, 2))
 
 // максимальная ширина альтернативных элементов на внутренней (текстовой) странице
 .max-wrap-flood
-	max-width: #{$flood-layout-width + $text-layout-space*2}
+	max-width: #{$flood-layout-width + nth($text-layout-space, 2)*2}
+
+	+media('<desk-md')
+		max-width: #{$flood-layout-width + nth($text-layout-space--md, 2)*2}
 
 	+media('<tab-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
+		max-width: #{$flood-layout-width + nth($text-layout-space--sm, 2)*2}
 
 	+media('<mob-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
+		max-width: #{$flood-layout-width + nth($text-layout-space--mob, 2)*2}
 
 // выравнивание альтернативных элементов на внутренней (текстовой) странице
 // и их максимальная ширина
 .layout-flood
-	max-width: #{$flood-layout-width + $text-layout-space*2}
-	+padding-horizontal($text-layout-space)
+	max-width: #{$flood-layout-width + nth($text-layout-space, 2)*2}
+	+padding-horizontal(nth($text-layout-space, 2))
 	+push-auto
 
+	+media('<desk-md')
+		max-width: #{$flood-layout-width + nth($text-layout-space--md, 2)*2}
+		+padding-horizontal(nth($text-layout-space--md, 2))
+
 	+media('<tab-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--sm*2}
-		+padding-horizontal($text-layout-space--sm)
+		max-width: #{$flood-layout-width + nth($text-layout-space--sm, 2)*2}
+		+padding-horizontal(nth($text-layout-space--sm, 2))
 
 	+media('<mob-lg')
-		max-width: #{$flood-layout-width + $text-layout-space--mob*2}
-		+padding-horizontal($text-layout-space--mob)
+		max-width: #{$flood-layout-width + nth($text-layout-space--mob, 2)*2}
+		+padding-horizontal(nth($text-layout-space--mob, 2))
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
 
 // элеметы с отступами по бокам
 .layout-wide
-	+padding-horizontal($text-layout-space)
+	+padding-horizontal(nth($text-layout-space, 2))
+
+	+media('<desk-md')
+		+padding-horizontal(nth($text-layout-space--md, 2))
 
 	+media('<tab-lg')
-		+padding-horizontal($text-layout-space--sm)
+		+padding-horizontal(nth($text-layout-space--sm, 2))
 
 	+media('<mob-lg')
-		+padding-horizontal($text-layout-space--mob)
+		+padding-horizontal(nth($text-layout-space--mob, 2))
 
 	p, ul, ol, h1, h2, h3, h4, h5, h6, hr
 		max-width: none
@@ -160,7 +183,7 @@ html
 		padding-top: 0
 
 .content
-	background-color: #fbfbfb
+	//background-color: #fbfbfb
 
 /* === CONTENT end ===
 
@@ -576,35 +599,44 @@ html
 .footer-common
 	position: relative
 	background: #eceff1
-	padding: round($text-layout-space*2) $text-layout-space round($text-layout-space*1.5)
+	padding: round(nth($text-layout-space, 1)*1.5) nth($text-layout-space, 2) round(nth($text-layout-space, 1))
+
+	+media('<desk-md')
+		padding: round(nth($text-layout-space--md, 1)*1.5) nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space--sm*2) $text-layout-space--sm
+		padding: round(nth($text-layout-space--sm, 1)*1.5) nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: round($text-layout-space--mob*2) $text-layout-space--mob
+		padding: round(nth($text-layout-space--mob, 1)*1.5) nth($text-layout-space--mob, 2)
 
 .footer-common__group
-	margin: 0 -#{round($text-layout-space/2)} round($text-layout-space*1.5)
+	margin: 0 -#{round(nth($text-layout-space, 2)/2)} round(nth($text-layout-space, 1))
 	+clear
 
+	+media('<desk-md')
+		margin: 0 -#{round(nth($text-layout-space--md, 2)/2)} round(nth($text-layout-space--md, 1)*1.5)
+
 	+media('<tab-lg')
-		margin: 0 -#{round($text-layout-space/2)} round($text-layout-space--sm*2)
+		margin: 0 -#{round(nth($text-layout-space--md, 2)/2)} round(nth($text-layout-space--sm, 1)*1.5)
 
 	+media('<mob-lg')
-		margin: 0 -#{round($text-layout-space/2)} round($text-layout-space--mob*2)
+		margin: 0 -#{round(nth($text-layout-space--md, 2)/2)} round(nth($text-layout-space--mob, 1)*1.5)
 
 	&:last-child
 		margin-bottom: 0
 
 .footer-common__box
-	+padding-horizontal(round($text-layout-space/2))
+	+padding-horizontal(round(nth($text-layout-space, 2)/2))
 	width: 50%
 	max-width: 680px
 
+	+media('<desk-md')
+		+padding-horizontal(round(nth($text-layout-space--md, 2)/2))
+
 	+media('<tab-lg')
 		max-width: none
-		margin-top: $text-layout-space--sm
+		margin-top: nth($text-layout-space--sm, 1)
 
 	&:first-child
 		float: left
@@ -628,31 +660,34 @@ html
 			width: auto
 
 .footer-nav
-	+grid-parent($text-layout-space)
+	+grid-parent(nth($text-layout-space, 2))
 	+clear-spacing
 
+	+media('<desk-md')
+		+grid-parent(nth($text-layout-space--md, 2))
+
 	+media('<tab-lg')
-		+grid-parent($text-layout-space--sm)
+		+grid-parent(nth($text-layout-space--sm, 2))
 
 .footer-nav__box
-	+grid-item(4, $text-layout-space)
+	+grid-item(4, nth($text-layout-space, 2))
 	+font(1.6rem, 26px)
 	letter-spacing: normal
 
+	+media('<desk-md')
+		+grid-item-responsive(4, nth($text-layout-space--md, 2))
+
 	+media('<tab-lg')
-		+grid-item-responsive(4, $text-layout-space--sm)
+		+grid-item-responsive(4, nth($text-layout-space--sm, 2))
 
 	+media('<mob-lg')
-		+grid-item-responsive(2, $text-layout-space--sm)
+		+grid-item-responsive(2, nth($text-layout-space--sm, 2))
 
 	& > *:last-child
 		margin-bottom: 0
 
 	.footer-common__box--navigator &
 		width: 100%
-
-		+media('<tab-lg')
-			text-align: center
 
 .footer-nav__title, .footer-nav__list
 	position: relative
@@ -665,6 +700,13 @@ html
 		margin-bottom: 0.5em
 
 .footer-nav__title
+	.footer-common__box--navigator &
+		+media('<tab-lg')
+			text-align: center
+
+		+media('<mob-lg')
+			text-align: left
+
 	a
 		color: black
 		text-decoration: none
@@ -748,13 +790,16 @@ html
 
 /* footer bottom
 .footer-bottom
-	padding: 50px $text-layout-space 40px
+	padding: 50px nth($text-layout-space, 2) 40px
+
+	+media('<desk-md')
+		padding: round(nth($text-layout-space--md, 1)*1.5) nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: round($text-layout-space--sm*2) $text-layout-space--sm
+		padding: round(nth($text-layout-space--sm, 1)*1.5) nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: round($text-layout-space--mob*2) $text-layout-space--mob
+		padding: round(nth($text-layout-space--mob, 1)*1.5) nth($text-layout-space--mob, 2)
 
 .footer-bottom__holder
 	position: relative
@@ -776,11 +821,14 @@ html
 
 .footer-bottom__col
 	+display-inline-block-top
-	+padding-horizontal(round($text-layout-space/2))
+	+padding-horizontal(round(nth($text-layout-space, 2)/2))
 	+font(16px, round-float(24/16, 3))
 	letter-spacing: normal
 	width: 33%
 	text-align: left
+
+	+media('<desk-md')
+		+padding-horizontal(round(nth($text-layout-space--md, 2)/2))
 
 	+media('<tab-lg')
 		display: block
@@ -788,7 +836,7 @@ html
 		max-width: none
 		padding: 0
 		text-align: center
-		margin-top: $text-layout-space--sm
+		margin-top: nth($text-layout-space--sm, 1)
 
 	&:first-child
 		padding-left: 0
@@ -811,10 +859,13 @@ html
 			text-decoration: underline
 
 .address
-	margin-bottom: $text-layout-space
+	margin-bottom: nth($text-layout-space, 1)
+
+	+media('<desk-md')
+		margin-bottom: nth($text-layout-space--md, 1)
 
 	+media('<tab-lg')
-		margin-bottom: $text-layout-space--sm
+		margin-bottom: nth($text-layout-space--sm, 1)
 
 	&:last-child
 		margin-bottom: 0

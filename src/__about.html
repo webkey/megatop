@@ -1,0 +1,145 @@
+@@include('_tpl_layout_head.html', {
+	"title": "О компании",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+				<div class="heading">
+					<h1>О компании</h1>
+				</div>
+
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная"],
+					"last": "О компании"
+				})
+
+				<section class="section about-caption">
+					<div class="about-caption__top">
+						<strong class="about-caption__title">MEGATOP</strong>
+						<div class="about-caption__desc">
+							<p>Компания MEGATOP была основана 25 октября 2007 года. Сегодня она представлена сетью магазинов обуви в 29 крупных городах Беларуси и 10 фирменными магазинами в Российской Федерации. Компания MEGATOP была основана 25 октября 2007 года. Сегодня она представлена сетью магазинов обуви в 29 крупных городах Беларуси и 10 фирменными магазинами в Российской Федерации.</p>
+						</div>
+					</div>
+					<div class="about-caption__list">
+						<div class="about-caption__item">Премия №1 в номинации «Сеть магазинов обуви №1»</div>
+						<div class="about-caption__item">«Выбор года» в номинации «Сеть магазинов обуви №1»</div>
+					</div>
+				</section>
+
+				<section class="section about-history">
+					<div class="section__title">
+						<h2>История</h2>
+					</div>
+					<div class="about-history__content"></div>
+				</section>
+
+				<section class="section about-chain">
+					<div class="section__title">
+						<h2>Сети магазинов</h2>
+					</div>
+					<div class="about-chain__list">
+						<div class="about-chain__list__holder equal-height-js">
+							<div class="about-chain__item">
+								<strong class="about-chain__item__numb">29</strong>
+								крупных городов Беларуси в которых представлены сети магазинов обуви
+							</div>
+							<div class="about-chain__item">
+								<strong class="about-chain__item__numb">53</strong>
+								фирменных магазина в Республике Беларусь
+							</div>
+							<div class="about-chain__item">
+								<strong class="about-chain__item__numb">10</strong>
+								фирменных магазинов в Российской Федерации
+							</div>
+							<div class="about-chain__item">
+								<strong class="about-chain__item__numb">8</strong>
+								дисконт-центров
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section about-benefits">
+					<div class="about-benefits__caption">
+						<div class="about-benefits__caption__holder">
+							<div class="section__title about-benefits__title">
+								<h2>Преимущества магазинов обуви MEGATOP</h2>
+							</div>
+							<div class="about-benefits__desc">
+								<p>Компания MEGATOP не остается равнодушной к людям, находящимся в сложной жизненной ситуации, и оказывает благотворительную помощь различным белорусским организациям.</p>
+							</div>
+						</div>
+					</div>
+					<div class="about-benefits__list">
+						<div class="about-benefits__list__holder equal-height-js">
+							<div class="about-benefits__item">
+								<div class="about-benefits__item__title">
+									<div class="about-benefits__item__icon">
+										<img src="img/icon-benefits-01.png" alt="Удобное месторасположение" />
+									</div>
+									Удобное месторасположение
+								</div>
+								<div class="about-benefits__item__text">в каждом городе магазины MEGATOP находятся там, куда легко добраться.</div>
+							</div>
+							<div class="about-benefits__item">
+								<div class="about-benefits__item__title">
+									<div class="about-benefits__item__icon">
+										<img src="img/icon-benefits-02.png" alt="Самообслуживание" />
+									</div>
+									Самообслуживание
+								</div>
+								<div class="about-benefits__item__text">в MEGATOP доверяют посетителям и не заставляют клиентов ждать продавца.</div>
+							</div>
+							<div class="about-benefits__item">
+								<div class="about-benefits__item__title">
+									<div class="about-benefits__item__icon">
+										<img src="img/icon-benefits-03.png" alt="Доступные цены" />
+									</div>
+									Доступные цены
+								</div>
+								<div class="about-benefits__item__text">здесь найдется достойная обувь для самых разных бюджетов.</div>
+							</div>
+							<div class="about-benefits__item">
+								<div class="about-benefits__item__title">
+									<div class="about-benefits__item__icon">
+										<img src="img/icon-benefits-04.png" alt="Широкий ассортимент" />
+									</div>
+									Широкий ассортимент
+								</div>
+								<div class="about-benefits__item__text">Широкий ассортимент мужской, женской и детской обуви, а также главное отличие всех представленных моделей: современность и практичность.</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="section about-promo">
+					<div class="about-promo__slider about-promo-slider-js">
+						@@loop('_tpl_promo-slider--items.html', 'includes/json/_tpl_promo-slider--items.json')
+					</div>
+				</section>
+
+			</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Текстовая"
+})

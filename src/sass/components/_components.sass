@@ -4,28 +4,31 @@
 
 /* user form
 .user-form
-	//background: $bg-color-alt
-	+padding-vertical($text-layout-space)
+	+padding-vertical(nth($text-layout-space, 1))
 	margin: 0 auto $bottom-space
-	//border: solid $border-color
-	//border-width: 1px 0
+
+	+media('<desk-md')
+		+padding-vertical(nth($text-layout-space--md, 1))
 
 	+media('<tab-lg')
-		+padding-vertical($text-layout-space--sm)
+		+padding-vertical(nth($text-layout-space--sm, 1))
 
 	+media('<mob-lg')
-		+padding-vertical($text-layout-space--mob)
+		+padding-vertical(nth($text-layout-space--mob, 1))
 
 	// только в попапе
 	.shutter &
 		+padding-vertical(0)
-		max-width: 464+$text-layout-space*2
+		max-width: #{464+nth($text-layout-space, 2)*2}
+
+		+media('<desk-md')
+			max-width: #{464+nth($text-layout-space--md, 2)*2}
 
 		+media('<tab-lg')
-			max-width: 464+$text-layout-space--sm*2
+			max-width: #{464+nth($text-layout-space--sm, 2)*2}
 
 		+media('<mob-lg')
-			max-width: 464+$text-layout-space--mob*2
+			max-width: #{464+nth($text-layout-space--mob, 2)*2}
 
 	&:last-child
 		margin-bottom: 0
@@ -619,8 +622,8 @@
 /* btn-to-top
 .btn-to-top
 	position: fixed
-	right: $text-layout-space
-	bottom: $text-layout-space
+	right: nth($text-layout-space, 2)
+	bottom: nth($text-layout-space, 1)
 	+size(50px)
 	color: #000
 	border: 2px solid currentColor
@@ -640,13 +643,18 @@
 		property: $prop
 		duration: $animation-speed
 
+	+media('<desk-md')
+		right: nth($text-layout-space--md, 2)
+		bottom: nth($text-layout-space--md, 1)
+
 	+media('<tab-lg')
-		right: $text-layout-space--sm
-		bottom: $text-layout-space--sm
+		right: nth($text-layout-space--sm, 2)
+		bottom: nth($text-layout-space--sm, 1)
 
 	+media('<mob-lg')
-		right: $text-layout-space--mob
-		bottom: $text-layout-space--mob
+		right: nth($text-layout-space--mob, 2)
+		bottom: nth($text-layout-space--mob, 1)
+		+size(40px)
 
 	// убрать подсветку при клике на тачскринах
 	.touchevents &
@@ -669,13 +677,23 @@
 		width: 14px
 		background: currentColor
 
+		+media('<mob-lg')
+			width: 12px
+			top: 16px
+
 	&::before
 		transform: rotate(-45deg)
 		left: 12px
 
+		+media('<mob-lg')
+			left: 8px
+
 	&::after
 		transform: rotate(45deg)
 		left: 21px
+
+		+media('<mob-lg')
+			left: 16px
 
 // hover
 .btn-to-top
@@ -684,6 +702,7 @@
 
 /* btn-to-top end
 
+/* main-section
 .main-section
 	position: relative
 	margin-bottom: 1rem
@@ -728,15 +747,52 @@
 // main-section--club
 .main-section--club
 	margin-bottom: 6rem
-	+padding-horizontal($text-layout-space)
+	+padding-horizontal(nth($text-layout-space, 2))
+
+	+media('<desk-md')
+		+padding-horizontal(nth($text-layout-space--md, 2))
 
 	+media('<tab-lg')
-		+padding-horizontal($text-layout-space--sm)
+		+padding-horizontal(nth($text-layout-space--sm, 2))
 
 	+media('<mob-lg')
-		+padding-horizontal($text-layout-space--mob)
+		+padding-horizontal(nth($text-layout-space--mob, 2))
 		margin-bottom: 3rem
 
+/* main-section end
+
+/* section
+.section
+	padding: nth($text-layout-space, 1) nth($text-layout-space, 2)
+
+	+media('<desk-md')
+		padding: nth($text-layout-space--md, 1) nth($text-layout-space--md, 2)
+
+	+media('<tab-lg')
+		padding: nth($text-layout-space--sm, 1) nth($text-layout-space--sm, 2)
+
+	+media('<mob-lg')
+		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
+
+.section__title
+	+font-alt-medium
+	+font(3.6rem, round-float(42/36, 2))
+
+	+media('<mob-lg')
+		font-size: 3.0rem
+
+	h2, h3
+		font:
+			family: inherit
+			size: inherit
+			style: inherit
+			weight: inherit
+		line-height: inherit
+		text-transform: none
+		color: inherit
+		margin: 0
+
+/* section end
 
 /* jFiler
 //.upload-file__container
@@ -874,16 +930,19 @@
 /* breadcrumbs
 .breadcrumbs
 	color: $text-color-light
-	padding: 20px $text-layout-space
+	padding: 20px nth($text-layout-space, 2)
 	border-bottom: 1px solid $border-color
 	margin-bottom: -1px
 
+	+media('<desk-md')
+		padding: 20px nth($text-layout-space--md, 2)
+
 	+media('<tab-lg')
 		display: none
-		padding: 20px $text-layout-space--sm
+		padding: 20px nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: 20px $text-layout-space--mob
+		padding: 20px nth($text-layout-space--mob, 2)
 
 	&:last-child
 		margin-bottom: 0
@@ -1425,9 +1484,9 @@
 	align-items: center
 
 .subscribe-from
-	width: 456 + $grid-space*2
+	width: 456 + nth($grid-space, 2)*2
 	max-width: 100%
-	padding: $grid-space
+	padding: nth($grid-space, 1) nth($grid-space, 2)
 	margin: auto
 
 	.input-wrap
@@ -1975,7 +2034,7 @@
 	margin-bottom: $bottom-space--lg
 
 	+media('<mob-lg')
-		+margin-horizontal(-$text-layout-space--mob)
+		+margin-horizontal(-#{nth($text-layout-space--mob, 2)})
 
 	&:last-child
 		margin-bottom: 0
@@ -2332,50 +2391,11 @@
 	.filters-results-show &
 		padding-bottom: 51px
 
-	//float: left
-
-	//+media('<tab-lg')
-		position: fixed
-		overflow: hidden
-		right: 0
-		width: $p-filters-width
-		background-color: white
-		z-index: 9999
-
-		top: $header-height--sm
-		height: calc(100vh - #{$header-height--sm})
-
-	//+media('<mob-md')
-		width: 100%
-
 	form
 		height: 100%
 
-//.m-aside__align
-	+media('<tab-lg')
-		overflow-x: hidden
-		overflow-y: auto
-		//height: 100%
-		height: calc(100% - #{$header-height--sm}) // если есть кнопка закрытия
-
-//.m-aside__holder
-
-	+media('<tab-lg')
-		padding: $text-layout-space--sm
-
-	+media('<mob-lg')
-		padding: $text-layout-space--mob $text-layout-space--mob round($text-layout-space--mob*1.5)
-
 .m-aside__footer
 	line-height: 1
-
-	//+media('<tab-lg')
-		display: flex
-		padding: 0
-		height: $header-height--sm
-		box-shadow: 0 0 30px 10px #fff, inset 0 1px 0 $border-color
-		overflow-y: hidden
-		z-index: 20
 
 	.btn-filters-apply, .btn-clear-filters
 		+media('<tab-lg')
@@ -2452,24 +2472,28 @@
 	position: relative
 
 .m-content__body__options
-	//padding: nth($m-content-space, 1) nth($m-content-space, 2) 10px
-	padding: $text-layout-space $text-layout-space 10px
+	padding: nth($text-layout-space, 1) nth($text-layout-space, 2) 10px
+
+	+media('<desk-md')
+		padding: nth($text-layout-space--md, 1) nth($text-layout-space--md, 2) 10px
 
 	+media('<tab-lg')
-		padding: $text-layout-space--sm $text-layout-space--sm 10px
+		padding: nth($text-layout-space--sm, 1) nth($text-layout-space--sm, 2) 10px
 
 	+media('<mob-lg')
-		//padding: $text-layout-space--mob $text-layout-space--mob 10px
 		padding: 0
 
 .m-content__body__layout
-	padding: 0 $text-layout-space
+	padding: 0 nth($text-layout-space, 2)
+
+	+media('<desk-md')
+		padding: 0 nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: 0 $text-layout-space--sm
+		padding: 0 nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: 0 $text-layout-space--mob
+		padding: 0 nth($text-layout-space--mob, 2)
 
 .m-content__footer
 	position: relative
@@ -3071,7 +3095,7 @@
 	user-select: none
 
 	+media('<mob-lg')
-		padding: round($text-layout-space--mob/2) $text-layout-space--mob
+		padding: round(nth($text-layout-space--mob, 2)/2) nth($text-layout-space--mob, 2)
 		border-top: 1px solid $border-color
 
 	&:last-child
@@ -3135,3 +3159,510 @@
 
 /* filters tags end
 /* products filters end
+
+/* advices / prevs
+.prevs
+	position: relative
+	margin-bottom: $bottom-space
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.prevs__list
+	float: left
+	width: 100%
+	column-count: 3
+	column-gap: 11rem
+	margin-bottom: -5rem
+
+	+media('<desk-md')
+		column-gap: 5rem
+
+	+media('<tab-lg')
+		column-count: 2
+		column-gap: 3rem
+		margin-bottom: -3rem
+
+	+media('<mob-lg')
+		column-count: auto
+
+.prevs__item
+	display: inline-block
+	vertical-align: top
+	margin-bottom: 5rem
+	padding-bottom: 3.5rem
+	border-bottom: 2px solid #ccc
+
+	+media('<tab-lg')
+		padding-bottom: 2rem
+		margin-bottom: 3rem
+
+.prevs__item__title
+	display: block
+	+font-alt-bold
+	+font(2.4rem, round-float(36/24, 2))
+	margin-bottom: 1em
+
+	&:last-child
+		margin-bottom: 0
+
+	+media('<tab-lg')
+		font-size: 2rem
+
+	+media('<mob-lg')
+		font-size: 1.8rem
+
+.prevs__item__cont
+	+font(1.6rem, round-float(26/16, 2))
+	margin-bottom: 1em
+
+	+media('<mob-lg')
+		font-size: 1.4rem
+
+	&:last-child
+		margin-bottom: 0
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.prevs__item__foot
+	time
+		+font-light
+		+font(1.4rem, round-float(20/14, 2))
+		color: #666
+		text-transform: uppercase
+
+		+media('<mob-lg')
+			font-size: 1.2rem
+
+/* advices / prevs end
+
+/* about
+.about-caption
+	position: relative
+	overflow: hidden
+
+.about-caption__top
+	+clear
+	margin-bottom: nth($grid-space, 1)*3
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)*3
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)*3
+
+.about-caption__title,
+.about-caption__desc
+	width: 50%
+	float: left
+	padding: 0 nth($grid-space, 2)
+
+	+media('<tab-lg')
+		width: 100%
+		padding: 0
+
+.about-caption__title
+	+font-bold
+	+font(9.6rem, round-float(98/96, 2))
+	text-transform: uppercase
+	color: #000
+	padding-left: 0
+
+	+media('<desk-sm')
+		font-size: 8.2rem
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		font-size: 4.1rem
+
+.about-caption__desc
+	+font-alt-medium
+	+font(2.4rem, round-float(34/24, 2))
+	padding-right: 0
+
+	+media('<mob-lg')
+		font-size: 2.0rem
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.about-caption__list
+	+clear
+	margin: 0 -#{nth($grid-space, 2)}
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.about-caption__item
+	float: left
+	width: 234px
+	margin: 0 nth($grid-space, 2)
+	padding: nth($grid-space, 1) 0
+	+font-bold
+	+font(1.8rem, round-float(26/18, 2))
+	color: $base-color
+	padding-top:
+	border-top: 2px solid $base-color
+
+	+media('<tab-lg')
+		padding: nth($grid-space--sm, 1) 0
+		margin: 0 nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		float: none
+		width: auto
+		padding: nth($grid-space--mob, 1) 0
+		margin: 0 nth($grid-space--mob, 2)
+
+/* about-caption end
+
+/* about-history
+.about-history
+	position: relative
+	background-color: #181a1b
+	background-image: url(../../img/bg-about-history.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+
+	min-height: 630px
+
+	.section__title
+		color: white
+
+.about-history__content
+	position: absolute
+	display: block
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	width: 1597px
+	max-width: calc(100% - #{nth($text-layout-space, 2)*2})
+
+	+media('<tab-lg')
+		max-width: calc(100% - #{nth($text-layout-space--sm, 2)*2})
+
+	+media('<mob-lg')
+		max-width: calc(100% - #{nth($text-layout-space--mob, 2)*2})
+
+	&::before
+		content: ""
+		display: block
+		background: url(../../img/temp/temp-about-history.png) no-repeat
+		-webkit-background-size: contain
+		background-size: contain
+		+ratio(1597, 629)
+
+/* about-history end
+
+/* about-chain
+.about-chain
+	position: relative
+	background-color: #f4f4f4
+	background-image: url(../../img/bg-about-chain.jpg)
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	min-height: 630px
+
+	+media('<mob-lg')
+		background-position: center 0
+		background-size: auto 550px
+
+.about-chain__list
+	padding-top: 33.6rem
+	overflow: hidden
+
+.about-chain__list__holder
+	margin: 0 -#{round(nth($grid-space, 2)/2)} -#{nth($grid-space, 1)}
+	+clear
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)} -#{nth($grid-space--sm, 1)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)} -#{nth($grid-space--mob, 1)}
+
+.about-chain__item
+	float: left
+	width: 245px
+	padding: 0 #{round(nth($grid-space, 2)/2)}
+	margin-bottom: nth($grid-space, 1)
+	+font(1.6rem, round-float(26/16, 2))
+
+	+media('<desk-sm')
+		width: 25%
+
+	+media('<tab-lg')
+		width: 50%
+		padding: 0 nth($grid-space--sm, 2)
+		margin-bottom: nth($grid-space--sm, 1)
+
+	+media('<mob-lg')
+		font-size: 1.4rem
+		padding: 0 nth($grid-space--mob, 2)
+		margin-bottom: nth($grid-space--mob, 1)
+
+.about-chain__item__numb
+	display: block
+	+font-bold
+	+font(9.0rem, round-float(92/90, 2))
+	color: $base-color
+
+	+media('<tab-lg')
+		font-size: 8.0rem
+
+	+media('<mob-lg')
+		font-size: 6.0rem
+
+/* about-chain end
+
+/* about-benefits
+.about-benefits
+	position: relative
+
+.about-benefits__caption
+	overflow: hidden
+	margin-bottom: nth($grid-space, 1)*2
+
+	+media('<tab-lg')
+		margin-bottom: nth($grid-space--sm, 1)*2
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)*2
+
+.about-benefits__caption__holder
+	margin: 0 -#{nth($grid-space, 2)}
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.about-benefits__title,
+.about-benefits__desc
+	float: left
+	width: 50%
+	padding: 0 nth($grid-space, 2)
+
+	+media('<tab-lg')
+		padding: 0 nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		width: 100%
+		padding: 0 nth($grid-space--mob, 2)
+
+.about-benefits__title
+	text-transform: uppercase
+	color: #000
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)
+
+.about-benefits__desc
+	+font(1.7rem, round-float(28/17, 2))
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.about-benefits__list
+	overflow: hidden
+
+.about-benefits__list__holder
+	margin: 0 -#{nth($grid-space, 2)}
+	+clear
+
+	+media('<tab-lg')
+		margin: 0 -#{nth($grid-space--sm, 2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{nth($grid-space--mob, 2)}
+
+.about-benefits__item
+	float: left
+	width: 25.0%
+	padding: nth($grid-space, 1) nth($grid-space, 2)
+	border: 1px solid $border-color
+	border-width: 0 1px 0 0
+
+	+media('<desk-md')
+		width: 50%
+		border-width: 1px 1px 0 0
+
+		&:nth-child(2n+1)
+			clear: left
+
+		+media('>=mob-lg')
+			&:nth-child(-n+2)
+				border-top: none
+
+	+media('<tab-lg')
+		padding: nth($grid-space--sm, 1) nth($grid-space--sm, 2)
+
+	+media('<mob-lg')
+		width: 100%
+		border-width: 1px 0 0
+		padding: nth($grid-space--mob, 1) nth($grid-space--mob, 2)
+
+		&:first-child
+			border-top: 0
+
+$about-benefits-icon-size: 61px
+$about-benefits-icon-size--mob: 50px
+//=============================
+.about-benefits__item__title
+	position: relative
+	+font-alt-bold
+	+font(2.0rem, round-float(26/20, 2))
+	display: flex
+	align-items: center
+	padding-right: $about-benefits-icon-size+10
+	min-height: $about-benefits-icon-size
+	margin-bottom: 1em
+
+	+media('<mob-lg')
+		font-size: 18px
+		padding-right: $about-benefits-icon-size--mob+10
+		min-height: $about-benefits-icon-size--mob
+		margin-bottom: 0
+
+.about-benefits__item__icon
+	position: absolute
+	right: 0
+	top: 50%
+	+size($about-benefits-icon-size)
+	margin-top: -#{round($about-benefits-icon-size/2)}
+
+	+media('<mob-lg')
+		+size($about-benefits-icon-size--mob)
+		margin-top: -#{round($about-benefits-icon-size--mob/2)}
+
+.about-benefits__item__text
+	+font(1.6rem, round-float(26/17, 2))
+
+	+media('<mob-lg')
+		display: none
+		font-size: 1.5rem
+
+/* about-benefits end
+
+/* about-promo
+.about-promo
+	padding: 0
+
+.about-promo__slider
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+	+push-auto
+	margin-bottom: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+	&.slick-dotted
+		margin-bottom: 0
+
+	.slick-dots, .#{$user-content} & .slick-dots
+		bottom: 20px
+
+	.slick-arrow
+		&::after
+			border-color: white
+
+.about-promo__slider__slide
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	position: relative
+	height: 630px
+	overflow: hidden
+	width: 100%
+	padding: nth($text-layout-space, 1) nth($slider-btn-size, 1)
+	text-decoration: none
+	color: white
+	background-color: #ddd
+	z-index: 1
+
+	+media('<desk-md')
+		+padding-vertical(nth($text-layout-space--md, 1))
+
+	+media('<tab-lg')
+		+padding-vertical(nth($text-layout-space--sm, 1))
+
+	+media('<mob-lg')
+		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
+		height: 524px
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	&::before
+		content: ""
+		position: absolute
+		+size(100%)
+		left: 0
+		top: 0
+		background-color: rgba(0, 0, 0, 0.2)
+
+.about-promo__slider__figure
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	max-width: none
+	margin: 0
+	+size(100%)
+	+object-fit(cover)
+	z-index: -1
+
+	+media('<mob-lg')
+		+object-fit(cover, 20%)
+
+.about-promo__slider__text
+	position: relative
+	width: 640px
+	max-width: 100%
+	+font-alt-medium
+	+font(3.6rem, round-float(42/36, 2))
+	margin-bottom: nth($grid-space, 1)
+
+	+media('<mob-lg')
+		font-size: 21px
+		margin-bottom: nth($grid-space--mob, 1)
+
+.about-promo__slider__name
+	position: relative
+	width: 640px
+	max-width: 100%
+	+font-alt-medium
+	+font(1.8rem, round-float(26/18, 2))
+	margin-bottom: 5px
+
+.about-promo__slider__post
+	position: relative
+	width: 640px
+	max-width: 100%
+	+font(1.8rem, round-float(26/16, 2))
+
+/* about-promo end

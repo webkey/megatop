@@ -1,0 +1,59 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Полезные советы",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+				<div class="heading">
+					<h1>Полезные советы</h1>
+				</div>
+
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная", "Покупателям"],
+					"last": "Полезные советы"
+				})
+
+				<div class="layout-article">
+					<div class="layout-flood">
+						<section class="prevs">
+							<div class="prevs__list">
+								@@loop("_tpl_prevs--items.html", "includes/json/_tpl_prevs--items.json")
+								@@loop("_tpl_prevs--items.html", "includes/json/_tpl_prevs--items.json")
+							</div>
+						</section>
+					</div>
+				</div>
+
+				<div class="layout-article__footer">
+					<a href="#" class="btn-more btn-with-icon">
+						<span>Показать еще 50</span>
+						@@include("includes/svg/icon-clear.svg")
+					</a>
+					@@include('_tpl_pagination.html')
+				</div>
+
+			</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Текстовая"
+})

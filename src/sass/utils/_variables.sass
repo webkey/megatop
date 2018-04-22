@@ -7,7 +7,7 @@ $breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-m
 
 // base
 $font-size: 1.6rem !default
-$line-height: round-float(2.4rem/$font-size, 2) !default
+$line-height: round-float(24/16, 2) !default
 // ===============
 $font-size--sm: 1.4rem !default
 $line-height--sm: round-float(2.4rem/$font-size--sm, 2) !default
@@ -18,39 +18,46 @@ $line-height--less: round-float(2.0rem/$font-size--less, 2) !default
 $letter-spacing: normal !default
 
 // =======h1========
-$font-size-h1: 4.8rem !default
-$line-height-h1: round-float(6.0rem/$font-size-h1, 2) !default
+$font-size-h1: 4.2rem !default
+$line-height-h1: round-float(54/42, 2) !default
 // md ===
-$font-size-h1--md: 3.6rem !default
-$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 2) !default
+$font-size-h1--md: 3.0rem !default
+$line-height-h1--md: $line-height-h1 !default
 // sm ===
-$font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
+$font-size-h1--sm: 2.4rem !default
+$line-height-h1--sm: $line-height-h1 !default
 
 // =======h2========
-$font-size-h2: round-float($font-size-h1*3.6rem/4.8rem, 1) !default
-$line-height-h2: round-float(4.8rem/3.6rem, 2) !default
+$h2-fz-ratio: 30/42 !default // h2 font-size / h1 font-size
+$font-size-h2: round-float($font-size-h1*$h2-fz-ratio, 2) !default // $font-size-h1 * h2 font-size / h1 font-size
+$line-height-h2: round-float(42/30, 2) !default
 // md ===
-$font-size-h2--md: round-float($font-size-h1--md*0.84, 1) !default
-$line-height-h2--md: round-float(($line-height-h1--md*1.02),2) !default
+$font-size-h2--md: round-float($font-size-h1--md*$h2-fz-ratio*1.1, 1) !default
+$line-height-h2--md: $line-height-h2 !default
 // sm ===
-$font-size-h2--sm: round-float($font-size-h1--sm*0.87, 1) !default
-$line-height-h2--sm: round-float(($line-height-h1--sm*1.01),2) !default
+$font-size-h2--sm: round-float($font-size-h1--sm*$h2-fz-ratio*1.15, 1) !default
+$line-height-h2--sm: $line-height-h2 !default
 
 // =======h3========
-$font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
-$line-height-h3: round-float(3.6rem/2.4rem, 2) !default
+$h3-fz-ratio: 21/30 !default // h3 font-size / h2 font-size
+$font-size-h3: round-float($font-size-h2*$h3-fz-ratio, 1) !default // $font-size-h1 * h3 font-size / h2 font-size
+$line-height-h3: round-float(32/21, 2) !default
 // sm ===
-$font-size-h3--sm: round-float($font-size-h1--sm*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--sm*1.05),2) !default
+$font-size-h3--sm: round-float($font-size-h2--sm*$h3-fz-ratio*1.25, 1) !default
+$line-height-h3--sm: round-float($line-height-h3, 2) !default
 
 // =======h4========
-$font-size-h4: round-float($font-size-h1*1.8rem/4.8rem, 1) !default
-$line-height-h4: round-float(3.0rem/1.8rem, 2) !default
+$h4-fz-ratio: 19/21 !default // h4 font-size / h3 font-size
+$font-size-h4: round-float($font-size-h3*$h4-fz-ratio, 1) !default // $font-size-h1 * h4 font-size / h3 font-size
+$line-height-h4: round-float(29/19, 2) !default
+// sm ===
+$font-size-h4--sm: round-float($font-size-h3--sm*$h3-fz-ratio*1.3, 1) !default
+$line-height-h4--sm: round-float(($line-height-h3),2) !default
+
 
 // =======h5========
-$font-size-h5: $font-size !default
-$line-height-h5: $line-height !default
+$font-size-h5: 1.6rem !default
+$line-height-h5: round-float(24/16, 2) !default
 
 // =======h6========
 $font-size-h6: round-float($font-size*0.75, 1) !default
@@ -98,18 +105,18 @@ $page-layout-space: 0 0 !default
 // максимальная ширина сайта
 $page-layout-width: 1920px !default
 // минимальные отступы слева и справа у текствого блока
-$text-layout-space: 30px !default
-//$text-layout-space--md: 25px !default
-$text-layout-space--sm: 20px !default
-$text-layout-space--mob: 15px !default
+$text-layout-space: 40px 40px !default // v h
+$text-layout-space--md: 35px 30px !default // v h
+$text-layout-space--sm: 30px 20px !default // v h
+$text-layout-space--mob: 20px 10px !default // v h
 // максимальная ширина текстового блока
 $text-layout-width: 800px !default
 // максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 1000px !default
+$flood-layout-width: 1400px !default
 // отступы внутри блочных элементов
-$grid-space: 30px !default
-$grid-space--sm: 20px !default
-$grid-space--mob: 10px !default
+$grid-space: 30px 40px !default // v h
+$grid-space--sm: 25px 30px !default // v h
+$grid-space--mob: 20px 10px !default // v h
 // отступы в дефолтных списках
 $list-space: 30px
 
@@ -310,7 +317,7 @@ $font-alt-medium: 'futura-medium', sans-serif !default
 // ========== дополнительный шрифт ============
 =font-alt()
 	font:
-		family: $font-alt-bold
+		family: $font-alt
 	+font-reset
 
 =font-alt-bold()
