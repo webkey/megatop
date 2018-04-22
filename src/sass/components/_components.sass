@@ -4203,3 +4203,174 @@ $jobs-warranty-icon-size--mob: 32px
 		font-size: 2rem
 
 /* jobs-ps end
+
+/* contacts map
+.contacts__map
+	position: relative
+	height: 400px
+
+	+media('<mob-lg')
+		height: 300px
+
+.contacts__map__adr
+	position: absolute
+	left: nth($text-layout-space, 2)
+	top: nth($text-layout-space, 1)
+	width: 262px
+	padding: 25px 30px
+	background-color: #fff
+	box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3)
+	+font(1.6rem, round-float(24/16, 2))
+	z-index: 5
+
+	+media('<tab-lg')
+		display: none
+
+	& > strong
+		display: block
+		margin-bottom: 1em
+		+font-alt-medium
+		+font(1.8rem, round-float(24/18, 2))
+
+	& > address
+		font-style: normal
+
+.contacts__map__holder
+	height: 100%
+
+	.map-container
+		height: 100%
+
+	.contacts-map__frame
+		height: 100%
+		background: #ccc
+
+/* contacts map end
+
+/* map popup
+.map-popup__title,
+.map-popup__subtitle
+	display: block
+	+font-alt-bold
+	+font(20px, 24px)
+	margin-bottom: 0.3em
+	color: $title-color
+
+.map-popup__subtitle
+	+font(18px, 22px)
+	margin-bottom: 0.7em
+
+.map-popup__row
+	+font(14px, 18px)
+	padding: 0 0 0.8em
+	+clear
+
+	sup, sub
+		font-size: 0.6em
+
+/* map popup end
+
+/* contacts
+.contacts
+	position: relative
+
+.contacts__list
+	overflow: hidden
+
+.content__item
+	padding: #{nth($grid-space, 1)} #{nth($text-layout-space, 2)}
+	border-top: 1px solid $border-color
+	+clear
+
+	+media('<desk-md')
+		padding: #{nth($grid-space, 1)} #{nth($text-layout-space--md, 2)}
+
+	+media('<tab-lg')
+		padding: #{nth($grid-space--sm, 1)} #{nth($text-layout-space--sm, 2)}
+
+	+media('<mob-lg')
+		padding: #{nth($grid-space--mob, 1)} #{nth($text-layout-space--mob, 2)}
+
+	&:first-child
+		border-top: none
+
+.content__item__holder
+	max-width: $flood-layout-width
+	margin: 0 auto
+
+.contacts__box
+	float: left
+	width: 33.3%
+	padding-left: nth($grid-space, 2)
+
+	+media('<mob-lg')
+		float: none
+		width: auto
+		padding-left: 0
+		margin-bottom: nth($grid-space--mob, 1)
+
+	&:first-child
+		padding-left: 0
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.contacts__box__holder
+	max-width: 340px
+
+	+media('<mob-lg')
+		margin-bottom: -#{nth($grid-space--mob, 1)}
+
+.contacts__box__title
+	+font-alt-medium
+	+font(2.4rem, round-float(36/24, 2))
+	margin-bottom: 0.5em
+
+	+media('<desk-sm')
+		+font(2.2rem, round-float(28/22, 2))
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts__box__subtitle
+	+font(1.6rem, round-float(24/16, 2))
+	color: #333
+	margin-bottom: 0.5em
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts__box__note
+	+font(1.2rem, round-float(24/12, 2))
+	letter-spacing: 0.05em
+	color: #999
+	text-transform: uppercase
+	margin-bottom: 0.5em
+
+	&:last-child
+		margin-bottom: 0
+
+.contacts__box__fio
+	+font-alt-medium
+	+font(1.8rem, round-float(26/18, 2))
+	margin-bottom: 0.5em
+
+.contacts__box__dl
+	margin: 0 0 0.5em
+	color: #333
+	+font(2.4rem, round-float(36/24, 2))
+
+	+media('<desk-sm')
+		+font(2.0rem, round-float(28/20, 2))
+
+	+media('<tab-lg')
+		font-size: 1.8rem
+
+	&:last-child
+		margin-bottom: 0
+
+	a
+		white-space: nowrap
+
+/* contacts end

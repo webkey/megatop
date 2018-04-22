@@ -135,7 +135,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
 .heading
-	padding: 20px $text-layout-space
+	padding: 20px nth($text-layout-space, 2)
 	border-bottom: 1px solid $border-color
 	margin-bottom: -1px
 	+font-alt-medium
@@ -145,13 +145,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	text-align: left
 
 	+media('<desk-md')
-		padding: 20px $text-layout-space--md
+		padding: 20px nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: 20px $text-layout-space--sm
+		padding: 20px nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: 20px $text-layout-space--mob
+		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
 		+font(2rem, round-float(24/20, 2))
 
 	h1, h2, h3

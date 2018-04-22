@@ -1842,7 +1842,6 @@ function multiFiltersInit() {
 /**
  * !Fixed filters result
  * */
-
 $(function () {
 	// fixed filters result
 
@@ -1867,6 +1866,83 @@ $(function () {
 		$('html').toggleClass(filterResultFixedClass, !cond);
 	}
 });
+
+/**
+ * !Add map on contacts page
+ * */
+function contactsMap() {
+
+	var mapId = "#contacts-map",
+		$mapId = $(mapId);
+
+	/*initial map*/
+	if ( $mapId.length ) {
+
+		var myMap,
+			myPlacemark,
+			contactsMapCoord = contactMapInfo.coord,
+			// center = [];
+			center = contactsMapCoord;
+
+		// if (window.innerWidth > 768) {
+		// 	for (var i = 0; i < contactsMapCoord.length; i++) {
+		// 		if (i === 1) {
+		// 			center.push(contactsMapCoord[i] + 0.0006);
+		// 			continue
+		// 		}
+		// 		center.push(contactsMapCoord[i] + 0.0002);
+		// 	}
+		// } else {
+		// 	center = contactsMapCoord
+		// }
+
+		var init = function(){
+			/*create new map object*/
+			myMap = new ymaps.Map (mapId.substring(1), {
+				center: center,
+				zoom: 17,
+				// controls: ['fullscreenControl', 'zoomControl']
+				controls: ['fullscreenControl']
+			});
+
+			myPlacemark = new ymaps.Placemark(contactsMapCoord, {
+				balloonContentBody: balloonContent,
+				hintContent: contactMapInfo.title
+			}, {
+				iconLayout: 'default#image',
+				iconImageHref: contactsMapBaseImageURL + 'pin-map.png',
+				iconImageSize: [46, 46],
+				iconImageOffset: [-23, -23]
+			});
+
+			/*add zoom control button*/
+			var zoomControl = new ymaps.control.ZoomControl({
+				options: {
+					size: "small",
+					position: {right: 10, bottom: 50}
+				}
+			});
+			myMap.controls.add(zoomControl);
+
+			myMap.geoObjects.add(myPlacemark);
+
+			/*behaviors setting map*/
+			myMap.behaviors.disable('scrollZoom');
+		};
+
+		ymaps.ready(init);
+
+		var balloonContent = '' +
+			'<div class="map-popup">' +
+			'<div class="map-popup__title">' + contactMapInfo.title + '</div>' +
+			'<div class="map-popup__subtitle">' + contactMapInfo.subtitle + '</div>' +
+			'<div class="map-popup__list">' +
+			'<div class="map-popup__row"><div>' + contactMapInfo.address + '</div></div>' +
+			// '<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
+			'<div class="map-popup__row"><div>' + contactMapInfo.phones + '</div></div>' +
+			'</div>';
+	}
+}
 
 /**
  * !Testing form validation (for example). Do not use on release!
@@ -1952,6 +2028,7 @@ $(document).ready(function () {
 	formAccept();
 	stickyInit();
 	multiFiltersInit();
+	contactsMap();
 	objectFitImages('img'); // object-fit-images initial
 
 	formSuccessExample();
