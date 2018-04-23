@@ -306,7 +306,17 @@ function slidersInit() {
 				accessibility: false,
 				draggable: false,
 				swipe: false,
-				touchMove: false
+				touchMove: false,
+
+				responsive: [
+					{
+						breakpoint: 992,
+						settings: {
+							vertical: false,
+						}
+					}
+				]
+
 			});
 
 			// initialized slider of images
@@ -515,41 +525,6 @@ function slidersInit() {
 		});
 	}
 }
-
-/**
- * fotorama init
- * */
-function fotoramaInit() {
-	var $gallery = $('.gallery-js');
-
-	$.each($gallery, function () {
-		var $this = $(this);
-
-		var $galleryFotorama = $this.fotorama({
-			click: false,
-			nav: 'thumbs',
-			navposition: 'left',
-			allowfullscreen: true,
-			// arrows: 'always',
-			thumbmargin: 20,
-			thumbwidth: 100,
-			thumbheight: 100,
-			thumbfit: 'contain',
-			thumbborderwidth: 3,
-			ratio: 1/1
-		});
-
-		// Get the API object.
-		// var fotorama = $galleryFotorama.data('fotorama');
-
-		// Inspect it in console.
-		// $this.on('click', '.fotorama__grab', function (e) {
-		// 	e.preventDefault();
-		// 	fotorama.requestFullScreen();
-		// })
-	})
-}
-/** fotorama init end */
 
 /**
  * !Select lang
@@ -2113,7 +2088,6 @@ $(document).ready(function () {
 	inputHasValueClass();
 	customSelect($('select.cselect'));
 	slidersInit();
-	fotoramaInit();
 	selectLang();
 	accordionInit();
 	filterJob();

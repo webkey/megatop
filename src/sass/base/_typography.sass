@@ -255,6 +255,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .hide
 	display: none !important
 
+.for-desk
+	+media('<mob-lg')
+		display: none !important
+
+.for-mob
+	+media('>=mob-lg')
+		display: none !important
+
 /* content img
 
 .layout-article

@@ -74,7 +74,7 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		})); // Обновляем CSS на странице при изменении
 });
 
-gulp.task('mergeCssLibs', ['addFotoramaCss'], function () { // Таск для мержа css библиотек
+gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
 	return gulp.src([
 		'src/css/temp/*.css' // see gulpfile-special.js
 		, 'src/libs/select2/dist/css/select2.min.css'
@@ -113,7 +113,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/js/temp/jquery.ms-drop.min.js' // drop menu (example, for lang)
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/cleave.js/dist/cleave.min.js' // form mask
-		, 'src/libs/fotorama/fotorama.js' // fotorama gallery
+		// , 'src/libs/fotorama/fotorama.js' // fotorama gallery
 
 		// , 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"
 		// , 'src/libs/resize-sensor/ResizeSensor.min.js' // resize-sensor for "sticky-sidebar.js"
@@ -146,24 +146,6 @@ gulp.task('browserSync', function (done) { // Таск browserSync
 	browserSync.watch(['src/*.html', 'src/js/**/*.js', 'src/includes/**/*.json', 'src/includes/**/*.svg']).on("change", browserSync.reload);
 	done();
 });
-
-// ============= ТОЛЬКО ДЛЯ ТЕКУЩЕГО ПРОЕКТА ===========//
-// необходимо запустить перед mergeCssLibs
-gulp.task('addFotoramaCss', ['copyFotoramaImg'], function () { // Таск для добавления стилей библиотеки fotorama.js
-	return gulp.src([
-		'src/libs/fotorama/fotorama.css'
-	])
-		.pipe(replace(/url\(/g, 'url(../img/')) // необходимо заменить пути к картинкам для fotorama.js
-		.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css/temp
-});
-gulp.task('copyFotoramaImg', function () {
-	return gulp.src([
-		'src/libs/fotorama/fotorama.png'
-		, 'src/libs/fotorama/fotorama@2x.png'
-	])
-		.pipe(gulp.dest('src/img')); // Выгружаем в папку src
-});
-// ============= ТОЛЬКО ДЛЯ ТЕКУЩЕГО ПРОЕКТА (КОНЕЦ) ===========//
 
 gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
 	gulp.watch(['src/_tpl_*.html', 'src/__*.html', 'src/includes/json/*.json', 'src/includes/svg/*.svg'], ['htmlCompilation']); // Наблюдение за tpl
