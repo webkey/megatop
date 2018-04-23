@@ -227,7 +227,7 @@ function slidersInit() {
 			var $titleList = $curSlider.find('.flashes');
 			$.each($imgListItem, function () {
 				var $this = $(this);
-				$titleList.append($('<div class="flashes__item">' + $this.find('.caption').html() + '</div>'));
+				$titleList.append($('<div class="gallery-thumbs__item">' + $this.find('.caption').html() + '</div>'));
 			});
 
 			// initialized slider of titles
@@ -264,6 +264,67 @@ function slidersInit() {
 				arrows: true
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
 				$('.slide-curr', $(slick.$slider)).text(nextSlider + 1);
+			});
+
+		});
+	}
+
+	/**card gallery*/
+	var $cardGallery = $('.card__gallery-js');
+
+	if($cardGallery.length){
+		var cardGalleryThumbsTpl = $('<div class="p-card__gallery-thumbs"></div>');
+
+		$cardGallery.each(function () {
+			var $curSlider = $(this);
+			var $imgList = $curSlider.find('.card__gallery-images-js');
+			var $imgListItem = $imgList.children();
+			var dur = 200;
+
+			// create titles
+			$imgList.after(cardGalleryThumbsTpl.clone());
+			var $galleryThumbs = $curSlider.find('.p-card__gallery-thumbs');
+			$.each($imgListItem, function () {
+				var $this = $(this);
+				$galleryThumbs.append($('<div class="flashes__item"><img src="' + $this.find('img').attr('data-lazy') + '"></div>'));
+			});
+
+			// initialized slider of titles
+			$galleryThumbs.slick({
+				fade: false,
+				vertical: true,
+				speed: dur,
+				slidesToShow: 5,
+				slidesToScroll: 1,
+				infinite: false,
+				asNavFor: $imgList,
+				dots: false,
+				arrows: true,
+				centerMode: false,
+				focusOnSelect: true,
+
+				accessibility: false,
+				draggable: false,
+				swipe: false,
+				touchMove: false
+			});
+
+			// initialized slider of images
+			$imgList.slick({
+				fade: true,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				asNavFor: $galleryThumbs,
+				lazyLoad: 'ondemand',
+				infinite: false,
+				dots: false,
+				arrows: false,
+
+				accessibility: false,
+				draggable: false,
+				swipe: false,
+				touchMove: false
 			});
 
 		});
@@ -467,6 +528,7 @@ function fotoramaInit() {
 		var $galleryFotorama = $this.fotorama({
 			click: false,
 			nav: 'thumbs',
+			navposition: 'left',
 			allowfullscreen: true,
 			// arrows: 'always',
 			thumbmargin: 20,

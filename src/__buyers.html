@@ -15,7 +15,7 @@
 		<!--CONTENT-->
 		<div class="content user-content">
 			<div class="heading">
-				<h1>Новости</h1>
+				<h1>Покупателям</h1>
 			</div>
 
 			@@include('_tpl_breadcrumbs.html', {
@@ -23,19 +23,59 @@
 				"last": "Покупателям"
 			})
 
-			<section class="section buyers max-wrap-flood">
-				<div class="buyers__list">
-					@@loop("_tpl_buyer--items.html", "includes/json/_tpl_buyer--items.json")
-				</div>
+			<section class="section ps" style="background-image: url(img/bg-buyers-ps.jpg);">
+				<div class="ps__title">Здесь вы найдете все, что нужно знать об обуви MEGATOP  и не только</div>
 			</section>
 
-			<div class="pagination-wrap">
-				<a href="#" class="btn-more btn-with-icon">
-					<span>Показать еще 50</span>
-					@@include("includes/svg/icon-clear.svg")
-				</a>
-				@@include('_tpl_pagination.html')
-			</div>
+			<section class="section ap">
+				<img src="img/buyers-ap.png" alt="MEGATOP заботится о своих клиентах" />
+				<strong class="ap__title">MEGATOP заботится о своих клиентах и стремится сделать все, чтобы обувь служила еще дольше, а сервис был еще качественнее</strong>
+			</section>
+
+			<section class="links">
+				<div class="links__list">
+					<div class="links__list__holder">
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-01.jpg" alt="Полезная информация" />
+							</a>
+						</div>
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-02.jpg" alt="Бренды" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="links__list">
+					<div class="links__list__holder">
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-03.jpg" alt="О компании" />
+							</a>
+						</div>
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-04.jpg" alt="Собственное производство" />
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="links__list">
+					<div class="links__list__holder">
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-05.jpg" alt="О компании" />
+							</a>
+						</div>
+						<div class="links__item">
+							<a href="#" class="links__inner">
+								<img src="img/img-buyers-link-06.jpg" alt="Собственное производство" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
 
 		</div>
 		<!--CONTENT end-->

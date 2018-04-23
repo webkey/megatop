@@ -734,7 +734,7 @@
 	margin-bottom: 2rem
 
 // main-section--new
-.main-section--new
+.main-section--links
 	margin-bottom: 6rem
 
 	+media('<mob-lg')
@@ -1372,12 +1372,12 @@
 /* main-banners end
 
 /* new
-.new
+.links
 	position: relative
 	//max-width: 1600px
 	margin: 0 auto
 
-.new__list
+.links__list
 	position: relative
 	overflow: hidden
 
@@ -1388,7 +1388,7 @@
 		+media('<mob-lg')
 			content: none
 
-.new__list__holder
+.links__list__holder
 	position: absolute
 	left: 0
 	top: 0
@@ -1405,18 +1405,18 @@
 		width: 100%
 		+margin-horizontal(0)
 
-.new__item
+.links__item
 	display: inline-block
 	vertical-align: top
 	height: 100%
-	padding: 0 #{round($new-space/2)} $new-space
+	padding: #{round($new-space/2)}
 	font-size: $font-size
 	letter-spacing: normal
 
 	+media('<mob-lg')
 		+padding-horizontal(0)
 
-.new__inner
+.links__inner
 	display: block
 	position: relative
 	height: 100%
@@ -1449,12 +1449,12 @@
 		img
 			opacity: 0.85
 
-.new__list
-	&:nth-child(1)
+.links__list
+	&:nth-child(odd)
 		&::before
 			+ratio(1600, 616)
 
-		.new__item
+		.links__item
 			&:nth-child(1)
 				width: round-float(nth($new-ratio, 1), 2)
 
@@ -1467,11 +1467,11 @@
 				+media('<mob-lg')
 					width: 100%
 
-	&:nth-child(2)
+	&:nth-child(even)
 		&::before
 			+ratio(1600, 496)
 
-		.new__item
+		.links__item
 			&:nth-child(1)
 				width: round-float(nth($new-ratio, 3), 2)
 
@@ -2982,6 +2982,7 @@
 			& ~ span
 				+font-bold
 
+.p-filters-drop-list, .p-card__options__grid
 	// filter colors
 	.p-filters--color &
 		+margin-horizontal(-2px)
@@ -4086,14 +4087,13 @@ $jobs-warranty-icon-size--mob: 32px
 /* accordion end
 
 /* jobs-ps
-.jobs-ps
+.ps
 	display: flex
 	flex-direction: column
 	justify-content: center
 	align-items: center
 	position: relative
 	background-color: #181a1b
-	background-image: url(../../img/bg-jobs-ps.jpg)
 	background-repeat: no-repeat
 	background-position: center
 	background-size: cover
@@ -4110,7 +4110,7 @@ $jobs-warranty-icon-size--mob: 32px
 	.section__title
 		color: white
 
-.jobs-ps__title
+.ps__title
 	width: 810px
 	max-width: 90%
 	margin: 0 auto
@@ -4302,18 +4302,6 @@ $jobs-warranty-icon-size--mob: 32px
 .p-card
 	+clear
 
-.p-card__title
-
-	h1, h2, h3
-		+font-alt-bold
-		+font(#{$font-size-h2}, #{$line-height-h2})
-
-		+media('<mob-lg')
-			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
-
-		&:last-child
-			margin-bottom: 0
-
 .p-card__visual, .p-card__content, .p-card__title
 	padding: 0 30px
 	margin-bottom: $bottom-space--md
@@ -4321,14 +4309,13 @@ $jobs-warranty-icon-size--mob: 32px
 	+media('<tab-lg')
 		padding: 0 20px
 
+// card visual
 .p-card__visual
+	position: relative
 	float: left
-	width: 36%
+	width: 955px
 	padding-top: 5px
 	padding-left: 0
-
-	+media('<desk-hd')
-		width: 40%
 
 	+media('<desk-lg')
 		width: 50%
@@ -4340,20 +4327,69 @@ $jobs-warranty-icon-size--mob: 32px
 		+padding-horizontal(0)
 		margin: 0 auto $bottom-space
 
+// card gallery
 .p-card__gallery
+	position: relative
+	padding-left: 190px
+	padding-right: 118px
 	margin-bottom: $bottom-space--md
 
 	&:last-child
 		margin-bottom: 0
 
-.p-card__content, .p-card__title
-	width: 64%
+.p-card__gallery-images
+	max-width: 646px
+
+// card gallery thumbs
+.p-card__gallery-thumbs
+	position: absolute
+	left: 0
+	top: 103px
+	width: 84px
+	padding: 54px 0
+
+	.slick-arrow
+		height: 54px
+		width: 100%
+		right: auto
+		left: 0
+		transform: translate(0, 0)
+		margin: 0
+
+		&::after
+			+size(12px)
+
+	.slick-prev
+		top: 0
+
+		&::after
+			border-width: 2px 0 0 2px
+			margin: -4px -5px
+
+	.slick-next
+		top: auto
+		bottom: 0
+
+		&::after
+			border-width: 0 2px 2px 0
+			margin: -9px -5px
+
+	.slick-disabled
+		pointer-events: none
+	
+	.slick-slide
+		border: 2px solid transparent
+
+	.slick-current
+		border-color: #000
+
+// card layout
+.p-card__content
+	width: calc(100% - 955px)
+	max-width: 566px
 	float: right
 	padding-right: 0
 	clear: right
-
-	+media('<desk-hd')
-		width: 60%
 
 	+media('<desk-lg')
 		width: 50%
@@ -4364,19 +4400,65 @@ $jobs-warranty-icon-size--mob: 32px
 		+padding-horizontal(0)
 		margin-bottom: 3rem
 
-.p-card-price
-	small
-		display: block
-		+font(14px, 17px)
-		color: $text-color-light
+// card price
+.p-card__price
+	position: relative
+	margin-bottom: nth($grid-space, 2)
+	display: flex
+	flex-wrap: wrap
+	justify-content: space-between
+	align-items: flex-end
 
-	.val
-		+font(30px, 42px)
-		+font-bold
-		display: block
+.p-card__price__cur,
+.p-card__price__old
+	+font-alt-bold
+	position: relative
+	display: inline-block
+	vertical-align: baseline
+	white-space: nowrap
 
-		& > span
-			font-size: 20px
+	& > strong, & > span
+		display: inline-block
+		vertical-align: baseline
+		line-height: 82px
+
+.p-card__price__cur
+	font-size: 8rem
+	color: #000
+
+	& > span
+		font-size: 4.8rem
+
+.p-card__price__old
+	font-size: 2.4rem
+	color: #666
+
+	& > span
+		font-size: 1.8rem
+
+// card sale
+.p-card__sale
+	position: absolute
+	right: 0
+	top: 0
+	padding: 0 0.5rem 0 1.1rem
+	min-width: 67px
+	height: 32px
+	+font-bold
+	+font(2.0rem, 32px)
+	color: white
+	background: #fff url(../../img/bg-sale.png) no-repeat
+	background-size: 100% 100%
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 0.4rem
+		top: 50%
+		margin-top: -1px
+		+size(2px)
+		background-color: currentColor
 
 .p-card__widget
 	margin-bottom: $bottom-space--md
@@ -4402,140 +4484,140 @@ $jobs-warranty-icon-size--mob: 32px
 /* product card end
 
 /* fotorama
-.fotorama__arr
-	background: transparentize($bg-color-alt, 0.2)
-	+size(43px, 44px)
-
-	&::before, &::after
-		+pseudo()
-		+size(12px, 2px)
-		top: 50%
-		border-radius: 0
-		background-color: black
-
-	.no-touchevents &:hover
-		background-color: $bg-color-alt
-
-.fotorama__arr--prev
-	left: 0
-
-	&::before, &::after
-		left: 16px
-
-	&::before
-		transform-origin: left bottom
-		transform: rotate(-45deg)
-
-	&::after
-		transform-origin: left top
-		transform: rotate(45deg)
-
-.fotorama__arr--next
-	right: 0
-
-	&::before, &::after
-		right: 16px
-
-	&::before
-		transform-origin: right bottom
-		transform: rotate(45deg)
-
-	&::after
-		transform-origin: right top
-		transform: rotate(-45deg)
-
-.fotorama__arr--disabled
-	pointer-events: auto
-
-.fotorama__fullscreen-icon
-	+size(44px)
-	top: auto
-	bottom: -1px
-	right: -1px
-	overflow: hidden
-	background: white url(../../img/zoom.svg) no-repeat center
-	background-size: 19px 19px
-	border-radius: 0
-	border: 1px solid $border-color
-	transition-property: background-color
-	transition-duration: $animation-speed
-
-	.no-touchevents &:hover
-		background-color: $bg-color-alt
-
-	.fullscreen &
-		$btn-space: 12px
-		$btn-lines-width: 22px
-		$btn-lines-height: 2px
-		$btn-lines-color: black
-
-		=line-style()
-			+size($btn-lines-width, $btn-lines-height)
-
-		padding: 0
-		top: 20px
-		right: 50%
-		margin-right: -22px
-		background: rgba(255, 255, 255, 0.2)
-		border: 2px solid black
-		transition-property: background-color, opacity, visibility
-		transition-duration: $animation-speed
-		z-index: 9999
-
-		&::before, &::after
-			+pseudo()
-			left: 50%
-			top: 50%
-			margin: -#{round($btn-lines-height*0.5)} 0 0 -#{round($btn-lines-width*0.5)}
-			backface-visibility: hidden
-			+line-style
-			background: $btn-lines-color
-			transition-property: background-color
-			transition-duration: $animation-speed
-
-		//first line menu
-		&::before
-			transform: rotate(-45deg)
-
-		//third line menu
-		&::after
-			transform: rotate(45deg)
-
-.fotorama__wrap--css3.fotorama__wrap--no-controls.fotorama__wrap--slide.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon:not(:focus)
-	transform: none
-	opacity: 1
-
-.fotorama__wrap--css3
-	.fotorama__arr:not(:focus),
-	.fotorama__fullscreen-icon:not(:focus),
-	.fotorama__video-close:not(:focus),
-	.fotorama__video-play:not(:focus)
-		transition-property: transform ,opacity, background-color
-		transition-duration: $animation-speed
-
-.fotorama__nav
-	text-align: left
-
-	.fotorama--fullscreen &
-		text-align: center
-
-.fotorama__stage, .fotorama__thumb
-	border: 1px solid $border-color
-
-.fotorama__thumb
-	background-color: white
-	border-radius: 0
-
-.fotorama__thumb-border
-	border-color: $base-color
-	border-radius: 0
-
-.fotorama--fullscreen
-	&, & .fotorama__nav, & .fotorama__stage
-		background: white
-
-.p-card__gallery.fotorama--fullscreen .fotorama__thumb-border
-	border-radius: 0
+//.fotorama__arr
+//	background: transparentize($bg-color-alt, 0.2)
+//	+size(43px, 44px)
+//
+//	&::before, &::after
+//		+pseudo()
+//		+size(12px, 2px)
+//		top: 50%
+//		border-radius: 0
+//		background-color: black
+//
+//	.no-touchevents &:hover
+//		background-color: $bg-color-alt
+//
+//.fotorama__arr--prev
+//	left: 0
+//
+//	&::before, &::after
+//		left: 16px
+//
+//	&::before
+//		transform-origin: left bottom
+//		transform: rotate(-45deg)
+//
+//	&::after
+//		transform-origin: left top
+//		transform: rotate(45deg)
+//
+//.fotorama__arr--next
+//	right: 0
+//
+//	&::before, &::after
+//		right: 16px
+//
+//	&::before
+//		transform-origin: right bottom
+//		transform: rotate(45deg)
+//
+//	&::after
+//		transform-origin: right top
+//		transform: rotate(-45deg)
+//
+//.fotorama__arr--disabled
+//	pointer-events: auto
+//
+//.fotorama__fullscreen-icon
+//	+size(44px)
+//	top: auto
+//	bottom: -1px
+//	right: -1px
+//	overflow: hidden
+//	background: white url(../../img/zoom.svg) no-repeat center
+//	background-size: 19px 19px
+//	border-radius: 0
+//	border: 1px solid $border-color
+//	transition-property: background-color
+//	transition-duration: $animation-speed
+//
+//	.no-touchevents &:hover
+//		background-color: $bg-color-alt
+//
+//	.fullscreen &
+//		$btn-space: 12px
+//		$btn-lines-width: 22px
+//		$btn-lines-height: 2px
+//		$btn-lines-color: black
+//
+//		=line-style()
+//			+size($btn-lines-width, $btn-lines-height)
+//
+//		padding: 0
+//		top: 20px
+//		right: 50%
+//		margin-right: -22px
+//		background: rgba(255, 255, 255, 0.2)
+//		border: 2px solid black
+//		transition-property: background-color, opacity, visibility
+//		transition-duration: $animation-speed
+//		z-index: 9999
+//
+//		&::before, &::after
+//			+pseudo()
+//			left: 50%
+//			top: 50%
+//			margin: -#{round($btn-lines-height*0.5)} 0 0 -#{round($btn-lines-width*0.5)}
+//			backface-visibility: hidden
+//			+line-style
+//			background: $btn-lines-color
+//			transition-property: background-color
+//			transition-duration: $animation-speed
+//
+//		//first line menu
+//		&::before
+//			transform: rotate(-45deg)
+//
+//		//third line menu
+//		&::after
+//			transform: rotate(45deg)
+//
+//.fotorama__wrap--css3.fotorama__wrap--no-controls.fotorama__wrap--slide.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon:not(:focus)
+//	transform: none
+//	opacity: 1
+//
+//.fotorama__wrap--css3
+//	.fotorama__arr:not(:focus),
+//	.fotorama__fullscreen-icon:not(:focus),
+//	.fotorama__video-close:not(:focus),
+//	.fotorama__video-play:not(:focus)
+//		transition-property: transform ,opacity, background-color
+//		transition-duration: $animation-speed
+//
+//.fotorama__nav
+//	text-align: left
+//
+//	.fotorama--fullscreen &
+//		text-align: center
+//
+//.fotorama__stage, .fotorama__thumb
+//	border: 1px solid $border-color
+//
+//.fotorama__thumb
+//	background-color: white
+//	border-radius: 0
+//
+//.fotorama__thumb-border
+//	border-color: $base-color
+//	border-radius: 0
+//
+//.fotorama--fullscreen
+//	&, & .fotorama__nav, & .fotorama__stage
+//		background: white
+//
+//.p-card__gallery.fotorama--fullscreen .fotorama__thumb-border
+//	border-radius: 0
 
 /* fotorama end
 
@@ -4818,3 +4900,37 @@ $jobs-warranty-icon-size--mob: 32px
 		color: $base-color
 
 /* news (by rows) end
+
+/* ap
+.ap
+	display: flex
+	justify-content: center
+	align-items: center
+	min-height: 436px
+
+	+media('<tab-lg')
+		min-height: 320px
+
+	+media('<mob-lg')
+		flex-direction: column
+
+	img
+		margin-right: 10%
+		max-width: 38%
+
+		+media('<mob-lg')
+			max-width: 320px
+			margin-right: 0
+			margin-bottom: nth($text-layout-space--mob, 1)
+
+	.ap__title
+		display: block
+		+font-alt-medium
+		+font(2.2rem, round-float(34/22, 2))
+		max-width: 650px
+
+		+media('<mob-lg')
+			font-size: 2.0rem
+			text-align: center
+
+/* ap end
