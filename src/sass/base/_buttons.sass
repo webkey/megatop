@@ -83,6 +83,29 @@
 
 /* btn-default-alt end
 
+/* btn-outline
+.btn-outline, .btn-outline-alt
+	position: relative
+	+font-alt-bold
+	+font(14px, 24px)
+	text-align: center
+	text-decoration: none
+	text-transform: uppercase
+	letter-spacing: 0.05em
+	white-space: nowrap
+	color: $text-color
+	padding: 11px 24px 9px
+	border: 3px solid $btn-bg-hover-color
+	background-color: transparent
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
+	margin: 0
+
+	.no-touchevents &:hover
+		border-color: $base-color
+
+/* btn-outline end
+
 /* btn-with-icon
 .btn-with-icon
 	$btni-space: 10px
@@ -329,7 +352,7 @@
 
 /* button toggle menu end
 
-/* btn-more-items
+/* btn-more
 .btn-more
 	$btn-more--size: 100% 50px // w h
 	$btn-more--font: 14px 20px // fz lh
@@ -350,7 +373,7 @@
 	.no-touchevents &:hover
 		background-color: #ccc
 
-/* btn-more-items end
+/* btn-more end
 
 /* btn-download
 .btn-download

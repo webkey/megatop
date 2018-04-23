@@ -1,0 +1,90 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Женская обувь / GO.DO.",
+	"pageClass": ""
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+				<div class="heading">
+					<h1>Женская обувь / GO.DO.</h1>
+				</div>
+
+				@@include('_tpl_breadcrumbs.html', {
+					"items": ["Главная","Каталог","Женская обувь"],
+					"last": "Женская обувь / GO.DO."
+				})
+
+				<!--product card-->
+				<section class="p-card">
+					<div class="p-card">
+						<div class="p-card__title"><h2>Резьбовой крепежный элемент РКв-20 (внутренняя резьба) ТДМ</h2></div>
+						<div class="p-card__visual">
+							<div class="p-card__gallery gallery-js">
+								<img src="img/img-products-lg-01-01.jpg">
+								<img src="img/img-products-lg-01-02.jpg">
+								<img src="img/img-products-lg-01-03.jpg">
+								<img src="img/img-products-lg-01-04.jpg">
+								<img src="img/img-products-lg-01-05.jpg">
+							</div>
+						</div>
+						<div class="p-card__content">
+							<div class="p-card__widget">
+								<div class="p-card-price">
+									<small>Цена</small>
+									<div class="val">
+										<strong>139.95</strong>
+										<span>руб.</span>
+									</div>
+								</div>
+							</div>
+							<div class="p-card__widget">
+								<a href="#" class="btn-default-alt btn-with-icon">
+									@@include("includes/svg/icon-search.svg")
+									<span>Проверить наличие в магазинах</span>
+								</a>
+								<a href="#" class="btn-outline btn-with-icon">
+									@@include("includes/svg/icon-like.svg")
+									<span>В избранное</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--product card end-->
+
+				<section class="similar">
+					<div class="main-section__title">
+						<h2>Смотрите также</h2>
+					</div>
+					<div class="similar-slider">
+						<div class="similar-slider__list similar-slider-js">
+							@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+							@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+						</div>
+					</div>
+				</section>
+
+			</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Женская обувь / GO.DO. "
+})

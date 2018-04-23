@@ -1087,6 +1087,9 @@
 /* feature list end
 
 /* pagination
+.pagination-wrap
+	position: relative
+
 .pagination
 	overflow: hidden
 	margin-bottom: $bottom-space--lg
@@ -3165,85 +3168,6 @@
 /* filters tags end
 /* products filters end
 
-/* advices / prevs
-.prevs
-	position: relative
-	margin-bottom: $bottom-space
-	+clear
-
-	&:last-child
-		margin-bottom: 0
-
-.prevs__list
-	float: left
-	width: 100%
-	column-count: 3
-	column-gap: 11rem
-	margin-bottom: -5rem
-
-	+media('<desk-md')
-		column-gap: 5rem
-
-	+media('<tab-lg')
-		column-count: 2
-		column-gap: 3rem
-		margin-bottom: -3rem
-
-	+media('<mob-lg')
-		column-count: auto
-
-.prevs__item
-	display: inline-block
-	vertical-align: top
-	margin-bottom: 5rem
-	padding-bottom: 3.5rem
-	border-bottom: 2px solid #ccc
-
-	+media('<tab-lg')
-		padding-bottom: 2rem
-		margin-bottom: 3rem
-
-.prevs__item__title
-	display: block
-	+font-alt-bold
-	+font(2.4rem, round-float(36/24, 2))
-	margin-bottom: 1em
-
-	&:last-child
-		margin-bottom: 0
-
-	+media('<tab-lg')
-		font-size: 2rem
-
-	+media('<mob-lg')
-		font-size: 1.8rem
-
-.prevs__item__cont
-	+font(1.6rem, round-float(26/16, 2))
-	margin-bottom: 1em
-
-	+media('<mob-lg')
-		font-size: 1.4rem
-
-	&:last-child
-		margin-bottom: 0
-
-	p
-		&:last-child
-			margin-bottom: 0
-
-.prevs__item__foot
-	time
-		+font-light
-		+font(1.4rem, round-float(20/14, 2))
-		color: #666
-		text-transform: uppercase
-
-		+media('<mob-lg')
-			font-size: 1.2rem
-
-/* advices / prevs end
-
 /* about-caption
 .about-caption
 	position: relative
@@ -3327,7 +3251,6 @@
 		width: auto
 		padding: nth($grid-space--mob, 1) 0
 		margin: 0 nth($grid-space--mob, 2)
-
 /* about-caption end
 
 /* about-history
@@ -4280,7 +4203,6 @@ $jobs-warranty-icon-size--mob: 32px
 .content__item
 	padding: #{nth($grid-space, 1)} #{nth($text-layout-space, 2)}
 	border-top: 1px solid $border-color
-	+clear
 
 	+media('<desk-md')
 		padding: #{nth($grid-space, 1)} #{nth($text-layout-space--md, 2)}
@@ -4297,6 +4219,7 @@ $jobs-warranty-icon-size--mob: 32px
 .content__item__holder
 	max-width: $flood-layout-width
 	margin: 0 auto
+	+clear
 
 .contacts__box
 	float: left
@@ -4374,3 +4297,524 @@ $jobs-warranty-icon-size--mob: 32px
 		white-space: nowrap
 
 /* contacts end
+
+/* product card
+.p-card
+	+clear
+
+.p-card__title
+
+	h1, h2, h3
+		+font-alt-bold
+		+font(#{$font-size-h2}, #{$line-height-h2})
+
+		+media('<mob-lg')
+			+font(#{$font-size-h1--sm}, #{$line-height-h1--sm})
+
+		&:last-child
+			margin-bottom: 0
+
+.p-card__visual, .p-card__content, .p-card__title
+	padding: 0 30px
+	margin-bottom: $bottom-space--md
+
+	+media('<tab-lg')
+		padding: 0 20px
+
+.p-card__visual
+	float: left
+	width: 36%
+	padding-top: 5px
+	padding-left: 0
+
+	+media('<desk-hd')
+		width: 40%
+
+	+media('<desk-lg')
+		width: 50%
+
+	+media('<tab-sm')
+		max-width: 480px
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin: 0 auto $bottom-space
+
+.p-card__gallery
+	margin-bottom: $bottom-space--md
+
+	&:last-child
+		margin-bottom: 0
+
+.p-card__content, .p-card__title
+	width: 64%
+	float: right
+	padding-right: 0
+	clear: right
+
+	+media('<desk-hd')
+		width: 60%
+
+	+media('<desk-lg')
+		width: 50%
+
+	+media('<tab-sm')
+		float: none
+		width: auto
+		+padding-horizontal(0)
+		margin-bottom: 3rem
+
+.p-card-price
+	small
+		display: block
+		+font(14px, 17px)
+		color: $text-color-light
+
+	.val
+		+font(30px, 42px)
+		+font-bold
+		display: block
+
+		& > span
+			font-size: 20px
+
+.p-card__widget
+	margin-bottom: $bottom-space--md
+	+font(#{$font-size--sm}, #{$line-height--sm})
+
+	& > *
+		+display-inline-block-top
+		margin-right: 20px
+		margin-bottom: $bottom-space--sm
+
+		&:last-child
+			margin-bottom: 0
+
+	.btn-outline
+		min-width: 190px
+
+.p-card__subtitle
+	display: block
+	+font-alt-bold
+	+font(#{$font-size-h3}, #{$line-height-h3})
+	margin-bottom: $bottom-space
+
+/* product card end
+
+/* fotorama
+.fotorama__arr
+	background: transparentize($bg-color-alt, 0.2)
+	+size(43px, 44px)
+
+	&::before, &::after
+		+pseudo()
+		+size(12px, 2px)
+		top: 50%
+		border-radius: 0
+		background-color: black
+
+	.no-touchevents &:hover
+		background-color: $bg-color-alt
+
+.fotorama__arr--prev
+	left: 0
+
+	&::before, &::after
+		left: 16px
+
+	&::before
+		transform-origin: left bottom
+		transform: rotate(-45deg)
+
+	&::after
+		transform-origin: left top
+		transform: rotate(45deg)
+
+.fotorama__arr--next
+	right: 0
+
+	&::before, &::after
+		right: 16px
+
+	&::before
+		transform-origin: right bottom
+		transform: rotate(45deg)
+
+	&::after
+		transform-origin: right top
+		transform: rotate(-45deg)
+
+.fotorama__arr--disabled
+	pointer-events: auto
+
+.fotorama__fullscreen-icon
+	+size(44px)
+	top: auto
+	bottom: -1px
+	right: -1px
+	overflow: hidden
+	background: white url(../../img/zoom.svg) no-repeat center
+	background-size: 19px 19px
+	border-radius: 0
+	border: 1px solid $border-color
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: $bg-color-alt
+
+	.fullscreen &
+		$btn-space: 12px
+		$btn-lines-width: 22px
+		$btn-lines-height: 2px
+		$btn-lines-color: black
+
+		=line-style()
+			+size($btn-lines-width, $btn-lines-height)
+
+		padding: 0
+		top: 20px
+		right: 50%
+		margin-right: -22px
+		background: rgba(255, 255, 255, 0.2)
+		border: 2px solid black
+		transition-property: background-color, opacity, visibility
+		transition-duration: $animation-speed
+		z-index: 9999
+
+		&::before, &::after
+			+pseudo()
+			left: 50%
+			top: 50%
+			margin: -#{round($btn-lines-height*0.5)} 0 0 -#{round($btn-lines-width*0.5)}
+			backface-visibility: hidden
+			+line-style
+			background: $btn-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			transform: rotate(45deg)
+
+.fotorama__wrap--css3.fotorama__wrap--no-controls.fotorama__wrap--slide.fotorama__wrap--toggle-arrows .fotorama__fullscreen-icon:not(:focus)
+	transform: none
+	opacity: 1
+
+.fotorama__wrap--css3
+	.fotorama__arr:not(:focus),
+	.fotorama__fullscreen-icon:not(:focus),
+	.fotorama__video-close:not(:focus),
+	.fotorama__video-play:not(:focus)
+		transition-property: transform ,opacity, background-color
+		transition-duration: $animation-speed
+
+.fotorama__nav
+	text-align: left
+
+	.fotorama--fullscreen &
+		text-align: center
+
+.fotorama__stage, .fotorama__thumb
+	border: 1px solid $border-color
+
+.fotorama__thumb
+	background-color: white
+	border-radius: 0
+
+.fotorama__thumb-border
+	border-color: $base-color
+	border-radius: 0
+
+.fotorama--fullscreen
+	&, & .fotorama__nav, & .fotorama__stage
+		background: white
+
+.p-card__gallery.fotorama--fullscreen .fotorama__thumb-border
+	border-radius: 0
+
+/* fotorama end
+
+/* advices, prevs, news, newsr
+.prevs__item__title,
+.news__item__title,
+.newsr__item__title
+	display: block
+	+font-alt-bold
+	+font(2.1rem, round-float(28/21, 2))
+	margin-bottom: 0.8em
+
+	&:last-child
+		margin-bottom: 0
+
+	+media('<tab-lg')
+		font-size: 1.8rem
+
+	+media('<mob-lg')
+		font-size: 1.6rem
+
+.prevs__item__cont,
+.news__item__cont,
+.newsr__item__cont
+	+font(1.6rem, round-float(26/16, 2))
+	margin-bottom: 1em
+
+	+media('<mob-lg')
+		font-size: 1.4rem
+
+	&:last-child
+		margin-bottom: 0
+
+	p
+		&:last-child
+			margin-bottom: 0
+
+.prevs__item__foot,
+.news__item__foot,
+.newsr__item__foot
+	time
+		+font-light
+		+font(1.4rem, round-float(20/14, 2))
+		color: #666
+		text-transform: uppercase
+
+		+media('<mob-lg')
+			font-size: 1.2rem
+
+
+/* advices, prevs, news, newsr end
+
+/* advices / prevs
+.prevs
+	position: relative
+	+clear
+
+.prevs__list
+	float: left
+	width: 100%
+	column-count: 3
+	column-gap: 11rem
+	margin-bottom: -5rem
+
+	+media('<desk-md')
+		column-gap: 5rem
+
+	+media('<tab-lg')
+		column-count: 2
+		column-gap: 3rem
+		margin-bottom: -3rem
+
+	+media('<mob-lg')
+		column-count: auto
+
+.prevs__item
+	display: inline-block
+	vertical-align: top
+	margin-bottom: 5rem
+	padding-bottom: 3.5rem
+	border-bottom: 2px solid #ccc
+
+	+media('<tab-lg')
+		padding-bottom: 2rem
+		margin-bottom: 3rem
+
+/* advices / prevs end
+
+/* news
+.news
+	position: relative
+	overflow: hidden
+
+.news__list
+	position: relative
+
+.news__list__holder
+	+clear-spacing
+	margin: 0 -#{round(nth($grid-space, 2)/2)} -#{nth($grid-space, 1)}
+
+	+media('<tab-lg')
+		margin: 0 -#{round(nth($grid-space--sm, 2)/2)} -#{nth($grid-space--sm, 1)}
+
+	+media('<mob-lg')
+		margin: 0 -#{round(nth($grid-space--mob, 2)/2)} -#{nth($grid-space--mob, 1)}
+
+.news__item
+	display: inline-block
+	vertical-align: top
+	width: 33.33%
+	letter-spacing: normal
+	padding: 0 #{round(nth($grid-space, 2)/2)}
+	margin-bottom: #{nth($grid-space, 1)}
+
+	+media('<tab-lg')
+		padding: 0 #{round(nth($grid-space--sm, 2)/2)}
+		margin-bottom: #{nth($grid-space--sm, 1)}
+
+	+media('<tab-sm')
+		width: 50%
+
+	+media('<mob-lg')
+		padding: 0 #{round(nth($grid-space--mob, 2)/2)}
+		margin-bottom: #{nth($grid-space--mob, 1)}
+
+	+media('<mob-sm')
+		width: 100%
+
+	+media('>=tab-sm')
+		&:nth-child(3n-1)
+			text-align: center
+
+		&:nth-child(3n)
+			text-align: right
+
+.news__item__inner
+	display: inline-block
+	vertical-align: top
+	position: relative
+	max-width: 390px
+	height: 100%
+	text-align: left
+	text-decoration: none
+	color: inherit
+	z-index: 1
+
+	+media('<tab-sm')
+		max-width: none
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		+size(100%)
+		box-shadow: 0 0 18px rgba(0, 0, 0, 0.2)
+		background-color: white
+		z-index: -1
+		will-change: opacity
+		opacity: 0
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+	.no-touchevents &:hover
+		&::before
+			opacity: 1
+
+.news__item__figure
+	margin: 0
+	padding: 0
+	font-size: $font-size
+
+	img
+		width: 100%
+
+.news__item__body
+	padding: 20px 30px
+
+	+media('<tab-lg')
+		padding: 15px 20px
+
+	+media('<mob-lg')
+		padding: 10px 15px
+
+	+media('<mob-sm')
+		padding: 10px 0
+
+/* news 
+
+/* news (by rows)
+.newsr
+	position: relative
+	overflow: hidden
+
+.newsr__list
+	position: relative
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{nth($text-layout-space--mob, 2)})
+
+.newsr__item
+	display: block
+	border-top: 2px solid $border-color
+
+	+media('<mob-lg')
+		border-width: 1px
+
+	&:first-child
+		border-top: none
+
+.newsr__item__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: inherit
+	padding: 20px 30px
+	z-index: 1
+	+clear
+
+	+media('<tab-lg')
+		padding: 15px 20px
+
+	+media('<mob-lg')
+		padding: 10px nth($text-layout-space--mob, 2)
+
+	&:hover
+		&::before
+			opacity: 1
+
+.newsr__item__figure
+	margin: 5px 0 5px 30px
+	padding: 0
+	width: 150px
+	float: right
+
+	+media('<tab-lg')
+		margin: 5px 0 5px 20px
+
+	+media('<mob-lg')
+		width: 80px
+		margin: 5px 0 5px nth($text-layout-space--mob, 2)
+
+	img
+		width: 100%
+
+.newsr__item__body
+	overflow: hidden
+	position: relative
+	padding-left: $newsr-date-width
+
+	+media('<mob-lg')
+		//padding-left: $newsr-date-width--sm
+		padding-left: 0
+		overflow: visible
+
+.newsr__item__cont
+	+media('>=mob-md')
+		margin-bottom: 0
+
+.newsr__item__foot
+	position: absolute
+	top: 0
+	left: 0
+	width: $newsr-date-width
+	margin-top: 2px
+
+	+media('<mob-lg')
+		position: relative
+		top: auto
+		left: auto
+		margin-top: 0
+		//width: $newsr-date-width--sm
+		width: auto
+
+// hover
+.no-touchevents .newsr__item__inner:hover
+	.newsr__item__title
+		color: $base-color
+
+/* news (by rows) end

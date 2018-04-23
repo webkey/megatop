@@ -1,5 +1,5 @@
 @@include('_tpl_layout_head.html', {
-	"title": "Полезные советы",
+	"title": "Новости",
 	"pageClass": ""
 })
 
@@ -15,18 +15,20 @@
 		<!--CONTENT-->
 		<div class="content user-content">
 			<div class="heading">
-				<h1>Полезные советы</h1>
+				<h1>Новости</h1>
 			</div>
 
 			@@include('_tpl_breadcrumbs.html', {
-				"items": ["Главная", "Покупателям"],
-				"last": "Полезные советы"
+				"items": ["Главная"],
+				"last": "Новости"
 			})
 
-			<section class="section prevs max-wrap-flood">
-				<div class="prevs__list">
-					@@loop("_tpl_prevs--items.html", "includes/json/_tpl_prevs--items.json")
-					@@loop("_tpl_prevs--items.html", "includes/json/_tpl_prevs--items.json")
+			<section class="section news max-wrap-flood">
+				<div class="news__list">
+					<div class="news__list__holder equal-height-js">
+						@@loop("_tpl_news--items.html", "includes/json/_tpl_news--items.json")
+						@@loop("_tpl_news--items.html", "includes/json/_tpl_news--items.json")
+					</div>
 				</div>
 			</section>
 
@@ -51,5 +53,5 @@
 @@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
 
 @@include('_tpl_layout_foot.html', {
-	"currentItem": "Полезные советы"
+	"currentItem": "Новости"
 })

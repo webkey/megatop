@@ -1,0 +1,18 @@
+<div class="news__item">
+	<a href="#" class="news__item__inner">
+		<figure class="news__item__figure">
+			<img src="@@src" alt="@@title" />
+		</figure>
+		<div class="news__item__body">
+			<strong class="news__item__title">@@title</strong>
+			@@if(context.text){
+			<div class="news__item__cont">
+				<p>@@text</p>
+			</div>
+			}
+			<div class="news__item__foot">
+				<time datetime="@@datetime">@@date</time>
+			</div>
+		</div>
+	</a>
+</div>
