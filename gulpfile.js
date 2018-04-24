@@ -113,6 +113,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		, 'src/js/temp/jquery.ms-drop.min.js' // drop menu (example, for lang)
 		, 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
 		, 'src/libs/cleave.js/dist/cleave.min.js' // form mask
+		, 'src/js/temp/jquery.ms-order-calc.min.js' // cart calculation
 		// , 'src/libs/fotorama/fotorama.js' // fotorama gallery
 
 		// , 'src/js/temp/rAF.js' // resize-sensor for "sticky-sidebar.js"

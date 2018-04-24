@@ -14,6 +14,9 @@ body
 	min-width: 320px
 	background: $bg-color url(../../img/empty.png) no-repeat left top fixed
 
+	&.page-alt-bg
+		background-color: #eceff1
+
 	// выделение текста
 	*::selection
 		background-color: $base-color
@@ -135,14 +138,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
 
 .heading
+	display: flex
+	justify-content: space-between
+	//align-items: flex-start
+	align-items: center
+	flex-wrap: wrap
 	padding: 20px nth($text-layout-space, 2)
 	border-bottom: 1px solid $border-color
 	margin-bottom: -1px
-	+font-alt-medium
-	+font(3rem, round-float(34/30, 2))
-	letter-spacing: 0.1em
-	text-transform: uppercase
-	text-align: left
+	line-height: 1
 
 	+media('<desk-md')
 		padding: 20px nth($text-layout-space--md, 2)
@@ -155,14 +159,23 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		+font(2rem, round-float(24/20, 2))
 
 	h1, h2, h3
-		font:
-			family: inherit
-			size: inherit
-			style: inherit
-			weight: inherit
-		line-height: inherit
+		+font-alt-medium
+		+font(3rem, round-float(34/30, 2))
+		letter-spacing: 0.1em
+		text-transform: uppercase
 		text-align: left
 		margin: 0
+
+.heading__options
+	+display-inline-block-top
+
+.heading__options__item
+	display: inline-block
+	vertical-align: middle
+	margin-left: 20px
+
+	&:first-child, &.first-child
+		margin-left: 0
 
 .entry-text
 	+font-bold

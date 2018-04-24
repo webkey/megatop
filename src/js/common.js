@@ -2016,6 +2016,22 @@ function contactsMap() {
 }
 
 /**
+ * !Product order calculation
+ * */
+var orderCalcOptions = {
+	row: '.c-tr'
+	, getTotalResults: function (e, el, results) {
+		$(el).find('.order-calc__total-results-js').toggleClass('show', results.totalCount > 0);
+		$(el).find('.order-calc-btn').prop('disabled', !results.totalCount > 0).toggleClass('disabled', !results.totalCount > 0);
+	}
+};
+
+
+function orderCalculation() {
+	$('.order-calc-js').msOrderCalc(orderCalcOptions);
+}
+
+/**
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
@@ -2100,6 +2116,7 @@ $(document).ready(function () {
 	stickyInit();
 	multiFiltersInit();
 	contactsMap();
+	orderCalculation();
 	objectFitImages('img'); // object-fit-images initial
 
 	formSuccessExample();
