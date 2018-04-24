@@ -1,0 +1,38 @@
+[
+	{
+		"class": "c-th--caption",
+		"head": "",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--date",
+		"head": "Дата покупки",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--adr",
+		"head": "Место покупки",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--vendor",
+		"head": "Название товара (артикул)",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--count",
+		"head": "Кол-во",
+		"colspan": "",
+		"rowspan": ""
+	},
+	{
+		"class": "c-th--sum",
+		"head": "Сумма покупки",
+		"colspan": "",
+		"rowspan": ""
+	}
+]

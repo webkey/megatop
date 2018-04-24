@@ -1,59 +1,46 @@
 <div class="c-tr">
 
-	<div class="c-td c-td--caption" data-label="Модель">
-		<div class="c-td__val">
-			<a href="product-card.html" class="caption-for-table">
-				<div class="img-for-table">
-					<img src="@@if(context.src){@@src}@@if(!context.src){img/no-img-product.png}" alt="@@title - @@ch.Модель" />
-				</div>
-				<div class="title-for-table">
-					@@title&nbsp;/ @@ch.Модель
-				</div>
+	<div class="c-td c-td--caption" data-label="">
+		<div  class="c-td__val">
+			<a href="card.html" class="img-for-table">
+				<img src="@@if(context.src){@@src}@@if(!context.src){img/empty.png}" alt="@@ch.Название" />
 			</a>
 		</div>
 	</div>
 
-	<div class="c-td c-td--color" data-label="Цвет">
+	<div class="c-td c-td--date" data-label="Дата покупки">
 		<div class="c-td__val">
-			<div class="order-list__color">
-				<span class="color-pic" style="background-color: @@color.html;">@@color.html</span> <span class="dash">–</span> <span class="color-name">@@color.name</span>
-			</div>
+			@@dateBuy
 		</div>
 	</div>
 
-	<div class="c-td c-td--size" data-label="Размер">
+	<div class="c-td c-td--adr" data-label="Место покупки">
 		<div class="c-td__val">
-			@@ch.Размеры
+			@@adrBuy
 		</div>
 	</div>
 
-	<div class="c-td c-td--growth" data-label="Рост">
+	<div class="c-td c-td--vendor" data-label="Артикул">
 		<div class="c-td__val">
-			@@ch.Рост см
+			@@ch.Название
 		</div>
 	</div>
 
-	<div class="c-td c-td--stock" data-label="Остаток">
-		<div class="c-td__val">
-			<div class="stock-tape" title="На складе осталось @@ch.Остаток"><span class="stock-tape-value" style="width: @@ch.Остаток;">@@ch.Остаток</span></div>
-		</div>
-	</div>
-
-	<div class="c-td c-td--price" data-label="Цена">
+	<div class="c-td c-td--price" data-label="Цена" style="display: none;">
 		<div class="c-td__val">
 			<div class="order-calc__price-js" data-price="@@price.calc">@@price.view @@price.unit</div>
 		</div>
 	</div>
 
-	<div class="c-td c-td--spinner" data-label="Количество">
+	<div class="c-td c-td--count" data-label="Кол-во">
 		<div class="c-td__val">
-			<input class="spinner spinner-js order-calc__number-js" type="text" name="value" value="@@value" data-id="@@ch.Модель_@@ch.Рост_@@ch.Размеры" data-only-number>
+			<input disabled class="order-calc__number-js" type="text" name="value" value="@@value" data-id="@@ch.id_@@ch.Артикул" data-only-number>
 		</div>
 	</div>
 
-	<div class="c-td c-td--price" data-label="Сумма">
+	<div class="c-td c-td--sum" data-label="Сумма покупки">
 		<div class="c-td__val">
-			<span class="order-calc__price-sum-js">0</span> @@price.unit
+			<span class="order-calc__price-sum-js">...</span> @@price.unit
 		</div>
 	</div>
 

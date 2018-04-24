@@ -25,32 +25,64 @@
 			</div>
 
 			<!--cabinet card-->
-			<section class="pseudotabs cabinet layout-flood">
+			<section class="cabinet">
+				<!--pseudotabs-nav-->
 				@@include('_tpl_pseudotabs-nav.html', {
 					"active": "История покупок"
 				})
-				<div class="pseudotabs-panels">
-					<div class="pseudotabs-panel order-calc-js">
-						<div class="c-table">
-							<div class="c-thead">
-								<div class="c-tr">
-									@@loop("_tpl_c-thead.html", "includes/json/order-calc__th.json")
+				<!--pseudotabs-nav end-->
+
+				<!--discount card-->
+				<div class="d-card">
+					<div class="d-card__holder">
+						<div class="d-card__item d-card__card">
+							<div class="d-card__item__holder">
+								<div class="d-card__card__head">
+									<em>Номер карты</em>
+									<strong>1139958</strong>
+								</div>
+								<div class="d-card__card__footer">
+									<strong>Имя Фамилия</strong>
 								</div>
 							</div>
-
-							<div class="c-tbody">
-								@@loop("_tpl_order-calc-items--product.html", "includes/json/order-calc__items.json")
-							</div>
 						</div>
-
-						<div class="c-table-result">
-							<div class="c-table-result__total order-calc__total-results-js hide-before-calc">
-								<div class="c-table-result__label">Итого:</div>
-								<span class="c-table-result__count order-calc__counts-total-js">0</span> позиций на&nbsp;<span class="c-table-result__price order-calc__price-total-js">0</span>&nbsp;руб.
+						<div class="d-card__item">
+							<div class="d-card__item__holder">
+								<ul>
+									<li>Период: <b>07 дек. 2016 — 07 дек. 2017</b></li>
+									<li>Накопленная сумма: <b>346,04 руб.</b></li>
+									<li>Действующая скидка: <b>3 %</b></li>
+									<li><span class="mark">Для получения скидки 5% вам осталось совершить покупок на 103,96 руб.</span></li>
+								</ul>
 							</div>
-							<a href="#" class="btn-default order-calc-btn">Заказать</a>
 						</div>
 					</div>
+				</div>
+				<!--discount card end-->
+
+				<!--!!! Если товаров нет, то добавить класс "order-calc__hasnt-items" на блок .order-calc__hasnt-items-->
+				<div class="orders-history order-calc-js">
+					<div class="c-table c-table-resp">
+						<div class="c-thead">
+							<div class="c-tr">
+								@@loop("_tpl_c-thead.html", "includes/json/order-calc__th--orders-history.json")
+							</div>
+						</div>
+
+						<div class="c-tbody">
+							@@loop("_tpl_order-calc-items--product.html", "includes/json/order-calc__items--orders-history.json")
+						</div>
+					</div>
+
+					<div class="c-table-result">
+						<div class="c-table-result__total order-calc__total-results-js hide-before-calc">
+							<span class="c-table-result__label">Общая сумма всех заказов:</span>
+							<strong class="c-table-result__price"><span class="order-calc__price-total-js">...</span> руб.</strong>
+						</div>
+					</div>
+
+					<!--!!! Текст, который будет отображаться, когда нет товаров-->
+					<div class="order-calc__empty">- В истории покупок нет сохраненных данных -</div>
 				</div>
 			</section>
 			<!--cabiner card end-->

@@ -4686,7 +4686,7 @@ $jobs-warranty-icon-size--mob: 32px
 	+media('<mob-lg')
 		padding: nth($text-layout-space--mob, 1) 0 0
 
-	.main-section__title
+	.no-touchevents .main-section__title
 		margin-bottom: 0
 
 /* similar end
@@ -4866,13 +4866,13 @@ $jobs-warranty-icon-size--mob: 32px
 		width: 100%
 
 .news__item__body
-	padding: 20px 30px
+	padding: $grid-inside
 
 	+media('<tab-lg')
-		padding: 15px 20px
+		padding: $grid-inside--sm
 
 	+media('<mob-lg')
-		padding: 10px 15px
+		padding: $grid-inside--mob
 
 	+media('<mob-sm')
 		padding: 10px 0
@@ -5006,15 +5006,6 @@ $jobs-warranty-icon-size--mob: 32px
 /* ap end
 
 /* pseudotabs
-.pseudotabs
-	padding-top: nth($text-layout-space, 1)
-
-	+media('<tab-lg')
-		padding-top: nth($text-layout-space--sm, 1)
-
-	+media('<mob-lg')
-		padding-top: nth($text-layout-space--mob, 1)
-
 .pseudotabs-nav
 	margin: 0 -#{round(nth($grid-space, 2)/2)} round(nth($grid-space, 1)/2)
 
@@ -5065,7 +5056,127 @@ $jobs-warranty-icon-size--mob: 32px
 
 /* pseudotabs end
 
+/* cabinet
+.cabinet
+	padding: nth($text-layout-space, 1) nth($text-layout-space, 2) 0
+
+	+media('<tab-lg')
+		padding: nth($text-layout-space--sm, 1) nth($text-layout-space--sm, 2) 0
+
+	+media('<mob-lg')
+		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2) 0
+
+/* cabinet end
+
+/* discount card
+.d-card
+	position: relative
+	overflow: hidden
+	margin-bottom: 5rem
+
+	+media('<tab-lg')
+		margin-bottom: 3.5rem
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
+
+.d-card__holder
+	margin-bottom: -#{nth($grid-space, 1)}
+
+	+media('<tab-lg')
+		margin-bottom: -#{nth($grid-space--sm, 1)}
+
+	+media('<mob-lg')
+		margin-bottom: -#{nth($grid-space--mob, 1)}
+
+.d-card__item
+	width: 400px
+	max-width: 100%
+	position: relative
+	display: inline-block
+	vertical-align: top
+	margin: 0 nth($grid-space, 2) nth($grid-space, 1) 0
+	background-color: #fff
+
+	&::before
+		content: ""
+		display: block
+		+ratio(400, 247)
+
+	ul
+		margin: 0 0 0.5em
+		padding: 0
+		+font(1.7rem, round-float(21/17, 2))
+
+		+media('<mob-md')
+			font-size: 1.5rem
+
+		&:last-child
+			margin-bottom: 0
+
+		li
+			padding: 0
+			margin-top: 0.5em
+
+			&::before
+				content: none
+
+			&:first-child
+				margin-top: 0
+
+.d-card__item__holder
+	position: absolute
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	left: 0
+	top: 0
+	+size(100%)
+	padding: $grid-inside
+
+	+media('<tab-lg')
+		padding: $grid-space--sm
+
+	//+media('<mob-lg')
+		padding: $grid-space--mob
+
+.d-card__card
+	background: #ddd url(../../img/bg-card.png) no-repeat center
+	border-radius: 16px
+
+.d-card__card__head
+	& > strong, & > em
+		display: block
+
+	& > em
+		+font-alt-bold
+		+font(1.7rem, round-float(21/17, 2))
+		margin-bottom: 0.5em
+
+	& > strong
+		+font-alt-medium
+		+font(4.8rem, round-float(50/48, 2))
+		letter-spacing: 0.05em
+		margin-left: -0.05em
+		color: #999
+		margin-bottom: 0.5em
+
+.d-card__card__footer
+	& > strong
+		+font-bold
+		+font(1.7rem, round-float(21/17, 2))
+		letter-spacing: 0.05em
+		margin-left: -0.05em
+		text-transform: uppercase
+		margin-bottom: 0.5em
+
+		&:last-child
+			margin-bottom: 0
+
+/* discount card end
+
 /* custom table
+// === table layout ===
 .c-table
 	display: table
 	width: 100%
@@ -5091,31 +5202,30 @@ a.c-tr:hover
 	display: table-cell
 
 .c-th
-	padding: round(nth($grid-space, 1)*0.5) #{nth($grid-space, 2)}
-	border: solid $bg-color-base
-	border-width: 0 0 0 2px
-	background-color: $bg-color-alt
-	+font-bold
-	font-size: 13px
-	line-height: round-float(17/13, 2)
-	letter-spacing: 0.1em
-	text-transform: uppercase
+	border: solid black
+	border-width: 0 0 2px
+	+font-light
+	+font(1.8rem, round-float(24/18, 2))
+	+padding-vertical(round(nth($grid-space, 1)/2))
+	padding-left: nth($grid-space, 2)
 
 	+media('<desk-lg')
-		padding: round(nth($grid-space--sm, 1)*0.5) #{nth($grid-space--sm, 2)}
+		+padding-vertical(round(nth($grid-space--sm, 1)/2))
+		padding-left: nth($grid-space--sm, 2)
+		+font(1.6rem, round-float(20/16, 2))
 
-	+media('<desk-md')
-		font-size: 1.3rem
-		letter-spacing: normal
-		padding: round(nth($grid-space--sm, 1)*1.5) #{nth($grid-space--sm, 2)}
+	+media('<desk-sm')
+		+padding-vertical(round(nth($grid-space--mob, 1)))
+		padding-left: nth($grid-space--mob, 2)
 
-	&:first-child, &.c-th--title
-		border: none
+	&:first-child
+		border-left: none
 
 	& > svg
 		+display-inline-block-top
 
-	&.c-th--del
+	// стили для конкретных заголовков таблицы
+	//&.c-th--del
 		width: 82px
 		text-align: center
 		+padding-horizontal(5px)
@@ -5124,249 +5234,244 @@ a.c-tr:hover
 			+hide-text
 
 .c-td
-	padding: round(nth($grid-space, 1)*0.93) nth($grid-space, 2)
 	vertical-align: middle
 	border-bottom: 1px solid $border-color
-	border-left: 2px solid white
-	+font(1.6rem, round-float(24/16, 1))
+	+font-alt-bold
+	+font(1.8rem, round-float(28/18, 1))
+	+padding-vertical(nth($grid-space, 1))
+	padding-left: nth($grid-space, 2)
 
 	+media('<desk-lg')
-		font-size: 1.4rem
-		padding: round(nth($grid-space--sm, 1)*0.93) #{nth($grid-space--sm, 2)}
+		+padding-vertical(nth($grid-space--sm, 1))
+		padding-left: nth($grid-space--sm, 2)
+		+font(1.6rem, round-float(20/16, 1))
 
 	+media('<desk-sm')
-		letter-spacing: normal
+		+padding-vertical(nth($grid-space--mob, 1))
+		padding-left: nth($grid-space--mob, 2)
 
-	+media('<mob-lg')
-		+padding-vertical(round(nth($grid-space--mob, 1)))
-
-	&:first-child, .order-calc &.c-td--title
+	&:first-child
 		border-left: none
-
-	.c-tr:first-child &
-		+media('>=tab-lg')
-			border-top: 1px solid $border-color
 
 	a
 		text-decoration: none
 		color: inherit
 
-		.no-touchevents &:hover
-			color: $link-color
-
 	// стили для конкретных ячеек
 	&.c-td--caption
-		+padding-vertical(round(nth($grid-space, 1)*0.93 - 18))
+		padding: 0
+		width: 114px
+		background-color: #fff
 
-	&.c-td--growth
+		+media('<desk-sm')
+			width: 80px
+
+	&.c-td--count
 		min-width: 100px
 
-		+media('<desk-sm')
-			min-width: 80px
-
-	&.c-td--price
-		min-width: 130px
-
-		+media('<desk-sm')
-			min-width: 110px
-
-	&.c-td--del
-		+media('>=tab-lg')
-			padding: 0
+		input
+			width: 66px
 			text-align: center
+			background-color: transparent
+			font-size: 14px
+			line-height: 24px
+			height: 50px
+			padding: 11px
+			margin: 0
 
-		.btn-del
-			+size(40px)
+			+media('<desk-sm')
+				+padding-vertical(10px)
+				height: 40px
+				padding: 6px
 
-//&.c-td--spinner
-	text-align: center
+	&.c-td--sum
+		text-align: right
+		min-width: 160px
+		+font(2.4rem, round-float(28/24, 2))
 
-	+media('<tab-lg')
-		text-align: left
+		+media('<desk-lg')
+			font-size: 2.0rem
 
-// hover
-.c-tr
+// === hover to row of the table ===
+//.c-tr
 	.no-touchevents &:hover
 		.c-td
-			background-color: $bg-color-alt
+			//background-color: $bg-color-alt
+			box-shadow: inset 0 3px 0 $base-color, inset 0 -3px 0 $base-color
 
+// === order result ===
 .c-table-result
 	position: relative
-	//margin-top: -1px
-	line-height: 0
-	background-color: $bg-color-alt
-	+clear
+	padding: nth($grid-space, 1) 0
+	line-height: 1
+	text-align: right
 
-.c-table-result__total
-	+display-inline-block-middle
-	+font-bold
-	+font(1.6rem, round-float(24/16, 2))
-	letter-spacing: normal
-	padding: 15px nth($grid-space, 2)
-
-	+media('<desk-md')
-		+padding-horizontal(nth($grid-space--sm, 2))
-
-.c-table-result__label
-	+display-inline-block-top
-	margin-right: 10px
-
-	+media('<mob-md')
-		display: block
-		margin-right: 0
-
-.c-table-result__count,
-.c-table-result__price
-	color: $base-color
-
-// for device (after transform)
-.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 	+media('<tab-lg')
-		display: block
-
-.c-thead, .c-th
-	+media('<tab-lg')
-		display: none
-
-.c-tbody
-	+media('<tab-lg')
-		display: flex
-		flex-wrap: wrap
-		justify-content: space-between
-		align-items: flex-start
-
-.c-tr
-	+media('<tab-lg')
-		width: calc(50% - #{round(nth($grid-space, 2)/2)})
-		margin-bottom: nth($grid-space, 1)
-		border: 1px solid $border-color
+		padding: nth($grid-space--sm, 1) 0
 
 	+media('<mob-lg')
-		width: 100%
-		margin-bottom: nth($grid-space--sm, 1)
+		padding: nth($grid-space--sm, 1) 0
 
-	// список заказов в кабинете
-	.history-orders &
+.c-table-result__total
+	display: inline-block
+	vertical-align: middle
+	letter-spacing: normal
+	text-align: right
+
+.c-table-result__label
+	display: inline-block
+	vertical-align: middle
+	margin-top: 5px
+	+font-light
+	+font(1.4rem, round-float(18/14, 2))
+	letter-spacing: 0.05em
+	text-transform: uppercase
+	color: black
+
+.c-table-result__price
+	display: inline-block
+	vertical-align: middle
+	margin-left: 10px
+	+font-alt-bold
+	+font(3.0rem, round-float(36/30, 2))
+	color: black
+
+// === for device (after transform) ===
+.c-table-resp
+	.c-table, .c-thead, .c-tbody, .c-tfoot, .c-tr, .c-th, .c-td
 		+media('<tab-lg')
-			width: calc(33.3% - #{round(nth($grid-space, 2)/2)})
+			display: block
+
+	.c-thead, .c-th
+		+media('<tab-lg')
+			display: none
+
+	.c-tbody
+		+media('<tab-lg')
+			display: flex
+			flex-wrap: wrap
+			justify-content: space-between
+			align-items: flex-start
+
+	.c-tr
+		+media('<tab-lg')
+			width: calc(33.3% - 5px)
+			margin-bottom: nth($grid-space--sm, 1)
+			border: 1px solid $border-color
 
 		+media('<tab-sm')
-			width: calc(50.0% - #{round(nth($grid-space, 2)/2)})
-
-		+media('<mob-lg')
-			width: calc(50.0% - #{round(nth($grid-space--sm, 2)/2)})
+			width: calc(50.0% - 5px)
+			margin-bottom: nth($grid-space--mob, 1)
 
 		+media('<mob-md')
 			width: 100%
-
-.c-td
-	+media('<tab-lg')
-		display: flex
-		//align-items: flex-start
-		align-items: center
-		border: none
+			margin-bottom: round(nth($grid-space--mob, 1)/2)
 
 		// список заказов в кабинете
-		.history-orders &:nth-child(even)
-			background-color: $bg-color-alt
-
-	&[data-label]::before
-		content: attr(data-label) ':'
-		width: 130px
-		padding-right: 15px
-		+font-bold
-		text-transform: uppercase
-
-		display: none
-
-		+media('<tab-lg')
-			display: block
-			font-size: 12px
-
-		// список заказов в кабинете
-		.history-orders &
-			width: 50%
-			font-size: 11px
-
-	&.c-td--caption
-		+media('<tab-lg')
-			margin: -1px -1px 1rem
-			font-size: 1.6rem
-			line-height: round-float(20/16, 2)
-			border: 1px solid $border-color
-
-		&::before
+		//.orders-history &
 			+media('<tab-lg')
-				content: none
+				width: calc(33.3% - #{round(nth($grid-space, 2)/2)})
 
-	&.c-td--del
-		+media('<tab-lg')
-			border-top: 1px solid $border-color
-			margin-top: 10px
+			+media('<tab-sm')
+				width: calc(50.0% - #{round(nth($grid-space, 2)/2)})
 
-		.btn-del
-			+media('<tab-lg')
-				+size(auto)
-				display: flex
-				align-items: center
-				justify-content: center
-				+push-auto
+			+media('<mob-lg')
+				width: calc(50.0% - #{round(nth($grid-space--sm, 2)/2)})
+
+			+media('<mob-md')
 				width: 100%
 
-				svg
-					position: relative
-					left: auto
-					top: auto
-					margin: 0 10px 0 0
+	.c-td
+		+media('<tab-lg')
+			display: flex
+			align-items: flex-start
+			border: none
+			padding: round(nth($grid-space--mob, 1)/2) nth($grid-space--mob, 2)
+			font-size: 1.4rem
+			line-height: 1.8rem
+			
+		//+media('<mob-md')
+			display: block
 
-				& > span
-					display: block
+		&[data-label]::before
+			content: attr(data-label) ':'
+			width: 70px
+			min-width: 70px
+			padding-right: 15px
+			+font-light
+			+font(1.2rem, 1.8rem)
+			text-transform: uppercase
+			display: none
 
-[data-label] .c-td__val
-	+media('<tab-lg')
-		flex: 1 1
+			+media('<tab-lg')
+				display: block
 
-// hover for device
-.c-tr
-	+media('<tab-lg')
-		.no-touchevents &:hover
-			.c-td
-				background-color: transparent
+			//+media('<mob-md')
+				width: auto
+				min-width: 0
+
+		&.c-td--caption
+			+media('<tab-lg')
+				margin: -1px -1px 1rem
+				font-size: 1.6rem
+				line-height: round-float(20/16, 2)
+				border: 1px solid $border-color
+
+			&::before
+				+media('<tab-lg')
+					content: none
+
+		&.c-td--count
+			+media('<tab-lg')
+				min-width: 0
+				align-items: center
+
+				input
+					border: none
+					height: 18px
+					padding: 0
+					width: 60px
+					text-align: left
+					line-height: 18px
+					color: #000 !important
+
+			&::before, .c-td__val
+				//+media('<mob-md')
+					display: inline-block
+					vertical-align: top
+
+		&.c-td--sum
+			+media('<tab-lg')
+				min-width: 0
+				text-align: left
+				font-size: 1.8rem
+
+	[data-label] .c-td__val
+		+media('<tab-lg')
+			flex: 1 1
+
+	// hover for device
+	//.c-tr
+		+media('<tab-lg')
+			.no-touchevents &:hover
+				.c-td
+					background-color: transparent
 
 /* custom table end
 
 /* order list
-// === title ===
-.caption-for-table
-	display: flex
-	align-items: center
-
-	.order-calc &
-		+media('<desk-sm', '>=tab-lg')
-			display: block
-
 // === img ===
 .img-for-table
 	display: block
-	width: 116px
+	width: 100px
 	text-decoration: none
 	color: inherit
 	position: relative
+	background-color: #fff
+	margin: 0 auto
 
-	.caption-for-table &
-		margin-right: nth($grid-space--sm, 2)
-
-		+media('<desk-sm')
-			margin-right: nth($grid-space--sm, 2)
-
-		.order-calc &
-			+media('<desk-sm', '>=tab-lg')
-				margin-right: 0
-				margin-bottom: nth($grid-space--mob, 1)
-
-	.no-image &
-		background: url(../../img/no-img-product.png) no-repeat center
-		background-size: contain
+	+media('<desk-sm')
+		width: 60px
 
 	&::after
 		content: ""
@@ -5379,48 +5484,6 @@ a.c-tr:hover
 		max-width: none
 		+object-fit(contain)
 
-// === title ===
-.title-for-table
-	.caption-for-table &
-		flex: 1 1
-
-// === color ===
-.order-list__color
-	white-space: nowrap
-	vertical-align: middle
-	overflow: hidden
-
-	+media('<desk-ml')
-		text-align: center
-
-	+media('<tab-lg')
-		text-align: left
-
-	.color-pic
-		vertical-align: middle
-		margin-right: 5px
-
-		+media('<desk-ml')
-			display: block
-			margin: 0 auto
-
-		+media('<tab-lg')
-			display: inline-block
-
-	.dash
-		+media('<desk-ml')
-			display: none
-
-		+media('<tab-lg')
-			display: inline
-
-	.color-name
-		+media('<desk-md')
-			display: none
-
-		+media('<tab-lg')
-			display: inline
-
 // === results ===
 .c-table-result__total
 	&.hide-before-calc
@@ -5432,23 +5495,15 @@ a.c-tr:hover
 		+media('<tab-sm')
 			display: block
 
-.order-calc-btn
-	float: right
-	min-width: 240px
-
-	+media('<tab-sm')
-		float: none
-		display: block
-		width: auto
-
-	+media('<mob-lg')
-		width: 100%
-
+// === order empty / no items ===
 // собщение, если коризна пуста или нет элементов
 .order-calc__empty
 	display: none
 	padding: 8px
 	text-align: center
+	+font-bold
+	+font(2.2rem, round-float(26/22, 2))
+	color: $base-color
 
 // если корзина пуста
 .order-calc__hasnt-items
