@@ -196,7 +196,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 
 	@at-root .select2-container--default .select2-selection .select2-selection__rendered, .#{$user-content} select, .shutter select, .select, &
 		+font-bold
-		//text-transform: uppercase
+		text-transform: uppercase
 		+font($form-font-size, $form-line-height)
 		color: $form-text-color
 
@@ -204,6 +204,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	.#{$user-content} & select, .shutter & select
 		text-transform: uppercase
 		color: $form-placeholder-color
+		padding-right: 20px
 
 		+media('<mob-lg')
 			padding-left: 8px

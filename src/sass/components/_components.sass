@@ -19,16 +19,16 @@
 	// только в попапе
 	.shutter &
 		+padding-vertical(0)
-		max-width: #{464+nth($text-layout-space, 2)*2}
+		max-width: #{$form-max-width+nth($text-layout-space, 2)*2}
 
 		+media('<desk-md')
-			max-width: #{464+nth($text-layout-space--md, 2)*2}
+			max-width: #{$form-max-width+nth($text-layout-space--md, 2)*2}
 
 		+media('<tab-lg')
-			max-width: #{464+nth($text-layout-space--sm, 2)*2}
+			max-width: #{$form-max-width+nth($text-layout-space--sm, 2)*2}
 
 		+media('<mob-lg')
-			max-width: #{464+nth($text-layout-space--mob, 2)*2}
+			max-width: #{$form-max-width+nth($text-layout-space--mob, 2)*2}
 
 	&:last-child
 		margin-bottom: 0
@@ -2404,6 +2404,9 @@
 	form
 		height: 100%
 
+		+media('<mob-lg')
+			height: calc(100% - #{$header-height--sm})
+
 .m-aside__footer
 	line-height: 1
 
@@ -2793,7 +2796,8 @@
 
 	// hover
 	.no-touchevents &:hover
-		border-color: $form-border-focus-color
+		+media('>=mob-lg')
+			border-color: $form-border-focus-color
 
 .p-sorting
 	position: relative
@@ -2841,6 +2845,64 @@
 			.no-touchevents &:hover
 				overflow-y: auto
 
+		+media('<mob-lg')
+			height: calc(100% - #{$header-height--sm})
+
+			.no-touchevents &
+				overflow-y: auto
+
+	form .m-aside__align
+		+media('<mob-lg')
+			height: 100%
+
+.shutter--filters__options
+	height: $header-height--sm
+	display: none
+
+	+media('<mob-lg')
+		display: block
+	
+.btn-filters-close
+	display: block
+	position: relative
+	background-color: #1a1a1a
+	+font-bold
+	+font(14px, $header-height--sm)
+	letter-spacing: 0.1em
+	text-align: left
+	color: #fff
+	text-transform: uppercase
+	padding: 0 nth($filters-space, 2)
+	border: 1px solid #666
+	z-index: 5
+
+	+media('<mob-lg')
+		+padding-horizontal(15px)
+
+	& > div
+		position: relative
+		display: inline-block
+
+	.p-filters-activated
+		+font-bold
+		color: $base-color
+		+font(10px, 1)
+		position: absolute
+		top: 50%
+		left: 100%
+		margin: -10px 0 0 5px
+
+	.svg-ico-close
+		display: block
+		+size(20px)
+		position: absolute
+		right: 15px
+		top: 50%
+		margin-top: -10px
+
+		path
+			fill: currentColor
+
 .shutter--filters, .p-filters-results
 	+media('<tab-lg')
 		//opacity: 0
@@ -2886,6 +2948,9 @@
 	+font(1.6rem, round-float(20/16, 2))
 	user-select: none
 	-webkit-tap-highlight-color: transparent
+
+	+media('<mob-lg')
+		padding-left: 15px
 
 .p-filters-selected
 	position: absolute
@@ -2954,6 +3019,9 @@
 	&, .#{$user-content} &
 		margin: 0
 		padding: 0 nth($filters-space, 2) nth($filters-space, 1)
+
+		+media('<mob-lg')
+			+padding-horizontal(15px)
 
 		li
 			position: relative
@@ -3106,6 +3174,10 @@ label.checkbox--size
 	overflow: hidden
 	margin-bottom: $bottom-space
 	user-select: none
+	display: none
+
+	.filters-results-show &
+		display: block
 
 	+media('<mob-lg')
 		padding: round(nth($text-layout-space--mob, 2)/2) nth($text-layout-space--mob, 2)
@@ -3119,6 +3191,9 @@ label.checkbox--size
 	line-height: 1
 	margin-bottom: -10px
 
+	+media('<mob-lg')
+		margin-bottom: -5px
+
 .p-filters-tags__item
 	+display-inline-block-top
 	position: relative
@@ -3130,6 +3205,9 @@ label.checkbox--size
 	letter-spacing: normal
 	text-transform: uppercase
 	background-color: #ddd
+
+	+media('<mob-lg')
+		margin: 0 5px 5px 0
 
 	& > span
 		+display-inline-block-top
@@ -4679,6 +4757,7 @@ $jobs-warranty-icon-size--mob: 32px
 /* similar
 .similar
 	padding: nth($text-layout-space, 1) 0 0
+	background-color: #fff
 
 	+media('<tab-lg')
 		padding: nth($text-layout-space--sm, 1) 0 0
@@ -4686,7 +4765,7 @@ $jobs-warranty-icon-size--mob: 32px
 	+media('<mob-lg')
 		padding: nth($text-layout-space--mob, 1) 0 0
 
-	.no-touchevents .main-section__title
+	.no-touchevents & .main-section__title
 		margin-bottom: 0
 
 /* similar end
@@ -5006,14 +5085,23 @@ $jobs-warranty-icon-size--mob: 32px
 /* ap end
 
 /* pseudotabs
-.pseudotabs-nav
-	margin: 0 -#{round(nth($grid-space, 2)/2)} round(nth($grid-space, 1)/2)
-
-	+media('<tab-lg')
-		margin: 0 -#{round(nth($grid-space--sm, 2)/2)} round(nth($grid-space--sm, 1)/2)
+.pseudotabs-nav-wrap
+	margin: 0 0 3rem
 
 	+media('<mob-lg')
-		margin: 0 -#{round(nth($grid-space--mob, 2)/2)} round(nth($grid-space--mob, 1)/2)
+		border-bottom: 1px solid $border-color
+		+margin-horizontal(-#{round(nth($text-layout-space--mob, 1)/2)})
+		+padding-horizontal(#{round(nth($text-layout-space--mob, 1)/2)})
+		padding-bottom: 1rem
+
+.pseudotabs-nav
+	margin: 0 -#{round(nth($grid-space, 2)/2)}
+
+	+media('<tab-lg')
+		margin: 0 -#{round(nth($grid-space--sm, 2)/2)}
+
+	+media('<mob-lg')
+		margin: 0 -#{round(nth($grid-space--mob, 2)/2)}
 
 .pseudotabs-tab
 	+font-bold
@@ -5036,8 +5124,6 @@ $jobs-warranty-icon-size--mob: 32px
 
 		span
 			border-bottom: 2px solid transparent
-			display: inline-block
-			vertical-align: top
 			padding: 0 0 2px
 
 		// hover
@@ -5066,10 +5152,39 @@ $jobs-warranty-icon-size--mob: 32px
 	+media('<mob-lg')
 		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2) 0
 
+	.layout-text
+		padding: 0
+
+	.user-form
+		max-width: $form-max-width
+		padding-top: 0
+
+.cabinet__layout
+	max-width: 946px
+	margin: 0 auto
+
+	& > form
+		+clear
+
+.cabinet__layout__col
+	float: left
+	width: 50%
+
+	+media('<tab-sm')
+		float: none
+		width: 100%
+
+	&:first-child
+		padding-right: nth($grid-space, 2)
+
+		+media('<tab-sm')
+			padding-right: 0
+			margin-bottom: 3rem
+
 /* cabinet end
 
 /* discount card
-.d-card
+.d-cards
 	position: relative
 	overflow: hidden
 	margin-bottom: 5rem
@@ -5080,28 +5195,57 @@ $jobs-warranty-icon-size--mob: 32px
 	+media('<mob-lg')
 		margin-bottom: 2rem
 
-.d-card__holder
+	&:last-child
+		margin-bottom: 0
+
+.d-cards__holder
 	margin-bottom: -#{nth($grid-space, 1)}
+	margin-left: -#{nth($grid-space, 2)}
+	+clear
 
 	+media('<tab-lg')
 		margin-bottom: -#{nth($grid-space--sm, 1)}
+		margin-left: -#{nth($grid-space--sm, 2)}
+
+	+media('<tab-sm')
+		margin-left: 0
 
 	+media('<mob-lg')
 		margin-bottom: -#{nth($grid-space--mob, 1)}
+		margin-left: 0
 
-.d-card__item
+.d-cards__item
+	float: left
+	margin: 0 0 nth($grid-space, 1) nth($grid-space, 2)
+	max-width: calc(100% - #{nth($grid-space, 2)})
+
+	+media('<tab-lg')
+		margin: 0 0 nth($grid-space--sm, 1) nth($grid-space--sm, 2)
+		max-width: calc(100% - #{nth($grid-space--sm, 2)})
+
+	+media('<tab-sm')
+		+margin-horizontal(auto)
+		float: none
+		display: block
+		width: auto
+		max-width: none
+
+	+media('<mob-lg')
+		margin-bottom: nth($grid-space--mob, 1)
+		max-width: calc(100% - #{nth($grid-space--mob, 2)})
+
+
+.d-card
+	position: relative
 	width: 400px
 	max-width: 100%
-	position: relative
-	display: inline-block
-	vertical-align: top
-	margin: 0 nth($grid-space, 2) nth($grid-space, 1) 0
 	background-color: #fff
+	margin: 0 auto
+	//min-height: 248px
+	height: 100%
 
-	&::before
-		content: ""
-		display: block
-		+ratio(400, 247)
+	//+media('<mob-lg')
+		min-height: 0
 
 	ul
 		margin: 0 0 0.5em
@@ -5124,25 +5268,31 @@ $jobs-warranty-icon-size--mob: 32px
 			&:first-child
 				margin-top: 0
 
-.d-card__item__holder
-	position: absolute
-	display: flex
-	flex-direction: column
-	justify-content: space-between
-	left: 0
-	top: 0
-	+size(100%)
+.d-card__visual
+	background: #ddd url(../../img/bg-card.png) no-repeat center
+	background-size: cover
+	border-radius: 16px
+	min-height: 0
+
+	&::before
+		content: ""
+		display: block
+		+ratio(400, 247)
+
+	.d-card__holder
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		position: absolute
+		left: 0
+		top: 0
+		+size(100%)
+
+.d-card__holder
 	padding: $grid-inside
 
 	+media('<tab-lg')
-		padding: $grid-space--sm
-
-	//+media('<mob-lg')
-		padding: $grid-space--mob
-
-.d-card__card
-	background: #ddd url(../../img/bg-card.png) no-repeat center
-	border-radius: 16px
+		padding: $grid-inside--sm
 
 .d-card__card__head
 	& > strong, & > em

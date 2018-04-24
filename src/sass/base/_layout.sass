@@ -603,13 +603,13 @@ html
 	padding: round(nth($text-layout-space, 1)*1.5) nth($text-layout-space, 2) round(nth($text-layout-space, 1))
 
 	+media('<desk-md')
-		padding: round(nth($text-layout-space--md, 1)*1.5) nth($text-layout-space--md, 2)
+		padding: round(nth($text-layout-space--md, 1)*1.5) nth($text-layout-space--md, 2) nth($text-layout-space--md, 1)
 
 	+media('<tab-lg')
-		padding: round(nth($text-layout-space--sm, 1)*1.5) nth($text-layout-space--sm, 2)
+		padding: round(nth($text-layout-space--sm, 1)*0.8) nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: round(nth($text-layout-space--mob, 1)*1.5) nth($text-layout-space--mob, 2)
+		padding: round(nth($text-layout-space--mob, 1)*0.8) nth($text-layout-space--mob, 2)
 
 .footer-common__group
 	margin: 0 -#{round(nth($text-layout-space, 2)/2)} round(nth($text-layout-space, 1))
@@ -792,15 +792,16 @@ html
 /* footer bottom
 .footer-bottom
 	padding: 50px nth($text-layout-space, 2) 40px
+	background-color: #fff
 
 	+media('<desk-md')
-		padding: round(nth($text-layout-space--md, 1)*1.5) nth($text-layout-space--md, 2)
+		padding: round(nth($text-layout-space--md, 1)*0.8) nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: round(nth($text-layout-space--sm, 1)*1.5) nth($text-layout-space--sm, 2)
+		padding: round(nth($text-layout-space--sm, 1)*0.8) nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
-		padding: round(nth($text-layout-space--mob, 1)*1.5) nth($text-layout-space--mob, 2)
+		padding: round(nth($text-layout-space--mob, 1)*0.8) nth($text-layout-space--mob, 2)
 
 .footer-bottom__holder
 	position: relative
@@ -846,11 +847,21 @@ html
 			margin-top: 0
 
 	&:last-child
-		max-width: 380px
 		padding-right: 0
+		text-align: right
 
 		+media('<tab-lg')
-			max-width: none
+			text-align: center
+
+		.footer-bottom__col__l
+			display: inline-block
+			vertical-align: top
+			max-width: 380px
+			text-align: left
+
+			+media('<tab-lg')
+				text-align: center
+				max-width: none
 
 	a
 		color: $text-color

@@ -1,0 +1,255 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет - Личные данные",
+	"pageClass": "page-alt-bg cabinet-page"
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+			<div class="heading">
+				<h1>Личный кабинет</h1>
+				<div class="heading__options">
+					<a href="#" class="btn-out btn-with-icon">
+						@@include("includes/svg/icon-logout.svg")
+						<span>Выход</span>
+					</a>
+				</div>
+			</div>
+
+			<!--cabinet card-->
+			<section class="cabinet">
+				<!--pseudotabs-nav-->
+				@@include('_tpl_pseudotabs-nav.html', {
+					"active": "Личные данные"
+				})
+				<!--pseudotabs-nav end-->
+
+				<div class="cabinet__layout">
+					<form action="#" method="post">
+						<div class="cabinet__layout__col">
+							<!--discount card-->
+							<div class="d-cards">
+								<div class="d-cards__holder">
+									<div class="d-cards__item">
+										<div class="d-card d-card__visual">
+											<div class="d-card__holder">
+												<div class="d-card__card__head">
+													<em>Номер карты</em>
+													<strong>1139958</strong>
+												</div>
+												<div class="d-card__card__footer">
+													<strong>Иван Иванов</strong>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="d-cards__item">
+										<div class="d-card">
+											<div class="d-card__holder">
+												<ul>
+													<li>Период: <b>07 дек. 2016 — 07 дек. 2017</b></li>
+													<li>Накопленная сумма: <b>346,04 руб.</b></li>
+													<li>Действующая скидка: <b>3 %</b></li>
+													<li><span class="mark">Для получения скидки 5% вам осталось совершить покупок на 103,96 руб.</span></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--discount card end-->
+						</div>
+						<div class="cabinet__layout__col">
+						<!--cabinet data-->
+						<div class="user-form discount-form">
+							<div class="layout-text">
+								<!--<div class="form-caption">
+									<div class="form-title">Личные данные</div>
+									<div class="form-subtitle">Здесь можно изменить личную информацию</div>
+								</div>-->
+
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__fname-field">Имя<span class="form-mark">*</span></label>
+									</div>
+									<div class="input-holder">
+										<input type="text" id="discount-form__fname-field" value="Иван">
+										@@include('_tpl_forms_form-validation.html')
+									</div>
+								</div>
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__sname-field">Фамилия<span class="form-mark">*</span></label>
+									</div>
+									<div class="input-holder">
+										<input type="text" id="discount-form__sname-field" value="Иванов">
+										@@include('_tpl_forms_form-validation.html')
+									</div>
+								</div>
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__city-field">Город</label>
+									</div>
+									<div class="input-holder">
+										<input type="text" id="discount-form__city-field" value="Осиповичи">
+									</div>
+								</div>
+
+								<div class="input-wrap">
+									<div class="label-holder">
+										<span class="label">Пол</span>
+									</div>
+									<div class="input-holder error">
+										<div class="form-labels-list">
+											<label class="radio-label">
+												<input type="radio" name="discount-form__gender" checked />
+												<i>&nbsp;</i>
+												<span>Мужской</span>
+											</label>
+											<label class="radio-label">
+												<input type="radio" name="discount-form__gender" />
+												<i>&nbsp;</i>
+												<span>Женский</span>
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__tel-field">Мобильный телефон<span class="form-mark">*</span></label>
+									</div>
+									<div class="input-holder">
+										<input class="input-mask-tel-js" type="text" id="discount-form__tel-field">
+										<div class="form-notice">Формат телефона 375ZZYYYYYYY, где ZZ - код оператора, YYYYYYY - номер телефона</div>
+										<div class="form-notice">Пример: 375290000000</div>
+										@@include('_tpl_forms_form-validation.html')
+									</div>
+								</div>
+
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__email-field">Адрес эл. почты<span class="form-mark">*</span></label>
+									</div>
+									<div class="input-holder">
+										<input type="email" id="discount-form__email-field">
+										@@include('_tpl_forms_form-validation.html')
+									</div>
+								</div>
+
+								<div class="input-wrap">
+									<div class="label-holder">
+										<label for="discount-form__birth-field">Дата рождения<span class="form-mark">*</span></label>
+									</div>
+									<div class="input-holder">
+										<div class="selects-group selects-birth">
+											<div class="select">
+												<select class="field-effects-js" name="discount-form__birth__day" id="discount-form__birth-field">
+													<option value="">День</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
+													<option value="5">5</option>
+													<option value="6">6</option>
+													<option value="7">7</option>
+													<option value="8">8</option>
+												</select>
+											</div>
+											<div class="select">
+												<select class="field-effects-js" name="discount-form__birth__month">
+													<option value="">Месяц</option>
+													<option value="1">Январь</option>
+													<option value="2">Февраль</option>
+													<option value="3">Март</option>
+													<option value="4">Апрель</option>
+													<option value="5">Май</option>
+													<option value="6">Июнь</option>
+													<option value="7">Июль</option>
+													<option value="8">Август</option>
+												</select>
+											</div>
+											<div class="select">
+												<select class="field-effects-js" name="discount-form__birth__year">
+													<option value="">Год</option>
+													<option value="1">1995</option>
+													<option value="2">1996</option>
+													<option value="3">1997</option>
+													<option value="4">1998</option>
+													<option value="5">1999</option>
+													<option value="6">2000</option>
+													<option value="7">2001</option>
+													<option value="8">2002</option>
+												</select>
+											</div>
+										</div>
+										@@include('_tpl_forms_form-validation.html')
+									</div>
+								</div>
+
+								<div class="input-wrap">
+									<div class="input-holder">
+										<label class="check-label">
+											<input type="checkbox" name="discount-form__rules" />
+											<i>&nbsp;</i>
+											<span>Отписаться от рассылки</span>
+										</label>
+									</div>
+								</div>
+
+								<div class="form-footer">
+									<div class="form-buttons">
+										<button class="btn-default btn-submit">Активировать карту</button>
+									</div>
+									<div class="form-note">
+										<div class="form-note__item">Поля, помеченные <span class="form-mark">*</span> обязательные для заполнения</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--cabinet data end-->
+					</div>
+					</form>
+				</div>
+
+
+			</section>
+			<!--cabiner card end-->
+
+			<!--similar-->
+			<section class="similar">
+				<div class="main-section__title">
+					<h2>Смотрите также</h2>
+				</div>
+				<div class="similar-slider">
+					<div class="similar-slider__list similar-slider-js">
+						@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+						@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+					</div>
+				</div>
+			</section>
+			<!--similar end-->
+
+		</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Личный кабинет"
+})

@@ -155,6 +155,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		padding: 20px nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
+		display: block
 		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
 		+font(2rem, round-float(24/20, 2))
 
@@ -167,7 +168,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		margin: 0
 
 .heading__options
-	+display-inline-block-top
+	position: relative
+	display: block
+
+	+media('<mob-lg')
+		text-align: right
+		padding-top: 10px
 
 .heading__options__item
 	display: inline-block
