@@ -16,6 +16,21 @@ $(window).resize(function () {
 });
 
 /**
+ * !debouncedresize only width
+ * */
+var debouncedresizeByWidth = true;
+
+var debouncedPrevWidth = -1;
+$(window).on('debouncedresize', function () {
+	var currentWidth = $('body').outerWidth();
+	debouncedresizeByWidth = debouncedPrevWidth !== currentWidth;
+	if (resizeByWidth) {
+		$(window).trigger('debouncedresizeByWidth');
+		debouncedPrevWidth = currentWidth;
+	}
+});
+
+/**
  * !device detected
  * */
 var DESKTOP = device.desktop();
@@ -2052,6 +2067,262 @@ function orderCalculation() {
 }
 
 /**
+ * !tab switcher
+ * */
+function tabSwitcher() {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	/*
+	 <!--html-->
+	 <div class="some-class tabs-js" data-collapsed="true" data-auto-height="true" data-to-queue="480">
+	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
+	 <div class="some-class__nav">
+	 <div class="some-class__tab">
+	 <a href="#some-id-01" class="tab-anchor-js">Text tab 01</a>
+	 </div>
+	 <div class="some-class__tab">
+	 <a href="#some-id-02" class="tab-anchor-js">Text tab 02</a>
+	 </div>
+	 </div>
+
+	 <div class="some-class__panels tab-container-js">
+	 <div class="some-class__panel tab-content-js" id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel tab-content-js" id="some-id-02">Text content 02</div>
+	 </div>
+	 </div>
+	 <!--html end-->
+	 */
+
+	var $tabWrapper = $('.tabs-js');
+	var $container = $('.tab-container-js');
+
+	if (!$container.length) return false;
+
+	if ($tabWrapper.length) {
+		var $anchor = $('.tab-anchor-js'),
+			$content = $('.tab-content-js'),
+			$simpleAccordionHand = $('.tab-link-js'),
+			activeClass = 'active-tab',
+			collapseAllClass = 'collapsed-all-tab',
+			idPrefix = 'activeIs',
+			animationSpeed = 0.2,
+			animationHeightSpeed = 0.08;
+
+		$.each($tabWrapper, function () {
+			var $currentContainer = $(this),
+				$currentAnchor = $currentContainer.find($anchor),
+				$thisContainer = $currentContainer.find($container),
+				$currentContent = $currentContainer.find($content);
+
+
+			if ($currentContainer.find('.' + activeClass).length > 0) {
+				var initialTab = $currentContainer.find('.' + activeClass).attr('href').substring(1);
+			}
+			if($currentContainer.data('collapsed') === true){
+				$currentContainer.addClass(collapseAllClass);
+			}
+			// var toQueue = $currentContainer.data('to-queue'); // transform tab for toQueue value layout width
+			// var tabInitedFlag = false;
+			var valDataAutoHeight = $currentContainer.data('auto-height');
+			var thisAutoHeight = valDataAutoHeight !== false;
+			var activeTab = false;
+
+			// prepare traffic content
+			function prepareTabsContent() {
+				$thisContainer.css({
+					'display': 'block',
+					'position': 'relative',
+					'overflow': 'hidden'
+				});
+
+				$currentContent.css({
+					// 'display': 'none',
+					'position': 'absolute',
+					'left': 0,
+					'top': 0,
+					'width': '100%',
+					'z-index': -1
+				});
+
+				switchContent();
+			}
+
+			prepareTabsContent();
+
+			// toggle content
+			$currentAnchor.on('click', function (e) {
+				e.preventDefault();
+
+				var $self = $(this),
+					selfTab = $self.attr('href').substring(1);
+
+				if ($currentContainer.data('collapsed') === true && activeTab === selfTab) {
+
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+
+					return;
+				}
+
+				if (activeTab === selfTab) return false;
+
+				initialTab = selfTab;
+
+				switchContent();
+			});
+
+			// collapse current tab method
+			$currentAnchor.eq(0).on('tabSwitcherCollapse', function () {
+				var $self = $(this);
+				var selfTab = $self.attr('href').substring(1);
+
+				if (activeTab === selfTab) {
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+				}
+			});
+
+			// switch content
+			function switchContent() {
+				if (initialTab) {
+					toggleContent();
+					changeHeightContainer();
+					toggleActiveClass();
+				}
+			}
+
+			// show active content and hide other
+			function toggleContent() {
+
+				thisAutoHeight && $thisContainer.css('height', $thisContainer.outerHeight());
+
+				$currentContent.css({
+					'position': 'absolute',
+					'left': 0,
+					'top': 0
+				});
+
+				TweenMax.to($currentContent, animationSpeed, {
+					autoAlpha: 0
+					// ,'z-index': -1
+				});
+
+				if (arguments[0] === false) return;
+
+				var $initialContent = $currentContent.filter('[id="' + initialTab + '"]');
+
+				$initialContent.css('z-index', 2);
+
+				TweenMax.to($initialContent, animationSpeed, {
+					autoAlpha: 1
+					// ,'z-index': 2
+				});
+			}
+
+			// change container's height
+			function changeHeightContainer() {
+				var $initialContent = $currentContent.filter('[id="' + initialTab + '"]');
+
+				if (arguments[0] === false) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': 0
+					});
+
+					return;
+				}
+
+				if (thisAutoHeight) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': $initialContent.outerHeight(),
+						onComplete: function () {
+
+							thisAutoHeight && $thisContainer.css('height', '');
+
+							$initialContent.css({
+								'position': 'relative',
+								'left': 'auto',
+								'right': 'auto'
+							});
+
+							$tabWrapper.trigger('afterChange.tabSwitcher');
+						}
+					});
+				}
+
+				$initialContent.css({
+					'position': 'relative',
+					'left': 'auto',
+					'right': 'auto'
+				})
+			}
+
+			// toggle class active
+			function toggleActiveClass() {
+				$currentAnchor.removeClass(activeClass);
+				$currentContent.removeClass(activeClass);
+				if($currentContainer.data('collapsed') === true){
+					$currentContainer.addClass(collapseAllClass);
+				}
+
+				if (activeTab) {
+					$currentContainer.removeClass(idPrefix + '-' + activeTab);
+				}
+
+				if (initialTab !== activeTab) {
+
+					$currentAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
+					$currentContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
+					$currentContainer.addClass(idPrefix + '-' + initialTab);
+					$currentContainer.removeClass(collapseAllClass);
+
+					activeTab = initialTab;
+
+					return false;
+				}
+
+				activeTab = false;
+			}
+		});
+
+		var tabAccordion = function($hand, $panel, animateSpeed) {
+			if ($hand.hasClass(activeClass)) {
+				$panel.show();
+			}
+
+			$hand.on('click', function (e) {
+				e.preventDefault();
+
+				$(this).toggleClass(activeClass);
+				$panel.stop().slideToggle(animateSpeed);
+			})
+		};
+
+		// if transform tabs to accordion
+		if ($simpleAccordionHand.length) {
+			$simpleAccordionHand.each(function () {
+				var $thisHand = $(this);
+
+				tabAccordion($thisHand, $thisHand.next().children(), animationSpeed*1000);
+			})
+		}
+
+		// $(window).on('debouncedresizeByWidth', function () {
+		// 	$simpleAccordionHand.each(function () {
+		// 		var $thisHand = $(this);
+		//
+		// 		if ($thisHand.hasClass(activeClass)) {
+		// 			$thisHand.next().children().show();
+		// 		}
+		// 	});
+		// });
+	}
+}
+
+/**
  * !Shops location search
  * */
 /**
@@ -2649,7 +2920,7 @@ function addShadowTape() {
  * toggle view shops
  * */
 function toggleViewShops() {
-	var $switcherHand = $('.shops-view-switcher a');
+	var $switcherHand = $('.shops-view-switcher_dddd a');
 
 	if ( $switcherHand.length ) {
 
@@ -2805,6 +3076,7 @@ $(document).ready(function () {
 	multiFiltersInit();
 	contactsMap();
 	orderCalculation();
+	tabSwitcher();
 	initJsDrops();
 	compactor();
 	shopsLocation();

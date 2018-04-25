@@ -920,44 +920,37 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 /* content img end */
 /* columnize */
 .columnize, .columnize--3, .columnize--4 {
-	-webkit-column-count: 2;
-	        column-count: 2;
-	-webkit-column-gap: 2em;
-	        column-gap: 2em;
+	column-count: 2;
+	column-gap: 2em;
 	margin-bottom: 2.4rem;
 	font-size: 0.9em;
 }
 
 .columnize--3 {
-	-webkit-column-count: 3;
-	        column-count: 3;
+	column-count: 3;
 	font-size: 0.85em;
 }
 
 .columnize--4 {
-	-webkit-column-count: 4;
-	        column-count: 4;
+	column-count: 4;
 	font-size: 0.8em;
 }
 
 @media (max-width: 1199px) {
 	.columnize--4 {
-		-webkit-column-count: 3;
-		        column-count: 3;
+		column-count: 3;
 	}
 }
 
 @media (max-width: 991px) {
 	.columnize--3, .columnize--4 {
-		-webkit-column-count: 2;
-		        column-count: 2;
+		column-count: 2;
 	}
 }
 
 @media (max-width: 767px) {
 	.columnize, .columnize--3, .columnize--4 {
-		-webkit-column-count: 1;
-		        column-count: 1;
+		column-count: 1;
 	}
 }
 
@@ -1897,18 +1890,15 @@ label, .label {
 }
 
 .form-columnize {
-	-webkit-column-count: 2;
-	        column-count: 2;
+	column-count: 2;
 }
 
 .form-columnize--3 {
-	-webkit-column-count: 3;
-	        column-count: 3;
+	column-count: 3;
 }
 
 .form-columnize, .form-columnize--3 {
-	-webkit-column-gap: 40px;
-	        column-gap: 40px;
+	column-gap: 40px;
 }
 
 .form-columnize label, .form-columnize--3 label {
@@ -1920,10 +1910,8 @@ label, .label {
 
 @media (max-width: 639px) {
 	.form-columnize, .form-columnize--3 {
-		-webkit-column-count: 1;
-		        column-count: 1;
-		-webkit-column-gap: 0;
-		        column-gap: 0;
+		column-count: 1;
+		column-gap: 0;
 	}
 }
 
@@ -9283,34 +9271,28 @@ li.is-active .p-filters-share-range, .no-js .p-filters-share-range {
 .prevs__list {
 	float: left;
 	width: 100%;
-	-webkit-column-count: 3;
-	        column-count: 3;
-	-webkit-column-gap: 11rem;
-	        column-gap: 11rem;
+	column-count: 3;
+	column-gap: 11rem;
 	margin-bottom: -5rem;
 }
 
 @media (max-width: 1365px) {
 	.prevs__list {
-		-webkit-column-gap: 5rem;
-		        column-gap: 5rem;
+		column-gap: 5rem;
 	}
 }
 
 @media (max-width: 991px) {
 	.prevs__list {
-		-webkit-column-count: 2;
-		        column-count: 2;
-		-webkit-column-gap: 3rem;
-		        column-gap: 3rem;
+		column-count: 2;
+		column-gap: 3rem;
 		margin-bottom: -3rem;
 	}
 }
 
 @media (max-width: 639px) {
 	.prevs__list {
-		-webkit-column-count: auto;
-		        column-count: auto;
+		column-count: auto;
 	}
 }
 
@@ -10534,9 +10516,9 @@ a.c-tr:hover {
 .shops-map {
 	position: relative;
 	float: right;
-	height: 100%;
 	width: calc(100% - 410px);
 	background: #f3f3f3;
+	height: 550px;
 }
 
 @media (max-width: 1365px) {

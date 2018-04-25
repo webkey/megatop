@@ -23,20 +23,55 @@
 				"last": "Магазины"
 			})
 
-			<!--shops-->
-			<section class="shops">
-				<div class="shops-view-switcher">
-					<a href="#" class="js-shops-view-map" title="Показать на карте">Карта</a>
-					<a href="#" class="js-shops-view-list active" title="В виде списка">Список</a>
+			<!--<div class="some-class tabs-js" data-auto-height="true">
+				<div class="some-class__nav">
+					<div class="some-class__tab">
+						<a href="#some-id-01" class="tab-anchor-js">Text tab 01</a>
+					</div>
+					<div class="some-class__tab">
+						<a href="#some-id-02" class="tab-anchor-js">Text tab 02</a>
+					</div>
 				</div>
 
-				<div class="shops-holder">
+				<div class="some-class__panels tab-container-js">
+					<a href="#some-id-01" class="tab-link-js">blah 01</a>
+					<div class="some-class__panel tab-content-js" id="some-id-01">
+						<div class="">
+							Text content 01 <br>
+							Text content 01 <br>
+							Text content 01 <br>
+						</div>
+					</div>
+					<a href="#some-id-02" class="tab-link-js">blah 02</a>
+					<div class="some-class__panel tab-content-js" id="some-id-02">
+						<div class="">
+							Text content 02
+						</div>
+					</div>
+				</div>
+			</div>-->
+
+			<!--shops-->
+			<section class="shops tabs-js">
+				<!--<div class="shops-view-switcher">
+					<a href="#" class="js-shops-view-map" title="Показать на карте">Карта</a>
+					<a href="#" class="js-shops-view-list active" title="В виде списка">Список</a>
+				</div>-->
+
+				<div class="shops-view-switcher">
+					<a href="#shopsMapView" class="tab-anchor-js active-tab" title="Показать на карте">Карта</a>
+					<a href="#shopsListView" class="tab-anchor-js" title="В виде списка">Список</a>
+				</div>
+
+				<div class="shops-holder tab-container-js">
 					<!--shops-map-->
-					<div id="shops-map" class="shops-map"></div>
+					<div class="tab-content-js" id="shopsMapView">
+						<div id="shops-map" class="shops-map"></div>
+					</div>
 					<!--shops-map end-->
 
 					<!--shops-aside-->
-					<div class="shops-aside">
+					<div class="shops-aside tab-content-js" id="shopsListView">
 						<!--select-city-->
 						<div class="select-city">
 							<div class="select">
