@@ -1,0 +1,17 @@
+<div class="shops-item" data-location-index="@@id">
+	<div class="shops-item__title"><a href="#">@@address</a></div>
+	<div class="shops-item__list">
+		<div class="shops-item__list__item">@@phones</div>
+		<div class="shops-item__list__item">@@time</div>
+	</div>
+	@@if(context.info && context.info.metro){
+	<div class="shops-item__info">
+		<div class="shops-item__info__item text-mark">
+			@@if(context.info.metro){
+			@@include("includes/svg/icon-metro-alt.svg")
+			<span>@@info.metro</span>
+			}
+		</div>
+	</div>
+	}
+</div>

@@ -2009,7 +2009,7 @@ function contactsMap() {
 			'<div class="map-popup__subtitle">' + contactMapInfo.subtitle + '</div>' +
 			'<div class="map-popup__list">' +
 			'<div class="map-popup__row"><div>' + contactMapInfo.address + '</div></div>' +
-			// '<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
+			'<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
 			'<div class="map-popup__row"><div>' + contactMapInfo.phones + '</div></div>' +
 			'</div>';
 	}
@@ -2164,10 +2164,10 @@ function shopsLocation() {
 		myPlacemark = [],
 		mapId = "#shops-map",
 		$mapId = $(mapId),
-		currentCity = "minsk",
 		baseImageURL = 'img/',
 		$selectCity = $('#selectCity'),
-		urlShops = $selectCity.data('url'),
+		urlShops = $selectCity.attr('data-path'),
+		currentCity = $selectCity.attr('data-current'),
 		fullscreenControl;
 
 	/*initial map*/
@@ -2193,7 +2193,7 @@ function shopsLocation() {
 					}],
 				clusterNumbers = [20],
 				MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-					'<div style="color: #FFFFFF; font-weight: normal; font-family: "PT Sans Serif", sans-serif;">{{ properties.geoObjects.length }}</div>'
+					'<div style="color: #FFFFFF; font-weight: normal; font-family: Arial, sans-serif;">{{ properties.geoObjects.length }}</div>'
 				);
 
 			/*create new cluster object*/
@@ -2253,7 +2253,7 @@ function shopsLocation() {
 
 			/*select current city*/
 			selectCurrentCity();
-		}
+		};
 
 		ymaps.ready(init);
 	} else {
@@ -2265,14 +2265,7 @@ function shopsLocation() {
 	function selectCurrentCity() {
 		var $selectShops = $("#selectCity");
 
-		$selectShops.find("option[value='" + currentCity + "']").prop('selected', true);
-
-		/*refresh custom select*/
-		// if (DESKTOP) {
-		// 	$selectShops.multiselect('refresh');
-		// }
-
-		selectCity(currentCity);
+		$selectShops.find("option[value='" + currentCity + "']").prop('selected', true).trigger('change');
 	}
 
 	/*custom select city*/
@@ -2284,14 +2277,14 @@ function shopsLocation() {
 
 	/*select city*/
 	function selectCity(value) {
-		if ( value != 0 ) {
+		if ( value !== 0 ) {
 
 			/*change current city flag*/
 			currentCity = value;
 
 			/*clear filter tags*/
-			clearFilterTags();
-			searchShopsByTag();
+			// clearFilterTags();
+			// searchShopsByTag();
 
 			var jsonResult = [];
 
@@ -2305,13 +2298,13 @@ function shopsLocation() {
 				removeCountLoader();
 			});
 
-			$('.shops-aside-group').hide(0, function () {
-				$('.shops-aside-holder').css('overflow', 'hidden');
-			});
-
-			$('[data-item-group = ' + value + ']').show(0, function () {
-				$('.shops-aside-holder').css('overflow', 'auto');
-			});
+			var $scrollContainer = $('.shops-aside-holder');
+			// hide all
+			$('.shops-aside-group').removeClass('is-show');
+			$scrollContainer.css('overflow', 'hidden');
+			// show active
+			$('[data-item-group = ' + value + ']').addClass('is-show');
+			$scrollContainer.css('overflow', 'auto');
 
 		}
 	}
@@ -2334,9 +2327,6 @@ function shopsLocation() {
 
 		/*toggle "no item" message*/
 		$('.filter-no-item').remove();
-
-		/*count search shops*/
-		countShops(jsonResult.length);
 
 		if (!jsonResult.length) {
 			$('.shops').append($noItemTemplate.clone());
@@ -2373,15 +2363,15 @@ function shopsLocation() {
 				/*create balloon content*/
 				var balloonContent = '' +
 					'<div class="map-popup">' +
-					'<div class="map-popup__title">' + item.name + '</div>' +
-					'<div class="map-popup__list">' +
-					'<div class="map-popup__row work-time"><i class="depict-time"></i>' + item.work_time + '</div>' +
-					'<div class="map-popup__row"><i class="depict-phone"></i>' + item.phones + '</div>' +
-					'<div class="map-popup__row">' +
-					'<div class="map-popup__shops-tags">' + tags() + '</div>' +
-					'</div>' +
-					'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
-					'</div>' +
+						'<div class="map-popup__title">' + item.address + '</div>' +
+						'<div class="map-popup__list">' +
+							'<div class="map-popup__row work-time"><i class="depict-time"></i>' + item.time + '</div>' +
+							'<div class="map-popup__row"><i class="depict-phone"></i>' + item.phones + '</div>' +
+							// '<div class="map-popup__row">' +
+							// '<div class="map-popup__shops-tags">' + tags() + '</div>' +
+							// '</div>' +
+							'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
+						'</div>' +
 					'</div>';
 
 				/*add placemarks to the map*/
@@ -2394,10 +2384,10 @@ function shopsLocation() {
 					}, {
 						iconLayout: 'default#image',
 						iconImageHref: baseImageURL + 'pin-map.png',
-						iconImageSize: [40, 40],
-						iconImageOffset: [-20, -20],
+						iconImageSize: [46, 46],
+						iconImageOffset: [-23, -23],
 						hideIconOnBalloonOpen: false,
-						balloonOffset: [0, -61],
+						balloonOffset: [0, -23],
 						balloonPosition: ['center', 'top']
 					});
 
@@ -2433,7 +2423,7 @@ function shopsLocation() {
 			var index = $(this).data('more-id');
 
 			var $currentItem = $('.shops-aside [data-location-index="' + index + '"]');
-			if (!$currentItem.hasClass('item-active')) {
+			if (!$currentItem.hasClass('is-active')) {
 				$currentItem.find('.shops-item__title a').trigger('click');
 			}
 		})
@@ -2466,51 +2456,27 @@ function shopsLocation() {
 
 				var countEqual = 0;
 
-				// var countEqualFlag = countEqual + iItem.tags.length;
-
 				$.each(iItem.tags, function (j, jItem) {
 
-					// console.log("jItem: (" + i + "." + j + ") ", jItem.tags_label);
-
 					$.each(dataTagArr, function (l, lItem) {
-
-						// console.log("tag: ", lItem);
 
 						if (jItem.tags_label === lItem) {
 							countEqual++;
 							return false;
 						}
 
-						// countEqualFlag--;
-
 					});
-
-					// if (countEqualFlag === countEqual) return false;
-
-					// console.log('============STOP===========');
 
 				});
 
-				// console.log("countEqual == dataTagArr.length: ", countEqual + " == " + dataTagArr.length);
-
 				if (countEqual === dataTagArr.length) {
-					// console.log("i: ", i);
 					createNewResult(i);
 				}
-
-
-				// if (countEqualFlag === countEqual) return false;
-
-
-				// console.log("iT: ", iItem);
-				// console.log("iItem.tags: ", iItem.tags);
 			});
 
 			function createNewResult(index) {
 				newResult.push(jsonResult[index]);
 			}
-
-			// console.log("newResult: ", newResult);
 
 			reDrawNewCitiesMarks(newResult);
 
@@ -2552,9 +2518,43 @@ function shopsLocation() {
 		});
 	});
 
+	var $page = $('html,body'),
+		$item = $('.shops-item'),
+		$scrollContainer = $( '.shops-aside-holder' ),
+		prevPosition = 0;
+
+	$scrollContainer.on('scroll', function () {
+		prevPosition = $scrollContainer.scrollTop();
+	});
+
 	$('.shops-item__title').on('click', 'a', function (e) {
 		if (window.innerWidth < 1280) {
 			return;
+		}
+
+		var $currentHand = $(this),
+			$currentItem = $currentHand.closest($item),
+			duration = 300;
+
+		$item.removeClass('is-active');
+		$currentItem.addClass('is-active');
+
+		if (window.innerWidth > 979) {
+
+			var currentPosition = $currentItem.position().top + prevPosition;
+
+			if (!$scrollContainer.is(':animated') && currentPosition !== 0) {
+				$scrollContainer.stop().animate({scrollTop: currentPosition}, duration, function () {
+					prevPosition = currentPosition;
+				});
+			}
+
+		} else {
+
+			if (!$page.is(':animated')) {
+				$page.stop().animate({scrollTop: $currentItem.offset().top - $('.header').outerHeight()}, duration);
+			}
+
 		}
 
 		e.preventDefault();
@@ -2580,7 +2580,6 @@ function shopsLocation() {
 			class: 'count-loader'
 		});
 
-		$('.js-shops-count').append(countLoader.clone());
 		$('.shops-aside-frame').append(countLoader.clone());
 	}
 
@@ -2590,11 +2589,6 @@ function shopsLocation() {
 		$countLoader.fadeOut(700, function () {
 			$countLoader.remove();
 		});
-	}
-
-	/*count shops*/
-	function countShops(value) {
-		$('.shops-count__value', '.js-shops-count').text(value);
 	}
 
 	/*events clear filter button*/
@@ -2642,86 +2636,11 @@ function shopsLocation() {
 /*shops map end*/
 
 /**
- * shops accordion
- * */
-function shopsAccordion() {
-	var $container = $('.shops-item');
-
-	if ($container.length) {
-
-		var $page = $('html,body'),
-			$hand = $('.shops-item__title a'),
-			$content = $('.shops-item__extend'),
-			$scrollContainer = $( ".shops-aside-holder" ),
-			prevPosition = 0;
-
-		$scrollContainer.on('scroll', function () {
-			prevPosition = $scrollContainer.scrollTop();
-		});
-
-		$hand.on('click', function (e) {
-			e.preventDefault();
-			var duration = 'fast';
-
-			$content.slideUp(duration);
-
-			var $currentHand = $(this);
-			var $currentItem = $currentHand.closest($container);
-
-			if ( $currentHand.hasClass('active') ) {
-
-				$hand.removeClass('active');
-				$container.removeClass('item-active');
-
-				return false;
-
-			}
-
-			$hand.removeClass('active');
-			$container.removeClass('item-active');
-
-			$currentHand
-				.addClass('active')
-				.closest($container)
-				.addClass('item-active')
-				.find($content)
-				.stop()
-				.slideDown(duration, function () {
-					if (window.innerWidth > 979) {
-
-						var currentPosition = $currentItem.position().top + prevPosition;
-
-						if (!$scrollContainer.is(':animated') && currentPosition !== 0) {
-							$scrollContainer.stop().animate({scrollTop: currentPosition}, duration, function () {
-								prevPosition = currentPosition;
-							});
-						}
-
-					} else {
-
-						if (!$page.is(':animated')) {
-							$page.stop().animate({scrollTop: $currentItem.offset().top - $('.header').outerHeight()}, duration);
-						}
-
-					}
-				});
-		})
-	}
-}
-/*shops accordion*/
-
-/**
  * add shadow tape
  * */
 function addShadowTape() {
-	var shadowTop = $('.js-shadow-tape-top');
-
 	$('.shops-aside-holder').scroll(function () {
-		if ( $(this).scrollTop() > 0 ) {
-			shadowTop.stop().fadeIn();
-		} else {
-			shadowTop.stop().fadeOut();
-		}
+		$(this).parents().toggleClass('show-shadow', $(this).scrollTop() > 0)
 	});
 }
 /*add shadow tape end*/
@@ -2889,7 +2808,6 @@ $(document).ready(function () {
 	initJsDrops();
 	compactor();
 	shopsLocation();
-	shopsAccordion();
 	addShadowTape();
 	toggleViewShops();
 	objectFitImages('img'); // object-fit-images initial

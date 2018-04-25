@@ -630,7 +630,7 @@ html
 .footer-common__box
 	+padding-horizontal(round(nth($text-layout-space, 2)/2))
 	width: 50%
-	max-width: 680px
+	max-width: 719px
 
 	+media('<desk-md')
 		+padding-horizontal(round(nth($text-layout-space--md, 2)/2))
@@ -757,9 +757,23 @@ html
 	color: inherit
 	position: relative
 
+	&::before
+		content: ""
+		display: block
+		+ratio(679, 364)
+
 	+media('<tab-lg')
 		margin: 0 auto
 		max-width: 600px
+
+	img
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		max-width: none
+		+object-fit(cover)
 
 .btn-navigator
 	$space: 20px

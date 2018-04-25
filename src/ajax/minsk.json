@@ -1,268 +1,343 @@
 [
   {
-	"id": "23",
-	"id_escaped": "23",
-	"name": "ул. Дунина-Марцинкевича, 11",
-	"name_escaped": "ул. Дунина-Марцинкевича, 11",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431 - \u0432\u0441: 10:00 - 18:00",
-	"work_time_escaped": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431 - \u0432\u0441: 10:00 - 18:00",
-	"address": "ул. Дунина-Марцинкевича, 11",
-	"address_escaped": "ул. Дунина-Марцинкевича, 11",
-	"coord": "53.9071097, 27.4923474, 6",
-	"coord_escaped": "53.9071097, 27.4923474, 6",
+	"id": "1203",
+	"city": "г. Минск",
+	"address": "пр-т Независимости, 74",
+	"phones": "+375 (17) 292 97 50",
+	"time": "Пн–Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.922221, 27.602745",
+	"info": {
+	  "metro": "Метро Каменная горка"
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "24",
-	"id_escaped": "24",
-	"name": "ул. Молодёжная, 1",
-	"name_escaped": "ул. Молодёжная, 1",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u0432\u0442 - \u0432\u0441: 10:00 - 17:00, \u043f\u043d: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"work_time_escaped": "\u0432\u0442 - \u0432\u0441: 10:00 - 17:00, \u043f\u043d: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"address": "ул. Молодёжная, 1",
-	"address_escaped": "ул. Молодёжная, 1",
-	"coord": "53.8584379, 27.68927, 17",
-	"coord_escaped": "53.8584379, 27.68927, 17",
+	"id": "1206",
+	"city": "г. Минск",
+	"address": "ул. Немига, 8",
+	"phones": "+375 (17) 226 15 34",
+	"time": "Пн - Сб 10.00 - 21.00; Вс 10.00 - 20.00",
+	"coord": "53.903880, 27.550097",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "27",
-	"id_escaped": "27",
-	"name": "ул. Громова, 35",
-	"name_escaped": "ул. Громова, 35",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431 - \u0432\u0441: 10:00 - 18:00",
-	"work_time_escaped": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431 - \u0432\u0441: 10:00 - 18:00",
-	"address": "ул. Громова, 35",
-	"address_escaped": "ул. Громова, 35",
-	"coord": "53.8519967, 27.4429817, 17",
-	"coord_escaped": "53.8977751, 27.543135, 17",
+	"id": "1207",
+	"city": "г. Минск",
+	"address": "пл. Независимости, 3-2, ТЦ «Столица»",
+	"phones": "+375 (17) 327 41 48",
+	"time": "Пн – Вс 10.00-22.00",
+	"coord": "53.895756, 27.548014",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_cookery",
-		"tags_url": "img/depict-tag-02.png",
-		"tags_title": "Кулинария"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "31",
-	"id_escaped": "31",
-	"name": "Парк Белая Дача",
-	"name_escaped": "Парк Белая Дача",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d \u2014 \u0432\u0441: \u0441 10.00 \u0434\u043e 22.00",
-	"work_time_escaped": "\u043f\u043d \u2014 \u0432\u0441: \u0441 10.00 \u0434\u043e 22.00",
-	"address": "Парк Белая Дача",
-	"address_escaped": "Парк Белая Дача",
-	"coord": "53.8557999, 27.5103745, 16",
-	"coord_escaped": "53.8557999, 27.5103745, 16",
+	"id": "2201",
+	"city": "г. Минск",
+	"address": "пр-т Независимости, 56",
+	"phones": "+375 (17) 202 13 76",
+	"time": "Пн–Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.91722, 27.587613",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "53",
-	"id_escaped": "53",
-	"name": "пр. Независимости, 109",
-	"name_escaped": "пр. Независимости, 109",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d - \u043f\u0442: 9:00 - 18:00, \u0441\u0431 - \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"work_time_escaped": "\u043f\u043d - \u043f\u0442: 9:00 - 18:00, \u0441\u0431 - \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"address": "пр. Независимости, 109",
-	"address_escaped": "пр. Независимости, 109",
-	"coord": "53.90413589, 27.51337051, 17",
-	"coord_escaped": "53.90413589, 27.51337051, 17",
+	"id": "2203",
+	"city": "г. Минск",
+	"address": "ул. Московская, 9",
+	"phones": "+375 (17) 200 21 28, факс +375 (17) 222 79 84",
+	"time": "Пн-Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.888432, 27.539289",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
-	  {
-		"tags_label": "tag_cookery",
-		"tags_url": "img/depict-tag-02.png",
-		"tags_title": "Кулинария"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "57",
-	"id_escaped": "57",
-	"name": "ул. Орловская, 42",
-	"name_escaped": "ул. Орловская, 42",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d - \u0441\u0431: 10.00 - 18.00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"work_time_escaped": "\u043f\u043d - \u0441\u0431: 10.00 - 18.00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"address": "ул. Орловская, 42",
-	"address_escaped": "ул. Орловская, 42",
-	"coord": "53.9294113, 27.62992859, 18",
-	"coord_escaped": "53.8712, 27.4163, 18",
+	"id": "2209",
+	"city": "г. Минск",
+	"address": "пр-т Партизанский, 87",
+	"phones": "+375 (17) 250 22 92",
+	"time": "Пн–Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.874469, 27.633188",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
-	  {
-		"tags_label": "tag_cookery",
-		"tags_url": "img/depict-tag-02.png",
-		"tags_title": "Кулинария"
-	  },
-	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
-	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
-	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   },
   {
-	"id": "79",
-	"id_escaped": "79",
-	"name": "Немига ул., 5",
-	"name_escaped": "Немига ул., 5",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d \u2014 \u043f\u0442: \u0441 10.00 \u0434\u043e 20.00, \u0441\u0431 \u2014 \u0432\u0441: \u0441 10.00 \u0434\u043e 18.00",
-	"work_time_escaped": "\u043f\u043d \u2014 \u043f\u0442: \u0441 10.00 \u0434\u043e 20.00, \u0441\u0431 \u2014 \u0432\u0441: \u0441 10.00 \u0434\u043e 18.00",
-	"address": "Немига ул., 5",
-	"address_escaped": "Немига ул., 5",
-	"coord": "53.9022, 27.5498, 17",
-	"coord_escaped": "53.9022, 27.5498, 17",
+	"id": "2301",
+	"city": "г. Минск",
+	"address": "ТРЦ «Экспобел»",
+	"phones": "+375 (17) 237 94 56",
+	"time": "Пн– Вс 10.00-22.00",
+	"coord": "53.964578, 27.624528",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2513",
+	"city": "г. Минск",
+	"address": "ул. Кирова, 1",
+	"phones": "+375 (17) 200 81 09",
+	"time": "Пн–Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.892203, 27.55107",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_cookery",
-		"tags_url": "img/depict-tag-02.png",
-		"tags_title": "Кулинария"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2519",
+	"city": "г. Минск",
+	"address": "пр-т Победителей, 65, ТЦ «Замок»",
+	"phones": "+375 (29) 198 23 36",
+	"time": "Пн–Вс 10.00-22.00",
+	"coord": "53.924561, 27.517549",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2541",
+	"city": "г. Минск",
+	"address": "ул. Денисовская, 8/2, ТЦ «Е-Сити»",
+	"phones": "+375 (17) 366 52 13; +375 (17) 366 51 32",
+	"time": "10.00 - 22.00",
+	"coord": "53.871723, 27.572761",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2544",
+	"city": "г. Минск",
+	"address": "Дискаунтер, ул. Я.Коласа,34",
+	"phones": "+375 (17) 292 02 52",
+	"time": "Пн - Пт 11.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "53.927365, 27.595969",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2547",
+	"city": "г. Минск",
+	"address": "ул. Долгобродская, 30",
+	"phones": "+375 (17) 299 06 07",
+	"time": "Пн -Сб 10.00- 20.00; Вс10.00-18.00",
+	"coord": "53.8877, 27.6168",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2600",
+	"city": "г. Минск",
+	"address": "пр-т Дзержинского, 104, ТЦ «Титан» (2 этаж)",
+	"phones": "+375(17) 336 51 56",
+	"time": "Пн-Вс 10.00 -21.00",
+	"coord": "53.862153, 27.480380",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2602",
+	"city": "г. Минск",
+	"address": "пр-т Партизанский, 150 А ТЦ «МОМО»",
+	"phones": "+375 (17) 316 59 07",
+	"time": "Пн-Вс 10.00-22.00",
+	"coord": "53.859963, 27.674293",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2612",
+	"city": "г. Минск",
+	"address": "ул.Владислава Голубка,д.2 ТЦ «Бонус» (2 этаж)",
+	"phones": "+375 (29) 170 22 35",
+	"time": "Пн - Вс 10:00 -21:00",
+	"coord": "53.925863, 27.444273",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2613",
+	"city": "г. Минск",
+	"address": "ул. Мстиславца, 11, ТРЦ «DANA MALL»",
+	"phones": "+375 (17) 337 94 09",
+	"time": "Пн-Вс 10.00-22.00",
+	"coord": "53.933782, 27.652930",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2616",
+	"city": "г. Минск",
+	"address": "ул.Рафиева, 64, ТЦ «Базис» «MEGATOP. Аутлет»",
+	"phones": "+375 (17) 392 03 78",
+	"time": "Пн - Вс 10.00 - 21.00",
+	"coord": "53.862570, 27.442063",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2617",
+	"city": "г. Минск",
+	"address": "ул. Притыцкого, 29 ТЦ «Тивали»",
+	"phones": "+375 (17) 336 03 10",
+	"time": "Пн-Вс 10.00-21.00",
+	"coord": "53.907720, 27.484446",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2618",
+	"city": "г. Минск",
+	"address": "ул. Притыцкого, 156, ТРЦ «Грин Сити»",
+	"phones": "+375 (17) 240 99 74",
+	"time": "Пн-Вс 10.00-22.00",
+	"coord": "53.908464, 27.432244",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   }

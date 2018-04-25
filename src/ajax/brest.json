@@ -1,37 +1,91 @@
 [
   {
-	"id": "99",
-	"id_escaped": "99",
-	"name": "ул. Пионерская, 202",
-	"name_escaped": "ул. Пионерская, 202",
-	"phones": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"phones_escaped": "8 (017) 228-17-35, 8 (017) 228-17-35",
-	"work_time": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431: 10:00 - 18:00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"work_time_escaped": "\u043f\u043d - \u043f\u0442: 10:00 - 20:00, \u0441\u0431: 10:00 - 18:00, \u0432\u0441: \u0432\u044b\u0445\u043e\u0434\u043d\u043e\u0439",
-	"address": "ул. Пионерская, 202",
-	"address_escaped": "ул. Пионерская, 202",
-	"coord": "52.09603308, 23.73230875, 17",
-	"coord_escaped": "52.09603308, 23.73230875, 17",
+	"id": "2306",
+	"city": "г. Брест",
+	"address": "б-р Шевченко, 5",
+	"phones": "+375 (162) 20 04 46",
+	"time": "Пн – Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "52.085755, 23.702945",
+	"info": {
+	  "metro": ""
+	},
 	"tags": [
 	  {
-		"tags_label": "tag_bank",
-		"tags_url": "img/depict-tag-01.png",
-		"tags_title": "Банкоматы"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2516",
+	"city": "г. Брест",
+	"address": "ул. Советская, 85",
+	"phones": "+375 (162) 52 53 00",
+	"time": "Пн – Пт 10.00-20.00; Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "52.0894, 23.6945",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_pizzeria",
-		"tags_url": "img/depict-tag-03.png",
-		"tags_title": "Пиццерия"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2542",
+	"city": "г. Брест",
+	"address": "Варшавское шоссе, 11",
+	"phones": "+375 (162) 50 11 47",
+	"time": "Пн – Вс 10.00-21.00",
+	"coord": "52.075447, 23.717790",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_baking",
-		"tags_url": "img/depict-tag-04.png",
-		"tags_title": "Выпечка"
-	  },
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2554",
+	"city": "г. Брест",
+	"address": "ул. Пушкинская, 20",
+	"phones": "+375 (162) 54 85 63; +375 (162) 54 85 64",
+	"time": "Пн–Сб 10.00-20.00; Вс 10.00-18.00",
+	"coord": "52.096007, 23.690418",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
 	  {
-		"tags_label": "tag_pharmacy",
-		"tags_url": "img/depict-tag-05.png",
-		"tags_title": "Аптека"
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
+	  }
+	]
+  },
+  {
+	"id": "2615",
+	"city": "г. Брест",
+	"address": "пр-т Машерова, 17-1 (ЦУМ)",
+	"phones": "+375 (162) 50 31 06",
+	"time": "Пн- Вс 10.00-22.00",
+	"coord": "52.085294, 23.695863",
+	"info": {
+	  "metro": ""
+	},
+	"tags": [
+	  {
+		"tags_label": "",
+		"tags_url": "",
+		"tags_title": ""
 	  }
 	]
   }

@@ -49,6 +49,7 @@
 						<!--footer nav-->
 						<div class="footer-nav">
 							<div class="footer-nav__box">
+								@@if(!context.actions){
 								<strong class="footer-nav__title"><span>Навигатор по магазинам</span></strong>
 								<a href="#" class="navigator">
 									<span class="btn-navigator btn-with-icon">
@@ -57,6 +58,13 @@
 									</span>
 									<img src="img/img-location.jpg" alt="Навигатор по магазинам" />
 								</a>
+								}
+								@@if(context.actions){
+								<strong class="footer-nav__title"><a href="#">Акции</a></strong>
+								<a href="#" class="navigator">
+									<img src="img/img-actions.jpg" alt="Акции" />
+								</a>
+								}
 							</div>
 						</div>
 						<!--footer nav end-->
