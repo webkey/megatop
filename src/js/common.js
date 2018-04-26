@@ -2360,77 +2360,14 @@ function initJsDrops(){
 }
 /*init js drop end*/
 
-/**
- * compactor
- * */
-function compactor() {
-	var $main = $('.location-filter');
-
-	if ($main.length) {
-
-		var $itemsContainer = $('.location-filter-list');
-
-		$(window).on('load', function () {
-			$itemsContainer.contents().clone().appendTo('#location-filter-clone');
-		});
-
-		var $items = $itemsContainer.find('.location-filter-item');
-		var minWidthItem = 165;
-		var itemsContainerWidth, lengthAllItems, actualTotalWidth, hideItemsLength;
-
-		var $cloneContainer = $('.js-compactor-clone');
-		var $moreBtnTextMain = $cloneContainer.find('.js-compactor-btn-main');
-		var $moreBtnTextAlt = $cloneContainer.find('.js-compactor-btn-alt');
-
-		$(window).on('load resizeByWidth', function () {
-			if (window.innerWidth < 640) {
-				minWidthItem = 155;
-			}
-
-			itemsContainerWidth = ($cloneContainer.is(':visible')) ? $itemsContainer.width() : $itemsContainer.width() - $cloneContainer.outerWidth();
-			lengthAllItems = $items.length;
-
-			actualTotalWidth = lengthAllItems * minWidthItem;
-			hideItemsLength = ( itemsContainerWidth > actualTotalWidth ) ? 0 : Math.abs(Math.ceil((actualTotalWidth - itemsContainerWidth)/minWidthItem));
-
-			// set the width of the visible items (in percent)
-			$items.css('width', (1/(lengthAllItems - hideItemsLength)*100)+'%');
-			// $cloneContainer.css('width', newWidthItem);
-
-			// if(lengthAllItems == hideItemsLength + 1){
-			if(lengthAllItems == hideItemsLength){
-				$moreBtnTextAlt.attr('style','display: inline-block;');
-				$moreBtnTextMain.attr('style','display: none;');
-			} else {
-				$moreBtnTextAlt.attr('style','display: none;');
-				$moreBtnTextMain.attr('style','display: inline-block;');
-			}
-
-			// $main.toggleClass('show-clone', lengthAllItems * minWidthItem > itemsContainerWidth);
-			$main.toggleClass('show-btn-more', hideItemsLength > 0);
-			$main.toggleClass('hide-all-items', hideItemsLength === lengthAllItems);
-
-			$('.location-filter-item').removeClass('compactor-cloned');
-
-			for ( var i = 0; i <= hideItemsLength; i++ ) {
-				// var indexCloned = lengthAllItems - i - 1;
-				var indexCloned = lengthAllItems - i;
-				$($items[indexCloned]).addClass('compactor-cloned');
-				$($cloneContainer.find('.location-filter-item')[indexCloned]).addClass('compactor-cloned');
-			}
-		});
-
-	}
-}
-/*compactor end*/
-
 /**!
  * shops location
  * */
 function shopsLocation() {
 	if ( !$('.shops').length ) return false;
 
-	var myMap,
+	var $page = $('html, body'),
+		myMap,
 		myClusterer,
 		myPlacemark = [],
 		mapId = "#shops-map",
@@ -2439,7 +2376,10 @@ function shopsLocation() {
 		$selectCity = $('#selectCity'),
 		urlShops = $selectCity.attr('data-path'),
 		currentCity = $selectCity.attr('data-current'),
-		fullscreenControl;
+		$shopsItem = $('.shops-item'),
+		shopsItemActiveClass = 'is-active',
+		fullscreenControl,
+		duration = 300;
 
 	/*initial map*/
 	if ( $mapId.length ) {
@@ -2594,7 +2534,7 @@ function shopsLocation() {
 		}
 
 		/*hide all item on shops list*/
-		$('.shops-item','.shops-aside-group').hide(0);
+		$($shopsItem,'.shops-aside-group').hide(0);
 
 		/*toggle "no item" message*/
 		$('.filter-no-item').remove();
@@ -2687,16 +2627,27 @@ function shopsLocation() {
 	/*show more information*/
 	function showMoreInfo() {
 		$('body').on('click', 'ymaps .more', function (e) {
-			e.preventDefault();
-
+			var $curBtn = $(this);
 			fullscreenControl.exitFullscreen();
 
-			var index = $(this).data('more-id');
+			var $currentItem = $('.shops-aside [data-location-index="' + $(this).data('more-id') + '"]');
 
-			var $currentItem = $('.shops-aside [data-location-index="' + index + '"]');
-			if (!$currentItem.hasClass('is-active')) {
+			if (window.innerWidth > 1355 && !$currentItem.hasClass(shopsItemActiveClass)) {
 				$currentItem.find('.shops-item__title a').trigger('click');
 			}
+
+
+			if (window.innerWidth < 1366) {
+				// switch tabs
+				$curBtn.closest('.tabs-js').find('[href*="#shopsListView"]').trigger('click');
+				$shopsItem.removeClass(shopsItemActiveClass);
+				$currentItem.addClass(shopsItemActiveClass);
+				if (!$page.is(':animated')) {
+					$page.stop().animate({scrollTop: $currentItem.offset().top - $('.header').outerHeight()}, duration);
+				}
+			}
+
+			e.preventDefault();
 		})
 	}
 
@@ -2766,7 +2717,7 @@ function shopsLocation() {
 		}
 
 		var $page = $('html, body');
-		var index = $(this).closest('.shops-item').data('location-index');
+		var index = $(this).closest($shopsItem).data('location-index');
 
 		if (window.innerWidth < 980) {
 
@@ -2789,9 +2740,7 @@ function shopsLocation() {
 		});
 	});
 
-	var $page = $('html,body'),
-		$item = $('.shops-item'),
-		$scrollContainer = $( '.shops-aside-holder' ),
+	var $scrollContainer = $( '.shops-aside-holder' ),
 		prevPosition = 0;
 
 	$scrollContainer.on('scroll', function () {
@@ -2799,18 +2748,23 @@ function shopsLocation() {
 	});
 
 	$('.shops-item__title').on('click', 'a', function (e) {
-		if (window.innerWidth < 1280) {
-			return;
-		}
+		// if (window.innerWidth < 1280) {
+		// 	return;
+		// }
 
 		var $currentHand = $(this),
-			$currentItem = $currentHand.closest($item),
-			duration = 300;
+		$currentItem = $currentHand.closest($shopsItem),
+		$shopsContainer = $('.shops');
 
-		$item.removeClass('is-active');
-		$currentItem.addClass('is-active');
+		// switch tabs
+		if(window.innerWidth < 1366){
+			$currentHand.closest('.tabs-js').find('[href*="#shopsMapView"]').trigger('click');
+		}
 
-		if (window.innerWidth > 979) {
+		$shopsItem.removeClass(shopsItemActiveClass);
+		$currentItem.addClass(shopsItemActiveClass);
+
+		if (window.innerWidth > 1365) {
 
 			var currentPosition = $currentItem.position().top + prevPosition;
 
@@ -2819,18 +2773,15 @@ function shopsLocation() {
 					prevPosition = currentPosition;
 				});
 			}
-
 		} else {
-
 			if (!$page.is(':animated')) {
-				$page.stop().animate({scrollTop: $currentItem.offset().top - $('.header').outerHeight()}, duration);
+				$page.stop().animate({scrollTop: $shopsContainer.offset().top - $('.header').outerHeight()}, duration);
 			}
-
 		}
 
 		e.preventDefault();
 
-		var index = $(this).closest('.shops-item').data('location-index');
+		var index = $(this).closest($shopsItem).data('location-index');
 
 		if (moveFlag === index) return false;
 		moveFlag = index;
@@ -2945,44 +2896,14 @@ function toggleViewShops() {
 			}
 		});
 
-		$('.to-map').on('click', 'a', function (e) {
-			e.preventDefault();
-
-			if ( window.innerWidth < 1280 && window.innerWidth > 979 ) {
-				$switcherHand.eq(1).removeClass(activeHand);
-				$switcherHand.eq(0).addClass(activeHand);
-
-				$container.addClass(activeContainer);
-			}
-		});
-
-		$('.shops-map').on('click', '.more', function (e) {
-			e.preventDefault();
-
-			if ( window.innerWidth < 1280 && window.innerWidth > 979 ) {
-				$switcherHand.eq(0).removeClass(activeHand);
-				$switcherHand.eq(1).addClass(activeHand);
-
-				$container.removeClass(activeContainer);
-			}
-		});
-
-		// $('.shops-aside-swiper').swipe({
-		// 	swipeLeft: function () {
-		// 		if ( $switcherHand.eq(1).hasClass(activeHand) ) return false;
+		// $('.shops-map').on('click', '.more', function (e) {
+		// 	e.preventDefault();
 		//
+		// 	if ( window.innerWidth < 1280 && window.innerWidth > 979 ) {
 		// 		$switcherHand.eq(0).removeClass(activeHand);
 		// 		$switcherHand.eq(1).addClass(activeHand);
 		//
 		// 		$container.removeClass(activeContainer);
-		// 	},
-		// 	swipeRight: function () {
-		// 		if ( $switcherHand.eq(0).hasClass(activeHand) ) return false;
-		//
-		// 		$switcherHand.eq(1).removeClass(activeHand);
-		// 		$switcherHand.eq(0).addClass(activeHand);
-		//
-		// 		$container.addClass(activeContainer);
 		// 	}
 		// });
 
@@ -3078,7 +2999,6 @@ $(document).ready(function () {
 	orderCalculation();
 	tabSwitcher();
 	initJsDrops();
-	compactor();
 	shopsLocation();
 	addShadowTape();
 	toggleViewShops();

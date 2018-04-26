@@ -10403,19 +10403,54 @@ a.c-tr:hover {
 }
 
 /* order list end */
-/*shops view switcher */
+/*shops network */
+.shops {
+	overflow: hidden;
+	position: relative;
+}
+
+/* shops-options */
+.shops-options {
+	position: relative;
+	height: 0;
+}
+
+@media (max-width: 1365px) {
+	.shops-options {
+		height: 80px;
+		background-color: #f3f3f3;
+	}
+}
+
+.select-city {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 80px;
+	width: 410px;
+	padding: 15px 20px 0;
+	background-color: white;
+	border: solid #ccc;
+	border-width: 0 1px 0 0;
+	z-index: 1;
+}
+
+@media (max-width: 1365px) {
+	.select-city {
+		border-width: 0;
+		padding-left: 30px;
+		background-color: #f3f3f3;
+	}
+}
+
+/* shops-options end */
+/* shops-view-switcher */
 .shops-view-switcher {
 	position: absolute;
-	right: 10px;
-	top: 10px;
-	width: 68px;
-	height: 34px;
-	overflow: hidden;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+	right: 30px;
+	top: 15px;
 	display: none;
-	z-index: 10;
+	z-index: 1;
 }
 
 @media (max-width: 1365px) {
@@ -10430,107 +10465,50 @@ a.c-tr:hover {
 	}
 }
 
-.shops-view-switcher a {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	text-indent: -9999px;
-	background: url(../img/depict-switcher-map-2x.png) no-repeat -33px 0;
-	background-size: 66px;
+.shops-view-switcher a.active-tab {
+	display: none;
 }
 
-.shops-view-switcher a.active {
-	background-color: #b0b0b0;
-	opacity: 0.4;
-	cursor: default;
-}
-
-.shops-view-switcher a:first-child {
-	right: auto;
-	left: 0;
-	background-position: 0 0;
-}
-
-/*shops view switcher end */
-/*shops result end */
-/*shops network */
-.shops {
-	overflow: hidden;
-	position: relative;
-}
-
-@media (max-width: 1365px) {
-	.shops {
-		padding-top: 100% 80px;
-	}
-}
-
-@media (max-width: 991px) {
-	.shops {
-		overflow: visible;
-	}
-}
-
-.shops-holder {
+/* shops-view-switcher end */
+.shops-holder, .shops-location {
 	height: 745px;
 }
 
 @media (max-width: 1599px) {
 	.shops-holder {
-		height: 550px;
-	}
-}
-
-@media (max-width: 1365px) {
-	.shops-holder {
-		width: 200%;
-		-ms-transform: translate(-50%, 0);
-		    transform: translate(-50%, 0);
-		transform: translate3d(-50%, 0, 0);
-		will-change: transform, opacity;
-		transition-property: transform, opacity;
-		transition-duration: 0.2s;
-		transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
-	}
-	.view-shops-active .shops-holder {
-		-ms-transform: translate(0, 0);
-		    transform: translate(0, 0);
-		transform: translate3d(0, 0, 0);
-	}
-}
-
-@media (max-width: 991px) {
-	.shops-holder {
 		height: auto;
-		width: 100%;
-		-ms-transform: translate(0, 0);
-		    transform: translate(0, 0);
-		transform: translate3d(0, 0, 0);
 	}
 }
 
 /* shops-map */
+.shops-location {
+	float: right;
+	border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 1599px) {
+	.shops-location {
+		height: 550px;
+	}
+}
+
+@media (min-width: 1366px) {
+	.shops-location {
+		position: relative !important;
+		left: auto !important;
+		top: auto !important;
+		height: 745px !important;
+		width: calc(100% - 410px) !important;
+		z-index: auto !important;
+		visibility: visible !important;
+		opacity: 1 !important;
+	}
+}
+
 .shops-map {
 	position: relative;
-	float: right;
-	width: calc(100% - 410px);
+	height: 100%;
 	background: #f3f3f3;
-	height: 550px;
-}
-
-@media (max-width: 1365px) {
-	.shops-map {
-		width: 50%;
-	}
-}
-
-@media (max-width: 991px) {
-	.shops-map {
-		height: 348px;
-	}
 }
 
 /* shops-map */
@@ -10541,28 +10519,38 @@ a.c-tr:hover {
 	float: left;
 	height: 100%;
 	width: 410px;
-	background: #fff;
+	padding-top: 80px;
+	background: white;
 	border: solid #ccc;
 	border-width: 0 1px 0 0;
 }
 
-@media (max-width: 1365px) {
+@media (min-width: 1366px) {
 	.shops-aside {
-		width: 50%;
+		position: relative !important;
+		left: auto !important;
+		top: auto !important;
+		height: 100% !important;
+		width: 410px !important;
+		z-index: auto !important;
+		visibility: visible !important;
+		opacity: 1 !important;
 	}
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1365px) {
 	.shops-aside {
 		height: auto;
-		width: 100%;
+		width: auto;
+		padding-top: 0;
 		float: none;
 		margin: 0;
+		border-width: 0;
 	}
 }
 
 .shops-aside-frame {
-	height: calc(100% - 80px);
+	height: 100%;
 	overflow: hidden;
 	position: relative;
 	border: solid #ccc;
@@ -10596,13 +10584,6 @@ a.c-tr:hover {
 }
 
 /* shops-aside layout end */
-/* select city */
-.select-city {
-	height: 80px;
-	padding: 15px 20px 0;
-}
-
-/* select city end */
 /* shapes for scroll area */
 [class*="shadow-tape-"],
 [class^="shadow-tape-"] {
@@ -10676,6 +10657,13 @@ a.c-tr:hover {
 
 .no-touchevents .shops-item__title a:hover {
 	color: #f70106;
+}
+
+@media (min-width: 1366px) {
+	.no-touchevents .is-active .shops-item__title a, .is-active .shops-item__title a {
+		color: inherit;
+		cursor: default;
+	}
 }
 
 .shops-item__list, .shops-item__info {

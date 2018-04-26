@@ -2,19 +2,51 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/*shops view switcher
+/*shops network
+.shops
+	overflow: hidden
+	position: relative
+
+/* shops-options
+.shops-options
+	position: relative
+	height: 0
+
+	+media('<desk-md')
+		height: nth($shops-select-size, 2)
+		background-color: $bg-color-alt
+
+.select-city
+	position: absolute
+	left: 0
+	top: 0
+	height: nth($shops-select-size, 2)
+	width: nth($shops-aside-size, 1)
+	padding: 15px 20px 0
+	background-color: $bg-color
+	border: solid $border-color
+	border-width: 0 1px 0 0
+	z-index: 1
+
+	+media('<desk-md')
+		border-width: 0
+		padding-left: nth($text-layout-space--md, 2)
+		background-color: $bg-color-alt
+
+/* shops-options end
+
+/* shops-view-switcher
 .shops-view-switcher
 	position: absolute
-	right: 10px
-	top: 10px
-	width: 68px
-	height: 34px
-	overflow: hidden
-	box-sizing: border-box
-	border: 1px solid #ccc
-	border-radius: 5px
+	right: nth($text-layout-space--md, 2)
+	top: 15px
+	//width: 68px
+	//height: 34px
+	//overflow: hidden
+	//border: 1px solid #ccc
+	//border-radius: 5px
 	display: none
-	z-index: 10
+	z-index: 1
 
 	+media('<desk-md')
 		display: block
@@ -23,6 +55,10 @@
 		display: none
 
 .shops-view-switcher a
+	&.active-tab
+		display: none
+
+//.shops-view-switcher a
 	position: absolute
 	top: 0
 	right: 0
@@ -34,38 +70,31 @@
 	-webkit-background-size: 66px
 	background-size: 66px
 
-.shops-view-switcher a.active
+//.shops-view-switcher a.active
 	background-color: #b0b0b0
 	opacity: 0.4
 	cursor: default
 
-.shops-view-switcher a:first-child
+//.shops-view-switcher a:first-child
 	right: auto
 	left: 0
 	background-position: 0 0
 
-/*shops view switcher end
-/*shops result end
+/* shops-view-switcher end
 
-/*shops network
-// layout
-.shops
-	overflow: hidden
-	position: relative
-
-	+media('<desk-md')
-		padding-top: $shops-select-size
-
-	+media('<tab-lg')
-		overflow: visible
+// высоту необходимо задать на два блока:
+// родительський и дочерний, -
+// из-за работы скрипта
+.shops-holder, .shops-location
+	height: $shops-map-height
 
 .shops-holder
-	height: 745px
+	//height: 745px
 
-	+media('<desk-lg')
-		height: 550px
+	//+media('<desk-lg')
+		//height: 550px
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		width: 200%
 		transform: translate(-50%, 0)
 		transform: translate3d(-50%, 0, 0)
@@ -76,29 +105,47 @@
 			duration: $animation-speed
 			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
-		.view-shops-active &
+		//.view-shops-active &
 			transform: translate(0, 0)
 			transform: translate3d(0, 0, 0)
 
-	+media('<tab-lg')
+	+media('<desk-lg')
+		height: auto
+
+	//+media('<tab-lg')
 		height: auto
 		width: 100%
 		transform: translate(0, 0)
 		transform: translate3d(0, 0, 0)
 
 /* shops-map
+.shops-location
+	float: right
+	border-bottom: 1px solid $border-color
+
+	+media('<desk-lg')
+		height: $shops-map-height--sm
+
+	// перебить стили назначенные скриптом
+	+media('>=desk-md')
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: $shops-map-height !important
+		width: calc(100% - #{nth($shops-aside-size, 1)}) !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+
 .shops-map
 	position: relative
-	float: right
-	//height: 100%
-	width: calc(100% - #{nth($shops-aside-size, 1)})
+	height: 100%
 	background: #f3f3f3
-	height: 550px
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		width: 50%
 
-	+media('<tab-lg')
+	//+media('<tab-lg')
 		height: 348px
 
 /* shops-map
@@ -110,21 +157,33 @@
 	float: left
 	height: 100%
 	width: nth($shops-aside-size, 1)
-	background: #fff
+	padding-top: nth($shops-select-size, 2)
+	background: $bg-color
 	border: solid $border-color
 	border-width: 0 1px 0 0
 
-	+media('<desk-md')
-		width: 50%
+	// перебить стили назначенные скриптом
+	+media('>=desk-md')
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: 100% !important
+		width: nth($shops-aside-size, 1) !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
 
-	+media('<tab-lg')
+	+media('<desk-md')
 		height: auto
-		width: 100%
+		width: auto
+		padding-top: 0
 		float: none
 		margin: 0
+		border-width: 0
 
 .shops-aside-frame
-	height: calc(100% - #{nth($shops-select-size, 2)})
+	//height: calc(100% - #{nth($shops-select-size, 2)})
+	height: 100%
 	overflow: hidden
 	position: relative
 	border: solid $border-color
@@ -148,13 +207,6 @@
 		display: block
 
 /* shops-aside layout end
-
-/* select city
-.select-city
-	height: nth($shops-select-size, 2)
-	padding: 15px 20px 0
-
-/* select city end
 
 /* shapes for scroll area
 [class*="shadow-tape-"],
@@ -213,6 +265,11 @@
 
 		.no-touchevents &:hover
 			color: $base-color
+
+		+media('>=desk-md')
+			.no-touchevents .is-active &, .is-active &
+				color: inherit
+				cursor: default
 
 .shops-item__list, .shops-item__info
 	color: #333

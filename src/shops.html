@@ -166,35 +166,43 @@
 				</div>
 			</div>-->
 					<!--shops-->
-					<section class="shops tabs-js">
+					<section class="shops tabs-js" data-auto-height="true">
 						<!--<div class="shops-view-switcher">
 					<a href="#" class="js-shops-view-map" title="Показать на карте">Карта</a>
 					<a href="#" class="js-shops-view-list active" title="В виде списка">Список</a>
 				</div>-->
-						<div class="shops-view-switcher">
-							<a href="#shopsMapView" class="tab-anchor-js active-tab" title="Показать на карте">Карта</a>
-							<a href="#shopsListView" class="tab-anchor-js" title="В виде списка">Список</a>
+						<!--shops-options-->
+						<div class="shops-options">
+							<!--select-city-->
+							<div class="select-city">
+								<div class="select">
+									<select name="filter-type" id="selectCity" data-current="minsk" data-path="ajax">
+								<!--<option value="0">Выберите город</option>-->
+								<!--<option value="0">...</option>-->
+								<option value="minsk">Минск</option>
+								<option value="brest">Брест</option>
+							</select>
+								</div>
+							</div>
+							<!--select-city end-->
+							<!--shops-view-switcher-->
+							<div class="shops-view-switcher">
+								<a href="#shopsMapView" class="btn-default-alt tab-anchor-js " title="Показать на карте">На карте</a>
+								<a href="#shopsListView" class="btn-default-alt tab-anchor-js active-tab" title="В виде списка">Списком</a>
+							</div>
+							<!--shops-view-switcher end-->
 						</div>
+						<!--shops-options end-->
 						<div class="shops-holder tab-container-js">
 							<!--shops-map-->
-							<div class="tab-content-js" id="shopsMapView">
+							<!--<a href="#" class="tab-link-js">На карте</a>-->
+							<div class="shops-location tab-content-js" id="shopsMapView">
 								<div id="shops-map" class="shops-map"></div>
 							</div>
 							<!--shops-map end-->
 							<!--shops-aside-->
+							<!--<a href="#" class="tab-link-js">Список магазинов</a>-->
 							<div class="shops-aside tab-content-js" id="shopsListView">
-								<!--select-city-->
-								<div class="select-city">
-									<div class="select">
-										<select name="filter-type" id="selectCity" data-current="minsk" data-path="ajax">
-									<!--<option value="0">Выберите город</option>-->
-									<!--<option value="0">...</option>-->
-									<option value="minsk">Минск</option>
-									<option value="brest">Брест</option>
-								</select>
-									</div>
-								</div>
-								<!--select-city end-->
 								<!--shops-aside layout-->
 								<div class="shops-aside-frame">
 									<div class="shadow-tape-top shadow-tape-js"></div>
