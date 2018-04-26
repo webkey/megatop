@@ -640,8 +640,6 @@ function selectLang() {
 
 				$currentItemContent.slideUp(animateSpeed, function () {
 
-					// console.log('closed');
-
 					if (self._collapseInside) {
 						var $internalContent = $currentItem.find(self.$accordionHeader).next();
 
@@ -651,7 +649,6 @@ function selectLang() {
 								// self.scrollPosition($currentItem);
 
 								$(this).slideUp(self._animateSpeed, function () {
-									// console.log('closed attachment');
 									self.scrollPosition($currentItem);
 								});
 							}
@@ -670,19 +667,14 @@ function selectLang() {
 
 			var $siblings = $currentItem.siblings();
 
-			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
-				// console.log('closed siblings');
-			});
+			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed);
 
 			$siblings.removeClass(modifiers.activeItem);
 			$siblings.find(self.$accordionHeader).removeClass(modifiers.activeHeader);
 			$siblings.find(self.$accordionHand).removeClass(modifiers.activeHand);
 			$siblings.find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
 
-			// self.scrollPosition($currentItem);
-
 			$currentItemContent.slideDown(animateSpeed, function () {
-				// console.log('opened');
 				self.scrollPosition($currentItem);
 			});
 
@@ -771,11 +763,7 @@ function selectLang() {
 
 			// self.scrollPosition($currentItem);
 
-			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
-				// console.log('opened active');
-
-				// self.scrollPosition($currentItem);
-			});
+			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed);
 		});
 	};
 
@@ -783,9 +771,7 @@ function selectLang() {
 	JsAccordion.prototype.closeAllAccordions = function() {
 		var self = this;
 
-		self.$accordionHeader.next().slideUp(self._animateSpeed, function () {
-			// console.log('closed all');
-		});
+		self.$accordionHeader.next().slideUp(self._animateSpeed);
 
 		var modifiers = self.modifiers;
 
@@ -799,9 +785,7 @@ function selectLang() {
 	JsAccordion.prototype.openAllAccordions = function() {
 		var self = this;
 
-		self.$accordionHeader.next().slideDown(self._animateSpeed, function () {
-			// console.log('open all');
-		});
+		self.$accordionHeader.next().slideDown(self._animateSpeed);
 
 		var modifiers = self.modifiers;
 
@@ -972,8 +956,6 @@ function filterJob() {
 
 		$container.on('click', self.options.handler, function (e) {
 			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
-			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
-			// console.log("$currentHandler: ", $currentHandler);
 			var $currentItem = $currentHandler.closest($item);
 
 			if ($currentItem.has($(panel)).length) {
@@ -1004,7 +986,6 @@ function filterJob() {
 		var openClass = self.modifiers.active;
 
 		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
-			// console.log('mAccordionAfterClose');
 			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
 		});
 
@@ -1020,7 +1001,6 @@ function filterJob() {
 		$currentItem.addClass(self.modifiers.active);
 
 		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
-			// console.log('mAccordionAfterOpened');
 			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
 		});
 	};
@@ -1506,15 +1486,6 @@ function stickyInit() {
 			var curAttrSelect = $curFilter.attr(self.attributes.dataSelect);
 			var curAttrName = $curFilter.attr(self.attributes.dataName) || $('option:selected', $curFilter).attr(self.attributes.dataName);
 			var curAttrTag = $curFilter.attr(self.attributes.dataTag) || $('option:selected', $curFilter).attr(self.attributes.dataTag);
-			// console.log("curAttrGroup: ", curAttrGroup);
-			// console.log("curAttrSelect: ", curAttrSelect);
-			// console.log("curAttrName: ", curAttrName);
-			// console.log("curAttrTag: ", curAttrTag);
-
-			// console.log(curAttrName + " (state): ", self.getFilterState($curFilter));
-			// console.log(curAttrName + " (defaultValue): ", $curFilter.attr(self.attributes.dataDefaultValue));
-			// console.log(curAttrName + " (filterType): ", $curFilter.attr(self.attributes.dataType));
-			// console.log(curAttrName + " (value): ", $curFilter.val());
 
 			var dataGroup = "[" + self.attributes.dataGroup + "=" + curAttrGroup + "]",
 				dataName = "[" + self.attributes.dataName + "=" + curAttrName + "]",
@@ -1599,8 +1570,6 @@ function stickyInit() {
 		// возвращает количество отмеченных (активных) фильтров
 		var self = this;
 
-		// console.log("$filter: ", $filter);
-
 		var $curFilters = $filter.closest($container).find(self.$filter),
 			lengthActivateFilters = 0;
 
@@ -1608,8 +1577,6 @@ function stickyInit() {
 			var $thisFilter = $(this);
 			self.getFilterState($thisFilter) && lengthActivateFilters++
 		});
-
-		// console.log("lengthActivateFilters: ", lengthActivateFilters);
 
 		return lengthActivateFilters;
 
@@ -1895,21 +1862,6 @@ function multiFiltersInit() {
 		});
 
 		var saleSlider = $saleSlider.data('ionRangeSlider');*/
-
-			// $('.range-slider').on('change', function () {
-		// 	var $this = $(this),
-		// 		value = $this.prop("value").split(';');
-		//
-		// 	console.log("$this.val(): ", $this.val());
-		// 	console.log("value: ", value);
-		// });
-
-		// console.log("$('.range-slider').val(): ", $('.range-slider').val());
-
-		// $(productFilters).on('resetFiltersInGroup resetAllFilters', function () {
-		// 	saleSlider.reset();
-		// 	priceSlider.reset();
-		// });
 	}
 
 	/**function getValue(data, $elem) {
@@ -2072,28 +2024,6 @@ function orderCalculation() {
 function tabSwitcher() {
 	// external js:
 	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
-	// 2) resizeByWidth (resize only width);
-
-	/*
-	 <!--html-->
-	 <div class="some-class tabs-js" data-collapsed="true" data-auto-height="true" data-to-queue="480">
-	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
-	 <div class="some-class__nav">
-	 <div class="some-class__tab">
-	 <a href="#some-id-01" class="tab-anchor-js">Text tab 01</a>
-	 </div>
-	 <div class="some-class__tab">
-	 <a href="#some-id-02" class="tab-anchor-js">Text tab 02</a>
-	 </div>
-	 </div>
-
-	 <div class="some-class__panels tab-container-js">
-	 <div class="some-class__panel tab-content-js" id="some-id-01">Text content 01</div>
-	 <div class="some-class__panel tab-content-js" id="some-id-02">Text content 02</div>
-	 </div>
-	 </div>
-	 <!--html end-->
-	 */
 
 	var $tabWrapper = $('.tabs-js');
 	var $container = $('.tab-container-js');
@@ -2104,7 +2034,7 @@ function tabSwitcher() {
 		var $anchor = $('.tab-anchor-js'),
 			$content = $('.tab-content-js'),
 			$simpleAccordionHand = $('.tab-link-js'),
-			activeClass = 'active-tab',
+			activeClass = 'is-open',
 			collapseAllClass = 'collapsed-all-tab',
 			idPrefix = 'activeIs',
 			animationSpeed = 0.2,
@@ -2118,12 +2048,11 @@ function tabSwitcher() {
 
 
 			if ($currentContainer.find('.' + activeClass).length > 0) {
-				var initialTab = $currentContainer.find('.' + activeClass).attr('href').substring(1);
+				var initialTab = $currentContainer.find($anchor).filter('.' + activeClass).attr('href').substring(1);
 			}
 			if($currentContainer.data('collapsed') === true){
 				$currentContainer.addClass(collapseAllClass);
 			}
-			// var toQueue = $currentContainer.data('to-queue'); // transform tab for toQueue value layout width
 			// var tabInitedFlag = false;
 			var valDataAutoHeight = $currentContainer.data('auto-height');
 			var thisAutoHeight = valDataAutoHeight !== false;
@@ -2138,7 +2067,6 @@ function tabSwitcher() {
 				});
 
 				$currentContent.css({
-					// 'display': 'none',
 					'position': 'absolute',
 					'left': 0,
 					'top': 0,
@@ -2208,7 +2136,6 @@ function tabSwitcher() {
 
 				TweenMax.to($currentContent, animationSpeed, {
 					autoAlpha: 0
-					// ,'z-index': -1
 				});
 
 				if (arguments[0] === false) return;
@@ -2288,37 +2215,61 @@ function tabSwitcher() {
 			}
 		});
 
-		var tabAccordion = function($hand, $panel, animateSpeed) {
-			if ($hand.hasClass(activeClass)) {
-				$panel.show();
-			}
-
-			$hand.on('click', function (e) {
-				e.preventDefault();
-
-				$(this).toggleClass(activeClass);
-				$panel.stop().slideToggle(animateSpeed);
-			})
-		};
-
 		// if transform tabs to accordion
 		if ($simpleAccordionHand.length) {
-			$simpleAccordionHand.each(function () {
-				var $thisHand = $(this);
+			// var $panel = $simpleAccordionHand.next().children();
 
-				tabAccordion($thisHand, $thisHand.next().children(), animationSpeed*1000);
-			})
+			$simpleAccordionHand.on('click', function (e) {
+				e.preventDefault();
+
+				var $curHand = $(this),
+					$curPanel = $curHand.next().children();
+
+				if($curHand.hasClass(activeClass)){
+					$curHand.removeClass(activeClass);
+					$curPanel.css({
+						'overflow': 'hidden'
+					});
+					TweenMax.to($curPanel, animationHeightSpeed, {
+						autoAlpha: 0,
+						height: 0
+					});
+				} else {
+					$curHand.addClass(activeClass);
+					TweenMax.to($curPanel, animationHeightSpeed, {
+						autoAlpha: 1,
+						height: '',
+						onComplete: function () {
+							$curPanel.css({
+								'overflow': '',
+								'visibility': '',
+								'opacity': ''
+							});
+						}
+					});
+				}
+
+			});
+
+			$(window).on('debouncedresizeByWidth', function () {
+				$simpleAccordionHand.each(function () {
+					var $curHand = $(this),
+						$curPanel = $curHand.next().children().show();
+
+					if (!$curHand.hasClass(activeClass)) {
+						$curHand.addClass(activeClass);
+						$curPanel.css({
+							'height': '',
+							'overflow': '',
+							'visibility': '',
+							'opacity': ''
+						});
+					}
+				});
+				// redraw yandex map on resize
+				$('#shops-map').trigger('yMapRedraw');
+			});
 		}
-
-		// $(window).on('debouncedresizeByWidth', function () {
-		// 	$simpleAccordionHand.each(function () {
-		// 		var $thisHand = $(this);
-		//
-		// 		if ($thisHand.hasClass(activeClass)) {
-		// 			$thisHand.next().children().show();
-		// 		}
-		// 	});
-		// });
 	}
 }
 
@@ -2376,6 +2327,7 @@ function shopsLocation() {
 		$selectCity = $('#selectCity'),
 		urlShops = $selectCity.attr('data-path'),
 		currentCity = $selectCity.attr('data-current'),
+		$shopsContainer = $('.shops'),
 		$shopsItem = $('.shops-item'),
 		shopsItemActiveClass = 'is-active',
 		fullscreenControl,
@@ -2461,6 +2413,10 @@ function shopsLocation() {
 
 			/*behaviors setting map*/
 			myMap.behaviors.disable('scrollZoom');
+
+			$mapId.on('yMapRedraw', function () {
+				myMap.container.fitToViewport();
+			});
 
 			/*select current city*/
 			selectCurrentCity();
@@ -2581,7 +2537,7 @@ function shopsLocation() {
 							// '<div class="map-popup__row">' +
 							// '<div class="map-popup__shops-tags">' + tags() + '</div>' +
 							// '</div>' +
-							'<div class="map-popup__row"><a href="#" class="more" data-more-id="' + id + '">Подробнее</a></div>' +
+							'<div class="map-popup__row link-more"><a href="#" class="more" data-more-id="' + id + '"><span>Подробнее</span></a></div>' +
 						'</div>' +
 					'</div>';
 
@@ -2636,8 +2592,7 @@ function shopsLocation() {
 				$currentItem.find('.shops-item__title a').trigger('click');
 			}
 
-
-			if (window.innerWidth < 1366) {
+			if (window.innerWidth > 991 && window.innerWidth < 1366) {
 				// switch tabs
 				$curBtn.closest('.tabs-js').find('[href*="#shopsListView"]').trigger('click');
 				$shopsItem.removeClass(shopsItemActiveClass);
@@ -2709,36 +2664,6 @@ function shopsLocation() {
 
 	/*event on click shops list*/
 	var moveFlag;
-	$('.to-map').on('click', 'a', function (e) {
-		e.preventDefault();
-
-		if (window.innerWidth > 1279) {
-			return;
-		}
-
-		var $page = $('html, body');
-		var index = $(this).closest($shopsItem).data('location-index');
-
-		if (window.innerWidth < 980) {
-
-			if (!$page.is(':animated')) {
-				$page.stop().animate({scrollTop: $mapId.offset().top - $('.header').outerHeight()}, 300);
-			}
-
-		}
-
-		if (moveFlag === index) return false;
-		moveFlag = index;
-
-		var coord = myPlacemark[index].geometry.getCoordinates();
-
-		myMap.setCenter(coord, 16, {
-			duration: 100,
-			checkZoomRange: true
-		}).then(function () {
-			myPlacemark[index].balloon.open();
-		});
-	});
 
 	var $scrollContainer = $( '.shops-aside-holder' ),
 		prevPosition = 0;
@@ -2748,21 +2673,8 @@ function shopsLocation() {
 	});
 
 	$('.shops-item__title').on('click', 'a', function (e) {
-		// if (window.innerWidth < 1280) {
-		// 	return;
-		// }
-
 		var $currentHand = $(this),
-		$currentItem = $currentHand.closest($shopsItem),
-		$shopsContainer = $('.shops');
-
-		// switch tabs
-		if(window.innerWidth < 1366){
-			$currentHand.closest('.tabs-js').find('[href*="#shopsMapView"]').trigger('click');
-		}
-
-		$shopsItem.removeClass(shopsItemActiveClass);
-		$currentItem.addClass(shopsItemActiveClass);
+		$currentItem = $currentHand.closest($shopsItem);
 
 		if (window.innerWidth > 1365) {
 
@@ -2773,27 +2685,37 @@ function shopsLocation() {
 					prevPosition = currentPosition;
 				});
 			}
-		} else {
+		}
+
+		if (window.innerWidth > 991 && window.innerWidth < 1366) {
+			// switch tabs
+			$currentHand.closest('.tabs-js').find('[href*="#shopsMapView"]').trigger('click');
+			// scroll to top
 			if (!$page.is(':animated')) {
 				$page.stop().animate({scrollTop: $shopsContainer.offset().top - $('.header').outerHeight()}, duration);
 			}
 		}
 
+		if (window.innerWidth > 991) {
+			$shopsItem.removeClass(shopsItemActiveClass);
+			$currentItem.addClass(shopsItemActiveClass);
+
+			var index = $(this).closest($shopsItem).data('location-index');
+
+			if (moveFlag === index) return false;
+			moveFlag = index;
+
+			var coord = myPlacemark[index].geometry.getCoordinates();
+
+			myMap.setCenter(coord, 16, {
+				duration: 100,
+				checkZoomRange: true
+			}).then(function () {
+				myPlacemark[index].balloon.open();
+			});
+		}
+
 		e.preventDefault();
-
-		var index = $(this).closest($shopsItem).data('location-index');
-
-		if (moveFlag === index) return false;
-		moveFlag = index;
-
-		var coord = myPlacemark[index].geometry.getCoordinates();
-
-		myMap.setCenter(coord, 16, {
-			duration: 100,
-			checkZoomRange: true
-		}).then(function () {
-			myPlacemark[index].balloon.open();
-		});
 	});
 
 	/*add count loader*/
@@ -2968,21 +2890,13 @@ function formSuccessExample() {
 /**
  * =========== !ready document, load/resize window ===========
  */
-
-$(window).on('load', function () {
-	// add functions
-});
-
-$(window).on('debouncedresize', function () {
-	// $(document.body).trigger("sticky_kit:recalc");
-});
-
 $(document).ready(function () {
 	placeholderInit();
 	printShow();
 	inputToggleFocusClass();
 	inputHasValueClass();
 	customSelect($('select.cselect'));
+	onlyNumberInput();
 	slidersInit();
 	selectLang();
 	accordionInit();
@@ -3004,5 +2918,5 @@ $(document).ready(function () {
 	toggleViewShops();
 	objectFitImages('img'); // object-fit-images initial
 
-	formSuccessExample();
+	// formSuccessExample();
 });

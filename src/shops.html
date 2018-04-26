@@ -138,39 +138,8 @@
 							<li><span title="Магазины">Магазины</span></li>
 						</ul>
 					</div>
-					<!--<div class="some-class tabs-js" data-auto-height="true">
-				<div class="some-class__nav">
-					<div class="some-class__tab">
-						<a href="#some-id-01" class="tab-anchor-js">Text tab 01</a>
-					</div>
-					<div class="some-class__tab">
-						<a href="#some-id-02" class="tab-anchor-js">Text tab 02</a>
-					</div>
-				</div>
-
-				<div class="some-class__panels tab-container-js">
-					<a href="#some-id-01" class="tab-link-js">blah 01</a>
-					<div class="some-class__panel tab-content-js" id="some-id-01">
-						<div class="">
-							Text content 01 <br>
-							Text content 01 <br>
-							Text content 01 <br>
-						</div>
-					</div>
-					<a href="#some-id-02" class="tab-link-js">blah 02</a>
-					<div class="some-class__panel tab-content-js" id="some-id-02">
-						<div class="">
-							Text content 02
-						</div>
-					</div>
-				</div>
-			</div>-->
 					<!--shops-->
 					<section class="shops tabs-js" data-auto-height="true">
-						<!--<div class="shops-view-switcher">
-					<a href="#" class="js-shops-view-map" title="Показать на карте">Карта</a>
-					<a href="#" class="js-shops-view-list active" title="В виде списка">Список</a>
-				</div>-->
 						<!--shops-options-->
 						<div class="shops-options">
 							<!--select-city-->
@@ -187,21 +156,27 @@
 							<!--select-city end-->
 							<!--shops-view-switcher-->
 							<div class="shops-view-switcher">
-								<a href="#shopsMapView" class="btn-default-alt tab-anchor-js " title="Показать на карте">На карте</a>
-								<a href="#shopsListView" class="btn-default-alt tab-anchor-js active-tab" title="В виде списка">Списком</a>
+								<a href="#shopsMapView" class="btn-default-alt tab-anchor-js is-open" title="Показать на карте">На карте</a>
+								<a href="#shopsListView" class="btn-default-alt tab-anchor-js" title="В виде списка">Списком</a>
 							</div>
 							<!--shops-view-switcher end-->
 						</div>
 						<!--shops-options end-->
 						<div class="shops-holder tab-container-js">
 							<!--shops-map-->
-							<!--<a href="#" class="tab-link-js">На карте</a>-->
+							<div class="shops-opener accordion__hand tab-link-js is-open">
+								<div class="accordion__header__text">На карте</div>
+								<i class="accordion__header__angle">&nbsp;</i>
+							</div>
 							<div class="shops-location tab-content-js" id="shopsMapView">
 								<div id="shops-map" class="shops-map"></div>
 							</div>
 							<!--shops-map end-->
 							<!--shops-aside-->
-							<!--<a href="#" class="tab-link-js">Список магазинов</a>-->
+							<div class="shops-opener accordion__hand tab-link-js is-open">
+								<div class="accordion__header__text">Список магазинов</div>
+								<i class="accordion__header__angle">&nbsp;</i>
+							</div>
 							<div class="shops-aside tab-content-js" id="shopsListView">
 								<!--shops-aside layout-->
 								<div class="shops-aside-frame">

@@ -4265,6 +4265,7 @@ $jobs-warranty-icon-size--mob: 32px
 	margin-bottom: 0.7em
 
 .map-popup__row
+	+font-light
 	+font(14px, 18px)
 	margin-bottom: 6px
 	+clear
@@ -4272,12 +4273,22 @@ $jobs-warranty-icon-size--mob: 32px
 	sup, sub
 		font-size: 0.6em
 
+	&.link-more
+		+media('<tab-lg')
+			display: none
+
 	.more
-		color: inherit
-		text-decoration: underline
+		+font(12px, 18px)
+		color: #999
+		text-decoration: none
+		//text-transform: uppercase
+
+		span
+			border-bottom: 1px dashed currentColor
 
 		.no-touchevents &:hover
-			text-decoration: none
+			span
+				border-color: transparent
 
 /* map popup end
 

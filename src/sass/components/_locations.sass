@@ -16,6 +16,10 @@
 		height: nth($shops-select-size, 2)
 		background-color: $bg-color-alt
 
+	+media('<tab-sm')
+		height: auto
+		//margin-bottom: -2px // перекрыть верхний бордер о открывашки аккордеона
+
 .select-city
 	position: absolute
 	left: 0
@@ -30,8 +34,22 @@
 
 	+media('<desk-md')
 		border-width: 0
-		padding-left: nth($text-layout-space--md, 2)
+		+padding-horizontal(nth($text-layout-space--md, 2))
 		background-color: $bg-color-alt
+
+	+media('<tab-lg')
+		+padding-horizontal(nth($text-layout-space--sm, 2))
+
+	+media('<tab-sm')
+		position: relative
+		height: auto
+		width: 100%
+		padding: $accordion-space--sm
+		left: auto
+		top: auto
+
+	+media('<mob-lg')
+		padding: $accordion-space--mob
 
 /* shops-options end
 
@@ -40,11 +58,6 @@
 	position: absolute
 	right: nth($text-layout-space--md, 2)
 	top: 15px
-	//width: 68px
-	//height: 34px
-	//overflow: hidden
-	//border: 1px solid #ccc
-	//border-radius: 5px
 	display: none
 	z-index: 1
 
@@ -55,32 +68,20 @@
 		display: none
 
 .shops-view-switcher a
-	&.active-tab
+	&.is-open
 		display: none
 
-//.shops-view-switcher a
-	position: absolute
-	top: 0
-	right: 0
-	width: 50%
-	height: 100%
-	overflow: hidden
-	text-indent: -9999px
-	background: url(../../img/depict-switcher-map-2x.png) no-repeat -33px 0
-	-webkit-background-size: 66px
-	background-size: 66px
-
-//.shops-view-switcher a.active
-	background-color: #b0b0b0
-	opacity: 0.4
-	cursor: default
-
-//.shops-view-switcher a:first-child
-	right: auto
-	left: 0
-	background-position: 0 0
-
 /* shops-view-switcher end
+
+/* shops-opener
+// переключатели, когда табы трансформируются в аккордион
+.shops-opener
+	display: none
+
+	+media('<tab-lg')
+		display: block
+
+/* shops-opener end
 
 // высоту необходимо задать на два блока:
 // родительський и дочерний, -
@@ -89,34 +90,8 @@
 	height: $shops-map-height
 
 .shops-holder
-	//height: 745px
-
-	//+media('<desk-lg')
-		//height: 550px
-
-	//+media('<desk-md')
-		width: 200%
-		transform: translate(-50%, 0)
-		transform: translate3d(-50%, 0, 0)
-		$prop: transform, opacity
-		will-change: $prop
-		transition:
-			property: $prop
-			duration: $animation-speed
-			timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
-
-		//.view-shops-active &
-			transform: translate(0, 0)
-			transform: translate3d(0, 0, 0)
-
-	+media('<desk-lg')
+	+media('<desk-md')
 		height: auto
-
-	//+media('<tab-lg')
-		height: auto
-		width: 100%
-		transform: translate(0, 0)
-		transform: translate3d(0, 0, 0)
 
 /* shops-map
 .shops-location
@@ -124,7 +99,7 @@
 	border-bottom: 1px solid $border-color
 
 	+media('<desk-lg')
-		height: $shops-map-height--sm
+		height: $shops-map-height--md
 
 	// перебить стили назначенные скриптом
 	+media('>=desk-md')
@@ -137,16 +112,43 @@
 		visibility: visible !important
 		opacity: 1 !important
 
+	// перебить стили назначенные скриптом
+	+media('<tab-lg')
+		float: none !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: auto !important
+		width: auto !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+		border: none
+
 .shops-map
 	position: relative
 	height: 100%
 	background: #f3f3f3
+	z-index: 1
 
-	//+media('<desk-md')
-		width: 50%
+	&::before
+		$size: 50px
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		+size($size)
+		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+		background: url(../../img/preloader.svg) 0 0 no-repeat
+		background-size: contain
+		z-index: -1
 
-	//+media('<tab-lg')
-		height: 348px
+	+media('<tab-lg')
+		height: $shops-map-height--sm
+
+	+media('<mob-lg')
+		height: $shops-map-height--mob
 
 /* shops-map
 
@@ -181,8 +183,20 @@
 		margin: 0
 		border-width: 0
 
+	// перебить стили назначенные скриптом
+	+media('<tab-lg')
+		float: none !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		height: auto !important
+		width: auto !important
+		z-index: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+		border-bottom: 2px solid $border-color
+
 .shops-aside-frame
-	//height: calc(100% - #{nth($shops-select-size, 2)})
 	height: 100%
 	overflow: hidden
 	position: relative
@@ -191,14 +205,15 @@
 
 	+media('<tab-lg')
 		overflow: visible
+		border-bottom-width: 0
 
 .shops-aside-holder
 	height: 100%
 	overflow: auto
 	position: relative
 
-	+media('<tab-lg')
-		overflow: visible
+	+media('<desk-md')
+		overflow: visible !important
 
 .shops-aside-group
 	display: none
@@ -224,6 +239,9 @@
 		property: opacity
 		duration: $animation-speed
 
+	+media('<desk-md')
+		display: none
+
 	&.shadow-tape-top
 		+linear-gradient(to bottom, rgba($shadow-color, 1) 0%, rgba($shadow-color, 0.5) 75%, rgba($shadow-color, 0) 100%)
 		opacity: 0
@@ -242,14 +260,21 @@
 .shops-item
 	padding: $nav-space
 	border-top: 1px solid $border-color
-	background: #fff
+	background: $bg-color
 	will-change: transform
 
+	+media('<tab-lg')
+		padding: 15px nth($text-layout-space--sm, 2)
+
 	+media('<mob-lg')
-		padding: $nav-space--mob
+		padding: 10px nth($text-layout-space--mob, 2) 12px
 
 	&.is-active
 		background: $bg-color-alt
+
+		+media('<tab-lg')
+			// на девайсах активное соостояние отключаем
+			background-color: $bg-color
 
 	&:first-child
 		border-top: none
@@ -263,11 +288,18 @@
 		text-decoration: none
 		color: inherit
 
+		+media('<tab-lg')
+			cursor: default
+
 		.no-touchevents &:hover
 			color: $base-color
 
-		+media('>=desk-md')
-			.no-touchevents .is-active &, .is-active &
+			+media('<tab-lg')
+				// на девайсах активное соостояние отключаем
+				color: inherit
+
+		.no-touchevents .is-active &, .is-active &
+			+media('>=desk-md')
 				color: inherit
 				cursor: default
 
