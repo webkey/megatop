@@ -82,6 +82,8 @@ function inputToggleFocusClass() {
 			$currentFieldWrap.addClass(classFocus);
 			// add class on label in wrapper
 			$currentFieldWrap.find('label').addClass(classFocus);
+			// add class on search form
+			$currentField.closest('.search-form').addClass(classFocus);
 
 		}).blur(function () {
 			var $currentField = $(this);
@@ -96,6 +98,8 @@ function inputToggleFocusClass() {
 			$currentFieldWrap.removeClass(classFocus);
 			// remove class on label in wrapper
 			$currentFieldWrap.find('label').removeClass(classFocus);
+			// remove class on search form
+			$currentField.closest('.search-form').removeClass(classFocus);
 
 		});
 	}
@@ -135,6 +139,9 @@ function inputHasValueClass() {
 			$currentFieldWrap.removeClass(classHasValue);
 			// remove class on label in wrapper
 			$currentFieldWrap.find('label').removeClass(classHasValue);
+			// add class on search form
+			$currentField.closest('.search-form').removeClass(classHasValue);
+
 		} else if (!$currentField.hasClass(classHasValue)) {
 			// add class on input
 			$currentField.addClass(classHasValue);
@@ -145,6 +152,9 @@ function inputHasValueClass() {
 			$currentFieldWrap.addClass(classHasValue);
 			// add class on label in wrapper
 			$currentFieldWrap.find('label').addClass(classHasValue);
+			// remove class on search form
+			$currentField.closest('.search-form').addClass(classHasValue);
+
 		}
 	}
 }

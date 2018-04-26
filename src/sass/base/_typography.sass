@@ -439,12 +439,18 @@ table
 		padding: 8px 15px
 		border-color: $text-color-base
 
+		p:last-child
+			margin-bottom: 0
+
 .table-auto
 	position: relative
 	overflow: auto
 	max-width: 100%
 	-webkit-overflow-scrolling: touch
 	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
 
 	table
 		margin-bottom: 0
@@ -476,12 +482,12 @@ table
 			background: $bg-color-alt
 			color: $text-color
 
-		th, thead td
+		th, thead td, .theader
 			+font-bold
 			font-size: 1.6rem
 			text-align: left
 
-		th, thead td, tfoot td
+		th, thead td, tfoot td, .theader
 			background: $bg-color-alt
 			color: $text-color
 

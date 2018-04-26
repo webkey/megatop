@@ -179,6 +179,10 @@ gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCo
 		.pipe(replace('\n\n', '\n'))
 		.pipe(gulp.dest('dist/ajax'));
 
+	gulp.src(['src/video/**/*'])
+		.pipe(replace('\n\n', '\n'))
+		.pipe(gulp.dest('dist/video'));
+
 	gulp.src(['src/css/*.css'])
 		.pipe(replace('\n\n', '\n'))
 		.pipe(gulp.dest('dist/css'));

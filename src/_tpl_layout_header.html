@@ -7,13 +7,7 @@
 					<i>&nbsp;</i>
 				</a>
 				<div class="header__cell">
-					<ul class="menu-list">
-						<li @@if(context.currentItem === "Мужчины"){class="current"}><a href="typography.html"><span>Мужчины</span></a></li>
-						<li @@if(context.currentItem === "Женщины"){class="current"}><a href="#"><span>Женщины</span></a></li>
-						<li @@if(context.currentItem === "Дети"){class="current"}><a href="#"><span>Дети</span></a></li>
-						<li @@if(context.currentItem === "Аксессуары"){class="current"}><a href="#"><span>Аксессуары</span></a></li>
-						<li class="text-mark@@if(context.currentItem === "Акции"){ current}"><a href="#"><span>Акции</span></a></li>
-					</ul>
+					@@include("_tpl_menu-list.html")
 				</div>
 			</div>
 			<div class="header__col header__col--logo">

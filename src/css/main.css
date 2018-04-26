@@ -1080,12 +1080,20 @@ table td, table th {
 	border-color: black;
 }
 
+table td p:last-child, table th p:last-child {
+	margin-bottom: 0;
+}
+
 .table-auto {
 	position: relative;
 	overflow: auto;
 	max-width: 100%;
 	-webkit-overflow-scrolling: touch;
 	margin-bottom: 2.4rem;
+}
+
+.table-auto:last-child {
+	margin-bottom: 0;
 }
 
 .table-auto table {
@@ -1123,7 +1131,7 @@ table td, table th {
 	color: #000;
 }
 
-.user-content .tbl th, .user-content .tbl thead td {
+.user-content .tbl th, .user-content .tbl thead td, .user-content .tbl .theader {
 	font-family: "proximanova-bold", sans-serif;
 	font-weight: normal;
 	font-style: normal;
@@ -1131,7 +1139,7 @@ table td, table th {
 	text-align: left;
 }
 
-.user-content .tbl th, .user-content .tbl thead td, .user-content .tbl tfoot td {
+.user-content .tbl th, .user-content .tbl thead td, .user-content .tbl tfoot td, .user-content .tbl .theader {
 	background: #f3f3f3;
 	color: #000;
 }
@@ -1390,14 +1398,12 @@ table td, table th {
 	color: #000;
 	padding: 11px 24px 9px;
 	border: 3px solid #000;
-	background-color: transparent;
-	transition-property: background-color, color, border-color;
-	transition-duration: 0.2s;
 	margin: 0;
 }
 
 .no-touchevents .btn-outline:hover, .no-touchevents .btn-outline-alt:hover {
-	border-color: #f70106;
+	background-color: #000;
+	color: white;
 }
 
 /* btn-outline end */
@@ -3590,6 +3596,7 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 }
 
 .promo-slider__item {
+	position: relative;
 	float: none;
 	display: inline-block;
 	vertical-align: top;
@@ -3609,6 +3616,39 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 
 .promo-slider__item img[data-lazy] {
 	width: auto;
+}
+
+.promo-slider__item__content {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 31.6%;
+	height: 100%;
+	background-color: wheat;
+	z-index: 1;
+}
+
+.promo-slider__item__caption {
+	position: absolute;
+	left: 50px;
+	width: calc(100% - 50px);
+	top: 50%;
+	-ms-transform: translate(0, -50%);
+	    transform: translate(0, -50%);
+}
+
+.promo-slider__item__title {
+	font-family: "futura-book", sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 5.2rem;
+	line-height: 0.94;
+	text-transform: uppercase;
+	margin-bottom: 1em;
+}
+
+.promo-slider__item__title:last-child {
+	margin-bottom: 0;
 }
 
 .promo-slider__list .slick-dots {
@@ -3856,6 +3896,10 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 
 .main-section--similar {
 	margin-bottom: 2rem;
+}
+
+.no-touchevents .main-section--similar .main-section__title {
+	margin-bottom: 0;
 }
 
 .main-section--club {
@@ -5607,6 +5651,15 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 .similar-slider__list {
 	white-space: nowrap;
 	overflow: hidden;
+	padding-right: 60px;
+	padding-left: 60px;
+}
+
+@media (max-width: 639px) {
+	.similar-slider__list {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 .similar-slider__list, .similar-slider__list.slick-dotted {
@@ -10436,6 +10489,109 @@ a.c-tr:hover {
 }
 
 /* order list end */
+/* 404 page */
+.page-404 .wrapper {
+	overflow: hidden;
+	height: 100vh;
+}
+
+.page-404 .content {
+	position: relative;
+	min-height: calc(100vh - 70px);
+	z-index: 1;
+}
+
+@media (max-width: 1365px) {
+	.page-404 .content {
+		min-height: calc(100vh - 50px);
+	}
+}
+
+.page-404 .content::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: -1;
+}
+
+.page-404 .error-404 {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-ms-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	max-width: 900px;
+	padding: 40px 40px;
+	color: white;
+	text-align: center;
+}
+
+@media (max-width: 1365px) {
+	.page-404 .error-404 {
+		padding: 35px 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.page-404 .error-404 {
+		padding: 30px 20px;
+	}
+}
+
+@media (max-width: 639px) {
+	.page-404 .error-404 {
+		padding: 20px 10px;
+	}
+}
+
+.page-404 h1 {
+	color: inherit;
+}
+
+#bg-404 {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	height: auto;
+	width: auto;
+	background-color: #000;
+}
+
+#bg-404 video, #bg-404 img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	font-family: "object-fit: cover", sans-serif;
+}
+
+@media (max-width: 991px) {
+	#bg-404 video {
+		display: none;
+	}
+}
+
+#bg-404 img {
+	display: none;
+}
+
+@media (max-width: 991px) {
+	#bg-404 img {
+		display: block;
+	}
+}
+
+/* 404 page end */
 /*shops network */
 .shops {
 	overflow: hidden;
@@ -11770,48 +11926,20 @@ html.css-scroll-fixed {
 .search-form {
 	position: relative;
 	margin: 0;
-	width: 164px;
-	border: solid #666;
-	border-width: 0 1px;
 }
 
-.header .search-form {
-	position: absolute;
-	top: 50%;
-	right: 100%;
-	margin: -35px -164px 0 164px;
-}
-
-@media (max-width: 1365px) {
-	.header .search-form {
-		margin: -25px -164px 0 164px;
-	}
-}
-
-@media (max-width: 991px) {
-	.header .search-form {
-		display: none;
-	}
-}
-
-.shutter--nav .search-form {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: -1px;
-	border-width: 1px 0;
-	width: 100%;
-	z-index: 100;
-}
-
-@media (max-width: 991px) {
-	.shutter--nav .search-form {
-		display: block;
-	}
+.search-form form {
+	visibility: visible;
 }
 
 .search-form .search-form__field {
 	margin: 0;
+	max-width: 164px;
+	border: solid #666;
+	border-width: 0 1px;
+	will-change: max-width, border-color;
+	transition-property: max-width, border-color;
+	transition-duration: 0.2s;
 }
 
 .search-form .search-form__input {
@@ -11826,6 +11954,10 @@ html.css-scroll-fixed {
 	font-size: 1.6rem;
 	line-height: 70px;
 	letter-spacing: normal;
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .search-form .search-form__input::-webkit-input-placeholder {
@@ -11889,6 +12021,58 @@ html.css-scroll-fixed {
 .search-form .search-form__input:focus, .search-form .search-form__input.input--has-value {
 	background-color: white;
 	color: #000;
+}
+
+.header .search-form {
+	visibility: hidden;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	margin: -35px 0 0;
+}
+
+@media (max-width: 1365px) {
+	.header .search-form {
+		margin: -25px 0 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.header .search-form {
+		display: none;
+	}
+}
+
+.shutter--nav .search-form {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: -1px;
+	width: 100%;
+	z-index: 100;
+}
+
+@media (max-width: 991px) {
+	.shutter--nav .search-form {
+		display: block;
+	}
+}
+
+.shutter--nav .search-form .search-form__field {
+	max-width: none;
+	border-width: 1px 0;
+}
+
+@media (min-width: 992px) {
+	.header .search-form.input--focus .search-form__field {
+		max-width: 600px;
+		border-color: #ccc;
+	}
+	.header .search-form.input--focus .search-form__input {
+		text-overflow: inherit;
+		white-space: normal;
+	}
 }
 
 .search-form__btn {
@@ -12591,6 +12775,11 @@ html.css-scroll-fixed {
 
 .nav__list {
 	padding: 20px 0;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .nav__list li {
@@ -12605,7 +12794,7 @@ html.css-scroll-fixed {
 .nav__list a {
 	display: block;
 	position: relative;
-	padding: 0 30px;
+	padding: 8px 30px;
 	font-family: "proximanova-light", sans-serif;
 	font-weight: normal;
 	font-style: normal;
@@ -12630,7 +12819,7 @@ html.css-scroll-fixed {
 	display: inline-block;
 	position: relative;
 	vertical-align: middle;
-	min-height: 36px;
+	min-height: 20px;
 }
 
 .nav__list a span {
@@ -12640,7 +12829,6 @@ html.css-scroll-fixed {
 	font-size: 1.6rem;
 	line-height: 1.25;
 	letter-spacing: normal;
-	padding: 8px 0;
 }
 
 .no-touchevents .nav__list a:hover {
@@ -12653,6 +12841,10 @@ html.css-scroll-fixed {
 
 .nav__list li.current > .nav__tab a, .nav__list li.current > .nav__tab a:hover, .no-touchevents .nav__list li.current > .nav__tab a, .no-touchevents .nav__list li.current > .nav__tab a:hover {
 	color: #f70106;
+}
+
+.nav__list li.current > .nav__tab a span, .nav__list li.current > .nav__tab a:hover span, .no-touchevents .nav__list li.current > .nav__tab a span, .no-touchevents .nav__list li.current > .nav__tab a:hover span {
+	border-bottom: 2px solid #f70106;
 }
 
 .nav__list li.is-open > .nav__tab a::before {

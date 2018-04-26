@@ -1,0 +1,7 @@
+<ul class="menu-list">
+	<li @@if(context.currentItem === "Мужчины"){class="current"}><a href="catalog.html"><span>Мужчины</span></a></li>
+	<li @@if(context.currentItem === "Женщины"){class="current"}><a href="catalog.html"><span>Женщины</span></a></li>
+	<li @@if(context.currentItem === "Дети"){class="current"}><a href="catalog.html"><span>Дети</span></a></li>
+	<li @@if(context.currentItem === "Аксессуары"){class="current"}><a href="catalog.html"><span>Аксессуары</span></a></li>
+	<li class="text-mark@@if(context.currentItem === "Акции"){ current}"><a href="news.html"><span>Акции</span></a></li>
+</ul>

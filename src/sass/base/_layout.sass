@@ -475,36 +475,21 @@ html
 .search-form
 	position: relative
 	margin: 0
-	width: nth($search-form--size, 1)
-	border: solid #666
-	border-width: 0 1px
 
-	.header &
-		position: absolute
-		top: 50%
-		right: 100%
-		margin: -#{round($header-height/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
-
-		+media('<desk-md')
-			margin: -#{round($header-height--sm/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
-
-		+media('<tab-lg')
-			display: none
-
-	.shutter--nav &
-		display: none
-		position: absolute
-		left: 0
-		top: -1px // если есть бордер на мобильном меню сверху
-		border-width: 1px 0
-		width: 100%
-		z-index: 100
-
-		+media('<tab-lg')
-			display: block
+	form
+		visibility: visible
 
 	.search-form__field
 		margin: 0
+		max-width: nth($search-form--size, 1)
+		border: solid #666
+		border-width: 0 1px
+		//==================
+		$prop: max-width, border-color
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: $animation-speed
 
 	.search-form__input
 		padding: 0 10px 0 nth($search-form--btn-size, 1)
@@ -515,6 +500,11 @@ html
 		+font-bold
 		+font(1.6rem, $header-height)
 		letter-spacing: normal
+		// add dot if short
+		position: relative
+		overflow: hidden
+		white-space: nowrap
+		text-overflow: ellipsis
 
 		+placeholder
 			color: white
@@ -533,6 +523,56 @@ html
 		&:focus, &.input--has-value
 			background-color: white
 			color: $text-color
+
+	// inside header
+	.header &
+		visibility: hidden
+		position: absolute
+		top: 50%
+		left: 0
+		right: 0
+		margin: -#{round($header-height/2)} 0 0
+		//right: 100%
+		//margin: -#{round($header-height/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
+
+		+media('<desk-md')
+			//margin: -#{round($header-height--sm/2)} -#{nth($search-form--size, 1)} 0 #{nth($search-form--size, 1)}
+			margin: -#{round($header-height--sm/2)} 0 0
+
+		+media('<tab-lg')
+			display: none
+
+	// inside shutter
+	.shutter--nav &
+		display: none
+		position: absolute
+		left: 0
+		top: -1px // если есть бордер на мобильном меню сверху
+		width: 100%
+		z-index: 100
+
+		+media('<tab-lg')
+			display: block
+
+		.search-form__field
+			max-width: none
+			border-width: 1px 0
+
+	// transform search form on focus
+	//&.input--has-value
+	&.input--focus
+		.header &
+			+media('>=tab-lg')
+				//width: auto
+				//right: 0
+
+				.search-form__field
+					max-width: 600px
+					border-color: $border-color
+
+				.search-form__input
+					text-overflow: inherit
+					white-space: normal
 
 .search-form__btn
 	position: absolute
@@ -988,6 +1028,8 @@ html
 // общие стили для пунктов навигации
 .nav__list
 	padding: nth($shutter-space, 1) 0
+	user-select: none
+	-webkit-tap-highlight-color: transparent
 
 	li
 		position: relative
@@ -999,7 +1041,7 @@ html
 	a
 		display: block
 		position: relative
-		padding: 0 nth($shutter-space, 2)
+		padding: 8px nth($shutter-space, 2)
 		+font-light
 		color: #999
 		text-decoration: none
@@ -1015,14 +1057,13 @@ html
 		&::before
 			+pseudo-inline-block-relative()
 			vertical-align: middle
-			min-height: 36px
+			min-height: 20px
 
 		span
 			+display-inline-block-middle
 			max-width: calc(100% - 5px)
 			+font(1.6rem, round-float(20/16, 2))
 			letter-spacing: normal
-			padding: 8px 0
 
 		.no-touchevents &:hover
 			color: $base-color
@@ -1038,6 +1079,9 @@ html
 
 		a, a:hover
 			color: $base-color
+			
+			span
+				border-bottom: 2px solid $base-color
 
 // стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
 .nav__list li
