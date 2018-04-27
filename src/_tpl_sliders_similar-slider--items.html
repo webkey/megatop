@@ -83,16 +83,16 @@
 						</div>
 						}
 
+						@@if (context.ch.material) {
 						<div class="products__tags">
-							@@if (context.ch.material) {
 							<div class="products__tag">
 								<i>
 									<img src="img/@@ch.materialImgSts" alt="@@ch.material" />
 								</i>
 								<span>@@ch.material</span>
 							</div>
-							}
 						</div>
+						}
 					</a>
 
 					<a href="#" class="products__likes products-likes-js@@if(context.liked){ active}" title="Нравится" data-liked-text="Нравится" data-unliked-text="Не нравится">

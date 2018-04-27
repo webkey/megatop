@@ -20,6 +20,18 @@ html
 
 	+push-auto
 
+	.home-page .main &
+		padding-bottom: 8rem
+
+		+media('<desk-md')
+			padding-bottom: 6rem
+
+		+media('<tab-lg')
+			padding-bottom: 4rem
+
+		+media('<mob-lg')
+			padding-bottom: 2rem
+
 // выравнивание текстовых элементов на странице статьи (контент обернут в .layout-article)
 // и их максимальная ширина
 .layout-article
@@ -1105,6 +1117,7 @@ html
 		+font-alt-bold
 		text-transform: uppercase
 		color: $text-color
+		+padding-vertical(14px)
 
 		span
 			letter-spacing: 0.1em

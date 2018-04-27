@@ -313,6 +313,8 @@ function slidersInit() {
 				var $this = $(this);
 				$galleryThumbs.append($('<div class="flashes__item"><img src="' + $this.find('img').attr('data-lazy') + '"></div>'));
 			});
+			// object-fit for non-support browsers
+			objectFitImages($('.p-card__gallery-thumbs img'));
 
 			// initialized slider of titles
 			$galleryThumbs.slick({
@@ -360,6 +362,9 @@ function slidersInit() {
 				draggable: false,
 				swipe: false,
 				touchMove: false
+			}).on('lazyLoaded', function (event, slick, image, imageSource) {
+				$(image).addClass('loaded');
+				objectFitImages($(image));
 			});
 
 		});
@@ -507,12 +512,12 @@ function slidersInit() {
 				slidesPerView: 5,
 				slidesPerGroup: 1,
 				initialSlide: 2,
-				centeredSlides: true,
+				// centeredSlides: true,
 				spaceBetween: 10,
 				loop: true,
 				keyboardControl: true,
-				longSwipesRatio: 0.1,
-				longSwipesMs: 200,
+				// longSwipesRatio: 0.1,
+				// longSwipesMs: 200,
 				nextButton: $thisBtnNext,
 				prevButton: $thisBtnPrev,
 				breakpoints: {

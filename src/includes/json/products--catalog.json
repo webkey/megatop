@@ -63,7 +63,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Заменитель кожи",
+	  "material": "",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -87,7 +87,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Искусственная кожа",
+	  "material": "Кожа",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -111,7 +111,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Ткань",
+	  "material": "Кожа",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -159,7 +159,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Кожа",
+	  "material": "",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -183,7 +183,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Заменитель кожи",
+	  "material": "",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -207,7 +207,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Искусственный материал",
+	  "material": "",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -231,7 +231,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Ткань",
+	  "material": "Кожа",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -307,7 +307,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Заменитель кожи",
+	  "material": "",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -331,7 +331,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Искусственный материал",
+	  "material": "Кожа",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
@@ -355,7 +355,7 @@
 	"inCart": "",
 	"liked": "",
 	"ch": {
-	  "material": "Ткань",
+	  "material": "Кожа",
 	  "materialImgSts": "ico-leather.png"
 	},
 	"info": {
