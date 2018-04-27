@@ -86,21 +86,30 @@
 /* btn-outline
 .btn-outline, .btn-outline-alt
 	position: relative
-	+font-alt-bold
+	+font-bold
 	+font(14px, 24px)
 	text-align: center
 	text-decoration: none
 	text-transform: uppercase
 	letter-spacing: 0.05em
 	white-space: nowrap
-	color: $text-color
-	padding: 11px 24px 9px
-	border: 3px solid $btn-bg-hover-color
+	color: $btn-bg-hover-color
+	padding: 12px 24px 9px
+	border: 2px solid currentColor
 	margin: 0
 
 	.no-touchevents &:hover
 		background-color: $btn-bg-hover-color
+		border-color: $btn-bg-hover-color
 		color: $btn-text-color
+
+.btn-outline-alt
+	color: white
+
+	.no-touchevents &:hover
+		background-color: white
+		border-color: white
+		color: $btn-bg-hover-color
 
 /* btn-outline end
 

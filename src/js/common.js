@@ -380,7 +380,15 @@ function slidersInit() {
 				lazyLoad: 'ondemand',
 				infinite: true,
 				dots: true,
-				arrows: true
+				arrows: true,
+				responsive:[
+					{
+						breakpoint: 768,
+						settings: {
+							arrows: false
+						}
+					}
+				]
 			});
 
 		});
@@ -392,14 +400,18 @@ function slidersInit() {
 	if($partnersSlider.length){
 		$partnersSlider.each(function () {
 			var $curSlider = $(this);
-			var dur = 200;
+			var dur = 600;
 
 			$curSlider.slick({
 				speed: dur,
 				slidesToShow: 6,
-				slidesToScroll: 2,
-				lazyLoad: 'ondemand',
+				slidesToScroll: 1,
+				// lazyLoad: 'ondemand',
+				pauseOnHover: false,
 				infinite: true,
+				autoplay: true,
+				autoplaySpeed: 2500,
+				cssEase: 'linear',
 				dots: false,
 				arrows: true,
 				responsive: [
