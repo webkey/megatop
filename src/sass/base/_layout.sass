@@ -1022,27 +1022,15 @@ html
 
 /* === NAVIGATION ===
 /* nav list
-// общие стили для главного списка навигации
-.nav__list
-	position: relative
-
-	+media('<tab-lg')
-		width: auto
-
-// общие стили для подменю навигации
-.nav__drop
-	position: relative
-	//background-color: $nav-bg-color
-	display: none
-
-	.no-js &
-		display: block
-
 // общие стили для пунктов навигации
 .nav__list
 	padding: nth($shutter-space, 1) 0
 	user-select: none
 	-webkit-tap-highlight-color: transparent
+	position: relative
+
+	+media('<tab-lg')
+		width: auto
 
 	li
 		position: relative
@@ -1080,6 +1068,15 @@ html
 
 		.no-touchevents &:hover
 			color: $base-color
+
+// общие стили для подменю навигации
+.nav__drop
+	position: relative
+	//background-color: $nav-bg-color
+	display: none
+
+	.no-js &
+		display: block
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
 .nav__list li.has-drop > .nav__tab > a
