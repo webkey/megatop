@@ -176,11 +176,9 @@ gulp.task('copyImgToDist', function () {
 gulp.task('buildDist', ['cleanDist', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src(['src/ajax/**/*'])
-		.pipe(replace('\n\n', '\n'))
 		.pipe(gulp.dest('dist/ajax'));
 
 	gulp.src(['src/video/**/*'])
-		.pipe(replace('\n\n', '\n'))
 		.pipe(gulp.dest('dist/video'));
 
 	gulp.src(['src/css/*.css'])
