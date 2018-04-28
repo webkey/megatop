@@ -3469,13 +3469,10 @@ label.checkbox--size
 
 /* about-history
 .about-history
-	position: relative
 	background-color: #181a1b
-	background-image: url(../../img/bg-about-history.jpg)
-	background-repeat: no-repeat
-	background-position: center
-	background-size: cover
+	position: relative
 	padding-bottom: 80px
+	z-index: 1
 
 	+media('<mob-lg')
 		padding-bottom: 40px
@@ -3493,8 +3490,7 @@ label.checkbox--size
 	overflow: hidden
 
 /* history slider
-/* history slider: years
-// slider
+/*== history slider: years ==
 .h-slider-years
 	+padding-horizontal(nth($slider-btn-size, 1))
 	// before slide load
@@ -3505,7 +3501,8 @@ label.checkbox--size
 	// before slide load end
 
 	+media('<mob-lg')
-		+padding-horizontal(nth($slider-btn-size--sm, 1))
+		//+padding-horizontal(nth($slider-btn-size--sm, 1))
+		+padding-horizontal(0)
 
 	&, &.slick-dotted
 		margin: 0 0 80px
@@ -3547,7 +3544,12 @@ label.checkbox--size
 		transform: none
 		margin: 0
 
-// slide
+		+media('<mob-lg')
+			display: none
+
+		&::after
+			border-color: white
+
 .h-slider-years__item
 	position: relative
 	text-decoration: none
@@ -3686,12 +3688,12 @@ label.checkbox--size
 			transform: scale($scale)
 			transform: scale3d($scale, $scale, 1)
 
-/* history slider: years end
+/*== history slider: years end ==
 
-/* history slider: descriptions
-// slider
+/*== history slider: descriptions ==
 .h-slider-desc
 	position: relative
+	user-select: auto
 	// before slide load
 	white-space: nowrap
 	overflow: hidden
@@ -3710,7 +3712,6 @@ label.checkbox--size
 		opacity: 1
 		// after slide load end
 
-// slide
 .h-slider-desc__item
 	// before slide load
 	float: none
@@ -3755,7 +3756,62 @@ label.checkbox--size
 	+media('<mob-lg')
 		font-size: 1.5rem
 
-/* history slider: description end
+/*== history slider: description end ==
+
+/*== history slider: images ==
+.h-slider-images
+	position: absolute
+	+size(100%)
+	left: 0
+	top: 0
+	z-index: -1
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	opacity: 0
+	// before slide load end
+
+	&, &.slick-dotted
+		margin: 0
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		opacity: 1
+		// after slide load end
+
+	.slick-list, .slick-track
+		height: 100%
+
+.h-slider-images__item
+	+size(100%)
+	background-color: #181a1b
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	&::before
+		content: ""
+		display: block
+		position: absolute
+		+size(100%)
+		left: 0
+		top: 0
+		background-color: rgba(black, 0.35)
+
+/*== history slider: images end ==
 /* history slider end
 
 /* about-chain
@@ -3811,6 +3867,16 @@ label.checkbox--size
 	+font-bold
 	+font(9.0rem, round-float(92/90, 2))
 	color: $base-color
+	//==============
+	opacity: 0
+	$prop: opacity
+	will-change: $prop
+	transition:
+		property: $prop
+		duration: 1s
+
+	&.count-start
+		opacity: 1
 
 	+media('<tab-lg')
 		font-size: 8.0rem

@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * !resize only width
  * */
@@ -378,10 +377,33 @@ function slidersInit() {
 			var $curSlider = $(this),
 				$years = $curSlider.find('.h-slider-years-js'),
 				$descriptions = $curSlider.find('.h-slider-desc-js'),
+				$images = $curSlider.find('.h-slider-images-js'),
 				dur = 700;
 
+			var goToSlide = function(slider, index) {
+				slider.slick('slickGoTo', index);
+			};
+
+			// initialized slider of images (background images)
+			$images.slick({
+				fade: true,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// asNavFor: $years,
+				infinite: false,
+				dots: false,
+				arrows: false,
+				accessibility: false,
+				draggable: false,
+				swipe: false,
+				touchMove: false
+			});
+
 			// initialized slider of years (thumbs)
-			$years.slick({
+			$years.on('init', function (e, slick) {
+				goToSlide($images, slick.currentSlide);
+			}).slick({
 				fade: false,
 				speed: dur,
 				slidesToShow: 1,
@@ -394,11 +416,21 @@ function slidersInit() {
 				focusOnSelect: true,
 				variableWidth: true,
 				centerPadding: '0px',
+				responsive: [
+					{
+						breakpoint: 640,
+						settings: {
+							arrows: false
+						}
+					}
+				]
 
 				// accessibility: false,
 				// draggable: false,
 				// swipe: false,
 				// touchMove: false
+			}).on('beforeChange', function(event, slick, currentSlide, nextSlide){
+				goToSlide($images, nextSlide);
 			});
 
 			// initialized slider of descriptions
@@ -411,11 +443,17 @@ function slidersInit() {
 				infinite: false,
 				dots: false,
 				arrows: false,
-
-				// accessibility: false,
-				// draggable: false,
-				// swipe: false,
-				// touchMove: false
+				accessibility: false,
+				draggable: false,
+				swipe: false,
+				touchMove: false,
+				responsive: [{
+					breakpoint: 992,
+					settings: {
+						swipe: true,
+						touchMove: true
+					}
+				}]
 			});
 		});
 	}
@@ -1334,26 +1372,9 @@ function formAccept() {
  * !Sticky element on page
  */
 function stickyInit() {
-	var $mAside = $('.m-aside-sticky-js'),
-	$mContent = $('.m-content-sticky-js');
+	var $mAside = $('.m-aside-sticky-js');
 
 	if ($mAside.length) {
-
-		// var mAsideSticky = new StickySidebar('.m-aside-sticky-js', {
-		// 	containerSelector: '.m-container',
-		// 	innerWrapperSelector: '.m-aside-layout',
-		// 	topSpacing: $('.header').outerHeight() + 20,
-		// 	resizeSensor: false, // recalculation sticky on change size of elements
-		// 	minWidth: prodCardMediaWidth - 1
-		// });
-
-		// var mContentSticky = new StickySidebar('.m-content-sticky-js', {
-		// 	containerSelector: '.m-container-sticky-js',
-		// 	innerWrapperSelector: '.m-content-sticky__layout-js',
-		// 	topSpacing: $('.header').outerHeight() + 20,
-		// 	resizeSensor: false, // recalculation sticky on change size of elements
-		// 	minWidth: prodCardMediaWidth - 1
-		// });
 
 		$('.p-filters-js').on('dropChange.multiFilters', function () {
 			if(window.innerWidth >= prodCardMediaWidth) {
@@ -1362,9 +1383,6 @@ function stickyInit() {
 			}
 		});
 
-		// if(window.innerWidth >= mediaWidth) {
-		//
-		// }
 		stickybits('.m-aside', {
 			useStickyClasses: true,
 			stickyBitStickyOffset: 70
@@ -2911,6 +2929,52 @@ function toggleViewShops() {
 /*toggle view shops end*/
 
 /**
+ * !Counter!
+ * */
+$(function () {
+	var counterOffset = 0,
+		currentScrollTop;
+
+	var $counter = $('.count-js'),
+		$item = $('.count__item-js');
+
+	function startCount() {
+		currentScrollTop = $(window).scrollTop() + window.innerHeight;
+
+		$.each($item, function () {
+			var $curItem = $(this);
+
+			counterOffset = $curItem.offset().top + 100;
+
+			var cond = counterOffset < currentScrollTop;
+
+			if(cond && !$curItem.prop('isCounted')) {
+				$curItem.prop('isCounted', true);
+
+				var $curCounter = $curItem.closest($counter),
+					speed = $curCounter.data('count-speed') || 3000;
+
+				// count initial
+				$curItem.prop('counter', 0).animate({
+					counter: $curItem.data('count')
+				},{
+					duration: speed,
+					step:function (now) {
+						$curItem.addClass('count-start').text(Math.round(now))
+					}
+				});
+			}
+		});
+	}
+
+	if ($counter.length) {
+		$(window).on('load scroll resize', function () {
+			startCount();
+		});
+	}
+});
+
+/**
  * !Testing form validation (for example). Do not use on release!
  * */
 function formSuccessExample() {
@@ -2993,6 +3057,7 @@ $(document).ready(function () {
 	shopsLocation();
 	addShadowTape();
 	toggleViewShops();
+	// Counter init
 	objectFitImages('img'); // object-fit-images initial
 
 	// formSuccessExample();
