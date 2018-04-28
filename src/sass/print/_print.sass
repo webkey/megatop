@@ -43,6 +43,9 @@
 		orphans: 3
 		widows: 3
 
+	.entry-text, p, ul, ol, table
+		max-width: none !important
+
 	h2, h3
 		page-break-after: avoid
 
@@ -62,6 +65,7 @@
 		font-family: Arial, Helvetica, sans-serif !important
 		font-weight: normal !important
 		font-style: normal !important
+		max-width: none !important
 
 	h1
 		font-size: 20pt !important
@@ -114,12 +118,19 @@
 	[class*="btn-"],
 	form,
 
+	.navigationByTypographyElements,
 	.flashes,
 	.images-slider__item::before,
 	.images-slider__list .slick-arrow,
 	.images-slider__list .slick-dots,
 	.images-slider__list .slider-counter,
 	.images-slider__item img,
+	.header::before,
+	.header__col--menu,
+	.header__col--options,
+	.logo a, .logo > span, .logo::before,
+	.entry-img,
+	.user-spacer,
 	.class
 		display: none !important
 
@@ -135,6 +146,11 @@
 	.images-slider__list .slick-track,
 	.images-slider__item,
 	.images-slider__item .caption,
+	.header__cell,
+	.header__col--logo,
+	.logo,
+	.heading,
+	.layout-article,
 	.class
 		+print-reset
 
@@ -147,6 +163,7 @@
 	.datetime,
 	// images-slider
 	.images-slider__item,
+	// images-slider end
 	.class
 		+prints-space-bottom-sm
 
@@ -155,14 +172,16 @@
 		+prints-space-bottom-md
 
 	.logo
+		display: block !important
 		background: none !important
+		width: 8cm !important
+		margin: 0 auto !important
 
 		& > *
 			display: none !important
 
 		& > img
 			display: block !important
-			float: left !important
 
 	blockquote q::before,
 	blockquote q::after

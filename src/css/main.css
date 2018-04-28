@@ -774,7 +774,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	margin: 0;
 	-ms-transform: translate(-50%, -50%);
 	    transform: translate(-50%, -50%);
-	z-index: 10;
+	z-index: 1;
 	font-size: 4.2rem;
 	line-height: 1.29;
 	color: white;
@@ -13936,6 +13936,9 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 		orphans: 3;
 		widows: 3;
 	}
+	.entry-text, p, ul, ol, table {
+		max-width: none !important;
+	}
 	h2, h3 {
 		page-break-after: avoid;
 	}
@@ -13955,6 +13958,7 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 		font-family: Arial, Helvetica, sans-serif !important;
 		font-weight: normal !important;
 		font-style: normal !important;
+		max-width: none !important;
 	}
 	h1 {
 		font-size: 20pt !important;
@@ -14006,12 +14010,19 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 	.breadcrumbs, .breadcrumbs__list,
 	[class*="btn-"],
 	form,
+	.navigationByTypographyElements,
 	.flashes,
 	.images-slider__item::before,
 	.images-slider__list .slick-arrow,
 	.images-slider__list .slick-dots,
 	.images-slider__list .slider-counter,
 	.images-slider__item img,
+	.header::before,
+	.header__col--menu,
+	.header__col--options,
+	.logo a, .logo > span, .logo::before,
+	.entry-img,
+	.user-spacer,
 	.class {
 		display: none !important;
 	}
@@ -14026,6 +14037,11 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 	.images-slider__list .slick-track,
 	.images-slider__item,
 	.images-slider__item .caption,
+	.header__cell,
+	.header__col--logo,
+	.logo,
+	.heading,
+	.layout-article,
 	.class {
 		display: block !important;
 		float: none !important;
@@ -14072,14 +14088,16 @@ li.is-open > .nav__tab .nav__angle i::before, li.is-open > .nav__tab .nav__angle
 		padding-bottom: 0 !important;
 	}
 	.logo {
+		display: block !important;
 		background: none !important;
+		width: 8cm !important;
+		margin: 0 auto !important;
 	}
 	.logo > * {
 		display: none !important;
 	}
 	.logo > img {
 		display: block !important;
-		float: left !important;
 	}
 	blockquote q::before,
 	blockquote q::after {
