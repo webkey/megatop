@@ -1048,24 +1048,16 @@ html
 		text-decoration: none
 		transition-property: color, background-color
 		transition-duration: $animation-speed
-		+clear-spacing
 
 		// убрать подсветку при клике на тачскринах
 		.touchevents &
 			user-select: none
 			-webkit-tap-highlight-color: transparent
 
-		&::before
-			+pseudo-inline-block-relative()
-			vertical-align: middle
-			min-height: 20px
-
 		span
-			+display-inline-block-middle
-			max-width: calc(100% - 5px)
 			+font(1.6rem, round-float(20/16, 2))
-			letter-spacing: normal
 
+		// hover
 		.no-touchevents &:hover
 			color: $base-color
 
@@ -1094,7 +1086,7 @@ html
 				border-bottom: 2px solid $base-color
 
 // стили для пункта навигации С ОТКРЫТЫМ ПОДМЕНЮ
-.nav__list li
+//.nav__list li
 	&.is-open
 		& > .nav__tab a
 			&::before
@@ -1110,13 +1102,14 @@ html
 .nav__list > li
 
 	& > .nav__tab a
-		min-height: 0
+		//min-height: 0
 		+font-alt-bold
 		text-transform: uppercase
 		color: $text-color
 		+padding-vertical(14px)
+		+font(1.6rem, round-float(20/16, 2))
 
-		span
+		//span
 			letter-spacing: 0.1em
 			+font(1.6rem, round-float(20/16, 2))
 
