@@ -306,7 +306,7 @@ function slidersInit() {
 			var $imgListItem = $imgList.children();
 			var dur = 200;
 
-			// create titles
+			// create thumbs
 			$imgList.after(cardGalleryThumbsTpl.clone());
 			var $galleryThumbs = $curSlider.find('.p-card__gallery-thumbs');
 			$.each($imgListItem, function () {
@@ -316,7 +316,7 @@ function slidersInit() {
 			// object-fit for non-support browsers
 			objectFitImages($('.p-card__gallery-thumbs img'));
 
-			// initialized slider of titles
+			// initialized slider of thumbs
 			$galleryThumbs.slick({
 				fade: false,
 				vertical: true,
@@ -346,7 +346,7 @@ function slidersInit() {
 
 			});
 
-			// initialized slider of images
+			// initialized slider of main images
 			$imgList.slick({
 				fade: true,
 				speed: dur,
@@ -367,6 +367,56 @@ function slidersInit() {
 				objectFitImages($(image));
 			});
 
+		});
+	}
+
+	/**history slider*/
+	var $historySlider = $('.h-slider-js');
+
+	if($historySlider.length){
+		$historySlider.each(function () {
+			var $curSlider = $(this),
+				$years = $curSlider.find('.h-slider-years-js'),
+				$descriptions = $curSlider.find('.h-slider-desc-js'),
+				dur = 700;
+
+			// initialized slider of years (thumbs)
+			$years.slick({
+				fade: false,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: false,
+				asNavFor: $descriptions,
+				dots: false,
+				arrows: true,
+				centerMode: true,
+				focusOnSelect: true,
+				variableWidth: true,
+				centerPadding: '0px',
+
+				// accessibility: false,
+				// draggable: false,
+				// swipe: false,
+				// touchMove: false
+			});
+
+			// initialized slider of descriptions
+			$descriptions.slick({
+				fade: true,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				asNavFor: $years,
+				infinite: false,
+				dots: false,
+				arrows: false,
+
+				// accessibility: false,
+				// draggable: false,
+				// swipe: false,
+				// touchMove: false
+			});
 		});
 	}
 
