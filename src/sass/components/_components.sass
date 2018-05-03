@@ -822,13 +822,6 @@
 	+media('<mob-lg')
 		margin-bottom: 3rem
 
-// main-section--similar
-.main-section--similar
-	margin-bottom: 2rem
-
-	.no-touchevents & .main-section__title
-		margin-bottom: 0
-
 // main-section--club
 .main-section--club
 	margin-bottom: 6rem
@@ -839,10 +832,10 @@
 
 	+media('<tab-lg')
 		+padding-horizontal(nth($text-layout-space--sm, 2))
+		margin-bottom: 3rem
 
 	+media('<mob-lg')
 		+padding-horizontal(nth($text-layout-space--mob, 2))
-		margin-bottom: 3rem
 
 /* main-section end
 
@@ -2267,6 +2260,12 @@
 /* products banner end
 
 /* similar slider
+.main-section--similar
+	margin-bottom: 2rem
+
+	.no-touchevents & .main-section__title
+		margin-bottom: -1rem
+
 // slider
 .similar-slider
 	position: relative
@@ -2397,12 +2396,79 @@
 
 /* club
 .club
+	position: relative
 	display: block
+	display: flex
+	align-items: center
 	text-decoration: none
 	color: inherit
 	margin: 0 auto
-	width: 1386px
+	width: 1380px
+	padding: 20px 9% 20px 400px
 	max-width: 100%
+	background-image: url(../../img/bg-club.jpg)
+	background-color: white
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	border: 4px solid #333
+	min-height: 230px
+
+	+media('<tab-lg')
+		min-height: 200px
+		padding: 20px 20px 20px 300px
+
+	+media('<mob-lg')
+		display: block
+		width: 320px
+		min-height: 0
+		padding: 15px
+
+	[class*='btn-']
+		min-width: 185px
+
+.club__img
+	position: absolute
+	left: 50px
+	top: 50%
+	transform: translate(0, -50%)
+
+	+media('<tab-lg')
+		left: 20px
+		width: 240px
+
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		transform: none
+		width: auto
+		margin-bottom: 2rem
+
+.club__content
+	flex-basis: 100%
+	text-align: right
+
+.club__text
+	+display-inline-block-top
+	+font-alt-medium
+	+font(2.6rem, round-float(34/26, 2))
+	text-transform: uppercase
+	letter-spacing: 0.1em
+	text-align: left
+	margin-bottom: 0.5em
+
+	+media('<tab-lg')
+		font-size: 2.2rem
+
+	+media('<tab-sm')
+		font-size: 2rem
+
+	&:last-child
+		margin-bottom: 0
+
+//.club__footer
+	text-align: right
 
 /* club end
 
@@ -2410,6 +2476,10 @@
 .main-section--events
 	.no-touchevents &
 		margin-bottom: -#{nth($events-rang-size, 1)+$events-shade-size+(-10)}
+
+	.main-section__title
+		.no-touchevents &
+			margin-bottom: -1rem
 
 .events-slider
 	&.swiper-container

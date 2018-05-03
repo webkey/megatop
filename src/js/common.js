@@ -2929,7 +2929,7 @@ function toggleViewShops() {
 /*toggle view shops end*/
 
 /**
- * !Counter!
+ * !Counter
  * */
 $(function () {
 	var counterOffset = 0,
@@ -2973,6 +2973,17 @@ $(function () {
 		});
 	}
 });
+
+/**
+ * !Tooltip
+ * */
+function initTooltip() {
+	var $elements = $('.user-options__item a');
+	$.each($elements, function () {
+		var $curElem = $(this);
+		$curElem.attr('data-title', $curElem.attr('title')).attr('title','');
+	})
+}
 
 /**
  * !Testing form validation (for example). Do not use on release!
@@ -3058,6 +3069,7 @@ $(document).ready(function () {
 	addShadowTape();
 	toggleViewShops();
 	// Counter init
+	initTooltip();
 	objectFitImages('img'); // object-fit-images initial
 
 	// formSuccessExample();

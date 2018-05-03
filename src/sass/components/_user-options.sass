@@ -34,9 +34,11 @@ $uo-icon-size--sm: 16px
 
 	& > a, & > div
 		position: relative
-		display: block
+		//display: block
+		display: flex
+		align-items: center
 		height: nth($uo-item-size, 2)
-		padding: 0 round($uo-space/2)
+		padding: 15px round($uo-space/2)
 		color: white
 		line-height: 1
 		text-decoration: none
@@ -54,10 +56,42 @@ $uo-icon-size--sm: 16px
 		+media('<mob-lg')
 			+padding-horizontal(round($uo-space--mob/2))
 
-		&::before
+		//&::before
 			content: ""
 			+display-inline-block-middle
 			height: 100%
+
+		// tooltip
+		&[data-title]::before
+			content: attr(data-title)
+			display: block
+			min-width: 100%
+			padding: 4px 8px
+			border-radius: 2px
+			position: absolute
+			//left: 50%
+			right: 0
+			top: 100%
+			+font-light
+			+font(1.4rem, 20px)
+			text-align: center
+			letter-spacing: normal
+			z-index: 2
+			color: white
+			background-color: #1a1a1a
+			border: 1px solid #666
+			+antialiased
+			//===========
+			$prop: opacity, transform
+			opacity: 0
+			visibility: hidden
+			$translate: 0, -5px
+			transform: translate($translate)
+			transform: translate3d($translate, 0)
+			will-change: $prop
+			transition:
+				property: $prop
+				duration: $animation-speed
 
 		svg
 			display: inline-block
@@ -90,6 +124,17 @@ $uo-icon-size--sm: 16px
 	& > div
 		cursor: default
 
+	// tooltip align right for last item
+	//&:last-child
+		& > a, & > div
+			// tooltip
+			&[data-title]::before
+				left: auto
+				right: 0
+				$translate: 0, -5px
+				transform: translate($translate)
+				transform: translate3d($translate, 0)
+
 	// hover
 	& > a
 		&::after
@@ -110,8 +155,25 @@ $uo-icon-size--sm: 16px
 			&::after
 				opacity: 1
 
+	& > a, & > div
+		// tooltip
+		.no-touchevents &[data-title]:hover
+			&::before
+				opacity: 1
+				visibility: visible
+				$translate: 0, 0
+				transform: translate($translate)
+				transform: translate3d($translate, 0)
+
+	//&:last-child
+		& > a, & > div
+			.no-touchevents &[data-title]:hover
+				&::before
+					$translate: 0, 0
+					transform: translate($translate)
+					transform: translate3d($translate, 0)
+
 // user-options--likes
-//.user-options--likes
 
 // lang
 .user-options--lang
