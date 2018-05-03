@@ -13377,6 +13377,12 @@ html.css-scroll-fixed {
 /* === NAVIGATION === */
 /* nav list */
 .nav__list {
+	padding: 20px 0;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	-webkit-tap-highlight-color: transparent;
 	position: relative;
 }
 
@@ -13384,24 +13390,6 @@ html.css-scroll-fixed {
 	.nav__list {
 		width: auto;
 	}
-}
-
-.nav__drop {
-	position: relative;
-	display: none;
-}
-
-.no-js .nav__drop {
-	display: block;
-}
-
-.nav__list {
-	padding: 20px 0;
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-	    -ms-user-select: none;
-	        user-select: none;
-	-webkit-tap-highlight-color: transparent;
 }
 
 .nav__list li {
@@ -13424,8 +13412,6 @@ html.css-scroll-fixed {
 	text-decoration: none;
 	transition-property: color, background-color;
 	transition-duration: 0.2s;
-	font-size: 0;
-	letter-spacing: -4px;
 }
 
 .touchevents .nav__list a {
@@ -13436,25 +13422,22 @@ html.css-scroll-fixed {
 	-webkit-tap-highlight-color: transparent;
 }
 
-.nav__list a::before {
-	content: "";
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-	min-height: 20px;
-}
-
 .nav__list a span {
-	display: inline-block;
-	vertical-align: middle;
-	max-width: calc(100% - 5px);
 	font-size: 1.6rem;
 	line-height: 1.25;
-	letter-spacing: normal;
 }
 
 .no-touchevents .nav__list a:hover {
 	color: #f70106;
+}
+
+.nav__drop {
+	position: relative;
+	display: none;
+}
+
+.no-js .nav__drop {
+	display: block;
 }
 
 .nav__list li.has-drop > .nav__tab > a {
@@ -13469,14 +13452,7 @@ html.css-scroll-fixed {
 	border-bottom: 2px solid #f70106;
 }
 
-.nav__list li.is-open > .nav__tab a::before {
-	opacity: 1;
-	-ms-transform: translate(0, 0);
-	    transform: translate(0, 0);
-}
-
 .nav__list > li > .nav__tab a {
-	min-height: 0;
 	font-family: "futura-bold", sans-serif;
 	font-weight: normal;
 	font-style: normal;
@@ -13484,10 +13460,6 @@ html.css-scroll-fixed {
 	color: #000;
 	padding-top: 14px;
 	padding-bottom: 14px;
-}
-
-.nav__list > li > .nav__tab a span {
-	letter-spacing: 0.1em;
 	font-size: 1.6rem;
 	line-height: 1.25;
 }
