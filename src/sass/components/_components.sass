@@ -2687,15 +2687,59 @@
 
 .m-content__body
 	position: relative
+	flex: 1 1
 
 .m-content__body__options
+	position: relative
 	padding: nth($text-layout-space, 1) nth($text-layout-space, 2) 10px
+	background-color: #fff
 
 	+media('<desk-md')
 		padding: nth($text-layout-space--md, 1) nth($text-layout-space--md, 2) 10px
 
+	+media('>=tab-lg')
+		position: relative !important
+		top: auto !important
+
 	+media('<tab-lg')
-		padding: nth($text-layout-space--sm, 1) nth($text-layout-space--sm, 2) 10px
+		padding: 10px nth($text-layout-space--sm, 2)
+		position: sticky
+		top: $header-height--sm
+
+		&.js-is-sticky
+			z-index: 6
+			border-bottom: 1px solid $border-color
+
+	+media('<mob-lg')
+		//padding: $p-options-height--mob 0 0
+		padding: 0
+
+.m-content__body__tags
+	position: relative
+	padding: 10px nth($text-layout-space, 2)
+	background-color: #fff
+	border: solid $border-color
+	border-width: 0 0 1px
+	display: none
+
+	&.tags-sticky-js
+		position: sticky
+		top: 0
+
+		&.js-is-sticky
+			+media('>=tab-lg')
+				z-index: 6
+
+	.filters-results-show &
+		display: block
+
+	+media('<desk-md')
+		padding: 10px nth($text-layout-space--md, 2)
+
+	+media('<tab-lg')
+		padding: 0 nth($text-layout-space--sm, 2) 10px
+		position: relative !important
+		top: auto !important
 
 	+media('<mob-lg')
 		padding: 0
@@ -2717,12 +2761,14 @@
 
 .p-filters-results
 	position: absolute
-	left: 0
 	bottom: 0
 	height: 52px
-	background-color: #eee
+	//background-color: #eee
+	background-color: $base-color
 	width: $p-filters-width
-	border: solid $border-color
+	color: white
+	//border: solid $border-color
+	border: solid $base-color
 	border-width: 1px 0
 	display: flex
 	justify-content: space-between
@@ -2746,7 +2792,6 @@
 
 	.filters-result-fixed &
 		position: fixed
-		left: 0
 		bottom: -1px
 
 	&, .filters-result-fixed &
@@ -2755,7 +2800,7 @@
 			position: fixed
 			left: 0
 			bottom: 0
-			overflow: hidden
+			//overflow: hidden
 
 	.selected
 		+padding-horizontal(10px)
@@ -2814,15 +2859,19 @@
 
 		// hover
 		.no-touchevents &:hover
-			background-color: $base-color
+			//background-color: $base-color
+			background-color: tint($btn-bg-hover-color, 80)
 
 	.btn-clear-filters
 		+size(52px)
 		padding: 0
-		color: black
-		background-color: #eee
+		//color: black
+		color: white
+		//background-color: #eee
+		background-color: $base-color
 		margin: -1px 0 -1px -1px
-		border: 1px solid $border-color
+		//border: 1px solid $border-color
+		border: 1px solid $base-color
 
 		svg
 			+size(18px)
@@ -2832,7 +2881,7 @@
 
 		// hover
 		.no-touchevents &:hover
-			background-color: $base-color
+			background-color: tint($base-color, 80)
 			border-color: $base-color
 			color: white
 
@@ -2922,8 +2971,27 @@
 .p-options
 	position: relative
 	margin-bottom: 20px
+	//background-color: #fff
 
 	+media('<mob-lg')
+		//position: absolute
+		//top: 0
+		//width: 100%
+		//min-width: 320px
+		//margin-bottom: 0
+		//height: $p-options-height--mob
+		//box-shadow: 0 1px 5px transparent
+		//transition:
+			property: box-shadow
+			duration: $animation-speed
+
+		//.options-fixed &
+			position: fixed
+			z-index: 5
+			top: $header-height--sm
+			box-shadow: 0 1px 5px $border-color
+
+	&:last-child
 		margin-bottom: 0
 
 .p-options__list
@@ -2934,7 +3002,7 @@
 		display: flex
 		justify-content: space-between
 		flex-wrap: nowrap
-		padding-top: 1px
+		//padding-top: 1px
 
 		&::after
 			content: none
@@ -2971,6 +3039,7 @@
 	background-color: #fff
 
 	+media('<mob-lg')
+		+padding-vertical(14px)
 		border-color: transparent
 
 	.p-filters-activated
@@ -3013,6 +3082,8 @@
 	select
 		+media('<mob-lg')
 			border-color: transparent !important
+			+padding-vertical(14px)
+			height: $p-options-height--mob
 
 /* options panel end
 
@@ -3025,6 +3096,7 @@
 		left: 0
 		top: $header-height--sm !important // !important нужен, чтобы перебить стили назначенные скриптом
 		bottom: 0
+		background-color: white
 		z-index: 10000
 
 	&, & .m-aside__holder
@@ -3114,7 +3186,6 @@
 		will-change: transform
 		transform: translate(-100%, 0)
 		transform: translateX(-100%)
-		background-color: white
 		transition:
 			property: transform
 			duration: $animation-speed
@@ -3252,9 +3323,14 @@
 		display: block
 		font-size: 16px
 
-		//[type="checkbox"]:checked
+		[type="checkbox"]:checked
 			& ~ span
 				+font-bold
+				color: #000
+
+		.no-touchevents &:hover
+			& > span
+				color: $base-color
 
 .p-filters-drop-list, .p-card__sizes
 	// filter colors
@@ -3373,6 +3449,9 @@ label.checkbox--size
 /* range-slider end
 
 /* filters tags
+.m-content__body__tags
+
+
 .p-filters-tags
 	position: relative
 	overflow: hidden
@@ -4145,21 +4224,25 @@ $about-benefits-icon-size--mob: 50px
 	height: 630px
 	overflow: hidden
 	width: 100%
-	padding: nth($text-layout-space, 1) nth($slider-btn-size, 1)
+	padding: nth($text-layout-space, 1) nth($slider-btn-size, 1) 40px
 	text-decoration: none
 	color: white
 	background-color: #ddd
 	z-index: 1
 
 	+media('<desk-md')
-		+padding-vertical(nth($text-layout-space--md, 1))
+		//+padding-vertical(nth($text-layout-space--md, 1))
+		padding-top: nth($text-layout-space--md, 1)
 
 	+media('<tab-lg')
-		+padding-vertical(nth($text-layout-space--sm, 1))
+		//+padding-vertical(nth($text-layout-space--sm, 1))
+		padding-top: nth($text-layout-space--sm, 1)
 
 	+media('<mob-lg')
-		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
-		height: 524px
+		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2) 40px
+		//height: 524px
+		height: auto
+		min-height: 320px
 
 	.slick-initialized &
 		// after slide load
@@ -4187,7 +4270,7 @@ $about-benefits-icon-size--mob: 50px
 	+object-fit(cover)
 	z-index: -1
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		+object-fit(cover, 20%)
 
 .about-promo__slider__text
@@ -4629,8 +4712,16 @@ $jobs-warranty-icon-size--mob: 32px
 		padding-right: nth($accordion-space--mob, 1)*2+nth($accordion-angle-size, 2)
 
 	.accordion__header__text
-		+font-alt-bold
-		+font(21px, round-float(27/21, 2))
+		//+font-alt-bold
+		+font-alt-medium
+		//+font(21px, round-float(27/21, 2))
+		+font(28px, round-float(34/28, 2))
+
+		+media('<tab-lg')
+			font-size: 24px
+
+		+media('<mob-lg')
+			font-size: 20px
 
 	.accordion__header__angle
 		display: block

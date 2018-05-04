@@ -131,6 +131,12 @@
 	background: #f3f3f3
 	z-index: 1
 
+	+media('<tab-lg')
+		height: $shops-map-height--sm
+
+	+media('<mob-lg')
+		height: $shops-map-height--mob
+
 	&::before
 		$size: 50px
 		content: ""
@@ -144,11 +150,8 @@
 		background-size: contain
 		z-index: -1
 
-	+media('<tab-lg')
-		height: $shops-map-height--sm
-
-	+media('<mob-lg')
-		height: $shops-map-height--mob
+	[class*="-ground-pane"]
+		filter: grayscale(1)
 
 /* shops-map
 

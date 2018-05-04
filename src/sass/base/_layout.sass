@@ -444,10 +444,13 @@ html
 		width: 160px
 
 	+media('<mob-lg')
-		width: 120px
+		width: 180px
+
+	+media('<mob-md')
+		width: 140px
 
 	+media('<mob-sm')
-		width: 100px
+		width: 110px
 
 	&::before
 		content: ""
@@ -460,6 +463,9 @@ html
 		background-size: contain
 
 		+media('<mob-lg')
+			background-image: url(../../img/logo-mob-full.png)
+
+		//+media('<mob-lg')
 			background-image: url(../../img/logo-mob.png)
 
 	a, & > span
