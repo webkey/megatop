@@ -7,7 +7,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Личный кабинет - Подробные условия программы</title>
+	<title>Личный кабинет - Избранное</title>
 	<!--Mobile optimized-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2">
 	<!--Theme color-->
@@ -153,47 +153,272 @@
 									<a href="cabinet-card.html" class=""><span>Регистрация новой карты</span></a>
 								</div>
 								<div class="pseudotabs-tab">
-									<a href="cabinet-cond.html" class=" active-tab"><span>Подробные условия программы</span></a>
+									<a href="cabinet-cond.html" class=""><span>Подробные условия программы</span></a>
 								</div>
 								<div class="pseudotabs-tab">
-									<a href="cabinet-favorites.html" class=""><span>Избранное</span></a>
+									<a href="cabinet-favorites.html" class=" active-tab"><span>Избранное</span></a>
 								</div>
 							</div>
 						</div>
 						<!--pseudotabs-nav end-->
-						<div class="cabinet__layout">
-							<h2>Подробные условия программы</h2>
-							<p>Дисконтная карта программы «Клуб друзей» выдается покупателю при соблюдении следующих условий:</p>
-							<ul>
-								<li>совершение покупки (по чеку) на сумму от 10 рублей;</li>
-								<li>согласие покупателя участвовать в дисконтной программе;</li>
-								<li>заполнение анкеты участника с подтверждением согласия на использование персональных данных покупателя для последующего оповещения об актуальных акционных предложениях MEGATOP посредством СМС, а также e-mail-рассылки. В случае отказа от участия
-									в рекламном оповещении, дисконтная карта аннулируется и признается недействительной.</li>
-							</ul>
-							<p>Ассортимент товаров, при покупке которых выдается дисконтная карта – все товары, представленные в магазинах MEGATOP.</p>
-							<ul>
-								<li>заполнение анкеты является обязательным условием участия;</li>
-								<li>все пункты анкеты обязательны для заполнения;</li>
-								<li>без заполненной анкеты невозможна активация дисконтной карты.</li>
-							</ul>
-							<p>Анкета заполняется самим покупателем, разборчиво, в любое удобное для него время.</p>
-							<p>Обмен анкеты на дисконтную карту производится в любом магазине, участвующем в программе «Клуб друзей», в любое удобное для покупателя время. <br> Подпись заполняющего анкету обязательна.</p>
-							<p>Предоставление скидки и зачисление накоплений осуществляется по предъявлении дисконтной карты кассиру до момента расчета за покупку.</p>
-							<p>Зачисление накопления происходит при покупке любого товара представленного в магазинах MEGATOP, что приближает покупателя к следующему уровню скидки.</p>
-							<p>При возврате нового товара приобретенного с использованием дисконтной карты, происходит списание соответствующей суммы накопления.</p>
-							<p>При возврате товара с производственным дефектом, приобретенного с использованием дисконтной карты, списание суммы накопления не производится.</p>
-							<p>Скидки по дисконтным картам не предоставляются на акционный ассортимент, если в условиях проходящей акции не указано иное.</p>
-							<ul>
-								<li><b>До момента накопления 450 руб. покупателю предоставляется скидка 3%</b></li>
-								<li><b>При накоплении 450 руб. - предоставляется скидка 5%.</b></li>
-								<li><b>При накоплении 700 руб. - предоставляется скидка 7%.</b></li>
-								<li><b>При накоплении 1000 руб. - предоставляется скидка 10%.</b></li>
-							</ul>
-							<p><b>Период действия накоплений составляет 365 дней.</b></p>
-							<p>То есть, если за указанный период по карте не совершили ни одной покупки, сумма накопления на 366 (триста шестьдесят шестой) день обнуляется.
-								<br> Действующая скидка по данной карте будет равна 3%.</p>
-							<p>Компания MEGATOP оставляет за собой право вносить изменения в дисконтную программу «Клуб друзей».
-								<br> Обо всех изменениях вы сможете узнать на сайте компании и на официальных страницах социальных групп.</p>
+						<!--!!! Если товаров нет, то добавить класс "order-calc__hasnt-items" на блок .order-calc__hasnt-items-->
+						<div class="orders-history order-calc-js">
+							<div class="c-table c-table-resp">
+								<div class="c-thead">
+									<div class="c-tr">
+										<div class="c-th c-th--caption"></div>
+										<div class="c-th c-th--date">Дата покупки</div>
+										<div class="c-th c-th--adr">Место покупки</div>
+										<div class="c-th c-th--vendor">Название товара (артикул)</div>
+										<div class="c-th c-th--count">Кол-во</div>
+										<div class="c-th c-th--sum">Сумма покупки</div>
+									</div>
+								</div>
+								<div class="c-tbody">
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-01.jpg" alt="195101 Стельки для обуви ВОЙЛОК утепляющие (арт. 011595101)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												29 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Бобруйск, <br> ул. Социалистическая, 84
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												195101 Стельки для обуви ВОЙЛОК утепляющие (арт. 011595101)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="4.95">4.95 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="1" data-id="0001_011595101" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-02.jpg" alt="П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 111304)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												15 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Осиповичи, <br> Дискаунтер, ул. Сумченко, 29
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 111304)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="10.95 ">10.95 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="2" data-id="0002_111304" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-03.jpg" alt="П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 151304)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												29 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Бобруйск, <br> ул. Социалистическая, 84
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 151304)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="95.32">95.32 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="3" data-id="0003_151304" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-04.jpg" alt="195101 Стельки для обуви ВОЙЛОК утепляющие (арт. 7795101)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												29 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Бобруйск, <br> ул. Социалистическая, 84
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												195101 Стельки для обуви ВОЙЛОК утепляющие (арт. 7795101)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="12.95">12.95 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="1" data-id="0004_7795101" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-05.jpg" alt="П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 241104)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												15 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Осиповичи, <br> Дискаунтер, ул. Сумченко, 29
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 241104)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="7.17 ">7.17 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="2" data-id="0005_241104" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+									<div class="c-tr">
+										<div class="c-td c-td--caption" data-label="">
+											<div class="c-td__val">
+												<a href="card.html" class="img-for-table">
+				<img src="img/img-products-07.jpg" alt="П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 0158811)" />
+			</a>
+											</div>
+										</div>
+										<div class="c-td c-td--date" data-label="Дата покупки">
+											<div class="c-td__val">
+												29 ноября 2017
+											</div>
+										</div>
+										<div class="c-td c-td--adr" data-label="Место покупки">
+											<div class="c-td__val">
+												г. Бобруйск, <br> ул. Социалистическая, 84
+											</div>
+										</div>
+										<div class="c-td c-td--vendor" data-label="Артикул">
+											<div class="c-td__val">
+												П/сап.жен.повс. DL04 чер ИК р. 35-41 Enjoin' (арт. 0158811)
+											</div>
+										</div>
+										<div class="c-td c-td--price" data-label="Цена" style="display: none;">
+											<div class="c-td__val">
+												<div class="order-calc__price-js" data-price="1245.99">1245.99 руб.</div>
+											</div>
+										</div>
+										<div class="c-td c-td--count" data-label="Кол-во">
+											<div class="c-td__val">
+												<input disabled class="order-calc__number-js" type="text" name="value" value="1" data-id="0006_0158811" data-only-number>
+											</div>
+										</div>
+										<div class="c-td c-td--sum" data-label="Сумма покупки">
+											<div class="c-td__val">
+												<span class="order-calc__price-sum-js">...</span> руб.
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="c-table-result">
+								<div class="c-table-result__total order-calc__total-results-js hide-before-calc">
+									<span class="c-table-result__label">Общая сумма всех заказов:</span>
+									<strong class="c-table-result__price"><span class="order-calc__price-total-js">...</span> руб.</strong>
+								</div>
+							</div>
+							<!--!!! Текст, который будет отображаться, когда нет товаров-->
+							<div class="order-calc__empty">- В истории покупок нет сохраненных данных -</div>
 						</div>
 					</section>
 					<!--cabiner card end-->

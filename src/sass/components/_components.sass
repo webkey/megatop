@@ -855,6 +855,7 @@
 .section__title
 	+font-alt-medium
 	+font(3.6rem, round-float(42/36, 2))
+	letter-spacing: normal
 	margin-bottom: nth($grid-space, 1)
 
 	+media('<tab-lg')
@@ -871,6 +872,7 @@
 			style: inherit
 			weight: inherit
 		line-height: inherit
+		letter-spacing: inherit
 		text-transform: none
 		color: inherit
 		margin: 0
@@ -1015,6 +1017,7 @@
 	color: $text-color-light
 	padding: 20px nth($text-layout-space, 2)
 	border-bottom: 1px solid $border-color
+	display: none // удалить на всех страницах
 
 	+media('<desk-md')
 		padding: 20px nth($text-layout-space--md, 2)
@@ -3478,20 +3481,36 @@ label.checkbox--size
 		padding: 0
 
 .about-caption__title
-	+font-bold
-	+font(9.6rem, round-float(98/96, 2))
-	text-transform: uppercase
+	//+font-bold
+	//+font(9.6rem, round-float(98/96, 2))
+	//text-transform: uppercase
+	//padding-left: 0
+	padding: 0
 	color: #000
-	padding-left: 0
+
+	& > strong
+		display: block
+		width: 480px
+		max-width: 100%
+		background-image: url(../../img/logo-alt.png)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
+		+font(0, 0)
+
+		&::before
+			content: ""
+			display: block
+			+ratio(934, 128)
 
 	+media('<desk-sm')
-		font-size: 8.2rem
+		//font-size: 8.2rem
 
 	+media('<tab-lg')
 		margin-bottom: nth($grid-space--sm, 1)
 
 	+media('<mob-lg')
-		font-size: 4.1rem
+		//font-size: 4.1rem
 
 .about-caption__desc
 	+font-alt-medium
@@ -4212,7 +4231,8 @@ $about-benefits-icon-size--mob: 50px
 	background-size: cover
 	color: white
 
-	min-height: 736px
+	//min-height: 736px
+	min-height: 600px
 
 	.section__title
 		color: white
@@ -4257,7 +4277,8 @@ $about-benefits-icon-size--mob: 50px
 		margin-bottom: nth($grid-space--mob, 1)
 
 .jobs-caption__desc
-	+font(1.7rem, round-float(28/17, 2))
+	+font-alt-medium
+	+font(2.2rem, round-float(34/22, 2))
 
 	p
 		&:last-child
@@ -4357,6 +4378,14 @@ $jobs-caption-icon-size--mob: 50px
 /* jobs-warranty
 .jobs-warranty
 	position: relative
+	border-bottom: 1px solid $border-color
+	padding-bottom: 20px
+
+	+media('<tab-lg')
+		padding-bottom: 15px
+
+	+media('<mob-lg')
+		padding-bottom: 10px
 
 .jobs-warranty__list
 	overflow: hidden
@@ -4774,6 +4803,9 @@ $jobs-warranty-icon-size--mob: 32px
 	.map-container
 		height: 100%
 
+		[class*="-ground-pane"]
+			filter: grayscale(1)
+
 	.contacts-map__frame
 		height: 100%
 		background: #ccc
@@ -4904,15 +4936,17 @@ $jobs-warranty-icon-size--mob: 32px
 
 .contacts__box__fio
 	+font-alt-medium
-	+font(1.8rem, round-float(26/18, 2))
+	//+font(1.8rem, round-float(26/18, 2))
+	+font(2.0rem, round-float(26/20, 2))
 	margin-bottom: 0.5em
 
 .contacts__box__dl
 	margin: 0 0 0.5em
 	color: #333
-	+font(2.4rem, round-float(36/24, 2))
+	//+font(2.4rem, round-float(36/24, 2))
+	+font(2.0rem, round-float(28/20, 2))
 
-	+media('<desk-sm')
+	//+media('<desk-sm')
 		+font(2.0rem, round-float(28/20, 2))
 
 	+media('<tab-lg')
@@ -4985,7 +5019,7 @@ $card-cont-width: 564px
 		margin-bottom: 0
 
 .p-card__gallery-images
-	//max-width: 646px
+	max-width: 770px
 
 	+media('<tab-lg')
 		margin-bottom: 20px
@@ -5103,23 +5137,23 @@ $card-cont-width: 564px
 		vertical-align: baseline
 
 .p-card__price__cur
-	font-size: 8rem
+	font-size: 6rem
 	line-height: 82px
 	color: #000
 
 	+media('<desk-lg')
-		font-size: 6rem
+		font-size: 5rem
 		line-height: 64px
 
 	+media('<desk-sm')
-		font-size: 5rem
+		font-size: 4rem
 
 	+media('<mob-lg')
 		font-size: 3.6rem
 		line-height: 52px
 
 	& > span
-		font-size: 0.8em
+		font-size: 0.7em
 
 .p-card__price__old
 	position: relative
@@ -5662,6 +5696,9 @@ $card-cont-width: 564px
 
 /* pseudotabs
 .pseudotabs-nav-wrap
+	$shape-color: #eceff1
+	//======================
+	position: relative
 	margin: 0 0 3rem
 
 	+media('<mob-lg')
@@ -5669,6 +5706,25 @@ $card-cont-width: 564px
 		+margin-horizontal(-#{round(nth($text-layout-space--mob, 1)/2)})
 		+padding-horizontal(#{round(nth($text-layout-space--mob, 1)/2)})
 		padding-bottom: 1rem
+		//margin: 0 0 1rem
+
+	//&::before, &::after
+		content: ""
+		display: block
+		position: absolute
+		top: 0
+		height: 100%
+		width: 20px
+		z-index: 1
+		pointer-events: none
+
+	//&::before
+		left: 0
+		+linear-gradient(to right, rgba($shape-color, 1) 0%, rgba($shape-color, 0.5) 75%, rgba($shape-color, 0) 100%)
+
+	//&::after
+		right: 0
+		+linear-gradient(to left, rgba($shape-color, 1) 0%, rgba($shape-color, 0.5) 75%, rgba($shape-color, 0) 100%)
 
 .pseudotabs-nav
 	margin: 0 -#{round(nth($grid-space, 2)/2)}
@@ -5678,6 +5734,18 @@ $card-cont-width: 564px
 
 	+media('<mob-lg')
 		margin: 0 -#{round(nth($grid-space--mob, 2)/2)}
+		//margin: 0
+		//+padding-horizontal(10px)
+		//white-space: nowrap
+		//overflow-y: hidden
+		//overflow-x: auto
+
+//.pseudotabs-nav-wrap, .pseudotabs-nav
+	+media('<mob-lg')
+		height: calc(24px + 10px)
+
+		.no-touchevents &
+			height: calc(24px + 22px)
 
 .pseudotabs-tab
 	+font-bold
@@ -5692,6 +5760,9 @@ $card-cont-width: 564px
 
 	+media('<mob-lg')
 		margin: 0 round(nth($grid-space--mob, 2)/2) round(nth($grid-space--mob, 1)/2)
+		//margin: 0 10px
+		//+font(1.6rem, 24px)
+		//height: 24px
 
 	a
 		display: block

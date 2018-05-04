@@ -2044,8 +2044,8 @@ function contactsMap() {
 			}, {
 				iconLayout: 'default#image',
 				iconImageHref: contactsMapBaseImageURL + 'pin-map.png',
-				iconImageSize: [46, 46],
-				iconImageOffset: [-23, -23]
+				iconImageSize: [38, 38],
+				iconImageOffset: [-19, -19]
 			});
 
 			/*add zoom control button*/
@@ -2071,8 +2071,8 @@ function contactsMap() {
 			'<div class="map-popup__subtitle">' + contactMapInfo.subtitle + '</div>' +
 			'<div class="map-popup__list">' +
 			'<div class="map-popup__row"><div>' + contactMapInfo.address + '</div></div>' +
-			'<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
-			'<div class="map-popup__row"><div>' + contactMapInfo.phones + '</div></div>' +
+			// '<div class="map-popup__row"><i class="depict-time"></i><div>' + contactMapInfo.time + '</div></div>' +
+			// '<div class="map-popup__row"><div>' + contactMapInfo.phones + '</div></div>' +
 			'</div>';
 	}
 }
@@ -2646,8 +2646,8 @@ function shopsLocation() {
 					}, {
 						iconLayout: 'default#image',
 						iconImageHref: baseImageURL + 'pin-map.png',
-						iconImageSize: [46, 46],
-						iconImageOffset: [-23, -23],
+						iconImageSize: [38, 38],
+						iconImageOffset: [-19, -19],
 						hideIconOnBalloonOpen: false,
 						balloonOffset: [0, -23],
 						balloonPosition: ['center', 'top']

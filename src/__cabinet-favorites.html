@@ -1,0 +1,91 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет - Избранное",
+	"pageClass": "page-alt-bg"
+})
+
+@@include('_tpl_PAGE_WRAP.html', {"pageWrap": "START" })
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html')
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+	<div class="max-wrap layout">
+		<!--CONTENT-->
+		<div class="content user-content">
+
+			<div class="heading">
+				<h1>Личный кабинет</h1>
+				<div class="heading__options">
+					<a href="#" class="btn-out btn-with-icon">
+						@@include("includes/svg/icon-logout.svg")
+						<span>Выход</span>
+					</a>
+				</div>
+			</div>
+
+			<!--cabinet card-->
+			<section class="cabinet">
+				<!--pseudotabs-nav-->
+				@@include('_tpl_pseudotabs-nav.html', {
+					"active": "Избранное"
+				})
+				<!--pseudotabs-nav end-->
+
+				<!--!!! Если товаров нет, то добавить класс "order-calc__hasnt-items" на блок .order-calc__hasnt-items-->
+				<div class="orders-history order-calc-js">
+					<div class="c-table c-table-resp">
+						<div class="c-thead">
+							<div class="c-tr">
+								@@loop("_tpl_c-thead.html", "includes/json/order-calc__th--orders-history.json")
+							</div>
+						</div>
+
+						<div class="c-tbody">
+							@@loop("_tpl_order-calc-items--product.html", "includes/json/order-calc__items--orders-history.json")
+						</div>
+					</div>
+
+					<div class="c-table-result">
+						<div class="c-table-result__total order-calc__total-results-js hide-before-calc">
+							<span class="c-table-result__label">Общая сумма всех заказов:</span>
+							<strong class="c-table-result__price"><span class="order-calc__price-total-js">...</span> руб.</strong>
+						</div>
+					</div>
+
+					<!--!!! Текст, который будет отображаться, когда нет товаров-->
+					<div class="order-calc__empty">- В истории покупок нет сохраненных данных -</div>
+				</div>
+			</section>
+			<!--cabiner card end-->
+
+			<!--similar-->
+			<section class="similar">
+				<div class="main-section__title">
+					<h2>Смотрите также</h2>
+				</div>
+				<div class="similar-slider">
+					<div class="similar-slider__list similar-slider-js">
+						@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+						@@loop("_tpl_sliders_similar-slider--items.html", "includes/json/products.json")
+					</div>
+				</div>
+			</section>
+			<!--similar end-->
+
+		</div>
+		<!--CONTENT end-->
+	</div>
+</div>
+<!--MAIN end-->
+
+<!--footer-->
+@@include('_tpl_layout_footer.html')
+<!--footer end-->
+
+@@include('_tpl_PAGE_WRAP.html', { "pageWrap": "END" })
+
+@@include('_tpl_layout_foot.html', {
+	"currentItem": "Личный кабинет"
+})
