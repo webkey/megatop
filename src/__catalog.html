@@ -89,15 +89,17 @@
 				</div>
 
 				<div class="p-filters-results p-filters-results-js">
-					<div class="selected">
-						<div class="selected-align">
-							<div class="selected-label">Выбрано</div>
-							<div class="selected-count">1202 из 1202</div>
+					<div class="p-filters-results__selected">
+						<div class="p-filters-results__selected__align">
+							<div class="p-filters-results__selected__label">Выбрано</div>
+							<div class="p-filters-results__selected__count"><span class="cur">1202</span> из 1202</div>
 						</div>
 					</div>
-					<a href="#" class="btn-filters-apply"><span>подобрать</span></a>
+					<div class="p-filters-results__apply">
+						<a href="#" class="btn-filters-apply"><span>подобрать</span></a>
+					</div>
 					<button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
-						@@include("includes/svg/icon-close.svg")
+						@@include("includes/svg/icon-bin.svg")
 					</button>
 					<div class="results-loading">Подбор результатов...</div>
 				</div>

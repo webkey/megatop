@@ -946,7 +946,6 @@ function accordionInit() {
 /**
  * Filter job
  * */
-
 function filterJob() {
 	$('.filter-job-selects-js').on('change', 'select', function () {
 
@@ -1389,7 +1388,7 @@ function stickyInit() {
 
 	if ($tags.length) {
 		stickybits('.tags-sticky-js', {
-			useStickyClasses: true,
+			useStickyClasses: false,
 			stickyBitStickyOffset: offsetTop
 		});
 	}
@@ -1399,11 +1398,70 @@ function stickyInit() {
 
 	if ($tags.length) {
 		stickybits('.options-sticky-js', {
-			useStickyClasses: true,
+			useStickyClasses: false,
 			stickyBitStickyOffset: offsetTop
 		});
 	}
 }
+// if sticky is stuck
+
+/**
+ * !Add class if a sticky is stuck
+ * */
+$(function () {
+	var $optionsPanel = $('.m-content__body__options');
+
+	var optionsOffset = 0,
+		parentOffset = 0,
+		currentScrollTop,
+		optionsFixedClass = 'options-stuck-js';
+
+	if ($optionsPanel.length) {
+		$(window).on('load scroll resize', function () {
+			addClassFixed();
+		});
+	}
+
+	function addClassFixed() {
+		optionsOffset = $optionsPanel.offset().top;
+		// console.log("optionsOffset: ", optionsOffset);
+		parentOffset = $optionsPanel.parent().offset().top;
+		// console.log("parentOffset: ", parentOffset);
+		currentScrollTop = $(window).scrollTop();
+
+		var cond = optionsOffset > parentOffset;
+
+		$('html').toggleClass(optionsFixedClass, cond);
+	}
+});
+
+$(function () {
+	var $optionsTags = $('.m-content__body__tags');
+	var $products = $('.products');
+
+	var optionsOffset = 0,
+		productsOffset = 0,
+		currentScrollTop,
+		optionsFixedClass = 'tags-stuck-js';
+
+	if ($optionsTags.length) {
+		$(window).on('load scroll resize', function () {
+			addClassFixed();
+		});
+	}
+
+	function addClassFixed() {
+		optionsOffset = $optionsTags.offset().top + $optionsTags.outerHeight();
+		console.log("optionsOffset: ", optionsOffset);
+		productsOffset = $products.offset().top;
+		console.log("productsOffset: ", productsOffset);
+		currentScrollTop = $(window).scrollTop();
+
+		var cond = optionsOffset > productsOffset;
+
+		$('html').toggleClass(optionsFixedClass, cond);
+	}
+});
 
 /**
  * !multi filters jquery plugin
@@ -2016,34 +2074,6 @@ $(function () {
 });
 
 /**
- * !Fixed filters and sorting panel for mobile
- * */
-$(function () {
-	// fixed filters result
-
-	var $optionsPanel = $('.m-content__body__options');
-
-	if ($optionsPanel.length) {
-		$(window).on('load scroll resize', function () {
-			addClassFixed();
-		});
-	}
-
-	var optionsOffset = 0,
-		currentScrollTop,
-		optionsFixedClass = 'options-fixed';
-
-	function addClassFixed() {
-		optionsOffset = $optionsPanel.offset().top;
-		currentScrollTop = $(window).scrollTop() + $('.header').outerHeight();
-
-		var cond = optionsOffset <= currentScrollTop;
-
-		$('html').toggleClass(optionsFixedClass, cond);
-	}
-});
-
-/**
  * !Add map on contacts page
  * */
 function contactsMap() {
@@ -2120,7 +2150,9 @@ function contactsMap() {
 	}
 }
 
-/**only number input*/
+/**
+ * !Only number input
+ * */
 function onlyNumberInput() {
 	// link: https://stackoverflow.com/questions/995183/how-to-allow-only-numeric-0-9-in-html-inputbox-using-jquery
 
@@ -2412,10 +2444,7 @@ function tabSwitcher() {
 }
 
 /**
- * !Shops location search
- * */
-/**
- * init js drop
+ * !Init js drop
  * */
 function initJsDrops(){
 	var jsDropWrappers = '.js-compactor-clone';
@@ -2449,8 +2478,8 @@ function initJsDrops(){
 }
 /*init js drop end*/
 
-/**!
- * shops location
+/**
+ * !shops location
  * */
 function shopsLocation() {
 	if ( !$('.shops').length ) return false;
@@ -2918,7 +2947,7 @@ function shopsLocation() {
 /*shops map end*/
 
 /**
- * add shadow tape
+ * !add shadow tape
  * */
 function addShadowTape() {
 	$('.shops-aside-holder').scroll(function () {
@@ -2928,7 +2957,7 @@ function addShadowTape() {
 /*add shadow tape end*/
 
 /**
- * toggle view shops
+ * !toggle view shops
  * */
 function toggleViewShops() {
 	var $switcherHand = $('.shops-view-switcher_dddd a');
@@ -2979,7 +3008,8 @@ $(function () {
 		currentScrollTop;
 
 	var $counter = $('.count-js'),
-		$item = $('.count__item-js');
+		$item = $('.count__item-js'),
+		$wrapper = $counter.closest('.about-chain');
 
 	function startCount() {
 		currentScrollTop = $(window).scrollTop() + window.innerHeight;
@@ -2993,6 +3023,7 @@ $(function () {
 
 			if(cond && !$curItem.prop('isCounted')) {
 				$curItem.prop('isCounted', true);
+				$wrapper.addClass('animation-start');
 
 				var $curCounter = $curItem.closest($counter),
 					speed = $curCounter.data('count-speed') || 3000;
@@ -3003,7 +3034,7 @@ $(function () {
 				},{
 					duration: speed,
 					step:function (now) {
-						$curItem.addClass('count-start').text(Math.round(now))
+						$curItem.addClass('count-start').text(Math.round(now));
 					}
 				});
 			}
@@ -3014,6 +3045,16 @@ $(function () {
 		$(window).on('load scroll resize', function () {
 			startCount();
 		});
+	}
+
+	/** !Add dots */
+	var $dots = $('.dots-js'),
+		$dotTpl = $('<div class="dots__dot"></div>'),
+		length = $dots.data('length'),
+		i;
+
+	for (i = 0; i < length; i++) {
+		$dots.append($dotTpl.clone());
 	}
 });
 

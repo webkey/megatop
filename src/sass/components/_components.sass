@@ -1702,8 +1702,8 @@
 
 .products__animation-wrap
 	$prop: margin, transform
-	will-change: $prop
-	transition:
+	//will-change: $prop
+	//transition:
 		property: $prop
 		duration: $animation-speed
 
@@ -2272,6 +2272,7 @@
 // slider
 .similar-slider
 	position: relative
+	overflow: hidden
 
 	//.no-touchevents &
 		&::before, &::after
@@ -2319,9 +2320,15 @@
 	.slick-track
 		margin: 0
 
+	.slick-list
+		overflow: visible
+
+	.slick-arrow
+		+media('>=mob-lg')
+			background-color: $bg-color
+
 	.no-touchevents &
 		.slick-list
-			//padding: $products-rang+$products-shade-size $products-rang+$products-shade-size
 			+padding-vertical(nth($products-rang-size, 1)+$products-shade-size)
 
 			+media('<mob-md')
@@ -2347,8 +2354,11 @@
 
 
 		&:hover .slick-arrow
-			//opacity: 1
-			background: rgba(195, 195, 195, 0.2)
+			//background: rgba(195, 195, 195, 0.2)
+			background: #f4f4f4
+
+			&.slick-disabled
+				background-color: transparent
 
 	.slick-prev
 		left: 0
@@ -2603,7 +2613,7 @@
 	align-self: flex-start
 
 	.filters-results-show &
-		padding-bottom: 51px
+		padding-bottom: 49px
 
 	form
 		height: 100%
@@ -2693,6 +2703,10 @@
 	position: relative
 	padding: nth($text-layout-space, 1) nth($text-layout-space, 2) 10px
 	background-color: #fff
+	border-bottom: 1px solid transparent
+	transition:
+		property: border-color
+		duration: $animation-speed
 
 	+media('<desk-md')
 		padding: nth($text-layout-space--md, 1) nth($text-layout-space--md, 2) 10px
@@ -2706,32 +2720,32 @@
 		position: sticky
 		top: $header-height--sm
 
-		&.js-is-sticky
+		.options-stuck-js &
 			z-index: 6
-			border-bottom: 1px solid $border-color
+			border-bottom-color: $border-color
 
 	+media('<mob-lg')
-		//padding: $p-options-height--mob 0 0
 		padding: 0
 
 .m-content__body__tags
-	position: relative
+	position: sticky
+	top: 0
 	padding: 10px nth($text-layout-space, 2)
 	background-color: #fff
-	border: solid $border-color
+	border: solid transparent
 	border-width: 0 0 1px
 	display: none
-
-	&.tags-sticky-js
-		position: sticky
-		top: 0
-
-		&.js-is-sticky
-			+media('>=tab-lg')
-				z-index: 6
+	transition:
+		property: border-color
+		duration: $animation-speed
 
 	.filters-results-show &
 		display: block
+
+	.tags-stuck-js &
+		+media('>=tab-lg')
+			z-index: 6
+			border-bottom-color: $border-color
 
 	+media('<desk-md')
 		padding: 10px nth($text-layout-space--md, 2)
@@ -2759,17 +2773,18 @@
 .m-content__footer
 	position: relative
 
+// filters-results
 .p-filters-results
 	position: absolute
 	bottom: 0
-	height: 52px
-	//background-color: #eee
-	background-color: $base-color
+	height: 50px
 	width: $p-filters-width
-	color: white
+	background-color: $header-bg
+	//border: solid $header-bg
+	//background-color: #eee
 	//border: solid $border-color
-	border: solid $base-color
-	border-width: 1px 0
+	//border-width: 1px 0
+	color: white
 	display: flex
 	justify-content: space-between
 	opacity: 0
@@ -2802,95 +2817,6 @@
 			bottom: 0
 			//overflow: hidden
 
-	.selected
-		+padding-horizontal(10px)
-		+clear-spacing
-		line-height: 1
-		text-align: center
-
-		flex: 1 1
-
-		&::before
-			content: ""
-			+display-inline-block-middle
-			height: 100%
-
-		.selected-align
-			+display-inline-block-middle
-			max-width: calc(100% - 2px)
-			text-align: left
-
-		.selected-label
-			+font-light
-			+font(1.2rem, round-float(16/12, 2))
-			letter-spacing: 0.05em
-			text-transform: uppercase
-
-		.selected-count
-			+font-alt-bold
-			+font(1.4rem, round-float(16/14, 2))
-			letter-spacing: normal
-
-	.btn-filters-apply
-		+display-inline-block-top
-		height: calc(100% + 2px)
-		margin: -1px 0
-		padding: 0 14px
-		+font-bold
-		+clear-spacing
-		line-height: 1
-		color: white
-		text-transform: uppercase
-		background-color: $btn-bg-hover-color
-		z-index: 1
-
-		flex: 1 1
-
-		&::before
-			content: ""
-			+display-inline-block-middle
-			height: 100%
-
-		span
-			+display-inline-block-middle
-			+font(14px, 20px)
-			letter-spacing: 0.05em
-			max-width: calc(100% - 2px)
-
-		// hover
-		.no-touchevents &:hover
-			//background-color: $base-color
-			background-color: tint($btn-bg-hover-color, 80)
-
-	.btn-clear-filters
-		+size(52px)
-		padding: 0
-		//color: black
-		color: white
-		//background-color: #eee
-		background-color: $base-color
-		margin: -1px 0 -1px -1px
-		//border: 1px solid $border-color
-		border: 1px solid $base-color
-
-		svg
-			+size(18px)
-
-		path
-			fill: currentColor
-
-		// hover
-		.no-touchevents &:hover
-			background-color: tint($base-color, 80)
-			border-color: $base-color
-			color: white
-
-		// focus
-		&:disabled
-			background-color: #eee !important
-			border-color: $border-color !important
-			color: $border-color !important
-
 	.results-loading
 		+size(calc(100% + 2px))
 		position: absolute
@@ -2911,6 +2837,109 @@
 		.js-loading &
 			opacity: 1
 			visibility: visible
+
+// selected
+.p-filters-results__selected
+	+padding-horizontal(10px)
+	+clear-spacing
+	line-height: 1
+	text-align: center
+
+	flex: 1 1
+
+	&::before
+		content: ""
+		+display-inline-block-middle
+		height: 100%
+
+.p-filters-results__selected__align
+	+display-inline-block-middle
+	max-width: calc(100% - 2px)
+	text-align: left
+
+.p-filters-results__selected__label
+	+font-light
+	+font(1.2rem, round-float(16/12, 2))
+	letter-spacing: 0.05em
+	text-transform: uppercase
+
+.p-filters-results__selected__count
+	+font-alt-bold
+	+font(1.4rem, round-float(16/14, 2))
+	letter-spacing: normal
+
+	.cur
+		color: $base-color
+
+// apply btn
+.p-filters-results__apply
+	+display-inline-block-top
+	padding: 5px 0
+
+	.btn-filters-apply
+		+display-inline-block-top
+		//height: calc(100% + 2px)
+		height: 100%
+		//margin: -1px 0
+		padding: 0 10px
+		+font-bold
+		+clear-spacing
+		line-height: 1
+		color: white
+		text-transform: uppercase
+		background-color: $header-bg
+		border: 2px solid white
+		z-index: 1
+
+		flex: 1 1
+
+		&::before
+			content: ""
+			+display-inline-block-middle
+			height: 100%
+
+		span
+			+display-inline-block-middle
+			+font(13px, 20px)
+			letter-spacing: 0.05em
+			max-width: calc(100% - 2px)
+
+		// hover
+		.no-touchevents &:hover
+			//background-color: $base-color
+			background-color: tint($btn-bg-hover-color, 80)
+
+// btn-clear-filters
+.btn-clear-filters
+	+size(52px)
+	padding: 0
+	//margin: -1px 0 -1px -1px
+	//background-color: #eee
+	//border: 1px solid $border-color
+	background-color: $header-bg
+	border: 1px solid $header-bg
+	//color: black
+	color: white
+
+	svg
+		+size(36px)
+		fill: currentColor
+
+	path
+		&[fill="none"]
+			fill: none
+
+	// hover
+	.no-touchevents &:hover
+		background-color: tint($base-color, 80)
+		border-color: $base-color
+		color: white
+
+	// focus
+	&:disabled
+		background-color: #eee !important
+		border-color: $border-color !important
+		color: $border-color !important
 
 .loader-cover
 	+size(100%)
@@ -3330,7 +3359,7 @@
 
 		.no-touchevents &:hover
 			& > span
-				color: $base-color
+				color: $link-color
 
 .p-filters-drop-list, .p-card__sizes
 	// filter colors
@@ -3368,6 +3397,9 @@ label.checkbox--color
 		//border-color: black
 		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 1)
 
+	.no-touchevents &:hover img
+		box-shadow: 0 0 1px 1px rgba(0, 0, 0, 1)
+
 label.checkbox--size
 
 	& > i, & > span::before, & > span::after
@@ -3389,6 +3421,9 @@ label.checkbox--size
 		background-color: #999
 		border-color: #999
 		color: white
+
+	.no-touchevents &:hover > span
+		border-color: $link-color
 
 // hover, active, has checked filters
 .no-touchevents .p-filters-select:hover,
@@ -3749,6 +3784,10 @@ label.checkbox--size
 .h-slider-years__item__dot
 	$size: 10px
 	$scale: 0
+	$pulseColor: $base-color
+	$pulseSize: 20px
+	$pulseScaleMax: 1.2
+	$pulseScaleMin: 0.95
 	//===============
 	position: absolute
 	left: 50%
@@ -3766,7 +3805,7 @@ label.checkbox--size
 		top: 50%
 		border: 1px solid $base-color
 		//=============
-		$prop: transform
+		$prop: transform, box-shadow, opacity
 		will-change: $prop
 		transition:
 			property: $prop
@@ -3787,6 +3826,25 @@ label.checkbox--size
 		+size($size)
 		border-radius: round($size/2)
 		margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+		box-shadow: 0 0 0 rgba($pulseColor, 1)
+
+	.no-touchevents &:hover
+		&::after
+			animation: pulse 2s infinite
+
+	@keyframes pulse
+		0%
+			box-shadow: 0 0 0 0 rgba($pulseColor, 1)
+			transform: scale($pulseScaleMax)
+			transform: scale3d($pulseScaleMax, $pulseScaleMax, 1)
+		70%
+			box-shadow: 0 0 0 $pulseSize rgba($pulseColor, 0)
+			transform: scale($pulseScaleMin)
+			transform: scale3d($pulseScaleMin, $pulseScaleMin, 1)
+		100%
+			box-shadow: 0 0 0 0 rgba($pulseColor, 0)
+			transform: scale(1)
+			transform: scale3d(1, 1, 1)
 
 .h-slider-years__item__title
 	$scale: 0.18
@@ -3855,6 +3913,7 @@ label.checkbox--size
 			//=============
 			transform: scale($scale)
 			transform: scale3d($scale, $scale, 1)
+			opacity: 0
 
 /*== history slider: years end ==
 
@@ -3984,21 +4043,117 @@ label.checkbox--size
 
 /* about-chain
 .about-chain
+	overflow: hidden // обрезать выходящую за пределы контейнера карту
 	position: relative
 	background-color: #f4f4f4
-	background-image: url(../../img/bg-about-chain.jpg)
-	background-repeat: no-repeat
-	background-position: center
-	background-size: cover
-	min-height: 630px
+	//min-height: 630px
+	z-index: 1
 
 	+media('<mob-lg')
 		background-position: center 0
 		background-size: auto 550px
 
+.about-chain__visual
+	$size-map-dots-area: 564px, 472px // w h
+	//=================
+	+size(nth($size-map-dots-area, 1), nth($size-map-dots-area, 2))
+	//margin: -#{round(nth($size-map-dots-area, 2)/2)} 0 0 -#{round(nth($size-map-dots-area, 1)/2)}
+	position: absolute
+	left: 50%
+	top: 51px
+	margin-left: -192px
+	z-index: -1
+	outline: 1px solid red
+	
+	+media('<tab-lg')
+		top: 25px
+		margin-left: -276px
+
+	+media('<mob-lg')
+		top: -45px
+		transform: scale(0.8)
+
+	+media('<mob-md')
+		top: -70px
+		transform: scale(0.6)
+
+	&::before
+		$size-map: 2200px 1196px
+		content: ""
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		background-color: #f4f4f4
+		background-image: url(../../img/bg-about-chain.jpg)
+		background-repeat: no-repeat
+		background-position: center
+		+size(nth($size-map, 1), nth($size-map, 2))
+		margin: -#{round(nth($size-map, 2)/2)} 0 0 -#{round(nth($size-map, 1)/2)}
+
+	.dots__dot
+		position: absolute
+		left: 0
+		top: 0
+		+size(8px)
+		background-color: rgba($base-color, 0.5)
+		border-radius: 4px
+		box-shadow: 0 0 0 8px rgba($base-color, 0.05)
+		margin: -4px 0 0 -4px
+		$prop: opacity, transform
+		$scale: 2
+		will-change: $prop
+		opacity: 0
+		transform: scale($scale)
+		transform: scale3d($scale, $scale, 1)
+		transition:
+			property: $prop
+			duration: $animation-speed
+
+		&::before, &::after
+			content: ""
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			border: 1px solid #{rgba($base-color, 0.05)}
+
+		&::before
+			$size: 24px
+			+size($size)
+			margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+			border-radius: round($size/2)
+
+		&::after
+			$size: 40px
+			+size($size)
+			margin: -#{round($size/2)} 0 0 -#{round($size/2)}
+			border-radius: round($size/2)
+
+		// list: top left
+		$coords: 47.1 47.1, 49.6 47.3, 49.6 44.0, 40.0 39.2, 44.3 54.0, 42 56.8, 65.6 46, 72 46.1, 63.9 31.1, 36.4 34.2, 60.8 58, 64 63.8, 83.9 31.8, 64.5 23.9, 54.5 28, 48 23.4, 13.2 57, 15.3 60.3, 21.3 73.6, 23.5 74.6, 73.8 68.6, 80.2 74.1, 79.5 81, 78 83, 82.9 65.8, 87.8 65.8, 85.5 62.5, 36.1 75.6, 48 74.5, 50.7 75.5, 69.6 71.6, 83 13, 63.2 15.2, 52.9 8, 85.2 6.7, 52.6 88.8
+		+coords($coords)
+
+	// animation start
+	.animation-start &
+		.dots__dot
+			opacity: 1
+			transform: scale(1)
+			transform: scale3d(1, 1, 1)
+
 .about-chain__list
-	padding-top: 33.6rem
+	padding-top: 28.9rem
+	padding-bottom: 1.2rem
 	overflow: hidden
+
+	+media('<tab-lg')
+		padding-top: 35rem
+
+	+media('<mob-lg')
+		padding-top: 28rem
+
+	+media('<mob-md')
+		padding-top: 19rem
 
 .about-chain__list__holder
 	margin: 0 -#{round(nth($grid-space, 2)/2)} -#{nth($grid-space, 1)}
@@ -4012,7 +4167,7 @@ label.checkbox--size
 
 .about-chain__item
 	float: left
-	width: 245px
+	width: 252px
 	padding: 0 #{round(nth($grid-space, 2)/2)}
 	margin-bottom: nth($grid-space, 1)
 	+font(1.6rem, round-float(26/16, 2))
@@ -4032,7 +4187,8 @@ label.checkbox--size
 
 .about-chain__item__numb
 	display: block
-	+font-bold
+	margin-bottom: 5px
+	+font-alt-bold
 	+font(9.0rem, round-float(92/90, 2))
 	color: $base-color
 	//==============
@@ -4051,6 +4207,9 @@ label.checkbox--size
 
 	+media('<mob-lg')
 		font-size: 6.0rem
+
+	+media('<mob-md')
+		font-size: 4.2rem
 
 /* about-chain end
 
@@ -5028,14 +5187,14 @@ $jobs-warranty-icon-size--mob: 32px
 .contacts__box__fio
 	+font-alt-medium
 	//+font(1.8rem, round-float(26/18, 2))
-	+font(2.0rem, round-float(26/20, 2))
+	+font(2.2rem, round-float(26/20, 2))
 	margin-bottom: 0.5em
 
 .contacts__box__dl
 	margin: 0 0 0.5em
 	color: #333
 	//+font(2.4rem, round-float(36/24, 2))
-	+font(2.0rem, round-float(28/20, 2))
+	+font(1.8rem, round-float(28/20, 2))
 
 	//+media('<desk-sm')
 		+font(2.0rem, round-float(28/20, 2))
