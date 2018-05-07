@@ -2163,8 +2163,12 @@
 
 .products__list
 	margin-bottom: 8rem
+	background-color: $bg-color
 	+clear-spacing
 	+clear
+
+	+media('<desk-hd')
+		margin-bottom: 6rem
 
 	+media('<tab-lg')
 		margin-bottom: 4rem
@@ -2187,17 +2191,29 @@
 .products__item
 	display: inline-block
 	vertical-align: top
-	width: 20%
+	width: round-float(100%/6, 2)
 	margin-bottom: nth($products-outer-space, 1)
 
+	.m-content &
+		width: round-float(100%/5, 2)
+
 	+media('<1700px')
-		width: 25%
+		width: round-float(100%/5, 2)
+
+		.m-content &
+			width: round-float(100%/4, 2)
 
 	+media('<1500px')
-		width: 33.33%
+		width: round-float(100%/4, 2)
+
+		.m-content &
+			width: round-float(100%/3, 2)
 
 	+media('<1160px')
-		width: 50%
+		width: round-float(100%/3, 2)
+
+		.m-content &
+			width: round-float(100%/2, 2)
 
 	+media('<tab-lg')
 		width: 33.33%
@@ -5975,6 +5991,10 @@ $card-cont-width: 564px
 	//&::after
 		right: 0
 		+linear-gradient(to left, rgba($shape-color, 1) 0%, rgba($shape-color, 0.5) 75%, rgba($shape-color, 0) 100%)
+
+	.cabinet-favorites &
+		+media('<mob-lg')
+			margin-bottom: -1px
 
 .pseudotabs-nav
 	margin: 0 -#{round(nth($grid-space, 2)/2)}

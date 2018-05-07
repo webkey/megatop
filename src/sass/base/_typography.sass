@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6
 	margin: 0 0 $bottom-space
 
 	+media('<mob-lg')
-		margin-bottom: round-float($bottom-space*0.85, 1)
+		margin-bottom: $bottom-space--sm
 
 	&:last-child
 		margin-bottom: 0
@@ -52,6 +52,7 @@ h1
 
 	+media('<tab-lg')
 		+font($font-size-h1--md, $line-height-h1--md)
+		margin-bottom: $bottom-space
 
 	+media('<mob-lg')
 		+font($font-size-h1--sm, $line-height-h1--sm)
@@ -92,6 +93,8 @@ p
 	padding: 0
 	margin: 0 0 $bottom-space
 
+	+media('<tab-lg')
+		margin-bottom: $bottom-space--sm
 hr
 	line-height: 1px
 	height: 0
@@ -143,20 +146,20 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	//align-items: flex-start
 	align-items: center
 	flex-wrap: wrap
-	padding: 20px nth($text-layout-space, 2)
+	padding: 15px nth($text-layout-space, 2)
 	border-bottom: 1px solid $border-color
 	//margin-bottom: -1px // удалили хлебные крошки
 	line-height: 1
 
 	+media('<desk-md')
-		padding: 20px nth($text-layout-space--md, 2)
+		padding: 15px nth($text-layout-space--md, 2)
 
 	+media('<tab-lg')
-		padding: 20px nth($text-layout-space--sm, 2)
+		padding: 10px nth($text-layout-space--sm, 2)
 
 	+media('<mob-lg')
 		display: block
-		padding: nth($text-layout-space--mob, 1) nth($text-layout-space--mob, 2)
+		padding: 10 nth($text-layout-space--mob, 2)
 		+font(2rem, round-float(24/20, 2))
 
 	h1, h2, h3
@@ -166,6 +169,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		text-transform: uppercase
 		text-align: left
 		margin: 0
+
+		+media('<desk-lg')
+			font-size: 2.6rem
+
+		+media('<tab-lg')
+			font-size: 2.4rem
 
 .heading__options
 	position: relative
@@ -357,7 +366,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		p + #{$tags},
 		ul + #{$tags},
 		ol + #{$tags}
-			margin-top: round-float($bottom-space--md, 1)
+			margin-top: $bottom-space--md
+
+			+media('<tab-lg')
+				margin-top: $bottom-space
 
 /* list
 .#{$user-content}
@@ -507,25 +519,43 @@ table
 			margin: 0
 			padding: 0 0 10px
 			font-family: $font-alt
-			+font(round-float($font-size*1.25, 1), $line-height)
+			font-size: 1.25em
 			color: $text-color
 			text-align: center
+
+			+media('<desk-lg')
+				font-size: 1.2em
+
+			+media('<tab-lg')
+				font-size: 1.1em
+
+			+media('<mob-lg')
+				font-size: 1em
 
 			&::before, &::after
 				+pseudo($pos: relative)
 				+font(4rem, 1)
 				text-align: left
 
+				+media('<mob-lg')
+					font-size: 2em
+
 			&::before
 				content: '«'
 				padding-left: 17%
 				padding-bottom: 10px
+
+				+media('<mob-lg')
+					padding-bottom: 0
 
 			&::after
 				content: '»'
 				text-align: right
 				padding-right: 18.5%
 				padding-top: 8px
+
+				+media('<mob-lg')
+					padding-top: 0
 
 		cite
 			text-align: right
@@ -556,7 +586,10 @@ table
 	color: #666
 	text-align: center
 	text-transform: uppercase
-	margin-bottom: $bottom-space--lg
+	margin-bottom: $bottom-space--md
+
+	+media('<tab-lg')
+		margin-bottom: $bottom-space
 
 /* datetime end
 
