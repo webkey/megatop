@@ -1,0 +1,22 @@
+[
+  {
+	"class": "fb",
+	"svg": "@@include('includes/svg/icon-soc--facebook.svg')",
+	"title": "Facebook"
+  },
+  {
+	"class": "twitter",
+	"svg": "@@include('includes/svg/icon-soc--twitter.svg')",
+	"title": "Twitter"
+  },
+  {
+	"class": "vk",
+	"svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	"title": "Вконтакте"
+  },
+  {
+	"class": "youtube",
+	"svg": "@@include('includes/svg/icon-soc--youtube-full.svg')",
+	"title": "Youtube"
+  }
+]

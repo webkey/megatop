@@ -35,12 +35,13 @@
 				<time class="datetime" datetime="2017-03-22T13:42">22 марта 2017, 13:42</time>
 				<!--===============datetime end===============-->
 
-
 				<!--===============entry-img===============-->
-				<div class="entry-img">
-					<img src="img/temp/img-entry.jpg" alt="image description"/>
-					<h2 class="entry-img__title">Типографика в вебдизайне. Основные понятия и положения</h2>
-				</div>
+				<!--<div class="layout-flood">
+					<div class="entry-img">
+						<img src="img/temp/img-entry.jpg" alt="image description" />
+						<h2 class="entry-img__title">Типографика в вебдизайне. Основные понятия и положения</h2>
+					</div>
+				</div>-->
 				<!--===============entry-img end===============-->
 
 
@@ -469,6 +470,99 @@
 
 				<!--==============================-->
 				@@include('_tpl_title-anchor.html', {
+					"taId": "buttonsOutline",
+					"taText": "Кнопки с обводкой",
+					"taTag": "h4"
+				})
+				<div class="layout-text buttonsWrap">
+					<a href="#" class="btn-outline">Отправить заявку</a>
+					<br>
+					<!--==============================-->
+					<button class="btn-outline">Button</button>
+					<br>
+					<!--==============================-->
+					<input class="btn-outline" type="submit" value="Type submit">
+					<input class="btn-outline" type="button" value="Type button">
+					<input class="btn-outline" type="reset" value="Type reset">
+				</div>
+
+				<!--==============================-->
+				@@include('_tpl_title-anchor.html', {
+					"taId": "buttonsOutlineDisabled",
+					"taText": "Кнопки с обводкой (неактивные)",
+					"taTag": "h4"
+				})
+				<div class="layout-text buttonsWrap">
+					<a href="javascript:void(0)" class="btn-outline disabled">Отправить заявку (.disabled)</a>
+					<a href="javascript:void(0)" class="btn-outline" data-disabled>Отправить заявку (data-disabled)</a>
+					<br>
+					<!--==============================-->
+					<button class="btn-outline disabled">Button (.disabled)</button>
+					<button class="btn-outline" data-disabled>Button (data-disabled)</button>
+					<br>
+					<!--==============================-->
+					<input class="btn-outline" type="submit" value="Type submit" disabled>
+					<input class="btn-outline" type="button" value="Type button" disabled>
+					<input class="btn-outline" type="reset" value="Type reset" disabled>
+				</div>
+
+				<!--==============================-->
+				@@include('_tpl_title-anchor.html', {
+					"taId": "buttonsOutline",
+					"taText": "Альтернативные кнопки с обводкой",
+					"taTag": "h4"
+				})
+				<div class="layout-text buttonsWrap hasDarkBg">
+					<style>
+						.hasDarkBg{
+							position: relative;
+							z-index: 1;
+						}
+						.hasDarkBg::before{
+							content: "";
+							display: block;
+							position: absolute;
+							left: -20px;
+							top: -20px;
+							z-index: -1;
+							width: calc(100% + 40px);
+							height: calc(100% + 20px);
+							background-color: #1a1a1a;
+						}
+					</style>
+					<a href="#" class="btn-outline-alt">Отправить заявку</a>
+					<br>
+					<!--==============================-->
+					<button class="btn-outline-alt">Button</button>
+					<br>
+					<!--==============================-->
+					<input class="btn-outline-alt" type="submit" value="Type submit">
+					<input class="btn-outline-alt" type="button" value="Type button">
+					<input class="btn-outline-alt" type="reset" value="Type reset">
+				</div>
+
+				<!--==============================-->
+				@@include('_tpl_title-anchor.html', {
+					"taId": "buttonsOutlineDisabled",
+					"taText": "Альтернативные кнопки с обводкой (неактивные)",
+					"taTag": "h4"
+				})
+				<div class="layout-text buttonsWrap hasDarkBg">
+					<a href="javascript:void(0)" class="btn-outline-alt disabled">Отправить заявку (.disabled)</a>
+					<a href="javascript:void(0)" class="btn-outline-alt" data-disabled>Отправить заявку (data-disabled)</a>
+					<br>
+					<!--==============================-->
+					<button class="btn-outline-alt disabled">Button (.disabled)</button>
+					<button class="btn-outline-alt" data-disabled>Button (data-disabled)</button>
+					<br>
+					<!--==============================-->
+					<input class="btn-outline-alt" type="submit" value="Type submit" disabled>
+					<input class="btn-outline-alt" type="button" value="Type button" disabled>
+					<input class="btn-outline-alt" type="reset" value="Type reset" disabled>
+				</div>
+
+				<!--==============================-->
+				@@include('_tpl_title-anchor.html', {
 					"taId": "buttonsWithIcon",
 					"taText": "Кнопки с иконкой",
 					"taTag": "h4"
@@ -566,6 +660,16 @@
 					<!--==============================-->
 					<a href="#" class="btn-default-alt btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
 					<a href="#" class="btn-default-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					<br>
+					<!--==============================-->
+					<a href="#" class="btn-outline btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+					<a href="#" class="btn-outline btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					<br><br>
+					<!--==============================-->
+					<div class="hasDarkBg">
+						<a href="#" class="btn-outline-alt btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+						<a href="#" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					</div>
 				</div>
 
 				<!--==============================-->
@@ -581,6 +685,16 @@
 					<!--==============================-->
 					<a href="#" class="btn-default-alt btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
 					<a href="#" class="btn-default-alt btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					<br>
+					<!--==============================-->
+					<a href="#" class="btn-outline btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
+					<a href="#" class="btn-outline btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					<br><br>
+					<!--==============================-->
+					<div class="hasDarkBg">
+						<a href="#" class="btn-outline-alt btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
+						<a href="#" class="btn-outline-alt btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+					</div>
 				</div>
 				<!--===============buttons end===============-->
 
@@ -722,10 +836,24 @@
 					"taId": "visualList",
 					"taText": "Изображения + описания к ним"
 				})
-				<div class="feature-list">
-					@@loop("_tpl_feature-list-item.html", "includes/json/feature-list-item.json")
+				<div class="layout-text">
+					<div class="feature-list">
+						@@loop("_tpl_feature-list-item.html", "includes/json/feature-list-item.json")
+					</div>
 				</div>
 				<!--===============feature-list end===============-->
+
+				<!--===============share===============-->
+				@@include('_tpl_title-anchor.html', {
+					"taId": "shareSocial",
+					"taText": "Социалки"
+				})
+				<div class="share layout-text">
+					<div class="share__list">
+						@@loop('_tpl_share--items.html', 'includes/json/share--items.json')
+					</div>
+				</div>
+				<!--===============share end===============-->
 
 				<div class="user-spacer">&nbsp;</div>
 
@@ -740,12 +868,12 @@
 				<div class="user-spacer">&nbsp;</div>
 
 				<!--print-button-->
-				<div>
+				<!--<div>
 					<a href="#" class="view-print">
 						@@include("includes/svg/icon-print.svg")
 						<span>Версия для печати</span>
 					</a>
-				</div>
+				</div>-->
 				<!--print-button end-->
 			</div>
 

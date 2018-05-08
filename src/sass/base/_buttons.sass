@@ -21,24 +21,25 @@
 		opacity: 0
 
 /* btn-default
-[class*="btn-default"]
+[class*="btn-default"], [class*="btn-outline"]
 	position: relative
-	+font-bold
-	text-transform: uppercase
-	color: $btn-text-color
-	padding: 14px 38px
-	border: 2px solid transparent
-	background: $btn-bg-color
-	box-shadow: none
 	margin: 0
+	padding: 11px 38px
+	+font-bold
+	+clear-spacing
+	color: $btn-text
+	text-transform: uppercase
+	background: $btn-bg
+	border: 2px solid $btn-bg
+	box-shadow: none
 	user-select: none
 	-webkit-tap-highlight-color: transparent
 
 	+media('<mob-lg')
-		padding: 14px
+		padding: 11px 14px
 
 	&, & > span
-		+font(14px, 18px)
+		+font(14px, 24px)
 		letter-spacing: 0.1em
 
 		+media('<mob-lg')
@@ -46,70 +47,64 @@
 
 	// hover
 	.no-touchevents &:hover
-		background-color: $btn-bg-hover-color
+		background-color: $btn-bg-hover
+		color: $btn-bg
 
 	// disabled
 	&:disabled, &.disabled, &[data-disabled]
 		cursor: default
-		background-color: $btn-disabled-color !important
-
-		&::before, &::after
-			display: none
+		color: white !important
+		background-color: $btn-disabled !important
+		border-color: $btn-disabled !important
 
 /* btn-default end
 
 /* btn-default-alt
 .btn-default-alt
-	color: $btn-text-color
-	border: 2px solid $btn-bg-hover-color
-	background: $btn-bg-hover-color
+	color: white
+	border-color: $base-color
+	background: $base-color
 
 	.no-touchevents &:hover
-		background: $btn-bg-color
-		border-color: $btn-bg-color
-
-	&:disabled, &.disabled, &[data-disabled]
-		cursor: default
-		background-color: $btn-disabled-color !important
-		border-color: $btn-disabled-color !important
-		color: white !important
-
-		&::before, &::after
-			display: none
-
-		& > i
-			&::before, &::after
-				border-color: white !important
+		background: $btn-bg
+		border-color: $btn-bg
+		color: white
 
 /* btn-default-alt end
 
 /* btn-outline
 .btn-outline, .btn-outline-alt
-	position: relative
-	+font-bold
-	+font(14px, 24px)
-	text-align: center
-	text-decoration: none
-	text-transform: uppercase
-	letter-spacing: 0.05em
-	white-space: nowrap
-	color: $btn-bg-hover-color
-	padding: 12px 24px 9px
-	border: 2px solid currentColor
-	margin: 0
+	color: $btn-bg
+	background: none
+	border: 2px solid $btn-bg
 
+	// hover
 	.no-touchevents &:hover
-		background-color: $btn-bg-hover-color
-		border-color: $btn-bg-hover-color
-		color: $btn-text-color
+		color: $bg-color
+		background-color: $btn-bg
+		border-color: $btn-bg
+
+	// disabled
+	&:disabled, &.disabled, &[data-disabled]
+		cursor: default
+		color: $btn-disabled !important
+		background: none !important
+		border-color: $btn-disabled !important
 
 .btn-outline-alt
-	color: white
+	color: $btn-text
+	background: none
+	border-color: $btn-text
 
+	// hover
 	.no-touchevents &:hover
-		background-color: white
-		border-color: white
-		color: $btn-bg-hover-color
+		background-color: $btn-text
+		border-color: $btn-text
+		color: $btn-bg
+
+	// disabled
+	&:disabled, &.disabled, &[data-disabled]
+		background-color: transparent !important
 
 /* btn-outline end
 
@@ -120,6 +115,9 @@
 	text-align: center
 	+clear-spacing
 	white-space: nowrap
+
+	svg + svg
+		display: none
 
 	svg, span
 		+display-inline-block-middle
@@ -138,12 +136,22 @@
 		padding-right: 0
 		padding-left: $btni-space
 
+	// active
+	&.active
+		svg
+			display: none
+
+			& + svg
+				display: inline-block
+
 /* btn-with-icon end
 
 /* btn-with-arrow
 .btn-with-arrow
 	$arrow-width: 26px
 	$arrow-space: 10px
+	//==================
+	white-space: nowrap
 
 	& > i, & > span
 		+display-inline-block-middle
@@ -157,7 +165,7 @@
 		&::before, &::after
 			+pseudo()
 			+position(50%)
-			border: 0 solid $btn-text-color
+			border: 0 solid currentColor
 			transform: none
 
 		&::before
@@ -190,7 +198,7 @@
 
 		& > i
 			&::before, &::after
-				border-color: $btn-text-color
+				border-color: $btn-text
 
 	// hover
 	.no-touchevents &.btn-default-alt:hover
@@ -198,7 +206,7 @@
 		& > i
 
 			&::before, &::after
-				border-color: $btn-text-color
+				border-color: $btn-text
 
 /* btn-with-arrow end
 
@@ -419,9 +427,19 @@
 	+media('<mob-lg')
 		display: flex
 
+	+media('<mob-md')
+		display: block
+
 	a
 		flex: 1 1
 		min-width: 0
+
+		+media('<mob-md')
+			display: block
+			margin-bottom: 2rem
+
+			&:last-child
+				margin-bottom: 0
 
 /* buttons-group end
 

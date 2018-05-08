@@ -33,7 +33,7 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
-	<link rel="stylesheet" href="css/main.css?20180503_1800">
+	<link rel="stylesheet" href="css/main.css?20180508_1700">
 	<!--Modernizr-->
 	<script src="js/modernizr.min.js"></script>
 </head>
@@ -107,7 +107,9 @@
 								</div>
 								<div class="user-options__item user-options--likes">
 									<a href="cabinet-favorites.html" title="Избранное">
-			<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 378.9 378.9"><path d="M348.2 54.5c-19.9-19.9-46.3-30.8-74.4-30.8 -28.1 0-54.6 10.9-74.4 30.8l-9.8 9.8 -9.8-9.8c-19.9-19.9-46.3-30.8-74.4-30.8 -28.1 0-54.6 10.9-74.4 30.8 -41 41.1-41 107.8 0 148.9l147.1 147.1c2.4 2.4 5.4 3.9 8.5 4.5 1 0.2 2.1 0.3 3.2 0.3 4.2 0 8.3-1.6 11.5-4.8l147.1-147.1C389.2 162.4 389.2 95.6 348.2 54.5zM325.2 180.4L189.5 316.1 53.8 180.4c-28.4-28.4-28.4-74.5 0-102.9 13.7-13.7 32-21.3 51.4-21.3 19.4 0 37.7 7.6 51.4 21.3l21.3 21.3c6.1 6.1 16.9 6.1 23 0l21.3-21.3c13.7-13.7 32-21.3 51.4-21.3 19.4 0 37.7 7.6 51.4 21.3C353.5 105.9 353.5 152 325.2 180.4z"></path></svg>
+			<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+</svg>
 			<span>12</span>
 		</a>
 								</div>
@@ -149,10 +151,12 @@
 						<time class="datetime" datetime="2017-03-22T13:42">22 марта 2017, 13:42</time>
 						<!--===============datetime end===============-->
 						<!--===============entry-img===============-->
-						<div class="entry-img">
-							<img src="img/temp/img-entry.jpg" alt="image description" />
-							<h2 class="entry-img__title">Типографика в вебдизайне. Основные понятия и положения</h2>
-						</div>
+						<!--<div class="layout-flood">
+					<div class="entry-img">
+						<img src="img/temp/img-entry.jpg" alt="image description" />
+						<h2 class="entry-img__title">Типографика в вебдизайне. Основные понятия и положения</h2>
+					</div>
+				</div>-->
 						<!--===============entry-img end===============-->
 						<!--===============entry-text===============-->
 						<div class="entry-text">
@@ -550,6 +554,80 @@
 							<input class="btn-default-alt" type="reset" value="Type reset" disabled>
 						</div>
 						<!--==============================-->
+						<h4><a href="#hash-buttonsOutline" id="hash-buttonsOutline" class="hashAnchor"><span class="mark">Кнопки с обводкой</span></a></h4>
+						<div class="layout-text buttonsWrap">
+							<a href="#" class="btn-outline">Отправить заявку</a>
+							<br>
+							<!--==============================-->
+							<button class="btn-outline">Button</button>
+							<br>
+							<!--==============================-->
+							<input class="btn-outline" type="submit" value="Type submit">
+							<input class="btn-outline" type="button" value="Type button">
+							<input class="btn-outline" type="reset" value="Type reset">
+						</div>
+						<!--==============================-->
+						<h4><a href="#hash-buttonsOutlineDisabled" id="hash-buttonsOutlineDisabled" class="hashAnchor"><span class="mark">Кнопки с обводкой (неактивные)</span></a></h4>
+						<div class="layout-text buttonsWrap">
+							<a href="javascript:void(0)" class="btn-outline disabled">Отправить заявку (.disabled)</a>
+							<a href="javascript:void(0)" class="btn-outline" data-disabled>Отправить заявку (data-disabled)</a>
+							<br>
+							<!--==============================-->
+							<button class="btn-outline disabled">Button (.disabled)</button>
+							<button class="btn-outline" data-disabled>Button (data-disabled)</button>
+							<br>
+							<!--==============================-->
+							<input class="btn-outline" type="submit" value="Type submit" disabled>
+							<input class="btn-outline" type="button" value="Type button" disabled>
+							<input class="btn-outline" type="reset" value="Type reset" disabled>
+						</div>
+						<!--==============================-->
+						<h4><a href="#hash-buttonsOutline" id="hash-buttonsOutline" class="hashAnchor"><span class="mark">Альтернативные кнопки с обводкой</span></a></h4>
+						<div class="layout-text buttonsWrap hasDarkBg">
+							<style>
+								.hasDarkBg {
+									position: relative;
+									z-index: 1;
+								}
+
+								.hasDarkBg::before {
+									content: "";
+									display: block;
+									position: absolute;
+									left: -20px;
+									top: -20px;
+									z-index: -1;
+									width: calc(100% + 40px);
+									height: calc(100% + 20px);
+									background-color: #1a1a1a;
+								}
+							</style>
+							<a href="#" class="btn-outline-alt">Отправить заявку</a>
+							<br>
+							<!--==============================-->
+							<button class="btn-outline-alt">Button</button>
+							<br>
+							<!--==============================-->
+							<input class="btn-outline-alt" type="submit" value="Type submit">
+							<input class="btn-outline-alt" type="button" value="Type button">
+							<input class="btn-outline-alt" type="reset" value="Type reset">
+						</div>
+						<!--==============================-->
+						<h4><a href="#hash-buttonsOutlineDisabled" id="hash-buttonsOutlineDisabled" class="hashAnchor"><span class="mark">Альтернативные кнопки с обводкой (неактивные)</span></a></h4>
+						<div class="layout-text buttonsWrap hasDarkBg">
+							<a href="javascript:void(0)" class="btn-outline-alt disabled">Отправить заявку (.disabled)</a>
+							<a href="javascript:void(0)" class="btn-outline-alt" data-disabled>Отправить заявку (data-disabled)</a>
+							<br>
+							<!--==============================-->
+							<button class="btn-outline-alt disabled">Button (.disabled)</button>
+							<button class="btn-outline-alt" data-disabled>Button (data-disabled)</button>
+							<br>
+							<!--==============================-->
+							<input class="btn-outline-alt" type="submit" value="Type submit" disabled>
+							<input class="btn-outline-alt" type="button" value="Type button" disabled>
+							<input class="btn-outline-alt" type="reset" value="Type reset" disabled>
+						</div>
+						<!--==============================-->
 						<h4><a href="#hash-buttonsWithIcon" id="hash-buttonsWithIcon" class="hashAnchor"><span class="mark">Кнопки с иконкой</span></a></h4>
 						<div class="layout-text buttonsWrap">
 							<!--==============================-->
@@ -634,6 +712,16 @@
 							<!--==============================-->
 							<a href="#" class="btn-default-alt btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
 							<a href="#" class="btn-default-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							<br>
+							<!--==============================-->
+							<a href="#" class="btn-outline btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+							<a href="#" class="btn-outline btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							<br><br>
+							<!--==============================-->
+							<div class="hasDarkBg">
+								<a href="#" class="btn-outline-alt btn-with-arrow"><span>Смотреть все</span><i>&nbsp;</i></a>
+								<a href="#" class="btn-outline-alt btn-with-arrow"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							</div>
 						</div>
 						<!--==============================-->
 						<h4><a href="#hash-buttonsWithArrDisabled" id="hash-buttonsWithArrDisabled" class="hashAnchor"><span class="mark">Кнопки со стрелками (неактивные)</span></a></h4>
@@ -644,6 +732,16 @@
 							<!--==============================-->
 							<a href="#" class="btn-default-alt btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
 							<a href="#" class="btn-default-alt btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							<br>
+							<!--==============================-->
+							<a href="#" class="btn-outline btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
+							<a href="#" class="btn-outline btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							<br><br>
+							<!--==============================-->
+							<div class="hasDarkBg">
+								<a href="#" class="btn-outline-alt btn-with-arrow disabled"><span>Смотреть все</span><i>&nbsp;</i></a>
+								<a href="#" class="btn-outline-alt btn-with-arrow disabled"><i>&nbsp;</i><span>Вернуться к каталогу</span></a>
+							</div>
 						</div>
 						<!--===============buttons end===============-->
 						<div class="user-spacer">&nbsp;</div>
@@ -840,46 +938,79 @@
 						<hr>
 						<!--===============feature-list===============-->
 						<h3><a href="#hash-visualList" id="hash-visualList" class="hashAnchor"><span class="mark">Изображения + описания к ним</span></a></h3>
-						<div class="feature-list">
-							<div class="feature-list__item">
-								<div class="feature-list__img">
-									<img src="img/temp/img_640_01.jpg" alt="Не используйте причудливые шрифты" />
+						<div class="layout-text">
+							<div class="feature-list">
+								<div class="feature-list__item">
+									<div class="feature-list__img">
+										<img src="img/temp/img_640_01.jpg" alt="Не используйте причудливые шрифты" />
+									</div>
+									<div class="feature-list__content">
+										<h3>Не используйте причудливые шрифты</h3>
+										<p>Часто текст равняется по ширине. Это значит, что слова в строке расположены соответственно друг другу, и рваного края нет ни с одной стороны.</p>
+									</div>
 								</div>
-								<div class="feature-list__content">
-									<h3>Не используйте причудливые шрифты</h3>
-									<p>Часто текст равняется по ширине. Это значит, что слова в строке расположены соответственно друг другу, и рваного края нет ни с одной стороны.</p>
+								<div class="feature-list__item">
+									<div class="feature-list__img">
+										<img src="img/temp/img_640_02.jpg" alt="Забудьте о Comic Sans" />
+									</div>
+									<div class="feature-list__content">
+										<h3>Забудьте о Comic Sans</h3>
+										<p>Такой способ выравнивания модный, так как отзывчивый дизайн научил дизайнеров думать в блоках. Выравнивая текст по ширине, вы получаете непостоянные пробелы и, в худшем случае, в строке оказывается всего несколько слов, что очень раздражает.
+											Проблема с таким текстом усугубляется на мобильных устройствах, и текст становится нечитабельным.</p>
+									</div>
 								</div>
-							</div>
-							<div class="feature-list__item">
-								<div class="feature-list__img">
-									<img src="img/temp/img_640_02.jpg" alt="Забудьте о Comic Sans" />
+								<div class="feature-list__item">
+									<div class="feature-list__img">
+										<img src="img/temp/img_640_03.jpg" alt="Не избегайте стандартных, дефолтных шрифтов" />
+									</div>
+									<div class="feature-list__content">
+										<h3>Не избегайте стандартных, дефолтных шрифтов</h3>
+										<p>Если опрятность действительно важна для вас, то вам стоит пользоваться знаками переноса, чтобы смягчить рваный край, но никогда не равнять текст по ширине.</p>
+									</div>
 								</div>
-								<div class="feature-list__content">
-									<h3>Забудьте о Comic Sans</h3>
-									<p>Такой способ выравнивания модный, так как отзывчивый дизайн научил дизайнеров думать в блоках. Выравнивая текст по ширине, вы получаете непостоянные пробелы и, в худшем случае, в строке оказывается всего несколько слов, что очень раздражает.
-										Проблема с таким текстом усугубляется на мобильных устройствах, и текст становится нечитабельным.</p>
-								</div>
-							</div>
-							<div class="feature-list__item">
-								<div class="feature-list__img">
-									<img src="img/temp/img_640_03.jpg" alt="Не избегайте стандартных, дефолтных шрифтов" />
-								</div>
-								<div class="feature-list__content">
-									<h3>Не избегайте стандартных, дефолтных шрифтов</h3>
-									<p>Если опрятность действительно важна для вас, то вам стоит пользоваться знаками переноса, чтобы смягчить рваный край, но никогда не равнять текст по ширине.</p>
-								</div>
-							</div>
-							<div class="feature-list__item">
-								<div class="feature-list__img">
-									<img src="img/temp/img_640_04.jpg" alt="Не используйте одновременно больше двух шрифтов" />
-								</div>
-								<div class="feature-list__content">
-									<h3>Не используйте одновременно больше двух шрифтов</h3>
-									<p>В то время как мы хотим подчеркнуть контраст между текстом и фоном, мы также хотим уменьшить контраст между разными уровнями шрифта.</p>
+								<div class="feature-list__item">
+									<div class="feature-list__img">
+										<img src="img/temp/img_640_04.jpg" alt="Не используйте одновременно больше двух шрифтов" />
+									</div>
+									<div class="feature-list__content">
+										<h3>Не используйте одновременно больше двух шрифтов</h3>
+										<p>В то время как мы хотим подчеркнуть контраст между текстом и фоном, мы также хотим уменьшить контраст между разными уровнями шрифта.</p>
+									</div>
 								</div>
 							</div>
 						</div>
 						<!--===============feature-list end===============-->
+						<!--===============share===============-->
+						<h3><a href="#hash-shareSocial" id="hash-shareSocial" class="hashAnchor"><span class="mark">Социалки</span></a></h3>
+						<div class="share layout-text">
+							<div class="share__list">
+								<div class="share__item">
+									<a href="#" title="Facebook" class="fb">
+		<span>Facebook</span>
+		<svg class="svg-ico-facebook" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 123 263.5"><path fill="#3a589e" d="M80.9 85.2V57.9c0-10.4 6.6-12.6 11.5-12.6s29.5 0 29.5 0V-0.1H81.5c-44.8 0-55.2 33.9-55.2 55.2v30.1H0.1v46.5h26.2c0 59.6 0 131.7 0 131.7H81c0 0 0-72.7 0-131.7h37.2l4.9-46.5L80.9 85.2 80.9 85.2z"></path></svg>
+	</a>
+								</div>
+								<div class="share__item">
+									<a href="#" title="Twitter" class="twitter">
+		<span>Twitter</span>
+		<svg class="svg-ico-twitter" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="-368.9 301 240.3 195.3"><path fill="#1da0f2" d="M-128.6 324.1c-8.8 3.9-18.3 6.6-28.3 7.8 10.2-6.1 18-15.8 21.7-27.3 -9.5 5.7-20.1 9.8-31.3 12 -9-9.6-21.8-15.6-36-15.6 -27.2 0-49.3 22.1-49.3 49.3 0 3.9 0.4 7.6 1.3 11.2 -41-2.1-77.3-21.7-101.6-51.5 -4.2 7.3-6.7 15.7-6.7 24.8 0 17.1 8.7 32.2 21.9 41 -8.1-0.3-15.7-2.5-22.3-6.2 0 0.2 0 0.4 0 0.6 0 23.9 17 43.8 39.6 48.3 -4.1 1.1-8.5 1.7-13 1.7 -3.2 0-6.3-0.3-9.3-0.9 6.3 19.6 24.5 33.8 46.1 34.2 -16.9 13.2-38.1 21.1-61.2 21.1 -4 0-7.9-0.2-11.8-0.7 21.8 14 47.7 22.2 75.6 22.2 90.7 0 140.3-75.1 140.3-140.3 0-2.1 0-4.3-0.1-6.4C-143.6 342.7-135.2 334-128.6 324.1z"></path></svg>
+	</a>
+								</div>
+								<div class="share__item">
+									<a href="#" title="Вконтакте" class="vk">
+		<span>Вконтакте</span>
+		<svg class="svg-ico-vkontakte" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 107.585 61.139"><path fill="#4b73a4" d="M104.8 51.2c-2.6-2.6-13.2-13.7-13.2-13.7 -1.6-2.1-2.1-4.7-0.5-6.8 3.2-4.2 9-11.6 11.1-14.8 3.2-4.2 9-13.2 1.1-13.2H85.9c-1.6 0-2.6 1.1-3.7 2.1 0 0-6.8 12.6-9 16.8 -5.8 11.6-10 7.9-10 2.6V5.9c0-3.2-2.6-5.8-5.8-5.8H44.3c-3.7-0.5-6.8 1.6-9.5 4.2 0 0 6.8-1.1 6.8 7.9v13.7c0 2.1-1.6 3.7-3.7 3.7 -1.1 0-2.1-0.5-3.2-1.1 -5.3-7.4-10-15.3-13.2-23.7 -0.5-1.1-2.1-2.1-3.2-2.1H2.6C1.1 2.7 0 3.7 0 5.3c0 0.5 0 0.5 0 1.1 4.7 13.2 25.3 54.3 49 54.3h10c2.1 0 3.7-1.6 3.7-3.7v-5.8c0-2.1 1.6-3.7 3.7-3.7 1.1 0 2.1 0.5 2.6 1.1L80.6 59.6c1.1 1.1 2.6 1.6 3.7 1.6h15.8C109.1 60.7 109.1 55.4 104.8 51.2z"></path></svg>
+	</a>
+								</div>
+								<div class="share__item">
+									<a href="#" title="Youtube" class="youtube">
+		<span>Youtube</span>
+		<svg class="svg-ico-youtube" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 90 90"><path fill="#e62117" d="M70.939,65.832H66l0.023-2.869c0-1.275,1.047-2.318,2.326-2.318h0.315c1.282,0,2.332,1.043,2.332,2.318   L70.939,65.832z M52.413,59.684c-1.253,0-2.278,0.842-2.278,1.873V75.51c0,1.029,1.025,1.869,2.278,1.869   c1.258,0,2.284-0.84,2.284-1.869V61.557C54.697,60.525,53.671,59.684,52.413,59.684z M82.5,51.879v26.544   C82.5,84.79,76.979,90,70.23,90H19.771C13.02,90,7.5,84.79,7.5,78.423V51.879c0-6.367,5.52-11.578,12.271-11.578H70.23   C76.979,40.301,82.5,45.512,82.5,51.879z M23.137,81.305l-0.004-27.961l6.255,0.002v-4.143l-16.674-0.025v4.073l5.205,0.015v28.039   H23.137z M41.887,57.509h-5.215v14.931c0,2.16,0.131,3.24-0.008,3.621c-0.424,1.158-2.33,2.388-3.073,0.125   c-0.126-0.396-0.015-1.591-0.017-3.643l-0.021-15.034h-5.186l0.016,14.798c0.004,2.268-0.051,3.959,0.018,4.729   c0.127,1.357,0.082,2.939,1.341,3.843c2.346,1.69,6.843-0.252,7.968-2.668l-0.01,3.083l4.188,0.005L41.887,57.509L41.887,57.509z    M58.57,74.607L58.559,62.18c-0.004-4.736-3.547-7.572-8.356-3.74l0.021-9.239l-5.209,0.008l-0.025,31.89l4.284-0.062l0.39-1.986   C55.137,84.072,58.578,80.631,58.57,74.607z M74.891,72.96l-3.91,0.021c-0.002,0.155-0.008,0.334-0.01,0.529v2.182   c0,1.168-0.965,2.119-2.137,2.119h-0.766c-1.174,0-2.139-0.951-2.139-2.119V75.45v-2.4v-3.097h8.954v-3.37   c0-2.463-0.063-4.925-0.267-6.333c-0.641-4.454-6.893-5.161-10.051-2.881c-0.991,0.712-1.748,1.665-2.188,2.945   c-0.444,1.281-0.665,3.031-0.665,5.254v7.41C61.714,85.296,76.676,83.555,74.891,72.96z M54.833,32.732   c0.269,0.654,0.687,1.184,1.254,1.584c0.56,0.394,1.276,0.592,2.134,0.592c0.752,0,1.418-0.203,1.998-0.622   c0.578-0.417,1.065-1.04,1.463-1.871l-0.099,2.046h5.813V9.74H62.82v19.24c0,1.042-0.858,1.895-1.907,1.895   c-1.043,0-1.904-0.853-1.904-1.895V9.74h-4.776v16.674c0,2.124,0.039,3.54,0.102,4.258C54.4,31.385,54.564,32.069,54.833,32.732z    M37.217,18.77c0-2.373,0.198-4.226,0.591-5.562c0.396-1.331,1.107-2.401,2.137-3.208c1.027-0.811,2.342-1.217,3.941-1.217   c1.345,0,2.497,0.264,3.459,0.781c0.967,0.52,1.713,1.195,2.23,2.028c0.527,0.836,0.885,1.695,1.076,2.574   c0.195,0.891,0.291,2.235,0.291,4.048v6.252c0,2.293-0.092,3.98-0.271,5.051c-0.177,1.074-0.557,2.07-1.146,3.004   c-0.58,0.924-1.329,1.615-2.237,2.056c-0.918,0.445-1.968,0.663-3.154,0.663c-1.325,0-2.441-0.183-3.361-0.565   c-0.923-0.38-1.636-0.953-2.144-1.714c-0.513-0.762-0.874-1.69-1.092-2.772c-0.219-1.081-0.323-2.707-0.323-4.874L37.217,18.77   L37.217,18.77z M41.77,28.59c0,1.4,1.042,2.543,2.311,2.543c1.27,0,2.308-1.143,2.308-2.543V15.43c0-1.398-1.038-2.541-2.308-2.541   c-1.269,0-2.311,1.143-2.311,2.541V28.59z M25.682,35.235h5.484l0.006-18.96l6.48-16.242h-5.998l-3.445,12.064L24.715,0h-5.936   l6.894,16.284L25.682,35.235z"></path></svg>
+	</a>
+								</div>
+							</div>
+						</div>
+						<!--===============share end===============-->
 						<div class="user-spacer">&nbsp;</div>
 						<!--===============icons list===============-->
 						<h3><a href="#hash-iconsList" id="hash-iconsList" class="hashAnchor"><span class="mark">Иконки</span></a></h3>
@@ -925,12 +1056,24 @@
 							<svg class="svg-ico-filters" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 79.2 89.6">
     <path d="M3.8 18.7h6.6C12 25.1 18 30 24.9 30c6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7 0-2.1-1.6-3.7-3.7-3.7H39.3C37.7 4.9 31.7 0 24.8 0 17.9 0 12 4.7 10.4 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7C0.1 17.1 1.8 18.7 3.8 18.7zM24.8 6.1c4.9 0 8.9 4 8.9 8.9 0 4.9-4 8.9-8.9 8.9 -4.9 0-8.9-4-8.9-8.9C15.9 10.1 19.9 6.1 24.8 6.1zM75.4 41.1h-6.3c-1.6-6.4-7.6-11.3-14.5-11.3s-12.8 4.8-14.5 11.3H3.8c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h36.4c1.6 6.4 7.6 11.3 14.4 11.3S67.4 55 69.1 48.5h6.3c2.1 0 3.7-1.6 3.7-3.7S77.4 41.1 75.4 41.1zM54.6 53.7c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9S59.6 53.7 54.6 53.7zM75.4 70.9H39.3c-1.6-6.4-7.6-11.3-14.5-11.3 -6.9 0-12.8 4.8-14.5 11.3H3.7c-2.1 0-3.7 1.6-3.7 3.7s1.6 3.7 3.7 3.7h6.6c1.6 6.4 7.6 11.3 14.5 11.3 6.9 0 12.8-4.8 14.5-11.3h36.1c2.1 0 3.7-1.6 3.7-3.7S77.4 70.9 75.4 70.9zM24.8 83.5c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9c4.9 0 8.9 4 8.9 8.9S29.8 83.5 24.8 83.5z"></path>
 </svg>
-							<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 378.9 378.9"><path d="M348.2 54.5c-19.9-19.9-46.3-30.8-74.4-30.8 -28.1 0-54.6 10.9-74.4 30.8l-9.8 9.8 -9.8-9.8c-19.9-19.9-46.3-30.8-74.4-30.8 -28.1 0-54.6 10.9-74.4 30.8 -41 41.1-41 107.8 0 148.9l147.1 147.1c2.4 2.4 5.4 3.9 8.5 4.5 1 0.2 2.1 0.3 3.2 0.3 4.2 0 8.3-1.6 11.5-4.8l147.1-147.1C389.2 162.4 389.2 95.6 348.2 54.5zM325.2 180.4L189.5 316.1 53.8 180.4c-28.4-28.4-28.4-74.5 0-102.9 13.7-13.7 32-21.3 51.4-21.3 19.4 0 37.7 7.6 51.4 21.3l21.3 21.3c6.1 6.1 16.9 6.1 23 0l21.3-21.3c13.7-13.7 32-21.3 51.4-21.3 19.4 0 37.7 7.6 51.4 21.3C353.5 105.9 353.5 152 325.2 180.4z"></path></svg>
+							<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+</svg>
+							<svg class="svg-ico-like-full" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+</svg>
 							<svg class="svg-ico-local" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 525.2 525.2"><path d="M262.6 0C161 0 78.8 82.2 78.8 183.8c0 137.9 183.8 341.4 183.8 341.4s183.8-203.5 183.8-341.4C446.3 82.2 364.2 0 262.6 0zM262.6 249.4c-36.3 0-65.6-29.4-65.6-65.6 0-36.2 29.4-65.6 65.6-65.6s65.6 29.5 65.6 65.6C328.2 220 298.8 249.4 262.6 249.4z"/></svg>
 							<svg class="svg-ico-local" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 525.2 525.2"><path d="M262.6 0C161 0 78.8 82.2 78.8 183.8c0 137.9 183.8 341.4 183.8 341.4s183.8-203.5 183.8-341.4C446.3 82.2 364.2 0 262.6 0zM262.6 249.4c-36.3 0-65.6-29.4-65.6-65.6 0-36.2 29.4-65.6 65.6-65.6s65.6 29.5 65.6 65.6C328.2 220 298.8 249.4 262.6 249.4z"/></svg>
 							<svg class="svg-ico-profile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 563.4 563.4"><path d="M280.8 314.6c83.3 0 150.8-67.5 150.8-150.8S364.1 13.4 280.8 13.4 130 81 130 163.8 197.5 314.6 280.8 314.6zM280.8 52.7c61.1 0 111 50 111 111S341.9 274.8 280.8 274.8s-111-50-111-111S219.7 52.7 280.8 52.7z"></path><path d="M19.9 550h523.6c11.1 0 19.9-8.8 19.9-19.9 0-104.1-84.7-189.2-189.2-189.2H189.2C85.1 340.9 0 425.6 0 530.1 0 541.2 8.8 550 19.9 550zM189.2 380.7h185c75.9 0 138.3 56.4 148 129.5H41.2C50.9 437.6 113.3 380.7 189.2 380.7z"></path></svg>
 							<svg class="svg-ico-search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.8 89.8" width="24" height="24"><path d="M68.1 61c11.4-14.9 10.3-36.3-3.3-49.9C57.6 3.9 48.1 0 37.9 0c-10.1 0-19.7 3.9-26.8 11.1C3.9 18.3 0 27.8 0 37.9c0 10.1 3.9 19.7 11.1 26.8 7.2 7.2 16.7 11.1 26.8 11.1 8.4 0 16.5-2.8 23.1-7.8l21.8 21.7 7.1-7.1L68.1 61zM57.7 57.7c-5.3 5.3-12.3 8.2-19.8 8.2 -7.5 0-14.5-2.9-19.8-8.2C12.9 52.4 10 45.4 10 37.9c0-7.5 2.9-14.5 8.2-19.8C23.5 12.9 30.5 10 37.9 10c7.5 0 14.5 2.9 19.8 8.2C68.6 29.1 68.6 46.8 57.7 57.7z"></path></svg>
 							<svg class="svg-ico-clear" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 185.2L512 15l-67.6 67.6 -7.6-7.6c-48.3-48.3-112.6-74.9-180.9-74.9C114.8 0.1 0 114.9 0 256s114.8 255.9 255.9 255.9S511.8 397.1 511.8 256h-49.5c0 113.8-92.6 206.4-206.4 206.4S49.5 369.8 49.5 256 142.1 49.6 255.9 49.6c55.1 0 106.9 21.5 145.9 60.4l7.6 7.6 -67.6 67.6L512 185.2z"/></svg>
+							<svg class="svg-ico-schedule" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>
+    <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"></path>
+</svg>
+							<svg class="svg-ico-check" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path>
+</svg>
 							<!--==============================-->
 							<h4><a href="#hash-iconsSoc" id="hash-iconsSoc" class="hashAnchor"><span class="mark">Социальные иконки</span></a></h4>
 							<svg class="svg-ico-facebook" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 123 263.5"><path fill="#3a589e" d="M80.9 85.2V57.9c0-10.4 6.6-12.6 11.5-12.6s29.5 0 29.5 0V-0.1H81.5c-44.8 0-55.2 33.9-55.2 55.2v30.1H0.1v46.5h26.2c0 59.6 0 131.7 0 131.7H81c0 0 0-72.7 0-131.7h37.2l4.9-46.5L80.9 85.2 80.9 85.2z"></path></svg>
@@ -963,12 +1106,12 @@
 						<!--===============icons list end===============-->
 						<div class="user-spacer">&nbsp;</div>
 						<!--print-button-->
-						<div>
-							<a href="#" class="view-print">
+						<!--<div>
+					<a href="#" class="view-print">
 						<svg class="svg-ico-print" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 295.1 280.4"><path d="M218.4 236.1H76.7c-1.5 0-3 1.5-3 3v38.4c0 1.5 1.5 3 3 3h141.7c1.5 0 3-1.5 3-3V239C221.3 237.6 219.9 236.1 218.4 236.1zM280.4 88.5h-44.3V14.8c0-8.9-5.9-14.8-14.8-14.8H73.8C64.9 0 59 5.9 59 14.8v73.8H14.8C5.9 88.5 0 94.4 0 103.3v162.3c0 8.9 5.9 14.8 14.8 14.8h29.5v-73.8c0-8.9 5.9-14.8 14.8-14.8h177.1c8.9 0 14.8 5.9 14.8 14.8v73.8h29.5c8.9 0 14.8-5.9 14.8-14.8V103.3C295.1 94.4 289.2 88.5 280.4 88.5zM191.8 162.3c-8.9 0-14.8-5.9-14.8-14.8s5.9-14.8 14.8-14.8 14.8 5.9 14.8 14.8S200.7 162.3 191.8 162.3zM206.6 88.5h-118v-59h118V88.5zM243.5 162.3c-11.8 0-22.1-10.3-22.1-22.1s10.3-22.1 22.1-22.1 22.1 10.3 22.1 22.1S255.3 162.3 243.5 162.3z"></path></svg>
 						<span>Версия для печати</span>
 					</a>
-						</div>
+				</div>-->
 						<!--print-button end-->
 					</div>
 					<script>
@@ -1320,7 +1463,7 @@
 									<div class="footer-nav__box">
 										<strong class="footer-nav__title"><span>Навигатор по магазинам</span></strong>
 										<a href="shops.html" class="navigator">
-									<span class="btn-navigator btn-with-icon">
+									<span class="btn-outline btn-navigator btn-with-icon">
 										<svg class="svg-ico-local" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 525.2 525.2"><path d="M262.6 0C161 0 78.8 82.2 78.8 183.8c0 137.9 183.8 341.4 183.8 341.4s183.8-203.5 183.8-341.4C446.3 82.2 364.2 0 262.6 0zM262.6 249.4c-36.3 0-65.6-29.4-65.6-65.6 0-36.2 29.4-65.6 65.6-65.6s65.6 29.5 65.6 65.6C328.2 220 298.8 249.4 262.6 249.4z"/></svg>
 										<span>Найти магазин</span>
 									</span>
@@ -1871,7 +2014,7 @@
 							</div>
 							<div class="form-footer">
 								<div class="form-buttons">
-									<button class="btn-default-alt btn-submit">Войти</button>
+									<button class="btn-default btn-submit">Войти</button>
 								</div>
 								<!--<div class="form-note">
 								<div class="form-note__item"><a href="#">Забыли пароль?</a></div>
@@ -1881,7 +2024,7 @@
 							<p>Тогда скорее регистрируйтесь</p>
 							<div class="form-footer">
 								<div class="form-buttons">
-									<a href="#" class="btn-default-alt btn-reg-js">Создать кабинет</a>
+									<a href="#" class="btn-default btn-reg-js">Создать кабинет</a>
 								</div>
 								<div class="form-note">
 									<div class="form-note__item">Поля, помеченные <span class="form-mark">*</span> обязательные для заполнения</div>
@@ -2096,7 +2239,7 @@
 	<!--shutters and popups end-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
-	<script src="js/common.js"></script>
+	<script src="js/common.js?20180508_1330"></script>
 </body>
 
 </html>

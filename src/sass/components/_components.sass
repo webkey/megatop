@@ -707,8 +707,8 @@
 	right: nth($text-layout-space, 2)
 	bottom: nth($text-layout-space, 1)
 	+size(50px)
-	color: #000
-	border: 2px solid currentColor
+	color: $btn-bg
+	border: 2px solid $btn-bg
 	background: rgba(255, 255, 255, 0.46)
 	z-index: 9999
 	text-indent: -9999px
@@ -780,7 +780,8 @@
 // hover
 .btn-to-top
 	.no-touchevents &:hover
-		color: $base-color
+		color: white
+		background-color: $btn-bg
 
 /* btn-to-top end
 
@@ -854,9 +855,12 @@
 
 .section__title
 	+font-alt-medium
-	+font(3.6rem, round-float(42/36, 2))
+	+font(3.8rem, round-float(42/36, 2))
 	letter-spacing: normal
 	margin-bottom: nth($grid-space, 1)
+
+	+media('<desk-lg')
+		font-size: 3.6rem
 
 	+media('<tab-lg')
 		margin-bottom: nth($grid-space--sm, 1)
@@ -1348,6 +1352,71 @@
 				background-color: $instagram-color-end
 
 /* social networks end
+
+/* share
+.share
+	margin-bottom: $bottom-space
+	+clear
+
+	&:last-child
+		margin-bottom: 0
+
+.share__list
+	position: relative
+	display: inline-block
+	vertical-align: top
+	+font(14px, 1.5)
+	letter-spacing: normal
+	margin: 0 -5px -10px
+
+.share__item
+	float: left
+	margin: 0 5px 10px
+
+	a
+		display: block
+		position: relative
+		+size(50px)
+		border-radius: 50%
+		background-color: white
+		border: 2px solid $border-color
+		color: $text-color
+
+		span
+			+hide-text
+
+		svg
+			+centering-transform-abs
+			+size(20px)
+
+		path
+			fill: currentColor
+
+		.no-touchevents &:hover
+			color: white
+			background-color: $text-color
+			border-color: $text-color
+
+		//.no-touchevents &:hover
+			&.fb
+				background-color: $facebook-color
+
+			&.vk
+				background-color: $vkontakte-color
+			&.twitter
+				background-color: $twitter-color
+
+			&.ok
+				background-color: $odnoklassniki-color
+
+			&.youtube
+				background-color: $youtube-color
+
+			&.instagram
+				//+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
+				background-color: $instagram-color-end
+
+/* share end
 
 /* ms-drop
 .ms-drop__drop-js
@@ -2650,7 +2719,7 @@
 
 	.btn-filters-apply
 		display: none
-		background-color: $btn-bg-hover-color
+		background-color: $btn-bg-hover
 		border: none
 
 		+media('<tab-lg')
@@ -2659,7 +2728,7 @@
 	.btn-clear-filters
 		+media('<tab-lg')
 			border: none
-			background-color: $btn-bg-color
+			background-color: $btn-bg
 			color: #fff
 
 		// disabled
@@ -2667,9 +2736,6 @@
 			+media('<tab-lg')
 				cursor: default
 				background-color: #eaeaea !important
-
-				&::before, &::after
-					display: none
 
 		svg
 			width: 18px
@@ -2890,7 +2956,7 @@
 // apply btn
 .p-filters-results__apply
 	+display-inline-block-top
-	padding: 5px 0
+	padding: 5px 2px 5px 0
 
 	.btn-filters-apply
 		+display-inline-block-top
@@ -2922,34 +2988,29 @@
 
 		// hover
 		.no-touchevents &:hover
-			//background-color: $base-color
-			background-color: tint($btn-bg-hover-color, 80)
+			color: $header-bg
+			background-color: white
+			//background-color: tint($btn-bg-hover-color, 80)
 
 // btn-clear-filters
 .btn-clear-filters
 	+size(52px)
 	padding: 0
-	//margin: -1px 0 -1px -1px
-	//background-color: #eee
-	//border: 1px solid $border-color
 	background-color: $header-bg
-	border: 1px solid $header-bg
-	//color: black
+	border: 2px solid $header-bg
 	color: white
 
 	svg
 		+size(36px)
-		fill: currentColor
 
 	path
-		&[fill="none"]
-			fill: none
+		fill: currentColor
 
 	// hover
 	.no-touchevents &:hover
-		background-color: tint($base-color, 80)
-		border-color: $base-color
-		color: white
+		background-color: white
+		border-color: $btn-bg
+		color: $btn-bg
 
 	// focus
 	&:disabled
@@ -3644,8 +3705,14 @@ label.checkbox--size
 
 .about-caption__desc
 	+font-alt-medium
-	+font(2.4rem, round-float(34/24, 2))
+	+font(2.6rem, round-float(34/24, 2))
 	padding-right: 0
+
+	+media('<desk-lg')
+		font-size: 2.4rem
+
+	+media('<tab-lg')
+		font-size: 2.2rem
 
 	+media('<mob-lg')
 		font-size: 2.0rem
@@ -3670,10 +3737,13 @@ label.checkbox--size
 	margin: 0 nth($grid-space, 2)
 	padding: nth($grid-space, 1) 0
 	+font-bold
-	+font(1.8rem, round-float(26/18, 2))
+	+font(2.0rem, round-float(26/18, 2))
 	color: $base-color
 	padding-top:
 	border-top: 2px solid $base-color
+
+	+media('<desk-lg')
+		font-size: 1.8rem
 
 	+media('<tab-lg')
 		padding: nth($grid-space--sm, 1) 0
@@ -3970,10 +4040,13 @@ label.checkbox--size
 
 .h-slider-desc__item__title
 	+font-alt-medium
-	+font(2.4rem, round-float(34/24, 2))
+	+font(2.6rem, round-float(34/24, 2))
 	color: #fff
 	width: 340px
 	float: left
+
+	+media('<desk-lg')
+		font-size: 2.4rem
 
 	+media('<desk-sm')
 		float: none
@@ -3984,11 +4057,12 @@ label.checkbox--size
 		font-size: 1.8rem
 
 .h-slider-desc__item__text
-	+font(1.7rem, round-float(27/17, 2))
+	+font(1.9rem, round-float(27/17, 2))
 	color: #fff
 	margin-left: 548px
 
 	+media('<desk-lg')
+		font-size: 1.7rem
 		margin-left: 40%
 		padding-top: 6px
 
@@ -4186,7 +4260,10 @@ label.checkbox--size
 	width: 252px
 	padding: 0 #{round(nth($grid-space, 2)/2)}
 	margin-bottom: nth($grid-space, 1)
-	+font(1.6rem, round-float(26/16, 2))
+	+font(1.8rem, round-float(26/16, 2))
+
+	+media('<desk-lg')
+		font-size: 1.6rem
 
 	+media('<desk-sm')
 		width: 25%
@@ -4273,7 +4350,10 @@ label.checkbox--size
 		margin-bottom: nth($grid-space--mob, 1)
 
 .about-benefits__desc
-	+font(1.7rem, round-float(28/17, 2))
+	+font(1.9rem, round-float(28/17, 2))
+
+	+media('<desk-lg')
+		font-size: 1.7rem
 
 	p
 		&:last-child
@@ -4328,12 +4408,15 @@ $about-benefits-icon-size--mob: 50px
 .about-benefits__item__title
 	position: relative
 	+font-alt-bold
-	+font(2.0rem, round-float(26/20, 2))
+	+font(2.2rem, round-float(26/20, 2))
 	display: flex
 	align-items: center
 	padding-right: $about-benefits-icon-size+10
 	min-height: $about-benefits-icon-size
 	margin-bottom: 1em
+
+	+media('<desk-lg')
+		font-size: 2.0rem
 
 	+media('<mob-lg')
 		font-size: 18px
@@ -4353,7 +4436,10 @@ $about-benefits-icon-size--mob: 50px
 		margin-top: -#{round($about-benefits-icon-size--mob/2)}
 
 .about-benefits__item__text
-	+font(1.6rem, round-float(26/17, 2))
+	+font(1.8rem, round-float(26/17, 2))
+
+	+media('<desk-lg')
+		font-size: 1.6rem
 
 	+media('<mob-lg')
 		display: none
@@ -4536,7 +4622,16 @@ $about-benefits-icon-size--mob: 50px
 
 .jobs-caption__desc
 	+font-alt-medium
-	+font(2.2rem, round-float(34/22, 2))
+	+font(2.4rem, round-float(34/22, 2))
+
+	+media('<desk-lg')
+		font-size: 2.2rem
+
+	+media('<tab-lg')
+		font-size: 2.0rem
+
+	+media('<mob-lg')
+		font-size: 1.8rem
 
 	p
 		&:last-child
@@ -4600,12 +4695,15 @@ $jobs-caption-icon-size--mob: 50px
 .jobs-caption__item__title
 	position: relative
 	+font-alt-bold
-	+font(2.0rem, round-float(26/20, 2))
+	+font(2.2rem, round-float(26/20, 2))
 	display: flex
 	align-items: center
 	padding-right: $jobs-caption-icon-size+10
 	min-height: $jobs-caption-icon-size
 	margin-bottom: 1em
+
+	+media('<desk-lg')
+		font-size: 2.0rem
 
 	+media('<mob-lg')
 		font-size: 18px
@@ -4625,7 +4723,10 @@ $jobs-caption-icon-size--mob: 50px
 		margin-top: -#{round($jobs-caption-icon-size--mob/2)}
 
 .jobs-caption__item__text
-	+font(1.6rem, round-float(26/17, 2))
+	+font(1.8rem, round-float(26/17, 2))
+
+	+media('<desk-lg')
+		font-size: 1.6rem
 
 	+media('<mob-lg')
 		display: none
@@ -4647,7 +4748,10 @@ $jobs-caption-icon-size--mob: 50px
 
 .jobs-warranty__list
 	overflow: hidden
-	+font(1.8rem, round-float(28/18, 2))
+	+font(2.0rem, round-float(28/18, 2))
+
+	+media('<desk-lg')
+		font-size: 1.8rem
 
 	+media('<mob-lg')
 		font-size: 1.6rem
@@ -4743,6 +4847,10 @@ $jobs-warranty-icon-size--mob: 32px
 
 .jobs-actual__foot, .jobs-actual__foot__notes
 	margin-bottom: nth($grid-space, 1)
+	font-size: 1.8rem
+
+	+media('<desk-lg')
+		font-size: 1.6rem
 
 	&:last-child
 		margin-bottom: 0
@@ -5020,9 +5128,12 @@ $jobs-warranty-icon-size--mob: 32px
 	max-width: 90%
 	margin: 0 auto
 	+font-alt-medium
-	+font(3.6rem, round-float(43/36, 2))
+	+font(3.8rem, round-float(43/36, 2))
 	color: white
 	text-align: center
+
+	+media('<desk-lg')
+		font-size: 3.6rem
 
 	+media('<tab-lg')
 		font-size: 2.8rem
@@ -5265,6 +5376,89 @@ $card-cont-width: 564px
 		top: 0
 		z-index: 5
 
+// products favorite
+.products__favorite
+	+display-inline-block-top
+	+size(50px)
+	color: #ccc
+
+	+media('<mob-lg')
+		+size(40px)
+
+	.p-card__visual &
+		position: absolute
+		top: 0
+		right: 0
+		z-index: 1
+
+	svg
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		+size(100%)
+
+		& + svg
+			display: none
+
+	path
+		fill: currentColor
+
+	// tooltip
+	&[data-title]::before
+		content: attr(data-title)
+		display: block
+		min-width: 100%
+		position: absolute
+		right: 100%
+		top: 15px
+		margin-right: 10px
+		+font-bold
+		+font(1.4rem, 20px)
+		white-space: nowrap
+		text-transform: uppercase
+		letter-spacing: 0.05em
+		z-index: 2
+		color: $base-color
+		+antialiased
+		//===========
+		$prop: opacity, transform, visibility
+		opacity: 0
+		visibility: hidden
+		$translate: 20px, 0
+		transform: translate($translate)
+		transform: translate3d($translate, 0)
+		will-change: $prop
+		transition:
+			property: $prop
+			duration: 0.4s
+
+		+media('<mob-lg')
+			top: 10px
+			font-size: 1.2rem
+
+	// hover
+	.no-touchevents &:hover
+		color: $base-color
+
+	.no-touchevents &[data-title]:hover
+		&::before
+			opacity: 1
+			visibility: visible
+			$translate: 0, 0
+			transform: translate($translate)
+			transform: translate3d($translate, 0)
+
+	// active
+	&.active
+		color: $base-color
+
+		svg
+			display: none
+
+			& + svg
+				display: inline-block
+
 // card gallery
 .p-card__gallery
 	position: relative
@@ -5501,6 +5695,16 @@ $card-cont-width: 564px
 	[class*="btn-"]
 		display: block
 		margin-bottom: 10px
+
+		&, & > span
+			+media('<desk-sm')
+				font-size: 12px
+
+			+media('<tab-lg')
+				font-size: 14px
+
+			+media('<mob-lg')
+				font-size: 12px
 
 // widget title
 .p-card__widget__title

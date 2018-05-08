@@ -841,24 +841,9 @@ html
 	left: $space
 	top: $space
 	z-index: 5
-	padding: 13px
 	width: 280px
 	max-width: calc(100% - #{round($space*2)})
-	+font-bold
-	line-height: 1
-	color: black
-	background: #f3f3f3
-	border: 2px solid #ccc
-
-	& > span
-		+font(1.4rem, round-float(20/14, 2))
-		text-transform: uppercase
-		letter-spacing: 0.1em
-
-	// hover
-	.no-touchevents &:hover
-		color: $base-color
-		border-color: $base-color
+	background-color: white
 
 /* navigator end
 
@@ -1309,8 +1294,8 @@ html
 /* button shutter close
 .btn-shutter-close
 	//<a href="#" class="btn-shutter-close js-btn-shutter-close"><i>&nbsp;</i><span>Закрыть</span></a>
-	$btn-shutter-close--bg: $btn-bg-color
-	$btn-shutter-close--color: $text-color
+	$btn-shutter-close--bg: $base-color
+	$btn-shutter-close--color: white
 	$btn-shutter-close--size: $header-height--sm
 	$btn-shutter-close--space: 12px
 	$btn-shutter-close--lines-width: 22px
@@ -1370,7 +1355,7 @@ html
 
 	// hover
 	.no-touchevents &:hover
-		background-color: $btn-bg-hover-color
+		background-color: $btn-bg
 
 /* button shutter close end
 

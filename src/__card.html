@@ -32,6 +32,10 @@
 						<div class="products__label products__label--hit">Хит!</div>
 					</div>
 					<div class="p-card__gallery card__gallery-js">
+						<a href="#" class="products__favorite toggle-state-js" data-title="Добавить в избранное" data-active-text="Убрать из избранного" data-unactive-text="Добавить в избранное">
+							@@include("includes/svg/icon-like.svg")
+							@@include("includes/svg/icon-like-full.svg")
+						</a>
 						<div class="p-card__gallery-images card__gallery-images-js">
 							<div class="p-card__gallery__item">
 								<img data-lazy="img/img-products-lg-04-01.jpg" src="img/empty.png" alt="img-products-lg-04-01">
@@ -156,14 +160,15 @@
 						</div>
 					</div>
 					<div class="p-card__footer">
-						<a href="#" class="btn-default-alt btn-with-icon">
+						<a href="#" class="btn-default btn-with-icon">
 							@@include("includes/svg/icon-search-for-btn.svg")
 							<span class="for-desk">Проверить наличие в магазинах</span>
 							<span class="for-mob">Наличие в магазинах</span>
 						</a>
-						<a href="#" class="btn-outline btn-with-icon">
-							@@include("includes/svg/icon-like-for-btn.svg")
-							<span>В избранное</span>
+						<a href="#" class="btn-outline btn-with-icon toggle-state-js" data-active-text="Забронировано" data-unactive-text="Забронировать">
+							@@include("includes/svg/icon-schedule.svg")
+							@@include("includes/svg/icon-check.svg")
+							<span>Забронировать</span>
 						</a>
 					</div>
 					<!--infobar-->

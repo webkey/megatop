@@ -1295,16 +1295,30 @@ function equalHeight() {
  * !Product liked
  * */
 function productLiked() {
-	$('.products-likes-js').on('click', function (e) {
-		var $curLikeBtn = $(this),
-		classActive = 'active';
+	$('.toggle-state-js').on('click', function (e) {
+		var $btn = $(this),
+			classActive = 'active',
+			activeText = $btn.data('active-text'),
+			unactiveText = $btn.data('unactive-text');
 
-		$curLikeBtn.toggleClass(classActive);
+		$btn.toggleClass(classActive);
 
-		if($curLikeBtn.hasClass(classActive)) {
-			$curLikeBtn.attr('title', $curLikeBtn.data('unliked-text'));
+		if($btn.hasClass(classActive)) {
+			$('span', $btn).text(activeText);
+			if($btn.attr('title') !== undefined){
+				$btn.attr('title', activeText);
+			}
+			if($btn.attr('data-title') !== undefined){
+				$btn.attr('data-title', activeText);
+			}
 		} else {
-			$curLikeBtn.attr('title', $curLikeBtn.data('liked-text'));
+			$('span', $btn).text(unactiveText);
+			if($btn.attr('title') !== undefined){
+				$btn.attr('title', unactiveText);
+			}
+			if($btn.attr('data-title') !== undefined){
+				$btn.attr('data-title', unactiveText);
+			}
 		}
 
 		e.preventDefault();
