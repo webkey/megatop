@@ -5441,7 +5441,7 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	right: 20px;
 	bottom: 20px;
 	margin-bottom: -8px;
-	min-height: 38px;
+	min-height: 40px;
 	max-width: calc(50% - 20px);
 	text-align: right;
 	line-height: 1;
@@ -5547,8 +5547,8 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	font-family: "proximanova-bold", sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 18px;
-	line-height: 22px;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 @media (max-width: 767px) {
@@ -5805,44 +5805,6 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	}
 }
 
-.no-touchevents .slick-active .products__inner:hover .products__animation-wrap {
-	margin-left: 0;
-	margin-right: -38px;
-}
-
-.no-touchevents .slick-active .products__inner:hover .products__labels {
-	left: 0;
-}
-
-.no-touchevents .slick-active + .slick-active .products__inner:hover .products__animation-wrap {
-	margin-left: -19px;
-	margin-right: -19px;
-}
-
-@media (max-width: 479px) {
-	.no-touchevents .slick-active + .slick-active .products__inner:hover .products__animation-wrap {
-		margin-left: -19px;
-		margin-right: -19px;
-	}
-}
-
-@media (max-width: 359px) {
-	.no-touchevents .slick-active + .slick-active .products__inner:hover .products__animation-wrap {
-		margin-left: -19px;
-		margin-right: -19px;
-	}
-}
-
-.no-touchevents .slick-active + .slick-active .products__inner:hover .products__labels {
-	left: -14px;
-}
-
-@media (max-width: 991px) {
-	.no-touchevents .slick-active + .slick-active .products__inner:hover .products__labels {
-		left: -10px;
-	}
-}
-
 /* products preview end */
 /* products list */
 .products {
@@ -6052,20 +6014,21 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 
 .similar-slider {
 	position: relative;
-	overflow: hidden;
 }
 
 .similar-slider__list {
 	white-space: nowrap;
 	overflow: hidden;
-	padding-right: 60px;
-	padding-left: 60px;
+	padding-right: 23px;
+	padding-left: 23px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 991px) {
 	.similar-slider__list {
-		padding-right: 0;
-		padding-left: 0;
+		padding: 0 0 40px;
+	}
+	.no-touchevents .similar-slider__list {
+		padding-bottom: 0;
 	}
 }
 
@@ -6082,19 +6045,24 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	margin: 0;
 }
 
-.similar-slider__list .slick-list {
-	overflow: visible;
-}
-
-@media (min-width: 640px) {
+@media (max-width: 991px) {
 	.similar-slider__list .slick-arrow {
-		background-color: white;
+		display: none !important;
 	}
 }
 
 .no-touchevents .similar-slider__list .slick-list {
 	padding-top: 40px;
 	padding-bottom: 40px;
+	padding-right: 18px;
+	padding-left: 18px;
+}
+
+@media (max-width: 991px) {
+	.no-touchevents .similar-slider__list .slick-list {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 @media (max-width: 479px) {
@@ -6132,14 +6100,6 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	}
 }
 
-.no-touchevents .similar-slider__list:hover .slick-arrow {
-	background: #f4f4f4;
-}
-
-.no-touchevents .similar-slider__list:hover .slick-arrow.slick-disabled {
-	background-color: transparent;
-}
-
 .similar-slider__list .slick-prev {
 	left: 0;
 }
@@ -6148,10 +6108,34 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	right: 0;
 }
 
+.similar-slider__list .slick-dots {
+	bottom: 10px;
+}
+
+@media (min-width: 992px) {
+	.similar-slider__list .slick-dots {
+		display: none !important;
+	}
+}
+
+.similar-slider__list .slick-dots li button::before {
+	background-color: #ccc;
+	box-shadow: none;
+}
+
 .similar-slider__item {
 	float: none;
 	display: inline-block;
 	vertical-align: top;
+	padding-right: 19px;
+	padding-left: 19px;
+}
+
+@media (max-width: 991px) {
+	.similar-slider__item {
+		padding-right: 0;
+		padding-left: 0;
+	}
 }
 
 .no-js .similar-slider__item {
@@ -6314,9 +6298,6 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 	color: inherit;
 	height: 0;
 	padding-top: 74.53%;
-	will-change: margin, transform;
-	transition-property: transform, margin;
-	transition-duration: 0.2s;
 }
 
 .events-slider__figure {
@@ -6690,6 +6671,8 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 }
 
 .filters-result-fixed .p-filters-results {
+	height: 75px;
+	padding-bottom: 25px;
 	position: fixed;
 	bottom: -1px;
 }
@@ -6849,9 +6832,9 @@ input[type="text"].input--focus, input[type="password"].input--focus, input[type
 }
 
 .btn-clear-filters:disabled {
-	background-color: #eee !important;
-	border-color: #ccc !important;
-	color: #ccc !important;
+	background-color: #1a1a1a !important;
+	border-color: #1a1a1a !important;
+	color: white !important;
 }
 
 .loader-cover {

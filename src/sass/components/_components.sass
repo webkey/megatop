@@ -1916,7 +1916,7 @@
 	right: nth($products-inner-space, 2)
 	bottom: nth($products-inner-space, 1)
 	margin-bottom: -8px
-	min-height: 38px
+	min-height: 40px
 	max-width: calc(50% - #{nth($products-inner-space, 2)})
 	text-align: right
 	line-height: 1
@@ -1987,7 +1987,7 @@
 
 .products__price__cur
 	+font-bold
-	+font(18px, 22px)
+	+font(20px, 24px)
 
 	+media('<tab-sm')
 		display: inline-block
@@ -2188,7 +2188,13 @@
 				margin-right: -#{nth($products-rang-size--mob, 2)}
 
 	// если продукт находится внутри слайдера
-	.no-touchevents .slick-active &
+	//.no-touchevents .slick-active &
+		.products__animation-wrap
+			margin-left: 0
+			margin-right: 0
+			transform: none
+
+	//.no-touchevents .slick-active &
 		.products__animation-wrap
 			margin-left: 0
 			margin-right: -(#{nth($products-rang-size, 2)*2})
@@ -2196,7 +2202,7 @@
 		.products__labels
 			left: 0
 
-	.no-touchevents .slick-active + .slick-active &
+	//.no-touchevents .slick-active + .slick-active &
 		.products__animation-wrap
 			margin-left: -#{nth($products-rang-size, 2)}
 			margin-right: -#{nth($products-rang-size, 2)}
@@ -2357,7 +2363,7 @@
 // slider
 .similar-slider
 	position: relative
-	overflow: hidden
+	//overflow: hidden
 
 	//.no-touchevents &
 		&::before, &::after
@@ -2381,11 +2387,15 @@
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
-	+padding-horizontal(nth($slider-btn-size, 1))
+	+padding-horizontal(nth($slider-btn-size, 1) - $products-shade-size - nth($products-rang-size, 2))
 
-	+media('<mob-lg')
-		+padding-horizontal(0)
+	+media('<tab-lg')
+		padding: 0 0 40px // добавить отступ снизу для точек
 		//+padding-horizontal(nth($slider-btn-size--sm, 1))
+
+		.no-touchevents &
+			padding-bottom: 0
+			// на нетач устройствах убрать отступ
 
 	//.no-touchevents &
 		+padding-horizontal(nth($slider-btn-size, 1)-($products-rang+$products-shade-size))
@@ -2405,16 +2415,27 @@
 	.slick-track
 		margin: 0
 
-	.slick-list
+	//.slick-list
 		overflow: visible
 
 	.slick-arrow
+		+media('<tab-lg')
+			display: none !important
+
+	//.slick-arrow
 		+media('>=mob-lg')
 			background-color: $bg-color
+
+			.no-touchevents &:hover
+				background: #f4f4f4
 
 	.no-touchevents &
 		.slick-list
 			+padding-vertical(nth($products-rang-size, 1)+$products-shade-size)
+			+padding-horizontal($products-shade-size)
+
+			+media('<tab-lg')
+				+padding-horizontal(0)
 
 			+media('<mob-md')
 				+padding-vertical(nth($products-rang-size--sm, 1)+$products-shade-size)
@@ -2438,7 +2459,7 @@
 				bottom: auto
 
 
-		&:hover .slick-arrow
+		//&:hover .slick-arrow
 			//background: rgba(195, 195, 195, 0.2)
 			background: #f4f4f4
 
@@ -2451,6 +2472,19 @@
 	.slick-next
 		right: 0
 
+	// dots
+	.slick-dots
+		bottom: 10px
+
+		+media('>=tab-lg')
+			display: none !important
+
+		li
+			button
+				&::before
+					background-color: #ccc
+					box-shadow: none
+
 // slide
 .similar-slider__item
 	// before slide load
@@ -2458,7 +2492,10 @@
 	display: inline-block
 	vertical-align: top
 	// before slide load end
-	//+padding-horizontal(10px)
+	+padding-horizontal(#{nth($products-rang-size, 2)})
+
+	+media('<tab-lg')
+		+padding-horizontal(0)
 
 	.no-js &
 		width: 320px
@@ -2601,8 +2638,8 @@
 	text-decoration: none
 	color: inherit
 	+ratio(nth($events-size, 2), nth($events-size, 1))
-	will-change: margin, transform
-	transition:
+	//will-change: margin, transform
+	//transition:
 		property: transform, margin
 		duration: $animation-speed
 
@@ -2888,6 +2925,8 @@
 			delay: 0s
 
 	.filters-result-fixed &
+		height: 75px
+		padding-bottom: 25px
 		position: fixed
 		bottom: -1px
 
@@ -3014,9 +3053,9 @@
 
 	// focus
 	&:disabled
-		background-color: #eee !important
-		border-color: $border-color !important
-		color: $border-color !important
+		background-color: $header-bg !important
+		border-color: $header-bg !important
+		color: white !important
 
 .loader-cover
 	+size(100%)

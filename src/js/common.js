@@ -500,40 +500,46 @@ function slidersInit() {
 				slidesToShow: 6,
 				slidesToScroll: 1,
 				// lazyLoad: 'ondemand',
-				pauseOnHover: false,
+				pauseOnHover: true,
 				infinite: true,
 				autoplay: true,
 				autoplaySpeed: 2500,
 				cssEase: 'linear',
 				dots: false,
 				arrows: true,
+
+				accessibility: false,
+				draggable: false,
+				swipe: false,
+				touchMove: false,
+
 				responsive: [
 					{
 						breakpoint: 1280,
 						settings: {
 							slidesToShow: 5,
-							slidesToScroll: 2,
+							slidesToScroll: 1,
 						}
 					},
 					{
 						breakpoint: 1200,
 						settings: {
 							slidesToShow: 4,
-							slidesToScroll: 2,
+							slidesToScroll: 1,
 						}
 					},
 					{
 						breakpoint: 768,
 						settings: {
 							slidesToShow: 3,
-							slidesToScroll: 2,
+							slidesToScroll: 1,
 						}
 					},
 					{
 						breakpoint: 480,
 						settings: {
 							slidesToShow: 2,
-							slidesToScroll: 2,
+							slidesToScroll: 1,
 						}
 					}
 				]
@@ -559,28 +565,28 @@ function slidersInit() {
 				slidesToShow: 5,
 				slidesToScroll: 2,
 				infinite: false,
-				dots: false,
+				dots: true,
 				arrows: true,
 				responsive: [
 					{
-						breakpoint: 1366,
+						breakpoint: 1440,
 						settings: {
 							slidesToShow: 4,
-							slidesToScroll: 2,
+							slidesToScroll: 2
 						}
 					},
 					{
-						breakpoint: 992,
+						breakpoint: 1100,
 						settings: {
 							slidesToShow: 3,
-							slidesToScroll: 2,
+							slidesToScroll: 3
 						}
 					},
 					{
-						breakpoint: 640,
+						breakpoint: 560,
 						settings: {
 							slidesToShow: 2,
-							slidesToScroll: 2,
+							slidesToScroll: 2
 						}
 					}
 				]
