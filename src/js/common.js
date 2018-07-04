@@ -1866,7 +1866,6 @@ $(function () {
 
 		$handler.on('click', function (e) {
 			e.preventDefault();
-			e.stopPropagation();
 
 			var $currentHandler = $(this);
 			var $currentItem = $currentHandler.closest($item);
